@@ -1,0 +1,9 @@
+{
+	"InitialFilter": "Fuzzy",
+	"Keymap": {
+		"ArrowRight": "peco.ForwardChar",
+		"ArrowLeft": "peco.BackwardChar",
+		"Delete": "peco.DeleteForwardChar"
+	},
+	"Use256Color": true
+}
