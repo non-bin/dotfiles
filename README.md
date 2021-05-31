@@ -1,5 +1,9 @@
 # DotFiles
 
+`https://github.com/zsh-users/zsh-syntax-highlighting` manual install, sourced in .globalrc
+`https://github.com/ogham/exa`
+`https://github.com/peco/peco`
+
 ## License
 
     Alice's DotFiles
