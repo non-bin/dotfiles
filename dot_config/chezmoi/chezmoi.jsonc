@@ -3,10 +3,21 @@
   "color": true,
   "progress": true,
   "edit": {
-    "watch": true, // Watch for changes and apply as you save
     "apply": true // Apply changes on exit
+    // "watch": true // Watch for changes and apply as you save
   },
   "git": {
-    "autoPush": true // Imediately add, commit, and push changes to git
+    "autoPush": true // Immediately add, commit, and push changes to git when the editor is closed (even with edit.watch=true)
   }
+  // "hooks": {
+  //   // Update the etc files after every apply
+  //   "apply": {
+  //     "pre": { "command": "echo", "args": ["pre-apply-hook"] },
+  //     "post": { "command": "echo", "args": ["post-apply-hook"] }
+  //   },
+  //   "update": {
+  //     "pre": { "command": "echo", "args": ["pre-update-hook"] },
+  //     "post": { "command": "echo", "args": ["post-update-hook"] }
+  //   }
+  // }
 }
