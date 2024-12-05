@@ -1,0 +1,14 @@
+Host forum
+  HostName f.jacka.net.au
+  User linuxuser
+  PreferredAuthentications publickey
+  IdentitiesOnly no
+  IdentityFile "~\.ssh\Alice.ppk"
+
+# Fallback
+
+Host *
+  # User alice
+  # PreferredAuthentications publickey
+  IdentitiesOnly no
+  IdentityFile "~\.ssh\Alice.ppk"
