@@ -1,0 +1,328 @@
+body,
+textarea,
+button {
+  color: #fff;
+  background: #000;
+  font: 100% system-ui;
+  margin: 0;
+  border-radius: 7pt;
+}
+
+a {
+  color: #44a7ff;
+}
+
+#config {
+  font-family: monospace;
+  width: 96vw;
+  height: 500pt;
+}
+
+#error {
+  color: red;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.controls {
+  margin-top: 5px;
+}
+
+#container {
+  box-sizing: border-box; /* Make width and height include boarder and padding */
+  height: 100vh;
+  width: 100vw;
+}
+
+#screen {
+  grid-area: 2 / 2 / 3 / 3;
+  display: grid;
+  gap: 10px;
+  grid-template: auto / auto;
+  /* --screen-color: white; Set with JS */
+  background-color: var(--screen-color);
+  padding: 10px;
+  box-sizing: border-box; /* Make width and height include boarder and padding */
+  height: 100%;
+  max-width: 100%;
+}
+
+.counter {
+  align-items: center;
+  padding: 5%;
+  /* --color: color-mix(in oklab, var(--screen-color), rgba(255, 255, 255) 20%); Set with JS*/
+  background-color: var(--color);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  font-size: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.counter_text {
+  color: var(--color);
+  filter: invert(1) grayscale(1) brightness(1.3) contrast(9000);
+  mix-blend-mode: luminosity;
+  opacity: 0.95;
+}
+
+.container.editor {
+  display: grid;
+  grid-template: 40pt auto / 40pt auto;
+}
+
+.ruler {
+  padding: 5pt;
+  display: grid;
+  gap: 10px;
+}
+
+#top-ruler {
+  grid-area: 1 / 2 / 2 / 3;
+  padding: 10px 10px 0 10px;
+}
+
+#side-ruler {
+  grid-area: 2 / 1 / 3 / 2;
+  padding: 10px 0 10px 10px;
+}
+
+.ruler input {
+  width: 25pt;
+}
+
+.ruler-division {
+  align-content: center;
+  text-align: center;
+  padding: auto;
+  background: rebeccapurple;
+  border-radius: 10pt;
+}
+
+.move-buttons {
+  top: 10px;
+  left: 10px;
+}
+
+.resize-buttons {
+  bottom: 10px;
+  right: 10px;
+}
+
+.move-button-container {
+  display: grid;
+  grid-template: auto auto auto / auto auto auto;
+  gap: 0px;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow-button {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+  pointer-events: all;
+}
+
+.arrow-button:hover {
+  background-color: #2196f3;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.up-arrow {
+  grid-area: 1/2/2/3;
+}
+.up-arrow .arrow {
+  border-width: 0 10px 15px 10px;
+  border-color: transparent transparent white transparent;
+}
+
+.right-arrow {
+  grid-area: 2/3/3/4;
+}
+.right-arrow .arrow {
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent white;
+}
+
+.down-arrow {
+  grid-area: 3/2/4/3;
+}
+.down-arrow .arrow {
+  border-width: 15px 10px 0 10px;
+  border-color: white transparent transparent transparent;
+}
+
+.left-arrow {
+  grid-area: 2/1/3/2;
+}
+.left-arrow .arrow {
+  border-width: 10px 15px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+.right {
+  float: right;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer {
+  height: 3rem;
+  text-align: center;
+  align-content: center;
+  background: #111;
+  margin-top: 30px;
+}
+
+#touchCatcher {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0);
+  display: none; /* Explicity enable it in js */
+}
+
+.modal {
+  /* display: none; */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #1e1e1e;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 1em;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+#modal-close {
+  overflow: hidden;
+  position: relative;
+  border: none;
+  padding: 0;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background: transparent;
+  font: inherit;
+  text-indent: 100%;
+  cursor: pointer;
+  float: right;
+
+  &:focus {
+    outline: solid 0 transparent;
+    box-shadow: 0 0 0 2px #8ed0f9;
+  }
+
+  &:hover {
+    background: rgba(29, 161, 141, 0.685);
+  }
+
+  &:before,
+  &:after {
+    position: absolute;
+    top: 15%;
+    left: calc(50% - 0.0625em);
+    width: 0.125em;
+    height: 70%;
+    border-radius: 0.125em;
+    transform: rotate(45deg);
+    background: currentcolor;
+    content: '';
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.button {
+  border-width: 1px;
+  border-color: #663399;
+  background-color: #663399;
+  color: #fefbef;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  margin-top: 1.5rem;
+  width: 100%; /* Large, mobile-friendly touch target */
+  height: 3em;
+
+  /* Media Queries */
+  @media (min-width: 37.5em) {
+    width: auto; /* Smaller buttons on larger screens */
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+.button:active {
+  background-color: #5f00be;
+}
+
+.secondary {
+  border-color: #5f5f5f;
+  background-color: #5f5f5f;
+  color: #fefbef;
+}
+.secondary:active {
+  background-color: #434343;
+}
+
+.warning {
+  border-color: #ff641c;
+  background-color: #ff641c;
+  color: #fefbef;
+}
+.warning:active {
+  background-color: #b73a00;
+}
+
+.danger {
+  border-color: #ff2020;
+  background-color: #ff2020;
+  color: #fefbef;
+}
+.danger:active {
+  background-color: #d50000;
+}
+
+.success {
+  border-color: #44ba00;
+  background-color: #44ba00;
+  color: #fefbef;
+}
+.success:active {
+  background-color: #40ae00;
+}

@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "/home/alice/.config/waybar"
+		},
+		{
+			"path": "/home/alice/.config/hypr"
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,53 @@
+2024-12-05 12:35:12.429 [info] [main] Log level: Info
+2024-12-05 12:35:12.429 [info] [main] Validating found git in: "git"
+2024-12-05 12:35:12.429 [info] [main] Using git "2.47.1" from "git"
+2024-12-05 12:35:12.429 [info] [Model][doInitialScan] Initial repository scan started
+2024-12-05 12:35:12.429 [info] > git rev-parse --show-toplevel [10ms]
+2024-12-05 12:35:12.429 [info] > git rev-parse --git-dir --git-common-dir [4ms]
+2024-12-05 12:35:12.429 [info] [Model][openRepository] Opened repository: /home/alice/.local/share/chezmoi
+2024-12-05 12:35:12.429 [info] > git fetch [1577ms]
+2024-12-05 12:35:12.429 [info] > git config --get commit.template [398ms]
+2024-12-05 12:35:12.429 [info] > git config --get commit.template [151ms]
+2024-12-05 12:35:12.512 [info] > git check-ignore -v -z --stdin [64ms]
+2024-12-05 12:35:12.514 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [86ms]
+2024-12-05 12:35:12.514 [info] > git rev-parse --show-toplevel [103ms]
+2024-12-05 12:35:12.537 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [28ms]
+2024-12-05 12:35:12.547 [info] > git rev-parse --show-toplevel [12ms]
+2024-12-05 12:35:12.646 [info] > git rev-parse --show-toplevel [61ms]
+2024-12-05 12:35:12.737 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [98ms]
+2024-12-05 12:35:12.757 [info] > git config --local branch.main.vscode-merge-base [4ms]
+2024-12-05 12:35:12.757 [warning] [Git][config] git config failed: Failed to execute git
+2024-12-05 12:35:12.774 [info] > git rev-parse --show-toplevel [66ms]
+2024-12-05 12:35:12.775 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [88ms]
+2024-12-05 12:35:12.797 [info] > git config --get commit.template [123ms]
+2024-12-05 12:35:12.933 [info] > git config --local branch.main.vscode-merge-base [137ms]
+2024-12-05 12:35:12.933 [warning] [Git][config] git config failed: Failed to execute git
+2024-12-05 12:35:12.950 [info] > git reflog main --grep-reflog=branch: Created from *. [176ms]
+2024-12-05 12:35:13.025 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [51ms]
+2024-12-05 12:35:13.025 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2024-12-05 12:35:13.025 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2024-12-05 12:35:13.039 [info] > git reflog main --grep-reflog=branch: Created from *. [89ms]
+2024-12-05 12:35:13.050 [info] > git rev-parse --show-toplevel [118ms]
+2024-12-05 12:35:13.089 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [39ms]
+2024-12-05 12:35:13.089 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2024-12-05 12:35:13.089 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2024-12-05 12:35:13.102 [info] > git merge-base refs/heads/main refs/remotes/origin/main [63ms]
+2024-12-05 12:35:13.114 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [97ms]
+2024-12-05 12:35:13.164 [info] > git diff --name-status -z --diff-filter=ADMR f9a3496751a1b485a6f4d5c8d3a7b2d89ef7123b...refs/remotes/origin/main [50ms]
+2024-12-05 12:35:13.164 [info] > git merge-base refs/heads/main refs/remotes/origin/main [63ms]
+2024-12-05 12:35:13.182 [info] > git rev-parse --show-toplevel [94ms]
+2024-12-05 12:35:13.183 [info] [Model][doInitialScan] Initial repository scan completed - repositories (1), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2024-12-05 12:35:13.227 [info] > git show --textconv :dot_zshrc [28ms]
+2024-12-05 12:35:13.227 [info] > git ls-files --stage -- /home/alice/.local/share/chezmoi/dot_zshrc [14ms]
+2024-12-05 12:35:13.240 [info] > git diff --name-status -z --diff-filter=ADMR f9a3496751a1b485a6f4d5c8d3a7b2d89ef7123b...refs/remotes/origin/main [58ms]
+2024-12-05 12:35:14.748 [info] > git cat-file -s de67958c574df7f581c5656ee5c2a0cfe9048f24 [1508ms]
+2024-12-05 12:35:14.946 [info] > git status -z -uall [26ms]
+2024-12-05 12:35:15.011 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [75ms]
+2024-12-05 12:35:15.038 [info] > git ls-files --stage -- /home/alice/.local/share/chezmoi/dot_zshrc [60ms]
+2024-12-05 12:35:15.066 [info] > git cat-file -s de67958c574df7f581c5656ee5c2a0cfe9048f24 [14ms]
+2024-12-05 12:35:17.526 [info] > git show --textconv :dot_config/chezmoi/chezmoi.jsonc [23ms]
+2024-12-05 12:35:17.526 [info] > git ls-files --stage -- /home/alice/.local/share/chezmoi/dot_config/chezmoi/chezmoi.jsonc [9ms]
+2024-12-05 12:35:17.576 [info] > git cat-file -s de389a4a57d2ef399245c715ef972f0791eb1a13 [37ms]
+2024-12-05 12:35:20.641 [info] > git show --textconv :dot_zshrc [38ms]
+2024-12-05 12:35:20.709 [info] > git ls-files --stage -- /home/alice/.local/share/chezmoi/dot_zshrc [69ms]
+2024-12-05 12:35:20.727 [info] > git cat-file -s de67958c574df7f581c5656ee5c2a0cfe9048f24 [3ms]

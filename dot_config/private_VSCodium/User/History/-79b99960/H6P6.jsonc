@@ -1,0 +1,7 @@
+{
+  // https://www.chezmoi.io/reference/configuration-file/variables/
+  "color": true,
+  "git": {
+    "autoPush": true
+  }
+}

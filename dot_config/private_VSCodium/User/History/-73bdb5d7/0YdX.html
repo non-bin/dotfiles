@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script>
+      function toggleFullscreen(event) {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          document.documentElement.requestFullscreen();
+        }
+      }
+      function dummy(event) {
+        event.preventDefault();
+        console.log('dummy');
+      }
+
+      window.addEventListener('touchstart', dummy, false);
+      window.addEventListener('click', toggleFullscreen, false);
+    </script>
+  </body>
+</html>

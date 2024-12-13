@@ -1,0 +1,29 @@
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ locals }) => {
+  const db = locals.db;
+
+  const query = `
+SELECT DISTINCT
+    artists.id AS artist_id,
+    artists.name AS artist_name,
+    SUM(visit.end_time - visit.start_time) AS total_visit_duration,
+    COUNT(visitor.session_id) AS unique_session_count
+FROM
+    artists
+JOIN
+    (SELECT DISTINCT artist_id, session_id FROM visits) visitor ON artists.id = visitor.artist_id
+JOIN
+    visits visit ON artists.id = visit.artist_id
+GROUP BY
+    visit.id,
+    artists.id
+`;
+
+  const data = await db.prepare(query).all();
+  console.dir(data, { depth: null });
+
+  return {
+    data
+  };
+};

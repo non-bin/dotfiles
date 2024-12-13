@@ -1,0 +1,11 @@
+{
+  // https://www.chezmoi.io/reference/configuration-file/variables/
+  "color": true,
+  "progress": true,
+  "edit": {
+    "apply": true // Apply changes on exit
+  },
+  "git": {
+    "autoPush": true
+  }
+}

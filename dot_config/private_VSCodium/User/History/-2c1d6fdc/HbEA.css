@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* .responsive-width {
+  max-width: 85vw;
+} */
+
+.response-height {
+  max-height: 85vw;
+}

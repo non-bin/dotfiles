@@ -1,0 +1,48 @@
+2024-12-13 19:45:21.996 [info] [main] Log level: Info
+2024-12-13 19:45:21.996 [info] [main] Validating found git in: "git"
+2024-12-13 19:45:21.996 [info] [main] Using git "2.47.1" from "git"
+2024-12-13 19:45:21.996 [info] [Model][doInitialScan] Initial repository scan started
+2024-12-13 19:45:21.996 [info] > git rev-parse --show-toplevel [12ms]
+2024-12-13 19:45:21.996 [info] > git rev-parse --git-dir --git-common-dir [6ms]
+2024-12-13 19:45:21.996 [info] [Model][openRepository] Opened repository: /home/alice/.local/share/chezmoi
+2024-12-13 19:45:21.996 [info] > git rev-parse --show-toplevel [25ms]
+2024-12-13 19:45:21.996 [info] > git config --get commit.template [36ms]
+2024-12-13 19:45:21.996 [info] > git fetch [2664ms]
+2024-12-13 19:45:22.108 [info] > git rev-parse --show-toplevel [635ms]
+2024-12-13 19:45:22.287 [info] > git check-ignore -v -z --stdin [154ms]
+2024-12-13 19:45:22.289 [info] > git config --get commit.template [265ms]
+2024-12-13 19:45:22.290 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [294ms]
+2024-12-13 19:45:22.452 [info] > git rev-parse --show-toplevel [170ms]
+2024-12-13 19:45:22.551 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [55ms]
+2024-12-13 19:45:22.624 [info] > git rev-parse --show-toplevel [87ms]
+2024-12-13 19:45:22.793 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [178ms]
+2024-12-13 19:45:22.842 [info] > git config --local branch.main.vscode-merge-base [23ms]
+2024-12-13 19:45:22.843 [warning] [Git][config] git config failed: Failed to execute git
+2024-12-13 19:45:22.872 [info] > git rev-parse --show-toplevel [161ms]
+2024-12-13 19:45:22.873 [info] > git config --get commit.template [188ms]
+2024-12-13 19:45:22.936 [info] > git reflog main --grep-reflog=branch: Created from *. [64ms]
+2024-12-13 19:45:23.057 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [90ms]
+2024-12-13 19:45:23.057 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2024-12-13 19:45:23.057 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2024-12-13 19:45:23.085 [info] > git rev-parse --show-toplevel [149ms]
+2024-12-13 19:45:23.086 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [176ms]
+2024-12-13 19:45:23.468 [info] > git config --local branch.main.vscode-merge-base [355ms]
+2024-12-13 19:45:23.468 [warning] [Git][config] git config failed: Failed to execute git
+2024-12-13 19:45:23.515 [info] > git merge-base refs/heads/main refs/remotes/origin/main [430ms]
+2024-12-13 19:45:23.567 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [571ms]
+2024-12-13 19:45:23.635 [info] > git diff --name-status -z --diff-filter=ADMR 9f4633bc8a13ef79b3722274b749b2774c363d51...refs/remotes/origin/main [68ms]
+2024-12-13 19:45:23.639 [info] > git reflog main --grep-reflog=branch: Created from *. [132ms]
+2024-12-13 19:45:23.669 [info] > git rev-parse --show-toplevel [210ms]
+2024-12-13 19:45:23.670 [info] [Model][doInitialScan] Initial repository scan completed - repositories (1), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2024-12-13 19:45:23.743 [info] > git show --textconv :dot_config/hypr/conf/monitor.conf [42ms]
+2024-12-13 19:45:23.745 [info] > git ls-files --stage -- /home/alice/.local/share/chezmoi/dot_config/hypr/conf/monitor.conf [16ms]
+2024-12-13 19:45:23.802 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [133ms]
+2024-12-13 19:45:23.802 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2024-12-13 19:45:23.803 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2024-12-13 19:45:24.160 [info] > git cat-file -s dbdbc8ebea81d32840150f6c59bd6c5068b548bf [389ms]
+2024-12-13 19:45:26.890 [info] > git status -z -uall [2699ms]
+2024-12-13 19:45:26.891 [info] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [2675ms]
+2024-12-13 19:46:05.618 [info] > git check-ignore -v -z --stdin [4ms]
+2024-12-13 19:46:07.193 [info] > git show --textconv :dot_config/etc/greetd/sway-config [36ms]
+2024-12-13 19:46:07.196 [info] > git ls-files --stage -- /home/alice/.local/share/chezmoi/dot_config/etc/greetd/sway-config [4ms]
+2024-12-13 19:46:07.234 [info] > git cat-file -s cd51033c9b5bcf476872fd48dcef5d0b95c5bae7 [3ms]

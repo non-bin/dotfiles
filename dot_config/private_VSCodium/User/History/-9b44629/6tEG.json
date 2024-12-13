@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./js",
+    "allowJs": true,
+    "target": "es6",
+    "alwaysStrict": true,
+    "checkJs": true,
+    "declaratiofalsen": true,
+    "declarationMap": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["./ts/**/*"]
+}

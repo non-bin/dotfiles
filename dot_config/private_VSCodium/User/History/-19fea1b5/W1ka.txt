@@ -1,0 +1,22 @@
+and https://modrinth.com/modpack/the-useful-pack+/version/1.21.1-1.1.2
+modrinth.com
+You sent
+setup polymc, create new instance, from zip, select the-useful-pack+.mrpack you downloaded
+You sent
+then edit instance > mods > disable essential-container
+You sent
+before you launch, go to polymc settings, java and set your jvm args to this:
+You sent
+-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs
+ -Daikars.new.flags=true
+mcflags.emc.gs
+You sent
+To figure out memory, open anything you'll have open while playing (except Minecraft) and close everything else, and take note of free memory
+You sent
+set min and max memory (in polymc settings > java) to a bit less than that free memory, and set them the same
+You sent
+add your account in there too
+You sent
+then launch and fuck with video settings. Everything will be set pretty good, and the mod pack comes with a bunch of different shaders.
+You sent
+you can turn off the minimap by pressing J then going to the settings

@@ -1,0 +1,13 @@
+Starting Deno language server...
+  version: 2.0.6 (release, x86_64-unknown-linux-gnu)
+  executable: /home/alice/.deno/bin/deno
+Connected to "VSCodium" 1.95.3
+Enabling import suggestions for: https://deno.land
+Hit the language server document preload limit of 1000 file system entries. You may want to use the "deno.enablePaths" configuration setting to only have Deno partially enable a workspace or increase the limit via "deno.documentPreloadLimit". In cases where Deno ends up using too much memory, you may want to lower the limit.
+Refreshing configuration tree...
+  Resolved package.json: "file:///home/alice/.local/share/chezmoi/dot_vim_runtime/sources_non_forked/gruvbox/package.json"
+  Enabled 'bring your own node_modules'.
+Server ready.
+successfully cancelled request with ID: 35
+successfully cancelled request with ID: 31
+shutdown request received, shutting down

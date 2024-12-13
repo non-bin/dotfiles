@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script>
+      function fullscreen(event) {
+        document.documentElement.toggleFullscreen();
+      }
+      function dummy(event) {
+        event.preventDefault();
+      }
+
+      window.addEventListener('click', fullscreen, false);
+      touchCatcherElement.addEventListener('touchstart', dummy, false);
+      touchCatcherElement.addEventListener('touchmove', dummy, false);
+      touchCatcherElement.addEventListener('touchcancel', dummy, false);
+      touchCatcherElement.addEventListener('touchend', dummy, false);
+    </script>
+  </body>
+</html>

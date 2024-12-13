@@ -1,0 +1,11 @@
+// {
+//   "emeraldwalk.runonsave": {
+//     "commands": [
+//       {
+//         "match": "hardware",
+//         "isAsync": false,
+//         "cmd": "${workspaceFolder}/hardware/upload.sh"
+//       }
+//     ]
+//   }
+// }

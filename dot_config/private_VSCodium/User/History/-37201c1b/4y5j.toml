@@ -1,0 +1,65 @@
+# The name of the device to remap.
+# Run `sudo evremap list-devices` to see the devices available
+# on your system.
+device_name = "AT Translated Set 2 keyboard"
+
+# If you have multiple devices with the same name, you can optionally
+# specify the `phys` value that is printed by the `list-devices` subcommand
+# phys = "usb-0000:07:00.3-2.1.1/input0"
+
+# Example:
+# Configure CAPSLOCK as a Dual Role key.
+# Holding it produces LEFTCTRL, but tapping it
+# will produce ESC.
+# Both `tap` and `hold` can expand to multiple output keys.
+# [[dual_role]]
+# input = "KEY_CAPSLOCK"
+# hold = ["KEY_LEFTCTRL"]
+# tap = ["KEY_ESC"]
+
+# Esc Capslock #
+[[remap]]
+input = ["KEY_ESC"]
+output = ["KEY_CAPSLOCK"]
+[[remap]]
+input = ["KEY_CAPSLOCK"]
+output = ["KEY_ESC"]
+
+# Not using because of gaming
+# # Home row mods #
+#
+# # Alt Meta Shift Ctrl
+# [[dual_role]]
+# input = "KEY_A"
+# hold = ["KEY_LEFTALT"]
+# tap = ["KEY_A"]
+# [[dual_role]]
+# input = "KEY_S"
+# hold = ["KEY_LEFTMETA"]
+# tap = ["KEY_S"]
+# [[dual_role]]
+# input = "KEY_D"
+# hold = ["KEY_LEFTSHIFT"]
+# tap = ["KEY_D"]
+# [[dual_role]]
+# input = "KEY_F"
+# hold = ["KEY_LEFTCTRL"]
+# tap = ["KEY_F"]
+#
+# # Ctrl Shift Meta Alt
+# [[dual_role]]
+# input = "KEY_J"
+# hold = ["KEY_RIGHTCTRL"]
+# tap = ["KEY_J"]
+# [[dual_role]]
+# input = "KEY_K"
+# hold = ["KEY_RIGHTSHIFT"]
+# tap = ["KEY_K"]
+# [[dual_role]]
+# input = "KEY_L"
+# hold = ["KEY_RIGHTMETA"]
+# tap = ["KEY_L"]
+# [[dual_role]]
+# input = "KEY_SEMICOLON"
+# hold = ["KEY_RIGHTALT"]
+# tap = ["KEY_SEMICOLON"]

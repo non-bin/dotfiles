@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "./js",
+    "allowJs": true,
+    "target": "es6",
+    "strict": true
+  },
+  "include": ["./ts/**/*"]
+}

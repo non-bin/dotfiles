@@ -1,0 +1,6 @@
+{
+  // https://www.chezmoi.io/reference/configuration-file/variables/
+  "git": {
+    "autoPush": true
+  }
+}

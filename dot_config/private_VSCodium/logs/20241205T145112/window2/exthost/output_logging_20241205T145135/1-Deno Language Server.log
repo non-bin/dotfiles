@@ -1,0 +1,10 @@
+Starting Deno language server...
+  version: 2.0.6 (release, x86_64-unknown-linux-gnu)
+  executable: /home/alice/.deno/bin/deno
+Connected to "VSCodium" 1.95.3
+Enabling import suggestions for: https://deno.land
+Refreshing configuration tree...
+  Resolved package.json: "file:///home/alice/.config/waybar/dotfiles-main/.config/nvim/my_snippets/package.json"
+  Enabled 'bring your own node_modules'.
+Server ready.
+shutdown request received, shutting down

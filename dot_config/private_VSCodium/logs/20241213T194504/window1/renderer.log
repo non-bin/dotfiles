@@ -1,0 +1,22 @@
+2024-12-13 19:45:05.802 [error] Error: The editor could not be opened because the file was not found.
+    at Mve.handleSetInputError (vscode-file://vscode-app/opt/vscodium-bin/resources/app/out/vs/workbench/workbench.desktop.main.js:2101:36406)
+    at async Mve.setInput (vscode-file://vscode-app/opt/vscodium-bin/resources/app/out/vs/workbench/workbench.desktop.main.js:2101:35418)
+    at async $4e.doSetInput (vscode-file://vscode-app/opt/vscodium-bin/resources/app/out/vs/workbench/workbench.desktop.main.js:663:113886)
+    at async $4e.doOpenEditor (vscode-file://vscode-app/opt/vscodium-bin/resources/app/out/vs/workbench/workbench.desktop.main.js:663:111640)
+    at async $4e.openEditor (vscode-file://vscode-app/opt/vscodium-bin/resources/app/out/vs/workbench/workbench.desktop.main.js:663:110567)
+    at async vscode-file://vscode-app/opt/vscodium-bin/resources/app/out/vs/workbench/workbench.desktop.main.js:775:31960
+2024-12-13 19:45:05.938 [info] Started local extension host with pid 130879.
+2024-12-13 19:45:09.305 [info] [perf] Render performance baseline is 95ms
+2024-12-13 19:45:14.912 [info] Started local extension host with pid 130943.
+2024-12-13 19:45:19.985 [info] [perf] Render performance baseline is 111ms
+2024-12-13 19:45:46.673 [error] Unknown error while installing extension cweijan.vscode-mysql-client2: Unknown: Unknown error while installing extension cweijan.vscode-mysql-client2
+    at Gl.installFromGallery (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:9020)
+2024-12-13 19:45:57.166 [error] Unknown error while installing extension ms-python.debugpy: Unknown: Unknown error while installing extension ms-python.debugpy
+    at Gl.installFromGallery (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:9020)
+2024-12-13 19:45:59.804 [error] Unknown error while installing extension streetsidesoftware.code-spell-checker: Unknown: Unknown error while installing extension streetsidesoftware.code-spell-checker
+    at Gl.installFromGallery (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:9020)
+2024-12-13 19:46:11.696 [error] Unknown error while installing extension ms-python.python: Unknown: Unknown error while installing extension ms-python.python
+    at Gl.installFromGallery (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:9020)
+2024-12-13 19:47:13.961 [error] Unknown error while installing extension cweijan.dbclient-jdbc: Unknown: Unknown error while installing extension cweijan.dbclient-jdbc
+    at Gl.installFromGallery (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:9020)
+2024-12-13 19:47:19.852 [warning] [backup tracker] suspended, ignoring unregister event file:///home/alice/.local/share/chezmoi/dot_config/waybar/dotfiles-main/dot_config/nvim/my_snippets/package.json 

@@ -1,0 +1,151 @@
+2024-12-13 19:45:11.160 [info] Getting Manifest... cweijan.dbclient-jdbc
+2024-12-13 19:45:11.161 [info] Getting Manifest... cweijan.vscode-mysql-client2
+2024-12-13 19:45:11.163 [info] Getting Manifest... eamodio.gitlens
+2024-12-13 19:45:11.164 [info] Getting Manifest... edwinhuish.better-comments-next
+2024-12-13 19:45:11.166 [info] Getting Manifest... ms-python.debugpy
+2024-12-13 19:45:11.167 [info] Getting Manifest... ms-python.python
+2024-12-13 19:45:11.168 [info] Getting Manifest... pkief.material-icon-theme
+2024-12-13 19:45:11.170 [info] Getting Manifest... streetsidesoftware.code-spell-checker
+2024-12-13 19:45:11.171 [info] Getting Manifest... streetsidesoftware.code-spell-checker-australian-english
+2024-12-13 19:45:13.476 [info] Installing extension: streetsidesoftware.code-spell-checker-australian-english {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:13.766 [info] Installing extension: ms-python.debugpy {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:13.773 [info] Installing extension: pkief.material-icon-theme {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:14.068 [info] Installing extension: cweijan.dbclient-jdbc {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:14.078 [info] Installing extension: edwinhuish.better-comments-next {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:14.117 [info] Getting Manifest... ms-python.python
+2024-12-13 19:45:14.364 [info] Getting Manifest... streetsidesoftware.code-spell-checker
+2024-12-13 19:45:15.010 [info] Installing extension: ms-python.python {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:15.032 [info] Installing extension: cweijan.vscode-mysql-client2 {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:20.296 [info] Getting Manifest... cweijan.dbclient-jdbc
+2024-12-13 19:45:20.298 [info] Getting Manifest... cweijan.vscode-mysql-client2
+2024-12-13 19:45:20.300 [info] Getting Manifest... eamodio.gitlens
+2024-12-13 19:45:20.301 [info] Getting Manifest... edwinhuish.better-comments-next
+2024-12-13 19:45:20.302 [info] Getting Manifest... ms-python.debugpy
+2024-12-13 19:45:20.305 [info] Getting Manifest... ms-python.python
+2024-12-13 19:45:20.307 [info] Getting Manifest... pkief.material-icon-theme
+2024-12-13 19:45:20.308 [info] Getting Manifest... streetsidesoftware.code-spell-checker
+2024-12-13 19:45:20.311 [info] Getting Manifest... streetsidesoftware.code-spell-checker-australian-english
+2024-12-13 19:45:22.676 [info] Extracted extension to file:///home/alice/.vscode-oss/extensions/edwinhuish.better-comments-next-3.3.15-universal: edwinhuish.better-comments-next
+2024-12-13 19:45:22.684 [info] Renamed to /home/alice/.vscode-oss/extensions/edwinhuish.better-comments-next-3.3.15-universal
+2024-12-13 19:45:22.766 [info] Marked extension as uninstalled edwinhuish.better-comments-next-3.3.0-universal
+2024-12-13 19:45:22.798 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:45:22.822 [info] Extension installed successfully: edwinhuish.better-comments-next vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:23.402 [info] Installing extension: streetsidesoftware.code-spell-checker {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:30.805 [info] Installing extension: eamodio.gitlens {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:31.358 [info] Extension is already requested to install cweijan.dbclient-jdbc vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:32.818 [info] Extension is already requested to install cweijan.vscode-mysql-client2 vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:32.875 [info] Extracted extension to file:///home/alice/.vscode-oss/extensions/pkief.material-icon-theme-5.15.0-universal: pkief.material-icon-theme
+2024-12-13 19:45:32.882 [info] Renamed to /home/alice/.vscode-oss/extensions/pkief.material-icon-theme-5.15.0-universal
+2024-12-13 19:45:32.934 [info] Marked extension as uninstalled pkief.material-icon-theme-5.14.1-universal
+2024-12-13 19:45:32.947 [info] Extension installed successfully: pkief.material-icon-theme vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:32.968 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:45:33.649 [info] Extracted extension to file:///home/alice/.vscode-oss/extensions/streetsidesoftware.code-spell-checker-australian-english-1.1.11-universal: streetsidesoftware.code-spell-checker-australian-english
+2024-12-13 19:45:33.652 [info] Renamed to /home/alice/.vscode-oss/extensions/streetsidesoftware.code-spell-checker-australian-english-1.1.11-universal
+2024-12-13 19:45:33.666 [info] Marked extension as uninstalled streetsidesoftware.code-spell-checker-australian-english-1.1.10-universal
+2024-12-13 19:45:33.705 [info] Extension installed successfully: streetsidesoftware.code-spell-checker-australian-english vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:33.734 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:45:33.904 [info] Installing extension: edwinhuish.better-comments-next {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:34.207 [info] Extension is already requested to install ms-python.debugpy vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:34.227 [info] Extension installed successfully: edwinhuish.better-comments-next vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:34.262 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:45:35.081 [info] Extension is already requested to install ms-python.python vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:35.379 [info] Installing extension: pkief.material-icon-theme {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:35.601 [info] Extension installed successfully: pkief.material-icon-theme vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:35.633 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:45:37.717 [info] Extension is already requested to install streetsidesoftware.code-spell-checker vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:38.011 [info] Installing extension: streetsidesoftware.code-spell-checker-australian-english {"productVersion":{"version":"1.95.3","date":"2024-11-16T01:21:03.577Z"},"pinned":false,"operation":3,"isApplicationScoped":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json","path":"/home/alice/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true}
+2024-12-13 19:45:39.131 [info] Getting Manifest... streetsidesoftware.code-spell-checker
+2024-12-13 19:45:46.398 [info] Extension is already requested to install eamodio.gitlens vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:46.608 [info] Extracted extension to file:///home/alice/.vscode-oss/extensions/cweijan.vscode-mysql-client2-7.7.6-universal: cweijan.vscode-mysql-client2
+2024-12-13 19:45:46.614 [info] Renamed to /home/alice/.vscode-oss/extensions/cweijan.vscode-mysql-client2-7.7.6-universal
+2024-12-13 19:45:46.669 [info] Marked extension as uninstalled cweijan.vscode-mysql-client2-7.7.2-universal
+2024-12-13 19:45:46.674 [info] Extension installed successfully: cweijan.vscode-mysql-client2 vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:46.705 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:45:50.644 [info] Extension installed successfully: streetsidesoftware.code-spell-checker-australian-english vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:50.691 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:45:57.048 [info] Extracted extension to file:///home/alice/.vscode-oss/extensions/ms-python.debugpy-2024.14.0-linux-x64: ms-python.debugpy
+2024-12-13 19:45:57.056 [info] Renamed to /home/alice/.vscode-oss/extensions/ms-python.debugpy-2024.14.0-linux-x64
+2024-12-13 19:45:57.112 [info] Marked extension as uninstalled ms-python.debugpy-2024.12.0-linux-x64
+2024-12-13 19:45:57.160 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:45:57.166 [info] Extension installed successfully: ms-python.debugpy vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:59.705 [info] Extracted extension to file:///home/alice/.vscode-oss/extensions/streetsidesoftware.code-spell-checker-4.0.22-universal: streetsidesoftware.code-spell-checker
+2024-12-13 19:45:59.714 [info] Renamed to /home/alice/.vscode-oss/extensions/streetsidesoftware.code-spell-checker-4.0.22-universal
+2024-12-13 19:45:59.735 [info] Marked extension as uninstalled streetsidesoftware.code-spell-checker-4.0.21-universal
+2024-12-13 19:45:59.807 [info] Extension installed successfully: streetsidesoftware.code-spell-checker vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:45:59.815 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:46:11.585 [info] Extracted extension to file:///home/alice/.vscode-oss/extensions/ms-python.python-2024.22.0-universal: ms-python.python
+2024-12-13 19:46:11.591 [info] Renamed to /home/alice/.vscode-oss/extensions/ms-python.python-2024.22.0-universal
+2024-12-13 19:46:11.641 [info] Marked extension as uninstalled ms-python.python-2024.20.0-universal
+2024-12-13 19:46:11.689 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)
+2024-12-13 19:46:11.698 [info] Extension installed successfully: ms-python.python vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:47:13.908 [info] Extracted extension to file:///home/alice/.vscode-oss/extensions/cweijan.dbclient-jdbc-1.3.9-universal: cweijan.dbclient-jdbc
+2024-12-13 19:47:13.912 [info] Renamed to /home/alice/.vscode-oss/extensions/cweijan.dbclient-jdbc-1.3.9-universal
+2024-12-13 19:47:13.925 [info] Marked extension as uninstalled cweijan.dbclient-jdbc-1.3.8-universal
+2024-12-13 19:47:13.960 [info] Extension installed successfully: cweijan.dbclient-jdbc vscode-userdata:/home/alice/.vscode-oss/extensions/extensions.json
+2024-12-13 19:47:13.995 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/alice/.vscode-oss/extensions/extensions.json.vsctmp'
+    at um.create (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44274)
+    at Ei (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:35:44381)
+    at Fn.toFileSystemProviderError (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:28542)
+    at Fn.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:71:20509)
+    at async Zl.stat (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:101684)
+    at async Gl.onDidFilesChange (file:///opt/vscodium-bin/resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js:70:79904)

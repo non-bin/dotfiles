@@ -1,0 +1,1 @@
+{"{\"cwd\":\"/home/alice/repos/mc-combiner\",\"negations\":[\"**/node_modules/**\"],\"pattern\":\"**/*.(m|c|)js\"}":{"children":{"":{"children":{"home":{"children":{"alice":{"children":{"repos":{"children":{"mc-combiner":{"children":{"packs":{"children":{},"data":{"type":0,"mtime":1731502304279.6538}}},"data":{"type":0,"mtime":1731503094695.1138}}}}}}}}}}}}}

@@ -1,0 +1,3 @@
+2024-12-05 14:51:35.217 [warning] Couldn't attach to process Could not find pty 1 on pty host []
+2024-12-05 14:51:35.218 [warning] Attach to process failed for terminal [{"id":1,"pid":14491,"title":"zsh","titleSource":3,"cwd":"","icon":{"id":"terminal","defaults":{"fontCharacter":"\\ea85"}},"hasChildProcesses":false,"shellIntegrationNonce":"ef51d1e4-a572-41ff-a917-0e2e546ea0fd","findRevivedId":true}]
+2024-12-05 15:16:38.293 [error] Exception occurred during xterm disposal [{}]

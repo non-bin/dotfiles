@@ -1,0 +1,17 @@
+{
+  // https://www.chezmoi.io/reference/configuration-file/variables/
+  "color": true,
+  "progress": true,
+  "edit": {
+    "watch": true, // Watch for changes and apply as you save
+    "apply": true // Apply changes on exit
+  },
+  "git": {
+    "autoPush": true // Immediately add, commit, and push changes to git when the editor is closed (even with edit.watch=true)
+  },
+  "hooks": {
+    // Update the etc files after every apply
+    "apply": { "post": { "command": "touch", "args": ["tmp"] } },
+    "update": { "post": { "command": "touch", "args": ["tmp"] } }
+  }
+}

@@ -1,0 +1,2 @@
+2024-12-05 14:51:35.203 [warning] Persistent process reconnection "1" failed Could not find pty 1 on pty host
+2024-12-05 14:51:35.205 [error] [RPC Response] PtyService#attachToProcess Could not find pty 1 on pty host

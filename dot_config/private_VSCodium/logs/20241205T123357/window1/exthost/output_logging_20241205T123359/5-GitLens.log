@@ -1,0 +1,5 @@
+GitLens v16.0.4 activating in VSCodium (1.95.3) on the desktop; language='en', logLevel='warn', defaultDateLocale='null' (someValue.machineId|someValue.sessionId)
+To enable debug logging, set `"gitlens.outputLevel: "debug"` or run "GitLens: Enable Debug Logging" from the Command Palette
+[2024-12-05 01:34:06.591] [GIT   *1579ms] [/home/alice/.local/share/chezmoi] git ls-files -- dot_config/chezmoi/chezmoi.jsonc [*1579ms] (slow)
+[2024-12-05 01:34:06.591] [GIT   *1614ms] [/home/alice/.local/share/chezmoi] git rev-list --max-parents=0 HEAD -- [*1614ms] (slow)
+[2024-12-05 01:34:06.592] [GIT   *1616ms] [/home/alice/.local/share/chezmoi] git remote -v [*1616ms] (slow)
