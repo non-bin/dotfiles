@@ -32,8 +32,8 @@
           "$mod, P, pin" # Toggle between tiling and floating window
           "$mod, F, fullscreen, 0" # Open the window in fullscreen
           "$mod, M, fullscreen, 1" # Open the window maximised
-          ", Print, exec, grim -t png -g \"$(slurp -d)\" \"$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png\" | wl-copy" # Screenshot
-          "$mod, Print, exec, grim -t png -g \"$(slurp -d)\" \"/tmp/screenshot.png\" && swappy -f \"/tmp/screenshot.png\" -o \"$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png" # Screenshot
+          '', Print, exec, grim -t png -g "$(slurp -d)" "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png" | wl-copy'' # Screenshot
+          ''$mod, Print, exec, grim -t png -g "$(slurp -d)" "/tmp/screenshot.png" && swappy -f "/tmp/screenshot.png" -o "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png'' # Screenshot
           "$mod, P, pseudo," # dwindle
           "$mod, J, togglesplit," # dwindle
           "$mod, L, exec, loginctl lock-session"

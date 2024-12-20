@@ -13,6 +13,9 @@
   home.sessionPath = [
     "$HOME/dotfiles/scripts"
   ];
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
   programs = {
     bash = {
