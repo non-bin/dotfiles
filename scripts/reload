@@ -2,13 +2,18 @@
 # set -o xtrace # Print commands before executing
 
 # FLAKE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-FLAKE_DIR="$HOME/dotfiles"
+cd "$HOME/dotfiles"
+
+UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
+if [ -n "$UNTRACKED_FILES" ]; then
+  git add $UNTRACKED_FILES # Add all untracked files
+fi
 
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
   case $1 in
     -u|--upgrade)
-      nix flake update --flake $FLAKE_DIR
+      nix flake update --flake ./
       UPGRADE="--upgrade-all"
       shift # past argument
       ;;
@@ -47,4 +52,4 @@ set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
 NEW_HOSTNAME="$1"
 
-nixos-rebuild switch --use-remote-sudo $UPGRADE $TRACE --flake $FLAKE_DIR#$NEW_HOSTNAME
+nixos-rebuild switch --use-remote-sudo $UPGRADE $TRACE --flake ./#$NEW_HOSTNAME
