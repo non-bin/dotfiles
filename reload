@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# set -o xtrace # Print commands before executing
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+POSITIONAL_ARGS=()
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -u|--upgrade)
+      nix flake update --flake $SCRIPT_DIR
+      UPGRADE="--upgrade-all"
+      shift # past argument
+      ;;
+    # -s|--search)
+    #   SEARCHPATH="$2"
+    #   shift # past argument
+    #   shift # past value
+    #   ;;
+    -*|--*)
+      echo "Unknown option $1"
+
+      echo "Usage: reload [options] [new-hostname]"
+      echo
+      echo "Options:"
+      echo "  -u, --upgrade  Add pull updates from upstream and update lockfile"
+      echo
+      echo "To Impliment:"
+      echo "  -p, --push     Commit and push all changes"
+      echo "  -P, --pull     Pull updates from git before updating"
+      echo "  -d, --dry-run  Don't rebuild"
+      exit 1
+      ;;
+    *)
+      POSITIONAL_ARGS+=("$1") # save positional arg
+      shift # past argument
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
+
+NEW_HOSTNAME="$1"
+
+nixos-rebuild switch --use-remote-sudo $UPGRADE --flake $SCRIPT_DIR#$NEW_HOSTNAME
