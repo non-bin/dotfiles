@@ -8,3 +8,8 @@
 - git actions
 - dry run
 - bootstrap
+
+## Resources
+
+[NixOS Package Search](search.nixos.org/packages)
+[Nüschtos Options Search](https://search.n%C3%BCschtos.de)
