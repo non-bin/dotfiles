@@ -23,11 +23,11 @@ while [[ $# -gt 0 ]]; do
       echo
       echo "Options:"
       echo "  -u, --upgrade  Add pull updates from upstream and update lockfile"
-      echo
-      echo "To Impliment:"
-      echo "  -p, --push     Commit and push all changes"
-      echo "  -P, --pull     Pull updates from git before updating"
-      echo "  -d, --dry-run  Don't rebuild"
+      # echo
+      # echo "To Impliment:"
+      # echo "  -p, --push     Commit and push all changes"
+      # echo "  -P, --pull     Pull updates from git before updating"
+      # echo "  -d, --dry-run  Don't rebuild"
       exit 1
       ;;
     *)

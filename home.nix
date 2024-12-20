@@ -1,18 +1,17 @@
-# { inputs, lib, config, pkgs, ... }:
 { config, pkgs, ... }:
 
 # home-manager.users.alice =
 {
-  # imports = [
-  #   # ./hypr/hyprland.nix
-  # ];
+  imports = [
+    ./hypr/hyprland.nix
+  ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "alice";
   home.homeDirectory = "/home/alice";
   home.sessionPath = [
-    "$HOME/dotfiles"
+    "$HOME/dotfiles/scripts"
   ];
 
   programs = {

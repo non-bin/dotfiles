@@ -12,15 +12,11 @@
       vickie = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          {
+          ./vickie/configuration.nix
+          home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.alice = import ./home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
           }
         ];
       };
