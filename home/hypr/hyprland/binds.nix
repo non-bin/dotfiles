@@ -11,38 +11,42 @@
         bind =
         [
           # Actions
-          "$mod, RETURN, exec, alacritty" # Open Alactritty
+          "$mod, RETURN, exec, alacritty"
           "$mod, C, exec, codium"
-          "$mod, G, exec, gtk-launch GitKraken" # /usr/share/applications
-          "$mod, E, exec, ~/.config/ml4w/settings/filemanager.sh" # Opens the filemanager
-          "$mod, Super_L, exec, rofi -show drun" # Open rofi to run .desktop entries
-          "$mod, SPACE, exec, rofi -show run" # Open to run from path
-          "$mod, B, exec, ~/.config/ml4w/settings/browser.sh" # Opens the browser
-          "$mod ALT, M, exec, gtk-launch org.polymc.PolyMC # Minecraft Launcher"
-          "$mod SHIFT, M, exec, polymc -l asd" # Minecraft
+          "$mod, G, exec, gtk-launch GitKraken"                    # /usr/share/applications
+          "$mod, E, exec, ~/.config/ml4w/settings/filemanager.sh"  # Opens the filemanager
+          "$mod, Super_L, exec, rofi -show drun"                   # Open rofi to run .desktop entries
+          "$mod, SPACE, exec, rofi -show run"                      # Open to run from path
+          "$mod, B, exec, ~/.config/ml4w/settings/browser.sh"      # Opens the browser
+          "$mod ALT, M, exec, gtk-launch org.polymc.PolyMC"        # Minecraft Launcher
+          "$mod SHIFT, M, exec, polymc -l asd"                     # Minecraft
           "$mod, S, exec, spotify-launcher"
           "$mod, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
 
-          "$mod SHIFT ALT, M, exit" # Exit Hyprland
-          "$mod SHIFT ALT, B, exec, ~/.config/ml4w/scripts/reload-waybar.sh" # Reload Waybar
-          "$mod SHIFT ALT, W, exec, ~/.config/ml4w/scripts/reload-hyprpaper.sh" # Reload hyprpaper after a changing the wallpaper
+          "$mod SHIFT ALT, M, exit"                                              # Exit Hyprland
+          "$mod SHIFT ALT, B, exec, ~/.config/ml4w/scripts/reload-waybar.sh"     # Reload Waybar
+          "$mod SHIFT ALT, W, exec, ~/.config/ml4w/scripts/reload-hyprpaper.sh"  # Reload hyprpaper after a changing the wallpaper
 
-          "$mod, Q, killactive" # Close current window
-          "$mod, T, togglefloating" # Toggle between tiling and floating window
-          "$mod, P, pin" # Toggle between tiling and floating window
-          "$mod, F, fullscreen, 0" # Open the window in fullscreen
-          "$mod, M, fullscreen, 1" # Open the window maximised
-          '', Print, exec, grim -t png -g "$(slurp -d)" "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png" | wl-copy'' # Screenshot
-          ''$mod, Print, exec, grim -t png -g "$(slurp -d)" "/tmp/screenshot.png" && swappy -f "/tmp/screenshot.png" -o "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png'' # Screenshot
-          "$mod, P, pseudo," # dwindle
-          "$mod, J, togglesplit," # dwindle
+          "$mod, Q, killactive"             # Close current window
+          "$mod, T, togglefloating"         # Toggle between tiling and floating window
+          "$mod, P, pin"                    # Toggle between tiling and floating window
+          "$mod, F, fullscreen, 0"          # Open the window in fullscreen
+          "$mod, M, fullscreen, 1"          # Open the window maximised
+          "ALT, Print, exec, hyprpicker -a" # Pick colour
+          "$mod, P, pseudo,"
+          "$mod, J, togglesplit,"
           "$mod, L, exec, loginctl lock-session"
 
+          # Screenshot select area, save, and copy to clipboard
+          '', Print, exec, grim -t png -g "$(slurp -d)" "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png" | wl-copy''
+          # Screenshot select area, and open swappy to edit
+          ''$mod, Print, exec, grim -t png -g "$(slurp -d)" "/tmp/screenshot.png" && swappy -f "/tmp/screenshot.png" -o "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png''
+
           # Move focus with mod + arrow keys
-          "$mod, left, movefocus, l" # Move focus left
-          "$mod, right, movefocus, r" # Move focus right
-          "$mod, up, movefocus, u" # Move focus up
-          "$mod, down, movefocus, d" # Move focus down
+          "$mod, left, movefocus, l"   # Move focus left
+          "$mod, right, movefocus, r"  # Move focus right
+          "$mod, up, movefocus, u"     # Move focus up
+          "$mod, down, movefocus, d"   # Move focus down
 
           # Move window
           "$mod SHIFT, left, movewindow, l" # Move focus left

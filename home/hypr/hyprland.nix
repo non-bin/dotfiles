@@ -4,11 +4,16 @@
 {
   imports = [
     ./hyprland/binds.nix
+    ./hypridle.nix
+    ./hyprlock.nix
   ];
 
   wayland.windowManager = {
     hyprland = {
       enable = true;
+
+      # Tell systemd to import the environment, otherwise it won't find some binaries
+      systemd.variables = ["--all"];
       settings = {
         "monitor" = ",2560x1600@165.00,auto,1.333333";
 
