@@ -20,11 +20,27 @@
   home.packages = with pkgs; [
     wget
     hyprpicker
+
+    slurp           # Reigeon selector
+    grim            # Screenshot taker
+    swappy          # Screenshot editor
     wl-clipboard
-    grim
-    slurp
-    swappy
+
+    kdePackages.ark # Archive manager
+
+    aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
   ];
+
+  home.file = {
+    ".aspell.conf".text = ''
+    master en_AU
+    extra-dicts en-computers.rws
+    add-extra-dicts en_GB-science.rws
+    '';
+  };
 
   programs = {
     bash = {

@@ -3,6 +3,8 @@
 
 ### TODO
 
+- hardware.cpu.amd.updateMicrocode
+
 - Reload script
   - update schedule
   - cleanup
@@ -16,7 +18,8 @@
   - sudo
   - polkit
 
+
 ## Resources
 
-[NixOS Package Search](search.nixos.org/packages)
+[NixOS Package Search](https://search.nixos.org/packages)
 [Nüschtos Options Search](https://search.n%C3%BCschtos.de)
