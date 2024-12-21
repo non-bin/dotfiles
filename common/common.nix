@@ -28,12 +28,21 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
-    systemd-boot = {
+    # systemd-boot = {
+    #   enable = true;
+    #   configurationLimit = 50;
+    # };
+
+    grub = {
       enable = true;
+      efiSupport = true;
       configurationLimit = 50;
+      device = "nodev";
     };
+
     efi.canTouchEfiVariables = true;
     timeout = 1;
+    timestampFormat = "%F %H:%M hi";
   };
 
   nix.settings = {
@@ -86,6 +95,10 @@
       theme.package = pkgs.canta-theme;
       theme.name = "Canta";
       settings = {
+        background = {
+          path = "${../wallpapers/calder-moore-factorycomped.jpg}";
+          fit = "Cover";
+        };
         GTK = {
           application_prefer_dark_theme = true;
         };

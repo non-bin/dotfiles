@@ -1,13 +1,20 @@
 # Alice's Dot Files
 
-## Reload script
 
 ### TODO
 
-- Make sure upgrade routine is correct
-- git actions
-- dry run
-- bootstrap
+- Reload script
+  - update schedule
+  - cleanup
+  - git actions
+  - dry run
+  - bootstrap
+
+- fingerprint
+  - Hyprlock
+  - Regreet
+  - sudo
+  - polkit
 
 ## Resources
 

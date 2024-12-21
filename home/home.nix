@@ -11,7 +11,7 @@
   home.username = "alice";
   home.homeDirectory = "/home/alice";
   home.sessionPath = [
-    "$HOME/dotfiles/scripts"
+    "$HOME/dotfiles/repos/dotfiles/scripts"
   ];
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -63,7 +63,6 @@
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
         dracula-theme.theme-dracula
-        vscodevim.vim
         yzhang.markdown-all-in-one
       ];
     };

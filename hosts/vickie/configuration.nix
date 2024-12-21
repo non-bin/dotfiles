@@ -7,7 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common/common.nix
+    ../../common/common.nix
   ];
 
   networking.hostName = "vickie"; # Define your hostname.

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # set -o xtrace # Print commands before executing
 
-# FLAKE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cd "$HOME/dotfiles"
+cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../"
+# cd "$HOME/dotfiles"
 
 UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
 if [ -n "$UNTRACKED_FILES" ]; then
@@ -13,8 +13,7 @@ POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
   case $1 in
     -u|--upgrade)
-      nix flake update --flake ./
-      UPGRADE="--upgrade-all"
+      nix flake update
       shift # past argument
       ;;
     -t|--show-trace)
@@ -33,7 +32,7 @@ while [[ $# -gt 0 ]]; do
       echo
       echo "Options:"
       echo "  -u, --upgrade     Add pull updates from upstream and update lockfile"
-      echo "  -t, --show-trace  Pass --show-trace to nixos-rebuild"
+      echo "  -t, --show-trace  Update lockfile"
       # echo
       # echo "To Impliment:"
       # echo "  -p, --push     Commit and push all changes"
@@ -52,4 +51,4 @@ set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
 NEW_HOSTNAME="$1"
 
-nixos-rebuild switch --use-remote-sudo $UPGRADE $TRACE --flake ./#$NEW_HOSTNAME
+nixos-rebuild switch --use-remote-sudo $TRACE --flake ./#$NEW_HOSTNAME
