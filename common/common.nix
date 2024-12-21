@@ -42,7 +42,7 @@
 
     efi.canTouchEfiVariables = true;
     timeout = 1;
-    timestampFormat = "%F %H:%M hi";
+    # timestampFormat = "%F %H:%M hi";
   };
 
   nix.settings = {

@@ -2,13 +2,13 @@
   description = "NixOS configuration";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     # nixpkgs.url = "github:nixos/nixpkgs/master";
-    nixpkgs.url = "github:non-bin/nixpkgs/bootLoaderGenerationFormat";
+    # nixpkgs.url = "github:non-bin/nixpkgs/bootLoaderGenerationFormat";
     # nixpkgs.url = "/home/alice/dotfiles/repos/nixpkgs";
 
-    # home-manager.url = "github:nix-community/home-manager/release-24.11";
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    # home-manager.url = "github:nix-community/home-manager/master";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
