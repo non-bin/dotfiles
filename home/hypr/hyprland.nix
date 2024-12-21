@@ -15,7 +15,7 @@
       # Tell systemd to import the environment, otherwise it won't find some binaries
       systemd.variables = ["--all"];
       settings = {
-        "monitor" = ",2560x1600@165.00,auto,1.333333";
+        monitor = ",2560x1600@165.00,auto,1.333333";
 
         # https://wiki.hyprland.org/Configuring/Animations/ for more
         animations = {
@@ -178,15 +178,15 @@
         ];
 
         # Execute your favorite apps at launch
-        # exec-once = [
+        exec-once = [
+          "hypridle"
         #   "waybar"
         #   "hyprpaper"
         #   "dunst"
-        #   "hypridle"
         #   "systemctl --user start hyprpolkitagent"
         #   "wl-clip-persist --clipboard regular"
         #   "wl-paste --watch cliphist store"
-        # ];
+        ];
       };
     };
   };
