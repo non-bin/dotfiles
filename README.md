@@ -3,7 +3,25 @@
 
 ### TODO
 
+- shell
+- network
+- evremap
 - hardware.cpu.amd.updateMicrocode
+- audio
+- bluetooth
+- brightness
+- hyprpolkitagent
+- waybar
+- zip & unzip
+- check https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/ works
+
+- cliphist
+- wl-clip-persist
+- hyprpaper
+- wlogout
+
+- fastfetch
+- minecraft
 
 - Reload script
   - update schedule

@@ -19,7 +19,9 @@
 
   home.packages = with pkgs; [
     wget
+    btop
     hyprpicker
+    wev # Waykand event viewer
 
     slurp           # Reigeon selector
     grim            # Screenshot taker
@@ -27,6 +29,17 @@
     wl-clipboard
 
     kdePackages.ark # Archive manager
+    gitkraken
+    gnome-disk-utility
+    orca-slicer
+    qdirstat
+    spotify
+    vlc
+
+    noto-fonts
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.mononoki
+    font-awesome
 
     aspell
     aspellDicts.en
@@ -82,9 +95,17 @@
         yzhang.markdown-all-in-one
       ];
     };
+
+    firefox = {
+      enable = true;
+    }
   };
 
-  services = {};
+  services = {
+    dunst = {
+      enable = true;
+    }
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

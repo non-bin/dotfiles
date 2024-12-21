@@ -86,6 +86,8 @@
   environment.systemPackages = with pkgs; [];
 
   programs = {
+    hyprland.enable = true; # Enable system wide, configure in HM
+
     regreet = {
       enable = true;
       font.package = pkgs.roboto;
@@ -106,7 +108,15 @@
         };
       };
     };
-    hyprland.enable = true;
+
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+        thunar-media-tags-plugin
+      ];
+    };
   };
 
   # Enable the OpenSSH daemon.
