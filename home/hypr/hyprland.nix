@@ -17,7 +17,9 @@
       # Tell systemd to import the environment, otherwise it won't find some binaries
       systemd.variables = ["--all"];
       settings = {
-        monitor = ",highres,auto,1.333333";
+        # See https://wiki.hyprland.org/Configuring/Monitors/
+        # hyprctl monitors all
+        monitor = ",2560x1600@165,auto,1";
 
         # https://wiki.hyprland.org/Configuring/Animations/ for more
         animations = {
