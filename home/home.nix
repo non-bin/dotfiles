@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 # home-manager.users.alice =
 {
   imports = [
     ./hypr/hyprland.nix
     ./alacrity.nix
+    ./zsh.nix
   ];
 
   # Home Manager needs a bit of information about you and the

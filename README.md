@@ -20,6 +20,7 @@
 - wl-clip-persist
 - hyprpaper
 - wlogout
+- eslint
 
 - fingerprint
   - Hyprlock
