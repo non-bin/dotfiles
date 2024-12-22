@@ -3,7 +3,6 @@
 
 ### TODO
 
-- shell
 - hyprpolkitagent
 - waybar
 - zip & unzip

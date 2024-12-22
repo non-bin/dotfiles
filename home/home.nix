@@ -24,6 +24,8 @@
     btop
     hyprpicker
     wev # Waykand event viewer
+    zip
+    unzip
 
     slurp           # Reigeon selector
     grim            # Screenshot taker
@@ -39,8 +41,8 @@
     vlc
 
     noto-fonts
-    # nerd-fonts.caskaydia-cove
-    # nerd-fonts.mononoki
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.mononoki
     font-awesome
 
     aspell

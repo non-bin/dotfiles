@@ -24,7 +24,7 @@
         };
 
         font = {
-          # normal = { family = "CaskaydiaCove Nerd Font"; }; # FIXME: caskaydia is only in unstable
+          normal = { family = "CaskaydiaCove Nerd Font"; };
           size = 10;
           builtin_box_drawing = false;
         };
