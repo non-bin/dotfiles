@@ -4,6 +4,7 @@
 {
   imports = [
     ./hypr/hyprland.nix
+    ./alacrity.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -57,7 +58,6 @@
 
   programs = {
     bash.enable = true;
-    alacritty.enable = true;
     firefox.enable = true;
     wofi.enable = true;
 

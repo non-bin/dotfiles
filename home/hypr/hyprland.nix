@@ -19,7 +19,7 @@
       settings = {
         # See https://wiki.hyprland.org/Configuring/Monitors/
         # hyprctl monitors all
-        monitor = ",2560x1600@165,auto,1";
+        monitor = ",2560x1600@165,auto,1.333333";
 
         # https://wiki.hyprland.org/Configuring/Animations/ for more
         animations = {
@@ -37,34 +37,34 @@
 
         # https://wiki.hyprland.org/Configuring/Variables/
         decoration = {
-            rounding = 15;
-            blur = {
-                enabled = true;
-                size = 3;
-                passes = 1;
-            };
-            active_opacity = 1;
-            inactive_opacity = 1;
-            fullscreen_opacity = 1;
-            dim_inactive = true;
-            dim_strength = 0.1;
+          rounding = 15;
+          blur = {
+            enabled = true;
+            size = 3;
+            passes = 1;
+          };
+          active_opacity = 1;
+          inactive_opacity = 1;
+          fullscreen_opacity = 1;
+          dim_inactive = true;
+          dim_strength = 0.1;
         };
 
         gestures = {
-            workspace_swipe = true;
+          workspace_swipe = true;
         };
 
         general = {
-            gaps_in = 2;
-            gaps_out = 4;
-            gaps_workspaces = 10;
-            border_size = 0;
-            "col.active_border" = "rgb(FFA348)";
-            "col.inactive_border" = "rgb(595959)";
-            no_border_on_floating = true;
-            layout = "dwindle";
-            resize_on_border = true;
-            no_focus_fallback = true;
+          gaps_in = 2;
+          gaps_out = 4;
+          gaps_workspaces = 10;
+          border_size = 0;
+          "col.active_border" = "rgb(FFA348)";
+          "col.inactive_border" = "rgb(595959)";
+          no_border_on_floating = true;
+          layout = "dwindle";
+          resize_on_border = true;
+          no_focus_fallback = true;
         };
 
         input = {
