@@ -61,7 +61,7 @@
         }
         {
           # Date
-          text = "cmd[update:1000] ~/scripts/englishDate.sh";
+          text = "cmd[update:1000] englishDate.sh";
           color = "rgba(200, 200, 200, 1.0)";
           font_size = 20;
           font_family = "Fira Semibold";
