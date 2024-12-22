@@ -10,6 +10,7 @@ sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME
 
 # Or if you'd like to edit the config before installing
 sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME -d -c # To download and copy in the hardware config
+# Edit away
 sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME -i # To finish the install
 ```
 
