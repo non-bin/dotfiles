@@ -4,22 +4,28 @@
 ### TODO
 
 - shell
+- hyprpolkitagent
+- waybar
+- zip & unzip
+
 - network
 - evremap
 - hardware.cpu.amd.updateMicrocode
 - audio
 - bluetooth
 - brightness
-- hyprpolkitagent
-- waybar
-- zip & unzip
 - check https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/ works
+- check screenshots work
 
-- cliphist
 - wl-clip-persist
 - hyprpaper
 - wlogout
 
+- fingerprint
+  - Hyprlock
+  - Regreet
+  - sudo
+  - polkit
 - fastfetch
 - minecraft
 
@@ -30,11 +36,6 @@
   - dry run
   - bootstrap
 
-- fingerprint
-  - Hyprlock
-  - Regreet
-  - sudo
-  - polkit
 
 
 ## Resources

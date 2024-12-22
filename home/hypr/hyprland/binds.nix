@@ -13,19 +13,19 @@
           # Actions
           "$mod, RETURN, exec, alacritty"
           "$mod, C, exec, codium"
-          "$mod, G, exec, gtk-launch GitKraken"                    # /usr/share/applications
-          "$mod, E, exec, ~/.config/ml4w/settings/filemanager.sh"  # Opens the filemanager
-          "$mod, Super_L, exec, rofi -show drun"                   # Open rofi to run .desktop entries
-          "$mod, SPACE, exec, rofi -show run"                      # Open to run from path
-          "$mod, B, exec, ~/.config/ml4w/settings/browser.sh"      # Opens the browser
-          "$mod ALT, M, exec, gtk-launch org.polymc.PolyMC"        # Minecraft Launcher
-          "$mod SHIFT, M, exec, polymc -l asd"                     # Minecraft
-          "$mod, S, exec, spotify-launcher"
+          # "$mod, G, exec, gtk-launch GitKraken"                    # /usr/share/applications
+          "$mod, E, exec, thunar"  # Opens the filemanager
+          "$mod, Super_L, exec, wofi --show drun"                   # Open wofi to run .desktop entries
+          "$mod, SPACE, exec, wofi --show run"                      # Open to run from path
+          "$mod, B, exec, firefox"      # Opens the browser
+          # "$mod ALT, M, exec, gtk-launch org.polymc.PolyMC"        # Minecraft Launcher
+          # "$mod SHIFT, M, exec, polymc -l asd"                     # Minecraft
+          "$mod, S, exec, spotify"
           "$mod, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
 
-          "$mod SHIFT ALT, M, exit"                                              # Exit Hyprland
-          "$mod SHIFT ALT, B, exec, ~/.config/ml4w/scripts/reload-waybar.sh"     # Reload Waybar
-          "$mod SHIFT ALT, W, exec, ~/.config/ml4w/scripts/reload-hyprpaper.sh"  # Reload hyprpaper after a changing the wallpaper
+          "$mod SHIFT ALT, M, exit"                       # Exit Hyprland
+          # "$mod SHIFT ALT, B, exec, reload-waybar.sh"     # Reload Waybar
+          # "$mod SHIFT ALT, W, exec, reload-hyprpaper.sh"  # Reload hyprpaper after a changing the wallpaper
 
           "$mod, Q, killactive"             # Close current window
           "$mod, T, togglefloating"         # Toggle between tiling and floating window
@@ -53,12 +53,6 @@
           "$mod SHIFT, right, movewindow, r" # Move focus right
           "$mod SHIFT, up, movewindow, u" # Move focus up
           "$mod SHIFT, down, movewindow, d" # Move focus down
-
-          # Screenshot
-          # add --cursor flag to include cursor also, --freeze flag to freeze before selection
-          ", Print, exec, grimblast --notify copysave screen" # Entire screen + clipboard copy
-          "$mod, Print, exec, grimblast --notify copysave active" # current Active window only + clipboard copy
-          "$mod ALT, Print, exec, grimblast --notify copysave area" # Select area to take screenshot
 
           # Switch workspaces with mod + [0-9]
           "$mod, bracketright, workspace, +1" # Switch to workspace right
