@@ -127,8 +127,8 @@
 
         # Execute your favorite apps at launch
         exec-once = [
-          "hypridle"
-        #   "waybar"
+          # "hypridle"
+          # "waybar"
         #   "hyprpaper"
         #   "dunst"
         #   "systemctl --user start hyprpolkitagent"
