@@ -69,6 +69,11 @@ if (( $# != 1 )) && ([ "$EVERYTHING" == "YES" ] || [ "$INSTALL" == "YES" ] || [ 
   exit 1
 fi
 
+if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ]; then
+  >&2 echo "hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?"
+  exit 1
+fi
+
 # Actual logic
 if [ "$VM" == "YES" ]; then
   echo Speeding through setup
@@ -85,8 +90,9 @@ if [ "$VM" == "YES" ]; then
   mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
   swapon /dev/vda2
   nixos-generate-config --root /mnt
-  mkdir /dotfiles
+  mkdir /dotfiles -p
   mount -o ro -t virtiofs dotfiles /dotfiles/ || echo FAILED TO MOUNT DOTFILES
+  echo Finished setting up
 fi
 
 if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
@@ -98,12 +104,6 @@ fi
 
 if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/dotfiles/hosts/$1/
-
-  if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ]; then
-    >&2 echo "hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?"
-    >&2 echo "Fix the problem, then run this script again with 'YOUR_HOSTNAME -c -i' to continue"
-    exit 1
-  fi
 
   cp /mnt/etc/nixos/hardware-configuration.nix /mnt/dotfiles/hosts/$1/
 else
