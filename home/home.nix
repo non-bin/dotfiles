@@ -37,8 +37,8 @@
     vlc
 
     noto-fonts
-    nerd-fonts.caskaydia-cove
-    nerd-fonts.mononoki
+    # nerd-fonts.caskaydia-cove
+    # nerd-fonts.mononoki
     font-awesome
 
     aspell
@@ -56,9 +56,10 @@
   };
 
   programs = {
-    bash = {
-      enable = true;
-    };
+    bash.enable = true;
+    alacritty.enable = true;
+    firefox.enable = true;
+    wofi.enable = true;
 
     neovim = {
       enable = true;
@@ -83,10 +84,6 @@
       };
     };
 
-    alacritty = {
-      enable = true;
-    };
-
     vscode = {
       enable = true;
       package = pkgs.vscodium;
@@ -95,16 +92,11 @@
         yzhang.markdown-all-in-one
       ];
     };
-
-    firefox = {
-      enable = true;
-    }
   };
 
   services = {
-    dunst = {
-      enable = true;
-    }
+    dunst.enable = true;
+    cliphist.enable = true;
   };
 
   # This value determines the Home Manager release that your
