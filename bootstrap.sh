@@ -8,18 +8,37 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Parse params
-INSTALL="YES"
-DOWNLOAD="YES"
+DOWNLOAD="NO"
+COPY="NO"
+INSTALL="NO"
+VM="NO"
+EVERYTHING="YES" # We only check the others if If EVERYTHING is NO
 
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -d|--just-download)
-      INSTALL="NO"
+    -d|--download)
+      DOWNLOAD="YES"
+      EVERYTHING="NO"
       shift # past argument
       ;;
-    -i|--just-install)
-      DOWNLOAD="NO"
+    -c|--copy)
+      COPY="YES"
+      EVERYTHING="NO"
+      shift # past argument
+      ;;
+    -i|--install)
+      INSTALL="YES"
+      EVERYTHING="NO"
+      shift # past argument
+      ;;
+    --vm)
+      VM="YES"
+      EVERYTHING="NO"
+      shift # past argument
+      ;;
+    -e|--everything)
+      EVERYTHING="YES"
       shift # past argument
       ;;
     -*|--*)
@@ -28,8 +47,11 @@ while [[ $# -gt 0 ]]; do
       echo "Usage: bootstrap.sh [options] hostname"
       echo
       echo "Options:"
-      echo "  -d, --just-download  Stop after downloading and copying files. Don't run nixos-install"
-      echo "  -i, --just-install   Don't download (ie. continue from running with -d)"
+      echo "  -d, --download    Clone the dotfiles to /mnt. Don't do anything else unless other params are given"
+      echo "  -c, --copy        Copying hardware config, and nothing else unless specified"
+      echo "  -i, --install     Install with the flake as input, nothing else bla bla bla"
+      echo "  --vm              Quickly setup from within a VM. Partition vda, mount dotfiles, and generate hardware config"
+      echo "  -e, --everything  Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
       exit 1
       ;;
     *)
@@ -41,27 +63,56 @@ done
 
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
-if (( $# != 1 )); then
+# No hostname   and (we're doing everything     or     installing          or    copying )
+if (( $# != 1 )) && ([ "$EVERYTHING" == "YES" ] || [ "$INSTALL" == "YES" ] || [ "$COPY" == "YES" ]); then
   >&2 echo "Expected 1 parameter, for hostname. Got $#"
-  exit
+  exit 1
 fi
 
 # Actual logic
-if [ "$DOWNLOAD" != "YES" ]; then
-  echo Skipping download
-else
-  echo Downloaing
-  # Download dotfiles to to /mnt/dotfiles
-  # Check ownership
-
-  echo Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/dotfiles/hosts/$1/
-  cp /mnt/etc/nixos/hardware-configuration.nix /mnt/dotfiles/hosts/$1/
+if [ "$VM" == "YES" ]; then
+  echo Speeding through setup
+  parted /dev/vda -- mklabel gpt
+  parted /dev/vda -- mkpart root ext4 512MB -8GB
+  parted /dev/vda -- mkpart swap linux-swap -8GB 100%
+  parted /dev/vda -- mkpart ESP fat32 1MB 512MB
+  parted /dev/vda -- set 3 esp on
+  mkfs.ext4 -L nixos /dev/vda1
+  mkswap -L swap /dev/vda2
+  mkfs.fat -F 32 -n boot /dev/vda3
+  mount /dev/disk/by-label/nixos /mnt
+  mkdir -p /mnt/boot
+  mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
+  swapon /dev/vda2
+  nixos-generate-config --root /mnt
+  mkdir /dotfiles
+  mount -o ro -t virtiofs dotfiles /dotfiles/ || echo FAILED TO MOUNT DOTFILES
 fi
 
-
-if [ "$INSTALL" != "YES" ]; then
-  echo Skipping install
+if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
+  echo Downloaing
+  git clone https://github.com/non-bin/dotfiles /mnt/dotfiles
 else
+  echo Skipping download
+fi
+
+if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
+  echo Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/dotfiles/hosts/$1/
+
+  if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ]; then
+    >&2 echo "hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?"
+    >&2 echo "Fix the problem, then run this script again with 'YOUR_HOSTNAME -c -i' to continue"
+    exit 1
+  fi
+
+  cp /mnt/etc/nixos/hardware-configuration.nix /mnt/dotfiles/hosts/$1/
+else
+  echo Skipping copy
+fi
+
+if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo Building for hostname \"$1\"
   nixos-install --flake /mnt/dotfiles#$1
+else
+  echo Skipping install
 fi

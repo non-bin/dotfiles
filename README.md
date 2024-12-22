@@ -1,5 +1,15 @@
 # Alice's Dot Files
 
+## Bootstraping
+
+Follow [this guide in the manual](https://nixos.org/manual/nixos/stable/#sec-installation-manual), up to and including `nixos-generate-config --root /mnt`  
+Once it instructs you to edit `configuration.nix`, run `sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME`
+
+```bash
+# If you'd like to edit the config before installing
+sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME -d -c # To download and copy in the hardware config
+sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME -i # To finish the install
+```
 
 ### TODO
 

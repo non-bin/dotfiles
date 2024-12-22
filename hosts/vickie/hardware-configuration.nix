@@ -24,11 +24,6 @@
     options = [ "fmask=0077" "dmask=0077" ];
   };
 
-  fileSystems."/home/alice/dotfiles" = {
-    device = "dotfiles";
-    fsType = "virtiofs";
-  };
-
   swapDevices = [
     { device = "/dev/disk/by-uuid/b2a712f8-d5e4-4672-b64f-34f495f76fb0"; }
   ];
