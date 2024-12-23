@@ -49,22 +49,28 @@
           "$mod, down, movefocus, d"   # Move focus down
 
           # Move window
-          "$mod SHIFT, left, movewindow, l" # Move focus left
+          "$mod SHIFT, left, movewindow, l"  # Move focus left
           "$mod SHIFT, right, movewindow, r" # Move focus right
-          "$mod SHIFT, up, movewindow, u" # Move focus up
-          "$mod SHIFT, down, movewindow, d" # Move focus down
+          "$mod SHIFT, up, movewindow, u"    # Move focus up
+          "$mod SHIFT, down, movewindow, d"  # Move focus down
+
+          # Move workspace to monitor
+          "$mainMod ALT, left, moveworkspacetomonitor, +0 l"  # Move focus left
+          "$mainMod ALT, right, moveworkspacetomonitor, +0 r" # Move focus right
+          "$mainMod ALT, up, moveworkspacetomonitor, +0 u"    # Move focus up
+          "$mainMod ALT, down, moveworkspacetomonitor, +0 d"  # Move focus down
 
           # Switch workspaces with mod + [0-9]
-          "$mod, bracketright, workspace, +1" # Switch to workspace right
-          "$mod, bracketleft, workspace, -1" # Switch to workspace left
+          "$mod, bracketright, workspace, r+1" # Switch to workspace right
+          "$mod, bracketleft, workspace, r-1"  # Switch to workspace left
 
           # Move active window to a workspace with mod + SHIFT + [0-9]
-          "$mod SHIFT, bracketright, movetoworkspace, +1" #  Move window to workspace right
-          "$mod SHIFT, bracketleft, movetoworkspace, -1" #  Move window to workspace left
+          "$mod SHIFT, bracketright, movetoworkspace, +1" # Move window to workspace right
+          "$mod SHIFT, bracketleft, movetoworkspace, -1"  # Move window to workspace left
 
-          # Move active window to a workspace with mod + alt + [0-9] DONT MOVE FOCUS
-          "$mod ALT, bracketright, movetoworkspacesilent, +1" #  Move window to workspace right
-          "$mod ALT, bracketleft, movetoworkspacesilent, -1" #  Move window to workspace left
+          # Move active window to a workspace and don't move focus with mod + alt + [0-9]
+          "$mod ALT, bracketright, movetoworkspacesilent, +1" # Move window to workspace right
+          "$mod ALT, bracketleft, movetoworkspacesilent, -1"  # Move window to workspace left
         ] ++ (
           builtins.concatLists (builtins.genList (i:
             let ws = i + 1;
