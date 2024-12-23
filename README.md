@@ -13,6 +13,9 @@ sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME -d -c # To download
 # Edit away
 sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME -i # To finish the install
 
+# Or to disable copying hardware config
+sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME -d -i
+
 # Or to quickly setup a VM
 sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME --vm
 ```
