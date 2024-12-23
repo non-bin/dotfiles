@@ -116,12 +116,12 @@ fi
 
 if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo -e "${GREEN}Downloading to /mnt/$USERNAME/dotfiles${NC}"
-  git clone https://github.com/non-bin/dotfiles /mnt/$USERNAME/dotfiles
+  git clone https://github.com/non-bin/dotfiles /mnt/home/$USERNAME/dotfiles
 fi
 
 if [ "$UPGRADE" == "YES" ]; then
   echo -e "${GREEN}Upgrading flake.lock${NC}"
-  nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake /mnt/$USERNAME/dotfiles
+  nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake /mnt/home/$USERNAME/dotfiles
 fi
 
 if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$DOWNLOAD" == "YES" ] || [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
@@ -130,14 +130,15 @@ if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$DOWNLOAD" == "YES
 fi
 
 if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
-  echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/$USERNAME/dotfiles/hosts/$1/${NC}"
-  cp /mnt/etc/nixos/hardware-configuration.nix /mnt/$USERNAME/dotfiles/hosts/$1/
+  echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/home/$USERNAME/dotfiles/hosts/$1/${NC}"
+  cp /mnt/etc/nixos/hardware-configuration.nix /mnt/home/$USERNAME/dotfiles/hosts/$1/
 fi
 
 if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo -e "${GREEN}Building for hostname \"$1\"${NC}"
-  nixos-install --flake /mnt/$USERNAME/dotfiles#$1
-  nixos-enter --root /mnt -c 'sudo chown -R $USERNAME:$USERNAME /mnt/$USERNAME/dotfiles && passwd $USERNAME'
+  nixos-install --flake /mnt/home/$USERNAME/dotfiles#$1
+  echo "Setting password for $USERNAME"
+  nixos-enter --root /mnt -c 'chown -R $USERNAME:$USERNAME /home/$USERNAME/dotfiles && passwd $USERNAME'
 
   echo -e "${GREEN}Done! You can reboot now${NC}"
 fi
