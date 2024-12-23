@@ -13,9 +13,12 @@
   networking.hostName = "vickie"; # Define your hostname.
 
   boot.loader.grub.extraEntries = ''
-    menuentry "Fedora" {
+    menuentry "Boot From CD" {
       set root=(cd0)
-      chainloader /efi/BOOT/BOOTX64.efi
+      chainloader /EFI/BOOT/BOOTX64.efi
+    }
+    menuentry "UEFI Setup" {
+      fwsetup
     }
   '';
 
