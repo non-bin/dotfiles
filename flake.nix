@@ -7,10 +7,11 @@
     # nixpkgs.url = "github:non-bin/nixpkgs/bootLoaderGenerationFormat";
     # nixpkgs.url = "/home/alice/dotfiles/repos/nixpkgs";
 
-    # home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.url = "github:nix-community/home-manager";
-
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
@@ -30,6 +31,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/skellybones/configuration.nix
+          nixos-hardware.nixosModules.framework-16-7040-amd
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

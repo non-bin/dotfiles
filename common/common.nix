@@ -83,8 +83,11 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  environment.systemPackages = with pkgs; [];
   environment.pathsToLink = [ "/share/zsh" ]; # System package zsh completions
+
+  environment.systemPackages = with pkgs; [
+
+  ];
 
   programs = {
     hyprland.enable = true; # Enable system wide, configure in HM

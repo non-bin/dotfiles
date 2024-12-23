@@ -49,7 +49,6 @@ Options:
 
 - hyprpolkitagent
 - waybar
-
 - network
 - evremap
 - hardware.cpu.amd.updateMicrocode
@@ -59,6 +58,7 @@ Options:
 - check https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/ works
 - check screenshots work
 
+- https://keyboard.frame.work https://community.frame.work/t/responded-help-configuring-fw16-keyboard-with-via/47176/5
 - wl-clip-persist
 - hyprpaper
 - wlogout
