@@ -10,7 +10,7 @@
     ../../common/common.nix
   ];
 
-  networking.hostName = "vickie"; # Define your hostname.
+  networking.hostName = "skellybones"; # Define your hostname.
 
   boot.loader.grub.extraEntries = ''
     menuentry "Fedora" {
