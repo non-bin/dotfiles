@@ -114,7 +114,7 @@ if [ "$VM" == "YES" ]; then
 fi
 
 if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
-  echo -e "${GREEN}Downloading to /mnt/$USERNAME/dotfiles${NC}"
+  echo -e "${GREEN}Downloading to /mnt/home/$USERNAME/dotfiles${NC}"
   git clone https://github.com/non-bin/dotfiles /mnt/home/$USERNAME/dotfiles
 fi
 
