@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# set -o xtrace # Print commands before executing
+set -e # Exit on any errors
 
 cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../"
 # cd "$HOME/dotfiles"
@@ -12,6 +12,10 @@ fi
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
   case $1 in
+    -p|--pull)
+      git pull
+      shift # past argument
+      ;;
     -u|--upgrade)
       nix flake update
       shift # past argument
@@ -33,10 +37,10 @@ while [[ $# -gt 0 ]]; do
       echo "Options:"
       echo "  -u, --upgrade     Add pull updates from upstream and update lockfile"
       echo "  -t, --show-trace  Update lockfile"
+      echo "  -P, --pull        Pull updates from git before updating"
       # echo
       # echo "To Impliment:"
       # echo "  -p, --push     Commit and push all changes"
-      # echo "  -P, --pull     Pull updates from git before updating"
       # echo "  -d, --dry-run  Don't rebuild"
       exit 1
       ;;

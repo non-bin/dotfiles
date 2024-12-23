@@ -14,11 +14,20 @@ sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME -d -c # To dow
 sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME -i # To finish the install
 ```
 
+## Reloading Config
+
+```
+Usage: reload [options] [new-hostname]
+Options:
+  -u, --upgrade     Add pull updates from upstream and update lockfile
+  -t, --show-trace  Update lockfile
+  -P, --pull        Pull updates from git before updating
+```
+
 ### TODO
 
 - hyprpolkitagent
 - waybar
-- zip & unzip
 
 - network
 - evremap
@@ -47,9 +56,6 @@ sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME -i # To finish
   - cleanup
   - git actions
   - dry run
-  - bootstrap
-
-
 
 ## Resources
 
