@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 set -e # Exit on any errors
 
+# Colour codes. Use with `echo -e "${GREEN}I ${RED}love${NC} Stack Overflow"``
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+
 # Check running as root
 if [ "$EUID" -ne 0 ]; then
-  echo "Please run as root"
+  echo -e "${RED}Please run as root${NC}"
   exit
 fi
 
@@ -89,7 +95,7 @@ fi
 
 # Actual logic
 if [ "$VM" == "YES" ]; then
-  echo Speeding through setup
+  echo -e "${GREEN}Speeding through setup${NC}"
   parted /dev/vda -- mklabel gpt
   parted /dev/vda -- mkpart root ext4 512MB -8GB
   parted /dev/vda -- mkpart swap linux-swap -8GB 100%
@@ -104,8 +110,8 @@ if [ "$VM" == "YES" ]; then
   swapon /dev/vda2
   nixos-generate-config --root /mnt
   mkdir /dotfiles -p
-  mount -o ro -t virtiofs dotfiles /dotfiles/ || echo FAILED TO MOUNT LOCAL DOTFILES
-  echo Finished setting up
+  mount -o ro -t virtiofs dotfiles /dotfiles/ || echo -e "${RED}FAILED TO MOUNT LOCAL DOTFILES${NC}"
+  echo -e "${GREEN}Finished setting up${NC}"
 fi
 
 if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
@@ -113,25 +119,24 @@ if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
 fi
 
 if [ "$UPGRADE" == "YES" ]; then
-  echo Upgrading flake.lock
+  echo -e "${GREEN}Upgrading flake.lock${NC}"
   nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake /mnt/$USERNAME/dotfiles
 fi
 
 if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$DOWNLOAD" == "YES" ] || [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
-  >&2 echo "hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?"
+  >&2 echo -e "${RED}hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?${NC}"
   exit 1
 fi
 
 if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
-  echo Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/$USERNAME/dotfiles/hosts/$1/
-
+  echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/$USERNAME/dotfiles/hosts/$1/${NC}"
   cp /mnt/etc/nixos/hardware-configuration.nix /mnt/$USERNAME/dotfiles/hosts/$1/
 fi
 
 if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
-  echo Building for hostname \"$1\"
+  echo -e "${GREEN}Building for hostname \"$1\"${NC}"
   nixos-install --flake /mnt/$USERNAME/dotfiles#$1
   nixos-enter --root /mnt -c 'sudo chown -R $USERNAME:$USERNAME /mnt/$USERNAME/dotfiles && passwd $USERNAME'
 
-  echo "Done! You can reboot now"
+  echo -e "${GREEN}Done! You can reboot now${NC}"
 fi
