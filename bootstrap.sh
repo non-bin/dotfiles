@@ -69,11 +69,6 @@ if (( $# != 1 )) && ([ "$EVERYTHING" == "YES" ] || [ "$INSTALL" == "YES" ] || [ 
   exit 1
 fi
 
-if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$DOWNLOAD" == "YES" ] || [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
-  >&2 echo "hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?"
-  exit 1
-fi
-
 # Actual logic
 if [ "$VM" == "YES" ]; then
   echo Speeding through setup
@@ -102,6 +97,11 @@ else
   echo Skipping download
 fi
 
+if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$DOWNLOAD" == "YES" ] || [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
+  >&2 echo "hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?"
+  exit 1
+fi
+
 if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/dotfiles/hosts/$1/
 
@@ -113,6 +113,9 @@ fi
 if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo Building for hostname \"$1\"
   nixos-install --flake /mnt/dotfiles#$1
+  nixos-enter --root /mnt -c 'passwd alice'
+
+  echo "Done! You can reboot now"
 else
   echo Skipping install
 fi
