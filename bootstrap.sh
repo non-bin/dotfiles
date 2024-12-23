@@ -137,7 +137,7 @@ if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo -e "${GREEN}Building for hostname \"$1\"${NC}"
   nixos-install --flake /mnt/home/$USERNAME/dotfiles#$1
   echo "Setting password for $USERNAME"
-  nixos-enter --root /mnt -c 'chown -R $USERNAME:$USERNAME /home/$USERNAME/dotfiles && passwd $USERNAME'
+  nixos-enter --root /mnt -c "chown -R $USERNAME:$USERNAME /home/$USERNAME/dotfiles && passwd $USERNAME"
 
   echo -e "${GREEN}Done! You can reboot now${NC}"
 fi
