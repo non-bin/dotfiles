@@ -43,10 +43,14 @@ while [[ $# -gt 0 ]]; do
       EVERYTHING="YES"
       shift # past argument
       ;;
-    -u|--user)
+    --user)
       USERNAME="$1"
       shift # past argument
       shift # past param
+      ;;
+    -u|--upgrade)
+      UPGRADE="$1"
+      shift # past argument
       ;;
     -*|--*)
       echo "Unknown option $1"
@@ -95,7 +99,7 @@ if [ "$VM" == "YES" ]; then
   swapon /dev/vda2
   nixos-generate-config --root /mnt
   mkdir /dotfiles -p
-  mount -o ro -t virtiofs dotfiles /dotfiles/ || echo FAILED TO MOUNT DOTFILES
+  mount -o ro -t virtiofs dotfiles /dotfiles/ || echo FAILED TO MOUNT LOCAL DOTFILES
   echo Finished setting up
 fi
 
