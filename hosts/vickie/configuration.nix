@@ -15,7 +15,7 @@
   boot.loader.grub.extraEntries = ''
     menuentry "Boot From CD" {
       set root=(cd0)
-      chainloader /EFI/BOOT/BOOTX64.efi
+      chainloader /EFI/BOOT/BOOTX64.EFI
     }
     menuentry "UEFI Setup" {
       fwsetup
