@@ -42,7 +42,6 @@ while [[ $# -gt 0 ]]; do
       ;;
     --vm)
       VM="YES"
-      EVERYTHING="NO"
       shift # past argument
       ;;
     -e|--everything)
@@ -68,13 +67,13 @@ while [[ $# -gt 0 ]]; do
       echo "Usage: bootstrap.sh [options] hostname"
       echo
       echo "Options:"
-      echo "  -d, --download    Clone the dotfiles to /mnt. Don't do anything else unless other params are given"
+      echo "  -d, --download    Clone the dotfiles to /mnt. Implies -n"
       echo "  -u, --upgrade     Update flake.lock to the latest versions before installing"
-      echo "  -c, --copy        Copying hardware config, and nothing else unless specified"
-      echo "  -i, --install     Install with the flake as input, nothing else bla bla bla"
-      echo "  --vm              Quickly setup from within a VM. Partition vda, mount dotfiles, and generate hardware config"
+      echo "  -c, --copy        Copying hardware config. Implies -n"
+      echo "  -i, --install     Install with the flake as input. Implies -n"
       echo "  -e, --everything  Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
-      echo "  -n, --nothing     Require explivitly enabling any steps you want"
+      echo "  -n, --nothing     Require explicitly enabling any steps you want"
+      echo "  --vm              Quickly setup from within a VM. Partition vda, generate hardware config, and mount virtiofs dotfiles if available"
       echo "  --user username   Set the username for the user to create. YOU NEED TO UPDATE CONFIGURATION.NIX TO CREATE THE USER"
       exit 1
       ;;
