@@ -13,7 +13,7 @@
   home.username = "alice";
   home.homeDirectory = "/home/alice";
   home.sessionPath = [
-    "$HOME/dotfiles/repos/dotfiles/scripts"
+    "$HOME/dotfiles/scripts"
   ];
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
