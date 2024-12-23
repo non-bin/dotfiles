@@ -20,7 +20,7 @@ sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- YOUR_HOSTNAME -i # To finish
 Usage: reload [options] [new-hostname]
 Options:
   -u, --upgrade     Add pull updates from upstream and update lockfile
-  -t, --show-trace  Update lockfile
+  -t, --show-trace  Pass --show-trace to rebuild command (for debuggin)
   -P, --pull        Pull updates from git before updating
 ```
 

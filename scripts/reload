@@ -36,7 +36,7 @@ while [[ $# -gt 0 ]]; do
       echo
       echo "Options:"
       echo "  -u, --upgrade     Add pull updates from upstream and update lockfile"
-      echo "  -t, --show-trace  Update lockfile"
+      echo "  -t, --show-trace  Pass --show-trace to rebuild command (for debuggin)"
       echo "  -P, --pull        Pull updates from git before updating"
       # echo
       # echo "To Impliment:"
