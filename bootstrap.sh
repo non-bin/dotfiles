@@ -43,13 +43,17 @@ while [[ $# -gt 0 ]]; do
       EVERYTHING="YES"
       shift # past argument
       ;;
+    -n|--nothing)
+      EVERYTHING="NO"
+      shift # past argument
+      ;;
     --user)
       USERNAME="$1"
       shift # past argument
       shift # past param
       ;;
     -u|--upgrade)
-      UPGRADE="$1"
+      UPGRADE="YES"
       shift # past argument
       ;;
     -*|--*)
@@ -64,6 +68,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -i, --install     Install with the flake as input, nothing else bla bla bla"
       echo "  --vm              Quickly setup from within a VM. Partition vda, mount dotfiles, and generate hardware config"
       echo "  -e, --everything  Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
+      echo "  -n, --nothing     Require explivitly enabling any steps you want"
       echo "  --user username   Set the username for the user to create. YOU NEED TO UPDATE CONFIGURATION.NIX TO CREATE THE USER"
       exit 1
       ;;
