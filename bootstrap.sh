@@ -14,6 +14,7 @@ INSTALL="NO"
 VM="NO"
 EVERYTHING="YES" # We only check the others if If EVERYTHING is NO
 USERNAME="alice"
+UPGRADE="NO"
 
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
@@ -53,12 +54,13 @@ while [[ $# -gt 0 ]]; do
       echo "Usage: bootstrap.sh [options] hostname"
       echo
       echo "Options:"
-      echo "  -d, --download       Clone the dotfiles to /mnt. Don't do anything else unless other params are given"
-      echo "  -c, --copy           Copying hardware config, and nothing else unless specified"
-      echo "  -i, --install        Install with the flake as input, nothing else bla bla bla"
-      echo "  --vm                 Quickly setup from within a VM. Partition vda, mount dotfiles, and generate hardware config"
-      echo "  -e, --everything     Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
-      echo "  -u, --user username  Set the username for the user to create. YOU NEED TO UPDATE CONFIGURATION.NIX TO CREATE THE USER"
+      echo "  -d, --download    Clone the dotfiles to /mnt. Don't do anything else unless other params are given"
+      echo "  -u, --upgrade     Update flake.lock to the latest versions before installing"
+      echo "  -c, --copy        Copying hardware config, and nothing else unless specified"
+      echo "  -i, --install     Install with the flake as input, nothing else bla bla bla"
+      echo "  --vm              Quickly setup from within a VM. Partition vda, mount dotfiles, and generate hardware config"
+      echo "  -e, --everything  Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
+      echo "  --user username   Set the username for the user to create. YOU NEED TO UPDATE CONFIGURATION.NIX TO CREATE THE USER"
       exit 1
       ;;
     *)
@@ -98,10 +100,12 @@ if [ "$VM" == "YES" ]; then
 fi
 
 if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
-  echo Downloaing to /mnt/$USERNAME/dotfiles
   git clone https://github.com/non-bin/dotfiles /mnt/$USERNAME/dotfiles
-else
-  echo Skipping download
+fi
+
+if [ "$UPGRADE" == "YES" ]; then
+  echo Upgrading flake.lock
+  nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake /mnt/$USERNAME/dotfiles
 fi
 
 if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$DOWNLOAD" == "YES" ] || [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
@@ -113,8 +117,6 @@ if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/$USERNAME/dotfiles/hosts/$1/
 
   cp /mnt/etc/nixos/hardware-configuration.nix /mnt/$USERNAME/dotfiles/hosts/$1/
-else
-  echo Skipping copy
 fi
 
 if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
@@ -123,6 +125,4 @@ if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   nixos-enter --root /mnt -c 'sudo chown -R $USERNAME:$USERNAME /mnt/$USERNAME/dotfiles && passwd $USERNAME'
 
   echo "Done! You can reboot now"
-else
-  echo Skipping install
 fi
