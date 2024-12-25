@@ -143,7 +143,8 @@ if [ "$UPGRADE" == "YES" ]; then
   nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake /mnt/home/$USERNAME/dotfiles
 fi
 
-if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$DOWNLOAD" == "YES" ] || [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
+# Check hardwawre config exists if needed
+if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
   >&2 echo -e "${RED}hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?${NC}"
   exit 1
 fi
