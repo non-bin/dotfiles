@@ -102,18 +102,31 @@ fi
 # Actual logic
 if [ "$VM" == "YES" ]; then
   echo -e "${GREEN}Speeding through setup${NC}"
-  parted $DISK -- mklabel gpt
-  parted $DISK -- mkpart root ext4 512MB -8GB
-  parted $DISK -- mkpart swap linux-swap -8GB 100%
-  parted $DISK -- mkpart ESP fat32 1MB 512MB
-  parted $DISK -- set 3 esp on
-  mkfs.ext4 -L nixos $DISK1
-  mkswap -L swap $DISK2
-  mkfs.fat -F 32 -n boot $DISK3
-  mount /dev/disk/by-label/nixos /mnt
-  mkdir -p /mnt/boot
-  mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
-  swapon $DISK2
+  parted ${DISK} -- mklabel gpt
+  parted ${DISK} -- mkpart root 512MB -1GB
+  parted ${DISK} -- mkpart swap linux-swap -1GB 100%
+  parted ${DISK} -- mkpart ESP fat32 1MB 512MB
+  parted ${DISK} -- set 3 esp on
+
+  pvcreate ${DISK}1
+  vgcreate vg0 ${DISK}1
+  lvcreate -l +100%FREE -n btr_pool vg0
+  mkfs.btrfs /dev/vg0/btr_pool
+  mount /dev/vg0/btr_pool /mnt
+  btrfs subvolume create /mnt/NixOS /mnt/nix /mnt/home
+  umount /mnt
+
+  mount -o subvol=NixOS /dev/vg0/btr_pool /mnt
+  mkdir /mnt/{home,nix,boot}
+  mount -o subvol=home /dev/vg0/btr_pool /mnt/home
+  mount -o noatime,subvol=nix /dev/vg0/btr_pool /mnt/nix
+
+  mkfs.fat -F 32 -n boot ${DISK}3
+  mount ${DISK}3 /mnt/boot
+
+  mkswap -L swap ${DISK}2
+  swapon ${DISK}2
+
   nixos-generate-config --root /mnt
   mkdir /dotfiles -p
   mount -o ro -t virtiofs dotfiles /dotfiles/ || echo -e "${RED}FAILED TO MOUNT LOCAL DOTFILES${NC}"
