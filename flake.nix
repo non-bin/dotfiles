@@ -2,7 +2,7 @@
   description = "NixOS configuration";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:non-bin/nixpkgs/bootLoaderGenerationFormat";
     # nixpkgs.url = "/home/alice/dotfiles/repos/nixpkgs";
@@ -12,9 +12,10 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    hyprland-source.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, hyprland-source, ... }: {
     nixosConfigurations = {
       vickie = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

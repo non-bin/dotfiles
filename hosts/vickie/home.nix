@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, hyprland-source, ... }:
 
 # home-manager.users.alice =
 {
@@ -6,12 +6,11 @@
     ../../home/home.nix
   ];
 
-  wayland.windowManager = {
-    hyprland = {
-      settings = {
-        # "$mod" = lib.mkForce "ALT";
-        monitor = lib.mkForce ",highres,auto,auto";
-      };
+  wayland.windowManager.hyprland = {
+    package = hyprland-source.hyprland;
+    settings = {
+      # "$mod" = lib.mkForce "ALT";
+      monitor = lib.mkForce ",highres,auto,auto";
     };
   };
 }
