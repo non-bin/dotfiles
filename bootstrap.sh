@@ -21,6 +21,7 @@ VM="NO"
 EVERYTHING="YES" # We only check the others if If EVERYTHING is NO
 USERNAME="alice"
 UPGRADE="NO"
+DISK="/dev/vda"
 
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
@@ -57,6 +58,11 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       shift # past param
       ;;
+    --disk)
+      DISK="$1"
+      shift # past argument
+      shift # past param
+      ;;
     -u|--upgrade)
       UPGRADE="YES"
       shift # past argument
@@ -74,6 +80,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -e, --everything  Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
       echo "  -n, --nothing     Require explicitly enabling any steps you want"
       echo "  --vm              Quickly setup from within a VM. Partition vda, generate hardware config, and mount virtiofs dotfiles if available"
+      echo "  --disk path       Use with --vm. Path to the block device to install onto, defaults to /dev/vda"
       echo "  --user username   Set the username for the user to create. YOU NEED TO UPDATE CONFIGURATION.NIX TO CREATE THE USER"
       exit 1
       ;;
@@ -95,18 +102,18 @@ fi
 # Actual logic
 if [ "$VM" == "YES" ]; then
   echo -e "${GREEN}Speeding through setup${NC}"
-  parted /dev/vda -- mklabel gpt
-  parted /dev/vda -- mkpart root ext4 512MB -8GB
-  parted /dev/vda -- mkpart swap linux-swap -8GB 100%
-  parted /dev/vda -- mkpart ESP fat32 1MB 512MB
-  parted /dev/vda -- set 3 esp on
-  mkfs.ext4 -L nixos /dev/vda1
-  mkswap -L swap /dev/vda2
-  mkfs.fat -F 32 -n boot /dev/vda3
+  parted $DISK -- mklabel gpt
+  parted $DISK -- mkpart root ext4 512MB -8GB
+  parted $DISK -- mkpart swap linux-swap -8GB 100%
+  parted $DISK -- mkpart ESP fat32 1MB 512MB
+  parted $DISK -- set 3 esp on
+  mkfs.ext4 -L nixos $DISK1
+  mkswap -L swap $DISK2
+  mkfs.fat -F 32 -n boot $DISK3
   mount /dev/disk/by-label/nixos /mnt
   mkdir -p /mnt/boot
   mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
-  swapon /dev/vda2
+  swapon $DISK2
   nixos-generate-config --root /mnt
   mkdir /dotfiles -p
   mount -o ro -t virtiofs dotfiles /dotfiles/ || echo -e "${RED}FAILED TO MOUNT LOCAL DOTFILES${NC}"

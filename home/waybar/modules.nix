@@ -1,0 +1,185 @@
+{ config, pkgs, lib, ... }:
+
+# home-manager.users.alice =
+{
+  programs.waybar = {
+    enable = true;
+
+    settings = {
+      "hyprland/workspaces" = {
+        on-click = "activate";
+        active-only = false;
+        all-outputs = true;
+        show-special = true;
+        format = "{id}";
+        format-window-separator = "";
+        window-rewrite-default = "";
+        window-rewrite = {
+          "title<.*youtube.*>" = "";
+          "class<firefox>" = "";
+          "class<firefox> title<.*github.*>" = "";
+          "class<Alacritty>" = "";
+          "class<codium>" = "󰨞";
+          "class<GitKraken>" = "";
+        };
+      };
+      "hyprland/window" = {
+        rewrite = {
+          "(.*) - Brave" = "$1";
+          "(.*) - Chromium" = "$1";
+          "(.*) - Brave Search" = "$1";
+          "(.*) - Outlook" = "$1";
+          "(.*) Microsoft Teams" = "$1";
+        };
+        separate-outputs = true;
+      };
+      "custom/appmenu" = {
+        format = "Apps";
+        tooltip-format = "Left: Open the application launcher\nRight: Show all keybindings";
+        on-click = "rofi -show drun -replace";
+        on-click-right = "~/.config/ml4w/scripts/keybindings.sh";
+        tooltip = false;
+      };
+      "custom/exit" = {
+        format = "";
+        tooltip-format = "Powermenu";
+        on-click = "wlogout -b 4";
+        tooltip = false;
+      };
+      keyboard-state = {
+        numlock = true;
+        capslock = true;
+        format = "{name} {icon}";
+        format-icons = {
+          locked = "";
+          unlocked = "";
+        };
+      };
+      tray = {
+        spacing = 10;
+      };
+      clock = {
+        tooltip-format = "<big>{:%a %e %b %Y}</big>\n<tt><small>{calendar}</small></tt>";
+        interval = 1;
+        format = "{:%I:%M %Y-%m-%d}";
+        format-alt = "{:%I:%M:%S}";
+      };
+      "custom/system" = {
+        format = "";
+        tooltip = false;
+      };
+      cpu = {
+        format = "/ C {usage}% ";
+        on-click = "alacritty -e btop";
+      };
+      memory = {
+        format = "/ M {}% ";
+        on-click = "alacritty -e btop";
+      };
+      disk = {
+        interval = 30;
+        format = "D {percentage_used}% ";
+        path = "/";
+        on-click = "alacritty -e btop";
+      };
+      "hyprland/language" = {
+        format = "/ K {short}";
+      };
+      "group/hardware" = {
+        orientation = "inherit";
+        drawer = {
+          transition-duration = 300;
+          children-class = "not-memory";
+          transition-left-to-right = false;
+        };
+        modules = [
+          "custom/system"
+          "disk"
+          "cpu"
+          "memory"
+          "hyprland/language"
+        ];
+      };
+      network = {
+        format = "{ifname}";
+        format-wifi = "   {signalStrength}%";
+        format-ethernet = "  {ipaddr}";
+        format-disconnected = "Not connected";
+        tooltip-format = " {ifname} via {gwaddri}";
+        tooltip-format-wifi = "   {essid} ({signalStrength}%)";
+        tooltip-format-ethernet = "  {ifname} ({ipaddr}/{cidr})";
+        tooltip-format-disconnected = "Disconnected";
+        max-length = 50;
+        on-click = "alacritty -e nmtui";
+      };
+      battery = {
+        states = {
+          warning = 30;
+          critical = 15;
+        };
+        format = "{icon}   {capacity}%";
+        format-charging = "  {capacity}%";
+        format-plugged = "  {capacity}%";
+        format-alt = "{icon}  {time}";
+        format-icons = [
+          " "
+          " "
+          " "
+          " "
+          " "
+        ];
+      };
+      pulseaudio = {
+        scroll-step = 5;
+        reverse-scrolling = true;
+        max-volume = 150;
+        format = "{icon}  {volume}%";
+        format-bluetooth = "{volume}% {icon} {format_source}";
+        format-bluetooth-muted = " {icon} {format_source}";
+        format-muted = " {format_source}";
+        format-source = "{volume}% ";
+        format-source-muted = "";
+        format-icons = {
+          headphone = "";
+          hands-free = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = [
+            ""
+            " "
+            " "
+          ];
+        };
+        interval = 10;
+        on-click = "pavucontrol";
+      };
+      bluetooth = {
+        format = " {num_connections}";
+        format-connected-battery = " {num_connections} ({device_battery_percentage})";
+        format-disabled = " Disabled";
+        format-off = " Off";
+        interval = 10;
+        format-no-controller = " Error";
+        on-click = "blueman-manager";
+        tooltip-format-enumerate-connected = "{device_alias}";
+        tooltip-format = "Status: {status}\n\nDevices:\n{device_enumerate}\n\nClick: blueman-manager";
+      };
+      user = {
+        format = "{user}";
+        interval = 60;
+        icon = false;
+      };
+      idle_inhibitor = {
+        format = "{icon}";
+        tooltip = true;
+        format-icons = {
+          activated = "";
+          deactivated = "";
+        };
+        on-click-right = "hyprlock";
+      };
+    };
+  };
+}
