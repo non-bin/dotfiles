@@ -22,18 +22,18 @@
     historySubstringSearch.enable = true;
 
     shellAliases = {
-      grep="grep --color=auto";
+      grep = "grep --color=auto";
 
-      ls="ls -F --color=auto";
-      ll="ls -l";
-      la="ls -lA";
-      l="ls -C";
+      ls = "ls -F --color=auto";
+      ll = "ls -l";
+      la = "ls -lA";
+      l = "ls -C";
 
-      mkdir="mkdir -p";
-      rm="rm -r";
-      rsync="rsync -rlgopPEh --mkpath --info=PROGRESS2,STATS3,SKIP2";
-      rcp=''rsync -e /dev/null -b --backup-dir="/tmp/rsync-$USERNAME"'';
-      rmv="cp --remove-source-files";
+      mkdir = "mkdir -p";
+      rm = "rm -r";
+      rsync = "rsync -rlgopPEh --mkpath --info=PROGRESS2,STATS3,SKIP2";
+      rcp = ''rsync -e /dev/null -b --backup-dir="/tmp/rsync-$USERNAME"'';
+      rmv = "cp --remove-source-files";
     };
 
     initExtra = lib.strings.concatLines [
