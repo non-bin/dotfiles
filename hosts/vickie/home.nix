@@ -10,7 +10,7 @@
     hyprland = {
       settings = {
         # "$mod" = lib.mkForce "ALT";
-        monitor = ",highres,auto,auto";
+        monitor = lib.mkForce ",highres,auto,auto";
       };
     };
   };
