@@ -6,11 +6,9 @@
     ../../home/home.nix
   ];
 
-  wayland.windowManager = {
-    hyprland = {
-      settings = {
-        # "$mod" = lib.mkForce "ALT";
-      };
+  wayland.windowManager.hyprland = {
+    settings = {
+      # "$mod" = lib.mkForce "ALT";
     };
   };
 }
