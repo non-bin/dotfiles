@@ -6,6 +6,8 @@
     ./hypr/hyprland.nix
     ./alacrity.nix
     ./zsh.nix
+    ./wlogout.nix
+    ./waybar/waybar.nix
   ];
 
   # Home Manager needs a bit of information about you and the
