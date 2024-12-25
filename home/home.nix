@@ -83,10 +83,13 @@
 
     git = {
       enable = true;
+      delta.enable = true; # Syntax hilighting
       extraConfig = {
         init.defaultBranch = "main";
         url."https://github.com/".insteadOf = [ "gh:" "github:" ];
       };
+      userEmail = "jacka.alice@gmail.com";
+      userName = "Alice Jacka";
     };
 
     vscode = {
