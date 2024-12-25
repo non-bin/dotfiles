@@ -4,20 +4,19 @@ set -e # Exit on any errors
 cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../"
 # cd "$HOME/dotfiles"
 
-UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
-if [ -n "$UNTRACKED_FILES" ]; then
-  git add $UNTRACKED_FILES # Add all untracked files
-fi
-
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
   case $1 in
+    -r|--rescue)
+      RESCUE="YES"
+      shift # past argument
+      ;;
     -p|--pull)
-      git pull
+      PULL="YES"
       shift # past argument
       ;;
     -u|--upgrade)
-      nix flake update
+      UPGRADE="YES"
       shift # past argument
       ;;
     -t|--show-trace)
@@ -54,5 +53,20 @@ done
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
 NEW_HOSTNAME="$1"
+
+if [ "$PULL" == "YES" ]; then
+  git pull
+fi
+
+if [ "$UPGRADE" == "YES" ]; then
+  nix flake update
+fi
+
+if [ "$RESCUE" != "YES" ]; then
+  UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
+  if [ -n "$UNTRACKED_FILES" ]; then
+    git add $UNTRACKED_FILES # Add all untracked files
+  fi
+fi
 
 nixos-rebuild switch --use-remote-sudo $TRACE --flake ./#$NEW_HOSTNAME
