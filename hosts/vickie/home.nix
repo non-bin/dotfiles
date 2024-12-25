@@ -1,4 +1,4 @@
-{ config, pkgs, lib, hyprland-source, ... }:
+{ config, pkgs, lib, ... }:
 
 # home-manager.users.alice =
 {
@@ -7,12 +7,11 @@
   ];
 
   wayland.windowManager.hyprland = {
-    package = hyprland-source.hyprland;
     settings = {
       # "$mod" = lib.mkForce "ALT";
       monitor = lib.mkForce ",highres,auto,auto";
     };
   };
 
-  programs.alacritty.settings.window.opacity = 1;
+  programs.alacritty.settings.window.opacity = lib.mkForce 1;
 }

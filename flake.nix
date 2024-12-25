@@ -11,11 +11,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    hyprland-source.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, hyprland-source, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }: {
     nixosConfigurations = {
       vickie = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
