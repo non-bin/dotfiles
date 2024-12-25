@@ -13,4 +13,6 @@
       monitor = lib.mkForce ",highres,auto,auto";
     };
   };
+
+  programs.alacritty.settings.window.opacity = 1;
 }
