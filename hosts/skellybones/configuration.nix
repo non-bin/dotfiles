@@ -12,7 +12,29 @@
 
   networking.hostName = "skellybones"; # Define your hostname.
 
-  services.fwupd.enable = true; # run with fwupdmgr update https://github.com/NixOS/nixos-hardware/tree/master/framework
+  services = {
+    btrfs.autoScrub.enable = true;
+    fwupd.enable = true; # run with fwupdmgr update https://github.com/NixOS/nixos-hardware/tree/master/framework
+
+    evremap = {
+      enable = true;
+      device_name = "Framework Laptop 16 Keyboard Module - ANSI Keyboard"; # evremap list-devices
+    };
+
+    # btrbk = {
+    #   instances."btrbk" = {
+    #     onCalendar = "*:0/10"; # every 10 minuites
+    #     settings = {
+    #       snapshot_preserve_min = "2d"; # Keep everything for at least 2d
+    #       snapshot_preserve = "20d 10w 12m"; # Keep daily backups for 20 days, weeklys for 10 weeks, and monthlies for 12 months
+    #       volume."/mnt/btr_pool" = { # /dev/vg0/btr_pool
+    #         subvolume = "home";
+    #         snapshot_dir = "/mnt/btr_pool/btrbk_snapshots";
+    #       };
+    #     };
+    #   };
+    # };
+  }
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
