@@ -62,6 +62,7 @@ Options:
 - hyprpaper
 - eslint
 - btrbk
+- ethernet
 
 - fingerprint
   - Hyprlock
