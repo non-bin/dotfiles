@@ -85,6 +85,9 @@
 
   environment.pathsToLink = [ "/share/zsh" ]; # System package zsh completions
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   environment.systemPackages = with pkgs; [
     brightnessctl
   ];
