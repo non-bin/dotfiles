@@ -13,7 +13,7 @@
           # Actions
           "$mod, RETURN, exec, alacritty"
           "$mod, C, exec, codium"
-          # "$mod, G, exec, gtk-launch GitKraken"                    # /usr/share/applications
+          "$mod, G, exec, gitkraken"                    # /usr/share/applications
           "$mod, E, exec, thunar"  # Opens the filemanager
           "$mod, Super_L, exec, wofi --show drun"                   # Open wofi to run .desktop entries
           "$mod, SPACE, exec, wofi --show run"                      # Open to run from path
@@ -24,7 +24,7 @@
           "$mod, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
 
           "$mod SHIFT ALT, M, exit"                       # Exit Hyprland
-          # "$mod SHIFT ALT, B, exec, reload-waybar.sh"     # Reload Waybar
+          "$mod SHIFT ALT, B, exec, reload-waybar.sh"     # Reload Waybar
           # "$mod SHIFT ALT, W, exec, reload-hyprpaper.sh"  # Reload hyprpaper after a changing the wallpaper
 
           "$mod, Q, killactive"             # Close current window
