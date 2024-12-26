@@ -75,7 +75,7 @@
       createHome = true;
       home = "/home/alice";
       group = "alice";
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "networkmanager" ];
       isNormalUser = true;
       packages = with pkgs; [];
     };
