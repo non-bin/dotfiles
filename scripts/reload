@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# set -x # Print commands as they are printed
 set -e # Exit on any errors
 
 cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../"
@@ -65,7 +66,7 @@ fi
 if [ "$RESCUE" != "YES" ]; then
   UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
   if [ -n "$UNTRACKED_FILES" ]; then
-    git add $UNTRACKED_FILES # Add all untracked files
+    git add "$UNTRACKED_FILES" # Add all untracked files
   fi
 fi
 
