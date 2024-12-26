@@ -8,6 +8,7 @@
     ./zsh.nix
     ./wlogout.nix
     ./waybar/waybar.nix
+    ./code/code.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -90,15 +91,6 @@
       };
       userEmail = "jacka.alice@gmail.com";
       userName = "Alice Jacka";
-    };
-
-    vscode = {
-      enable = true;
-      package = pkgs.vscodium;
-      extensions = with pkgs.vscode-extensions; [
-        dracula-theme.theme-dracula
-        yzhang.markdown-all-in-one
-      ];
     };
   };
 
