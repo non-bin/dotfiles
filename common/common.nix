@@ -26,6 +26,16 @@
   #   pulse.enable = true;
   # };
 
+  security.polkit = {
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if (subject.isInGroup("wheel"))
+          return polkit.Result.YES;
+      });
+    '';
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
     # systemd-boot = {
@@ -128,6 +138,7 @@
 
   services = {
     openssh.enable = true;
+    gnome.gnome-keyring.enable = true;
     evremap = {
       # Must enable and set device name in host config
       # enable = true;
