@@ -5,7 +5,7 @@
   programs.waybar = {
     enable = true;
 
-    settings = {
+    settings.main-bar = {
       "hyprland/workspaces" = {
         on-click = "activate";
         active-only = false;
@@ -84,21 +84,6 @@
       };
       "hyprland/language" = {
         format = "/ K {short}";
-      };
-      "group/hardware" = {
-        orientation = "inherit";
-        drawer = {
-          transition-duration = 300;
-          children-class = "not-memory";
-          transition-left-to-right = false;
-        };
-        # modules = [
-        #   "custom/system"
-        #   "disk"
-        #   "cpu"
-        #   "memory"
-        #   "hyprland/language"
-        # ];
       };
       network = {
         format = "{ifname}";
@@ -197,14 +182,29 @@
       };
       "custom/quicklinkempty" = {
       };
+      "group/hardware" = {
+        orientation = "inherit";
+        drawer = {
+          transition-duration = 300;
+          children-class = "not-memory";
+          transition-left-to-right = false;
+        };
+        modules = [
+          "custom/system"
+          "disk"
+          "cpu"
+          "memory"
+          "hyprland/language"
+        ];
+      };
       "group/quicklinks" = {
         orientation = "horizontal";
-        # modules = [
-        #   "custom/quicklink1"
-        #   "custom/quicklink2"
-        #   "custom/quicklink3"
-        #   "custom/quicklinkempty"
-        # ];
+        modules = [
+          "custom/quicklink1"
+          "custom/quicklink2"
+          "custom/quicklink3"
+          "custom/quicklinkempty"
+        ];
       };
     };
   };
