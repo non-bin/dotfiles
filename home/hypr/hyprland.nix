@@ -10,6 +10,37 @@
     ./hyprlock.nix
   ];
 
+  home.pointerCursor = {
+    hyprcursor.enable = true;
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 18;
+    # https://github.com/ful1e5/Bibata_Cursor?tab=readme-ov-file#notes
+    # Bibata-Modern-Amber
+    # Bibata-Modern-Classic
+    # Bibata-Modern-Ice
+    # Bibata-Modern-Amber-Right
+    # Bibata-Modern-Classic-Right
+    # Bibata-Modern-Ice-Right
+    # Bibata-Original-Amber
+    # Bibata-Original-Classic
+    # Bibata-Original-Ice
+    # Bibata-Original-Amber-Right
+    # Bibata-Original-Classic-Right
+    # Bibata-Original-Ice-Right
+  };
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 18;
+    };
+  };
+
   wayland.windowManager = {
     hyprland = {
       enable = true;

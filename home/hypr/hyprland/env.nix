@@ -9,8 +9,6 @@
         };
 
         env = [
-          "XCURSOR_SIZE,24"
-
           # Electron
           "ELECTRON_OZONE_PLATFORM_HINT,wayland"
 
@@ -55,8 +53,7 @@
         ];
 
         exec = [
-          ''gsettings set org.gnome.desktop.interface gtk-theme "Adwaita:dark"''   # for GTK3 apps
-          ''gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"'' # for GTK4 apps
+          "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
         ];
       };
     };
