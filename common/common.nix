@@ -86,7 +86,7 @@
   environment.pathsToLink = [ "/share/zsh" ]; # System package zsh completions
 
   environment.systemPackages = with pkgs; [
-
+    brightnessctl
   ];
 
   programs = {
