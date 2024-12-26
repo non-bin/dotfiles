@@ -47,13 +47,10 @@ Options:
 
 ### TODO
 
+- codium
 - hyprpolkitagent
-- waybar
-- network
 - hardware.cpu.amd.updateMicrocode
-- audio
 - bluetooth
-- brightness
 - check https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/ works
 - check screenshots work
 
@@ -62,7 +59,6 @@ Options:
 - hyprpaper
 - eslint
 - btrbk
-- ethernet
 
 - fingerprint
   - Hyprlock
