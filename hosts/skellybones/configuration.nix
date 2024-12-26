@@ -18,7 +18,7 @@
 
     evremap = {
       enable = true;
-      device_name = "Framework Laptop 16 Keyboard Module - ANSI Keyboard"; # evremap list-devices
+      settings.device_name = "Framework Laptop 16 Keyboard Module - ANSI Keyboard"; # evremap list-devices
     };
 
     # btrbk = {
