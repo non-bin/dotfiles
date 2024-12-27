@@ -47,14 +47,11 @@ Options:
 
 ### TODO
 
-- codium
-- hyprpolkitagent
 - hardware.cpu.amd.updateMicrocode
-- bluetooth
-- check https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/ works
+- check <https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/> works
 - check screenshots work
 
-- https://keyboard.frame.work https://community.frame.work/t/responded-help-configuring-fw16-keyboard-with-via/47176/5
+- <https://keyboard.frame.work> <https://community.frame.work/t/responded-help-configuring-fw16-keyboard-with-via/47176/5>
 - wl-clip-persist
 - hyprpaper
 - eslint

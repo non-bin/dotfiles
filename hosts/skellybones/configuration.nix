@@ -16,10 +16,10 @@
     btrfs.autoScrub.enable = true;
     fwupd.enable = true; # run with fwupdmgr update https://github.com/NixOS/nixos-hardware/tree/master/framework
 
-    evremap = {
-      enable = true;
-      settings.device_name = "Framework Laptop 16 Keyboard Module - ANSI Keyboard"; # evremap list-devices
-    };
+    # evremap = { # Managed by QMK firmware
+    #   enable = true;
+    #   settings.device_name = "Framework Laptop 16 Keyboard Module - ANSI Keyboard"; # evremap list-devices
+    # };
 
     # btrbk = {
     #   instances."btrbk" = {
