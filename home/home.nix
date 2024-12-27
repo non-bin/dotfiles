@@ -20,6 +20,7 @@
   ];
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    DEFAULT_BROWSER = "${lib.getExe pkgs.firefox}";
   };
 
   home.packages = with pkgs; [
@@ -65,6 +66,7 @@
   programs = {
     bash.enable = true;
     firefox.enable = true;
+    chromium.enable = true;
     wofi.enable = true;
 
     neovim = {
@@ -97,6 +99,20 @@
   services = {
     dunst.enable = true;
     cliphist.enable = true;
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "default-web-browser" = "firefox.desktop";
+      "application/xhtml+xml" = "firefox.desktop";
+      "text/xml" = "firefox.desktop";
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+    };
   };
 
   # This value determines the Home Manager release that your
