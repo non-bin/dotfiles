@@ -45,6 +45,7 @@
     spotify
     vlc
     inkscape-with-extensions
+    filezilla
 
     noto-fonts
     nerd-fonts.caskaydia-cove
