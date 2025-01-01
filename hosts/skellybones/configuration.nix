@@ -12,6 +12,12 @@
 
   networking.hostName = "skellybones"; # Define your hostname.
 
+  services.fprintd.enable = true;
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
+  };
+
   services = {
     btrfs.autoScrub.enable = true;
     fwupd.enable = true; # run with fwupdmgr update https://github.com/NixOS/nixos-hardware/tree/master/framework

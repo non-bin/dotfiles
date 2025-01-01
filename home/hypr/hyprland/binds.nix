@@ -15,7 +15,7 @@
           "$mod, C, exec, codium"
           "$mod, G, exec, gitkraken"                    # /usr/share/applications
           "$mod, E, exec, thunar"  # Opens the filemanager
-          "$mod, SPACE, exec, wofi --show drun"             # Open wofi to run .desktop entries 
+          "$mod, SPACE, exec, wofi --show drun"             # Open wofi to run .desktop entries
           "$mod ALT, SPACE, exec, wofi --show run"          # Open to run from path
           "$mod, B, exec, firefox"      # Opens the browser
           # "$mod ALT, M, exec, gtk-launch org.polymc.PolyMC"        # Minecraft Launcher
@@ -35,7 +35,7 @@
           "ALT, Print, exec, hyprpicker -a" # Pick colour
           "$mod, P, pseudo,"
           "$mod, J, togglesplit,"
-          "$mod, L, exec, loginctl lock-session"
+          "$mod, L, exec, hyprlock --immediate & loginctl lock-session"
 
           # Screenshot select area, save, and copy to clipboard
           '', Print, exec, grim -t png -g "$(slurp -d)" "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png" | wl-copy''

@@ -17,6 +17,10 @@
         path = "${../../wallpapers/calder-moore-factorycomped.jpg}";
       };
 
+      auth = {
+        "fingerprint:enabled" = true;
+      };
+
       input-field = {
         size = "200, 50";
         outline_thickness = 3;
