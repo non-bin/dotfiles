@@ -9,6 +9,7 @@
     ./wlogout.nix
     ./waybar/waybar.nix
     ./code/code.nix
+    ./java.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -31,7 +32,7 @@
     zip
     unzip
 
-    slurp           # Reigeon selector
+    slurp           # Region selector
     grim            # Screenshot taker
     swappy          # Screenshot editor
     wl-clipboard
@@ -43,6 +44,7 @@
     qdirstat
     spotify
     vlc
+    inkscape-with-extensions
 
     noto-fonts
     nerd-fonts.caskaydia-cove

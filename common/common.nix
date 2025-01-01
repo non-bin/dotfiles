@@ -85,7 +85,7 @@
       createHome = true;
       home = "/home/alice";
       group = "alice";
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" "adbusers" ];
       isNormalUser = true;
       packages = with pkgs; [];
     };
@@ -104,6 +104,7 @@
 
   programs = {
     hyprland.enable = true; # Enable system wide, configure in HM
+    adb.enable = true;
 
     regreet = {
       enable = true;
@@ -133,6 +134,11 @@
         thunar-volman
         thunar-media-tags-plugin
       ];
+    };
+
+    appimage = {
+      enable = true;
+      binfmt = true; # Run appimages directly
     };
   };
 
