@@ -40,7 +40,7 @@
     kdePackages.ark # Archive manager
     gitkraken
     gnome-disk-utility
-    orca-slicer
+    # orca-slicer
     qdirstat
     spotify
     vlc
