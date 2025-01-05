@@ -10,6 +10,8 @@
     ../../common/common.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest; # Sets the kernel version https://nixos.wiki/wiki/Linux_kernel
+
   networking.hostName = "skellybones"; # Define your hostname.
 
   services.fprintd.enable = true;
