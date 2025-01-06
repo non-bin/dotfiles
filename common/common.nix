@@ -91,7 +91,7 @@
     };
   };
 
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
 
   environment.pathsToLink = [ "/share/zsh" ]; # System package zsh completions
 
