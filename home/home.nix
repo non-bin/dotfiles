@@ -71,6 +71,7 @@
     firefox.enable = true;
     chromium.enable = true;
     wofi.enable = true;
+    bun.enable = true;
 
     neovim = {
       enable = true;
