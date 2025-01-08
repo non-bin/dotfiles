@@ -1,211 +1,211 @@
 [
   {
-    "key": "ctrl+tab",
-    "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+    "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+    "key": "ctrl+tab"
   },
   {
-    "key": "ctrl+shift+tab",
-    "command": "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup"
+    "command": "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup",
+    "key": "ctrl+shift+tab"
   },
   {
-    "key": "ctrl+tab",
-    "command": "workbench.action.nextEditor"
+    "command": "workbench.action.nextEditor",
+    "key": "ctrl+tab"
   },
   {
-    "key": "ctrl+shift+tab",
-    "command": "workbench.action.previousEditor"
+    "command": "workbench.action.previousEditor",
+    "key": "ctrl+shift+tab"
   },
   {
-    "key": "shift+alt+f",
     "command": "-editor.action.formatDocument",
+    "key": "shift+alt+f",
     "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
   },
   {
-    "key": "ctrl+enter",
     "command": "editor.action.replaceAll",
-    "when": "editorFocus && findWidgetVisible"
-  },
-  {
-    "key": "ctrl+alt+enter",
-    "command": "-editor.action.replaceAll",
-    "when": "editorFocus && findWidgetVisible"
-  },
-  {
     "key": "ctrl+enter",
-    "command": "search.action.replaceAll",
-    "when": "replaceActive && searchViewletVisible && !findWidgetVisible"
+    "when": "editorFocus && findWidgetVisible"
   },
   {
+    "command": "-editor.action.replaceAll",
     "key": "ctrl+alt+enter",
-    "command": "-search.action.replaceAll",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "command": "search.action.replaceAll",
+    "key": "ctrl+enter",
     "when": "replaceActive && searchViewletVisible && !findWidgetVisible"
   },
   {
-    "key": "ctrl+shift+i",
-    "command": "editor.action.reindentlines"
+    "command": "-search.action.replaceAll",
+    "key": "ctrl+alt+enter",
+    "when": "replaceActive && searchViewletVisible && !findWidgetVisible"
   },
   {
-    "key": "ctrl+k space",
-    "command": "editor.action.indentationToSpaces"
+    "command": "editor.action.reindentlines",
+    "key": "ctrl+shift+i"
   },
   {
-    "key": "ctrl+k tab",
-    "command": "editor.action.indentationToTabs"
+    "command": "editor.action.indentationToSpaces",
+    "key": "ctrl+k space"
   },
   {
-    "key": "ctrl+k c",
-    "command": "-workbench.files.action.compareWithClipboard"
+    "command": "editor.action.indentationToTabs",
+    "key": "ctrl+k tab"
   },
   {
-    "key": "ctrl+k c",
-    "command": "workbench.action.toggleCenteredLayout"
+    "command": "-workbench.files.action.compareWithClipboard",
+    "key": "ctrl+k c"
   },
   {
-    "key": "ctrl+shift+q",
+    "command": "workbench.action.toggleCenteredLayout",
+    "key": "ctrl+k c"
+  },
+  {
     "command": "-sqlite.runDocumentQuery",
+    "key": "ctrl+shift+q",
     "when": "editorLangId =~ /(sql|sqlite)/"
   },
   {
-    "key": "ctrl+shift+q",
-    "command": "sqlite.runSelectedQuery"
+    "command": "sqlite.runSelectedQuery",
+    "key": "ctrl+shift+q"
   },
   {
-    "key": "ctrl+k a",
-    "command": "wwm.aligncode"
+    "command": "wwm.aligncode",
+    "key": "ctrl+k a"
   },
   {
-    "key": "ctrl+k u",
-    "command": "-workbench.action.closeUnmodifiedEditors"
+    "command": "-workbench.action.closeUnmodifiedEditors",
+    "key": "ctrl+k u"
   },
   {
-    "key": "ctrl+k u",
-    "command": "editor.action.transformToUppercase"
+    "command": "editor.action.transformToUppercase",
+    "key": "ctrl+k u"
   },
   {
-    "key": "ctrl+k l",
-    "command": "editor.action.transformToLowercase"
+    "command": "editor.action.transformToLowercase",
+    "key": "ctrl+k l"
   },
   {
-    "key": "ctrl+n",
-    "command": "-workbench.action.files.newUntitledFile"
+    "command": "-workbench.action.files.newUntitledFile",
+    "key": "ctrl+n"
   },
   {
-    "key": "ctrl+n",
-    "command": "explorer.newFile"
+    "command": "explorer.newFile",
+    "key": "ctrl+n"
   },
   {
-    "key": "ctrl+alt+n",
-    "command": "workbench.action.files.newUntitledFile"
+    "command": "workbench.action.files.newUntitledFile",
+    "key": "ctrl+alt+n"
   },
   {
-    "key": "ctrl+b",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+b"
   },
   {
-    "key": "ctrl+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
+    "command": "-workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+b"
   },
   {
-    "key": "ctrl+k b",
-    "command": "yarn-script.build"
+    "command": "yarn-script.build",
+    "key": "ctrl+k b"
   },
   {
-    "key": "ctrl+shift+`",
     "command": "-workbench.action.terminal.new",
+    "key": "ctrl+shift+`",
     "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   },
   {
-    "key": "ctrl+`",
-    "command": "workbench.action.createTerminalEditor"
+    "command": "workbench.action.createTerminalEditor",
+    "key": "ctrl+`"
   },
   {
-    "key": "ctrl+shift+/",
     "command": "editor.action.blockComment",
+    "key": "ctrl+shift+/",
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "shift+alt+a",
     "command": "-editor.action.blockComment",
+    "key": "shift+alt+a",
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+k v",
     "command": "-dendron.togglePreview",
+    "key": "ctrl+k v",
     "when": "dendron:pluginActive"
   },
   {
-    "key": "ctrl+k s",
-    "command": "-saveAll"
+    "command": "-saveAll",
+    "key": "ctrl+k s"
   },
   {
-    "key": "ctrl+k s",
-    "command": "git.sync"
+    "command": "git.sync",
+    "key": "ctrl+k s"
   },
   {
-    "key": "ctrl+k ctrl+a",
     "command": "-keybindings.editor.addKeybinding",
+    "key": "ctrl+k ctrl+a",
     "when": "inKeybindings && keybindingFocus"
   },
   {
-    "key": "ctrl+k ctrl+a",
-    "command": "git.commitAll"
+    "command": "git.commitAll",
+    "key": "ctrl+k ctrl+a"
   },
   {
-    "key": "ctrl+p",
-    "command": "-workbench.action.quickOpen"
+    "command": "-workbench.action.quickOpen",
+    "key": "ctrl+p"
   },
   {
-    "key": "ctrl+p",
-    "command": "toggle.window.commandCenter"
+    "command": "toggle.window.commandCenter",
+    "key": "ctrl+p"
   },
   {
-    "key": "ctrl+alt+f",
-    "command": "workbench.action.quickTextSearch"
+    "command": "workbench.action.quickTextSearch",
+    "key": "ctrl+alt+f"
   },
   {
-    "key": "ctrl+shift+`",
-    "command": "workbench.action.terminal.new"
+    "command": "workbench.action.terminal.new",
+    "key": "ctrl+shift+`"
   },
   {
-    "key": "ctrl+shift+`",
-    "command": "terminal.focus"
+    "command": "terminal.focus",
+    "key": "ctrl+shift+`"
   },
   {
-    "key": "ctrl+alt+s",
-    "command": "workbench.action.files.saveWithoutFormatting"
+    "command": "workbench.action.files.saveWithoutFormatting",
+    "key": "ctrl+alt+s"
   },
   {
-    "key": "ctrl+k s",
-    "command": "-workbench.action.files.saveWithoutFormatting"
+    "command": "-workbench.action.files.saveWithoutFormatting",
+    "key": "ctrl+k s"
   },
   {
-    "key": "ctrl+k g",
-    "command": "git-graph.view"
+    "command": "git-graph.view",
+    "key": "ctrl+k g"
   },
   {
-    "key": "alt+left",
     "command": "cursorUndo",
+    "key": "alt+left",
     "when": "textInputFocus"
   },
   {
-    "key": "ctrl+u",
     "command": "-cursorUndo",
+    "key": "ctrl+u",
     "when": "textInputFocus"
   },
   {
-    "key": "alt+right",
-    "command": "cursorRedo"
+    "command": "cursorRedo",
+    "key": "alt+right"
   },
   {
-    "key": "ctrl+shift+alt+f5",
-    "command": "editor.debug.action.runToCursor"
+    "command": "editor.debug.action.runToCursor",
+    "key": "ctrl+shift+alt+f5"
   },
   {
-    "key": "shift+alt+pagedown",
-    "command": "editor.action.focusNextCursor"
+    "command": "editor.action.focusNextCursor",
+    "key": "shift+alt+pagedown"
   },
   {
-    "key": "shift+alt+pageup",
-    "command": "editor.action.focusPreviousCursor"
+    "command": "editor.action.focusPreviousCursor",
+    "key": "shift+alt+pageup"
   }
 ]
