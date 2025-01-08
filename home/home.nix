@@ -38,7 +38,7 @@
     wl-clipboard
 
     kdePackages.ark # Archive manager
-    gitkraken
+    # gittyup
     gnome-disk-utility
     # orca-slicer
     qdirstat

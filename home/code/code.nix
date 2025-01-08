@@ -39,6 +39,7 @@
         aaron-bond.better-comments
         usernamehw.errorlens
         ms-vscode.hexeditor
+        mhutchie.git-graph
       ];
     };
   };

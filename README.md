@@ -74,7 +74,7 @@ Options:
 
 ## Resources
 
-[NixOS Package Search](https://search.nixos.org/packages)
+[NixOS Package Search](https://search.nixos.org/packages?channel=unstable)
 [Nüschtos Options Search](https://search.n%C3%BCschtos.de)
 [JSON to Nix](https://json-to-nix.pages.dev/)
 

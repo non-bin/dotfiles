@@ -180,7 +180,7 @@
   },
   {
     "key": "ctrl+k g",
-    "command": "gitlens.showGraphPage"
+    "command": "git-graph.view"
   },
   {
     "key": "alt+left",
