@@ -207,5 +207,14 @@
   {
     "command": "editor.action.focusPreviousCursor",
     "key": "shift+alt+pageup"
+  },
+  {
+    "key": "ctrl+k ctrl+p",
+    "command": "git.push",
+    "when": "!operationInProgress"
+  },
+  {
+    "key": "ctrl+k ctrl+p",
+    "command": "-workbench.action.showAllEditors"
   }
 ]
