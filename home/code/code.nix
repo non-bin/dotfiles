@@ -23,6 +23,7 @@
         bierner.markdown-preview-github-styles
         davidanson.vscode-markdownlint
 
+        # oven.bun-vscode # TODO: not in nixpkgs
         mechatroner.rainbow-csv
         jnoortheen.nix-ide
         ms-vscode.cpptools

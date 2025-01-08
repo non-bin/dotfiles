@@ -55,10 +55,10 @@
           "$mod SHIFT, down, movewindow, d"  # Move focus down
 
           # Move workspace to monitor
-          "$mainMod ALT, left, moveworkspacetomonitor, +0 l"  # Move focus left
-          "$mainMod ALT, right, moveworkspacetomonitor, +0 r" # Move focus right
-          "$mainMod ALT, up, moveworkspacetomonitor, +0 u"    # Move focus up
-          "$mainMod ALT, down, moveworkspacetomonitor, +0 d"  # Move focus down
+          "$mod ALT, left, moveworkspacetomonitor, +0 l"  # Move focus left
+          "$mod ALT, right, moveworkspacetomonitor, +0 r" # Move focus right
+          "$mod ALT, up, moveworkspacetomonitor, +0 u"    # Move focus up
+          "$mod ALT, down, moveworkspacetomonitor, +0 d"  # Move focus down
 
           # Switch workspaces with mod + [0-9]
           "$mod, bracketright, workspace, r+1" # Switch to workspace right
@@ -99,6 +99,7 @@
         bindm = [
           "$mod, mouse:272, movewindow" # Move window
           "$mod, mouse:273, resizewindow" # Resize window
+          # Volume
         ];
       };
     };
