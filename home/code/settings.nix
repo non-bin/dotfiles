@@ -248,9 +248,9 @@
         path = "tmux";
       };
       zsh = {
-        env = {
-          ZELLIJ_AUTO_START = "false";
-        };
+        # env = {
+        #   ZELLIJ_AUTO_START = "false";
+        # };
         path = "zsh";
       };
     };
