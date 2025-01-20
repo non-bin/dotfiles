@@ -145,6 +145,24 @@
   services = {
     openssh.enable = true;
     gnome.gnome-keyring.enable = true;
+
+    logind = {
+      # one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
+      hibernateKey = "hibernate";
+      hibernateKeyLongPress = "ignore";
+      lidSwitch = "suspend";
+      lidSwitchDocked = "ignore"; # When a second screen is attached
+      # lidSwitchExternalPower = ""; # Falls back to lidSwitch
+      powerKey = "ignore";
+      powerKeyLongPress = "ignore";
+      rebootKey = "reboot";
+      rebootKeyLongPress = "ignore";
+      suspendKey = "suspend";
+      suspendKeyLongPress = "ignore";
+
+      extraConfig = ""; # https://www.freedesktop.org/software/systemd/man/logind.conf.html
+    };
+
     evremap = {
       # Must enable and set device name in host config
       # enable = true;
