@@ -41,7 +41,7 @@
     kdePackages.ark # Archive manager
     # gittyup
     gnome-disk-utility
-    # orca-slicer
+    orca-slicer
     qdirstat
     spotify
     vlc
