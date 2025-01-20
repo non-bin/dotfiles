@@ -32,6 +32,7 @@
     wev # Waykand event viewer
     zip
     unzip
+    traceroute
 
     slurp           # Region selector
     grim            # Screenshot taker
@@ -47,6 +48,7 @@
     vlc
     inkscape-with-extensions
     filezilla
+    blueman
 
     noto-fonts
     nerd-fonts.caskaydia-cove
@@ -72,7 +74,7 @@
   programs = {
     bash.enable = true;
     firefox.enable = true;
-    chromium.enable = true;
+    # chromium.enable = true;
     wofi.enable = true;
     bun.enable = true;
 
