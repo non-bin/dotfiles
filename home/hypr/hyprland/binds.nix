@@ -77,7 +77,7 @@
             in [
               "$mod, code:1${toString i}, workspace, ${toString ws}"              # Switch workspaces with mod + [0-9]
               "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"  # Move active window to a workspace with mod + SHIFT + [0-9]
-              "$mod ALT, code:1${toString i}, movetoworkspace, ${toString ws}"    # Move active window to a workspace with mod + alt + [0-9] DONT MOVE FOCUS
+              "$mod ALT, code:1${toString i}, movetoworkspacesilent, ${toString ws}"    # Move active window to a workspace with mod + alt + [0-9] DONT MOVE FOCUS
             ]
           ) 9)
         );
