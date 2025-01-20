@@ -20,6 +20,7 @@
     "$HOME/dotfiles/scripts"
   ];
   home.sessionVariables = {
+    SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt";
     NIXOS_OZONE_WL = "1";
     DEFAULT_BROWSER = "${lib.getExe pkgs.firefox}";
   };
@@ -56,6 +57,8 @@
     aspellDicts.en
     aspellDicts.en-computers
     aspellDicts.en-science
+
+    nodePackages_latest.nodejs
   ];
 
   home.file = {
