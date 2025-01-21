@@ -3,7 +3,7 @@
 # home-manager.users.alice =
 {
   imports = [
-    ./hypr/hyprland.nix
+    ./hypr/land.nix
     ./alacrity.nix
     ./zsh.nix
     ./wlogout.nix

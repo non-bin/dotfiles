@@ -3,11 +3,11 @@
 # home-manager.users.alice =
 {
   imports = [
-    ./hyprland/binds.nix
-    ./hyprland/env.nix
+    ./binds.nix
+    ./env.nix
 
-    ./hypridle.nix
-    ./hyprlock.nix
+    ./idle.nix
+    ./lock.nix
   ];
 
   home.pointerCursor = {
