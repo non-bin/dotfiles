@@ -52,15 +52,30 @@
 
       label = [
         {
+          # Fprint
+          text = "$FPRINTPROMPT";
+          color = "rgba(200, 200, 200, 1.0)";
+          font_size = 15;
+          font_family = "Fira Semibold";
+          halign = "right";
+          valign = "bottom";
+          text_align = "right";
+          position = "-5, 100";
+          shadow_passes = 5;
+          shadow_size = 10;
+        }
+
+        {
           # Time
           text = ''cmd[update:1000] date "+%l:%M %p"'';
           # text = "cmd[update:1000] date +%r";
           color = "rgba(200, 200, 200, 1.0)";
           font_size = 55;
           font_family = "Fira Semibold";
-          position = "-5, 23";
           halign = "right";
           valign = "bottom";
+          text_align = "right";
+          position = "-5, 23";
           shadow_passes = 5;
           shadow_size = 10;
         }
@@ -70,9 +85,10 @@
           color = "rgba(200, 200, 200, 1.0)";
           font_size = 20;
           font_family = "Fira Semibold";
-          position = "-10, 5";
           halign = "right";
           valign = "bottom";
+          text_align = "right";
+          position = "-5, 5";
           shadow_passes = 5;
           shadow_size = 10;
         }
