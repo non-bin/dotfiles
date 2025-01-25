@@ -341,7 +341,6 @@
     "security.promptForLocalFileProtocolHandling" = false;
     "editor.formatOnSave" = true;
     "liveServer.settings.donotShowInfoMsg" = true;
-    "javascript.updateImportsOnFileMove.enabled" = "always";
     "gitlens.graph.layout" = "editor";
     "gitlens.graph.minimap.dataType" = "lines";
     "git.openRepositoryInParentFolders" = "always";
@@ -372,4 +371,6 @@
         1
       ];
     };
+    "typescript.updateImportsOnFileMove.enabled" = "always";
+    "javascript.updateImportsOnFileMove.enabled" = "always";
   }
