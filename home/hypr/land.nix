@@ -127,7 +127,7 @@
         };
 
         misc = {
-          vrr = 1; # Adaptive Sync. 0 - off, 1 - on, 2 - fullscreen
+          vrr = 0; # Adaptive Sync. 0 - off, 1 - on, 2 - fullscreen
           disable_hyprland_logo = false;
           disable_splash_rendering = false;
           new_window_takes_over_fullscreen = 2; # 0 - behind, 1 - takes over, 2 - unfullscreen/unmaxize
