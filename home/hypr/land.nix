@@ -146,13 +146,14 @@
           "bordersize 2,fullscreen:1"
 
           # PIP
-          "float,title:(Picture-in-Picture)"
-          "move 100%-w-3 100%-w-3,title:(Picture-in-Picture)"
-          "size 30% 30%,title:(Picture-in-Picture)"
-          "keepaspectratio,title:(Picture-in-Picture)"
-          "noblur,title:(Picture-in-Picture)"
-          "pin,title:(Picture-in-Picture),floating:1"
-          "opacity 0.3 1,title:(Picture-in-Picture),floating:1"
+          "tag +PIP,title:(Picture-in-Picture)"
+          "float,tag:PIP"
+          "size 30% 30%,tag:PIP*"
+          "move 100%-w-3 100%-w-3,tag:PIP"
+          "keepaspectratio,tag:PIP*"
+          "noblur,tag:PIP"
+          "pin,tag:PIP,floating:1"
+          "opacity 0.3 1,tag:PIP,floating:1"
 
           # Idle
           "idleinhibit fullscreen, class:^(*)$"

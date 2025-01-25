@@ -34,6 +34,20 @@
           "$mod, M, fullscreen, 1"          # Open the window maximised
           "ALT, Print, exec, hyprpicker -a" # Pick colour
           "$mod, P, pseudo,"
+
+          "$mod ALT, P, tagwindow, +PIP*"
+          "$mod ALT, P, setfloating"
+          "$mod ALT, P, movewindow, r"
+          "$mod ALT, P, movewindow, d"
+          "$mod ALT, P, resizeactive, exact 30% 30%"
+          "$mod ALT, P, setprop, noblur 1"
+          "$mod ALT, P, pin"
+
+          "$mod CTRL ALT, P, tagwindow, -PIP*"
+          "$mod CTRL ALT, P, settiled"
+          "$mod CTRL ALT, P, setprop, keepaspectratio unset"
+          "$mod CTRL ALT, P, setprop, noblur unset"
+
           "$mod, J, togglesplit,"
           "$mod, L, exec, hyprlock --immediate & loginctl lock-session"
 
