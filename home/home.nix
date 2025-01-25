@@ -49,6 +49,7 @@
     inkscape-with-extensions
     filezilla
     blueman
+    libreoffice-fresh
 
     noto-fonts
     nerd-fonts.caskaydia-cove
@@ -113,8 +114,10 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      "text/plain"="codium.desktop";
       "default-web-browser" = "firefox.desktop";
       "application/xhtml+xml" = "firefox.desktop";
+      "application/pdf" = "firefox.desktop";
       "text/xml" = "firefox.desktop";
       "text/html" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
