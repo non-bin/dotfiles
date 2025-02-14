@@ -28,7 +28,7 @@
           # "$mod SHIFT ALT, W, exec, reload-hyprpaper.sh"  # Reload hyprpaper after a changing the wallpaper
 
           "$mod, Q, killactive"             # Close current window
-          "$mod ALT, Q, forcekillactive"    # Kill current window
+          # "$mod ALT, Q, forcekillactive"    # Kill current window https://github.com/hyprwm/Hyprland/issues/9177
           "$mod, T, togglefloating"         # Toggle between tiling and floating window
           "$mod, P, pin"                    # Toggle between tiling and floating window
           "$mod, F, fullscreen, 0"          # Open the window in fullscreen
