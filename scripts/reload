@@ -24,6 +24,10 @@ while [[ $# -gt 0 ]]; do
       TRACE="--show-trace"
       shift # past argument
       ;;
+    -c|--clean)
+      CLEAN="YES"
+      shift # past argument
+      ;;
     # -s|--search)
     #   SEARCHPATH="$2"
     #   shift # past argument
@@ -38,6 +42,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -u, --upgrade     Add pull updates from upstream and update lockfile"
       echo "  -t, --show-trace  Pass --show-trace to rebuild command (for debuggin)"
       echo "  -P, --pull        Pull updates from git before updating"
+      echo "  -c, --clean       Garbage collect the nix store and exit (more info at https://nixos.wiki/wiki/Cleaning_the_nix_store)"
       # echo
       # echo "To Impliment:"
       # echo "  -p, --push     Commit and push all changes"
@@ -54,6 +59,11 @@ done
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
 NEW_HOSTNAME="$1"
+
+if [ "$CLEAN" == "YES" ]; then
+  nix-store --gc
+  exit 0
+fi
 
 if [ "$PULL" == "YES" ]; then
   git pull
