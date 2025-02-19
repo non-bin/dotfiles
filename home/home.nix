@@ -23,6 +23,10 @@
     SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt";
     NIXOS_OZONE_WL = "1";
     DEFAULT_BROWSER = "${lib.getExe pkgs.firefox}";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    BROWSER = "firefox";
+    TERMINAL = "alacritty";
   };
 
   home.packages = with pkgs; [
@@ -112,6 +116,7 @@
     cliphist.enable = true;
   };
 
+  xdg.configFile."mimeapps.list".force = true; # Fix overwritten file
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -125,6 +130,7 @@
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
+      "inode/directory" = "thunar.desktop";
     };
   };
 
