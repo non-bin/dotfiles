@@ -134,6 +134,26 @@
     };
   };
 
+  home.file = {
+    ".config/Thunar/uca.xml".text = ''
+      <?xml version="1.0" encoding="UTF-8"?>
+      <actions>
+      <action>
+        <icon>utilities-terminal</icon>
+        <name>Open Terminal Here</name>
+        <submenu></submenu>
+        <unique-id>1735180505505982-1</unique-id>
+        <command>/usr/bin/env alacritty --working-directory %f</command>
+        <description>Example for a custom action</description>
+        <range></range>
+        <patterns>*</patterns>
+        <startup-notify/>
+        <directories/>
+      </action>
+      </actions>
+    '';
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
