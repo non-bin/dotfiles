@@ -66,6 +66,7 @@
     aspellDicts.en-science
 
     nodePackages_latest.nodejs
+    deno
   ];
 
   home.file = {
