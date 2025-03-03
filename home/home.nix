@@ -54,6 +54,7 @@
     filezilla
     blueman
     libreoffice-fresh
+    kdePackages.kdenlive
 
     noto-fonts
     nerd-fonts.caskaydia-cove
