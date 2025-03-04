@@ -22,6 +22,7 @@
           "$mod SHIFT, M, exec, gamemoderun prismlauncher -l main"  # Minecraft
           "$mod, S, exec, spotify"
           "$mod, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
+          "$mod, O, exec, obsidian"
 
           "$mod SHIFT ALT, M, exit"                       # Exit Hyprland
           "$mod SHIFT ALT, B, exec, reload-waybar.sh"     # Reload Waybar

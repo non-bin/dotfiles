@@ -56,6 +56,7 @@
     libreoffice-fresh
     kdePackages.kdenlive
     prismlauncher # Minecraft
+    obsidian
 
     noto-fonts
     nerd-fonts.caskaydia-cove
