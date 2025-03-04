@@ -55,6 +55,7 @@
     blueman
     libreoffice-fresh
     kdePackages.kdenlive
+    prismlauncher # Minecraft
 
     noto-fonts
     nerd-fonts.caskaydia-cove
