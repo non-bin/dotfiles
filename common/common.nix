@@ -116,6 +116,7 @@
 
   programs = {
     hyprland.enable = true; # Enable system wide, configure in HM
+    programs.gamemode.enable = true;
     adb.enable = true;
 
     regreet = {
