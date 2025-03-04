@@ -14,12 +14,12 @@
           "$mod, RETURN, exec, alacritty"
           "$mod, C, exec, codium"
           "$mod, G, exec, gitkraken"                    # /usr/share/applications
-          "$mod, E, exec, thunar"  # Opens the filemanager
-          "$mod, SPACE, exec, wofi --show drun"             # Open wofi to run .desktop entries
-          "$mod ALT, SPACE, exec, wofi --show run"          # Open to run from path
-          "$mod, B, exec, firefox"      # Opens the browser
-          # "$mod ALT, M, exec, gtk-launch org.polymc.PolyMC"        # Minecraft Launcher
-          # "$mod SHIFT, M, exec, polymc -l asd"                     # Minecraft
+          "$mod, E, exec, thunar"                       # Opens the filemanager
+          "$mod, SPACE, exec, wofi --show drun"         # Open wofi to run .desktop entries
+          "$mod ALT, SPACE, exec, wofi --show run"      # Open to run from path
+          "$mod, B, exec, firefox"                      # Opens the browser
+          "$mod ALT, M, exec, gamemoderun prismlauncher"            # Minecraft Launcher
+          "$mod SHIFT, M, exec, gamemoderun prismlauncher -l main"  # Minecraft
           "$mod, S, exec, spotify"
           "$mod, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
 
