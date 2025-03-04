@@ -42,6 +42,7 @@
     grim            # Screenshot taker
     swappy          # Screenshot editor
     wl-clipboard
+    solaar          # Logitech
 
     kdePackages.ark # Archive manager
     # gittyup
