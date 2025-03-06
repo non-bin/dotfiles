@@ -58,6 +58,7 @@
     kdePackages.kdenlive
     prismlauncher # Minecraft
     obsidian
+    qbittorrent
 
     noto-fonts
     nerd-fonts.caskaydia-cove
