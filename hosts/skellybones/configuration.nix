@@ -23,6 +23,7 @@
   services = {
     btrfs.autoScrub.enable = true;
     fwupd.enable = true; # run with fwupdmgr update https://github.com/NixOS/nixos-hardware/tree/master/framework
+    gvfs.enable = true;
 
     # evremap = { # Managed by QMK firmware
     #   enable = true;
