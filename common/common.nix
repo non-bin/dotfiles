@@ -97,7 +97,7 @@
       createHome = true;
       home = "/home/alice";
       group = "alice";
-      extraGroups = [ "wheel" "networkmanager" "adbusers" ];
+      extraGroups = [ "wheel" "networkmanager" "adbusers" "libvirtd" ];
       isNormalUser = true;
       packages = with pkgs; [];
     };
@@ -112,12 +112,15 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl
+    wineWowPackages.waylandFull
   ];
 
   programs = {
     hyprland.enable = true; # Enable system wide, configure in HM
     gamemode.enable = true;
     adb.enable = true;
+
+    virt-manager.enable = true;
 
     regreet = {
       enable = true;
@@ -206,6 +209,16 @@
       enable = true;
     };
   };
+
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.swtpm.enable = true;
+    };
+
+    spiceUSBRedirection.enable = true;
+  };
+
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
