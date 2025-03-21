@@ -72,6 +72,9 @@
 
     nodePackages_latest.nodejs
     deno
+
+    qemu
+    quickemu
   ];
 
   home.file = {
