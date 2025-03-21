@@ -113,6 +113,7 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     wineWowPackages.waylandFull
+    ffmpeg
   ];
 
   programs = {
