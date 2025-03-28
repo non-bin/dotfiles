@@ -48,6 +48,8 @@
     '';
   };
 
+  boot.kernel.sysctl."kernel.sysrq" = 1;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
     # systemd-boot = {
