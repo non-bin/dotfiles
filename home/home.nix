@@ -74,6 +74,8 @@
     deno
 
     quickemu
+    jq
+    ffmpeg
   ];
 
   home.file = {

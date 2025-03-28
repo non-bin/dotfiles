@@ -113,7 +113,15 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     wineWowPackages.waylandFull
-    ffmpeg
+
+    # Thumbnail providers
+    ffmpegthumbnailer # Video
+    poppler_gi # Adobe .pdf files
+    freetype # Font files
+    libgsf # .odf files
+    nufraw-thumbnailer # .raw files
+    evince # .pdf files
+    f3d # 3D files, including glTF, stl, step, ply, obj, fbx.
   ];
 
   programs = {
@@ -162,6 +170,7 @@
   services = {
     openssh.enable = true;
     gnome.gnome-keyring.enable = true;
+    tumbler.enable = true; # Image thumbnails
 
     logind = {
       # one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
