@@ -12,15 +12,23 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }: {
     nixosConfigurations = {
       vickie = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
           ./hosts/vickie/configuration.nix
           home-manager.nixosModules.home-manager {
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.alice = import ./hosts/vickie/home.nix;
@@ -28,11 +36,13 @@
         ];
       };
       skellybones = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
           ./hosts/skellybones/configuration.nix
           nixos-hardware.nixosModules.framework-16-7040-amd
           home-manager.nixosModules.home-manager {
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.alice = import ./hosts/skellybones/home.nix;
