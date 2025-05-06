@@ -59,6 +59,7 @@
     prismlauncher # Minecraft
     obsidian
     qbittorrent
+    gimp
 
     noto-fonts
     nerd-fonts.caskaydia-cove
