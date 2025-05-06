@@ -31,11 +31,10 @@
           "$mod, Q, killactive"             # Close current window
           "$mod ALT, Q, forcekillactive"    # Kill current window https://github.com/hyprwm/Hyprland/issues/9177
           "$mod, T, togglefloating"         # Toggle between tiling and floating window
-          "$mod, P, pin"                    # Toggle between tiling and floating window
+          "$mod, P, pseudo,"
           "$mod, F, fullscreen, 0"          # Open the window in fullscreen
           "$mod, M, fullscreen, 1"          # Open the window maximised
           "ALT, Print, exec, hyprpicker -a" # Pick colour
-          "$mod, P, pseudo,"
 
           "$mod ALT, P, tagwindow, +PIP*"
           "$mod ALT, P, setfloating"
