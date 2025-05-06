@@ -77,6 +77,8 @@
     quickemu
     jq
     ffmpeg
+
+    pavucontrol # Audio settings
   ];
 
   home.file = {
