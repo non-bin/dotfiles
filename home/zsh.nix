@@ -36,7 +36,7 @@
       rmv = "cp --remove-source-files";
     };
 
-    initExtra = lib.strings.concatLines [
+    initContent = lib.strings.concatLines [
       "setopt extendedglob nomatch"
       ''bindkey " " magic-space''
       ''bindkey "^[[1;5C" forward-word''
