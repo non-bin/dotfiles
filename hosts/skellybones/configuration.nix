@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../common/common.nix
+    ../../common/docker.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest; # Sets the kernel version https://nixos.wiki/wiki/Linux_kernel

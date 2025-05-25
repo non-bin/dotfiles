@@ -100,7 +100,7 @@
       createHome = true;
       home = "/home/alice";
       group = "alice";
-      extraGroups = [ "wheel" "networkmanager" "adbusers" "libvirtd" ];
+      extraGroups = [ "wheel" "networkmanager" "adbusers" "libvirtd" "docker"];
       isNormalUser = true;
       packages = with pkgs; [];
     };
