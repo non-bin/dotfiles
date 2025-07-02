@@ -71,7 +71,7 @@
     aspellDicts.en-computers
     aspellDicts.en-science
 
-    nodePackages_latest.nodejs
+    nodejs #_latest
     deno
 
     quickemu
