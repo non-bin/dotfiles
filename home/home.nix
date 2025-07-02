@@ -79,6 +79,8 @@
     ffmpeg
 
     pavucontrol # Audio settings
+
+    android-studio #-full
   ];
 
   home.file = {

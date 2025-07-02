@@ -70,7 +70,11 @@
     # timestampFormat = "%F %H:%M hi";
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    android_sdk.accept_license = true;
+  };
+
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
@@ -100,7 +104,7 @@
       createHome = true;
       home = "/home/alice";
       group = "alice";
-      extraGroups = [ "wheel" "networkmanager" "adbusers" "libvirtd" "docker"];
+      extraGroups = [ "wheel" "networkmanager" "adbusers" "libvirtd" "docker" "kvm"];
       isNormalUser = true;
       packages = with pkgs; [];
     };
