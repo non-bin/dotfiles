@@ -81,4 +81,4 @@ if [ "$RESCUE" != "YES" ]; then
 fi
 
 # rm /home/alice/.config/mimeapps.list # Gets overwritten by setting defaults in Thunar
-nixos-rebuild switch --use-remote-sudo $TRACE --flake ./#$NEW_HOSTNAME
+nixos-rebuild switch --sudo $TRACE --flake ./#$NEW_HOSTNAME
