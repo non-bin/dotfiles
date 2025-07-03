@@ -34,6 +34,7 @@
       rsync = "rsync -rlgopPEh --mkpath --info=PROGRESS2,STATS3,SKIP2";
       rcp = ''rsync -e /dev/null -b --backup-dir="/tmp/rsync-$USERNAME"'';
       rmv = "cp --remove-source-files";
+      dfh = "df -xtmpfs -xefivarfs -xdevtmpfs -hT";
     };
 
     initContent = lib.strings.concatLines [
