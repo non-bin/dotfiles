@@ -5,29 +5,50 @@ set -e # Exit on any errors
 cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../"
 # cd "$HOME/dotfiles"
 
+REBUILD="YES" # Default
+
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -r|--rescue)
+    -R|--rescue)
       RESCUE="YES"
       shift # past argument
       ;;
+    -o|--optimise)
+      REBUILD="NO"
+      OPTIMISE="YES"
+      shift
+      ;;
     -p|--pull)
       PULL="YES"
+      shift # past argument
+      ;;
+    -P|--push)
+      PUSH="YES"
       shift # past argument
       ;;
     -u|--upgrade)
       UPGRADE="YES"
       shift # past argument
       ;;
-    -t|--show-trace)
+    -t|--trace)
       TRACE="--show-trace"
       shift # past argument
       ;;
     -c|--clean)
+      REBUILD="NO"
       CLEAN="YES"
       shift # past argument
       ;;
+    -r|--reload)
+      REBUILD="YES"
+      shift # past argument
+      ;;
+    -d|--dry-run)
+      DRY="YES"
+      shift # past argument
+      ;;
+    # -s|--search)
     # -s|--search)
     #   SEARCHPATH="$2"
     #   shift # past argument
@@ -39,14 +60,17 @@ while [[ $# -gt 0 ]]; do
       echo "Usage: reload [options] [new-hostname]"
       echo
       echo "Options:"
-      echo "  -u, --upgrade     Add pull updates from upstream and update lockfile"
-      echo "  -t, --show-trace  Pass --show-trace to rebuild command (for debuggin)"
-      echo "  -P, --pull        Pull updates from git before updating"
-      echo "  -c, --clean       Garbage collect the nix store and exit (more info at https://nixos.wiki/wiki/Cleaning_the_nix_store)"
-      # echo
-      # echo "To Impliment:"
-      # echo "  -p, --push     Commit and push all changes"
-      # echo "  -d, --dry-run  Don't rebuild"
+      echo "  -u, --upgrade     Pull updates from upstream and update lockfile"
+      echo "  -c, --clean       Garbage collect the nix store, don't rebuild (more info at https://nixos.wiki/wiki/Cleaning_the_nix_store and https://nixos.wiki/wiki/Storage_optimization)"
+      echo "  -o, --optimise    Hard link identicle files in the nix store, don't rebuild"
+      echo "  -p, --pull        Pull updates from git before updating"
+      echo "  -P, --push        Commit and push all changes"
+      echo "  -r, --rebuild     Explicitly run the rebuild command (eg if running with -c or -o)"
+      echo "  -d, --dry-run     Run everything but the rebuild command"
+      echo "  -R, --rescue      Don't run any extra commands (like git)"
+      echo "  -t, --trace       Pass --show-trace to rebuild command (for debuggin)"
+      echo
+      echo "Options must be specified with separate tacs (these: '-'). For example use '-u -c -P' not '-ucP"
       exit 1
       ;;
     *)
@@ -61,19 +85,30 @@ set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 NEW_HOSTNAME="$1"
 
 if [ "$CLEAN" == "YES" ]; then
-  nix-store --gc
-  exit 0
+  sudo nix-collect-garbage --delete-older-than 30d # Delete old system generations
+  nix-collect-garbage --delete-older-than 30d # And the same for HomeManager
+  nix-store --gc # Remove unused store entries
+fi
+
+if [ "$OPTIMISE" == "YES" ]; then
+  nix-store --optimise -vv # Can be scheduled with `nix.optimise.automatic = true;`, or run on every build with `nix.settings.auto-optimise-store = true;`, but this doesn't catch everything
 fi
 
 if [ "$PULL" == "YES" ]; then
   git pull
 fi
 
+if [ "$PUSH" == "YES" ]; then
+  git add *
+  git commit
+  git push
+fi
+
 if [ "$UPGRADE" == "YES" ]; then
   nix flake update
 fi
 
-if [ "$RESCUE" != "YES" ]; then
+if [ "$RESCUE" != "YES" ] && [ "$REBUILD" == "YES" ]; then
   UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
   if [ -n "$UNTRACKED_FILES" ]; then
     git add "$UNTRACKED_FILES" # Add all untracked files
@@ -81,4 +116,6 @@ if [ "$RESCUE" != "YES" ]; then
 fi
 
 # rm /home/alice/.config/mimeapps.list # Gets overwritten by setting defaults in Thunar
-nixos-rebuild switch --sudo $TRACE --flake ./#$NEW_HOSTNAME
+if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
+  nixos-rebuild switch --sudo $TRACE --flake ./#$NEW_HOSTNAME
+fi
