@@ -80,7 +80,7 @@
 
     pavucontrol # Audio settings
 
-    android-studio #-full
+    android-studio
   ];
 
   home.file = {

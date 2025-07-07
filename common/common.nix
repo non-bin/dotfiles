@@ -120,6 +120,7 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     wineWowPackages.waylandFull
+    qemu
 
     # Thumbnail providers
     ffmpegthumbnailer # Video
@@ -185,6 +186,11 @@
     openssh.enable = true;
     gnome.gnome-keyring.enable = true;
     tumbler.enable = true; # Image thumbnails
+
+    cloudflare-warp = {
+      enable = true;
+
+    };
 
     logind = {
       # one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
