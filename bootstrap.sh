@@ -16,6 +16,7 @@ fi
 # Parse params
 DOWNLOAD="NO"
 COPY="NO"
+UPDATE_STATE_VERSION="NO"
 INSTALL="NO"
 VM="NO"
 EVERYTHING="YES" # We only check the others if If EVERYTHING is NO
@@ -33,6 +34,11 @@ while [[ $# -gt 0 ]]; do
       ;;
     -c|--copy)
       COPY="YES"
+      EVERYTHING="NO"
+      shift # past argument
+      ;;
+    -v|--version)
+      UPDATE_STATE_VERSION="YES"
       EVERYTHING="NO"
       shift # past argument
       ;;
@@ -75,13 +81,16 @@ while [[ $# -gt 0 ]]; do
       echo "Options:"
       echo "  -d, --download    Clone the dotfiles to /mnt. Implies -n"
       echo "  -u, --upgrade     Update flake.lock to the latest versions before installing"
-      echo "  -c, --copy        Copying hardware config. Implies -n"
+      echo "  -c, --copy        Copy hardware config. Implies -n"
       echo "  -i, --install     Install with the flake as input. Implies -n"
+      echo "  -v, --version     Update stateVersion. Implies -n"
       echo "  -e, --everything  Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
       echo "  -n, --nothing     Require explicitly enabling any steps you want"
       echo "  --vm              Quickly setup from within a VM. Partition vda, generate hardware config, and mount virtiofs dotfiles if available"
       echo "  --disk path       Use with --vm. Path to the block device to install onto, defaults to /dev/vda"
       echo "  --user username   Set the username for the user to create. YOU NEED TO UPDATE CONFIGURATION.NIX TO CREATE THE USER"
+      echo
+      echo "Options must be specified with separate tacs (these: '-'). For example use '-u -c -P' not '-ucP"
       exit 1
       ;;
     *)
@@ -153,6 +162,14 @@ CONFIG_PATH = $(find /mnt/home/$USERNAME/dotfiles/config/servers/ /mnt/home/$USE
 if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to ${CONFIG_PATH}${NC}"
   cp /mnt/etc/nixos/hardware-configuration.nix $CONFIG_PATH --backup=t # Make numbered backups
+fi
+
+if [ "$UPDATE_STATE_VERSION" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
+  # NEW_VERSION=$(nixos-version | sed 's/\([0-9]*\.[0-9]*\).*/\1/') # Current running version
+  NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixos> {}).lib.version)") # Current value of stateVersion
+echo -e "${GREEN}Updating stateVersion to ${NEW_VERSION}${NC}"
+  sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}configuration.nix"
+  sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}home.nix"
 fi
 
 if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
