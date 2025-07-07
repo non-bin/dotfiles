@@ -149,9 +149,10 @@ if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$COPY" == "YES" ] 
   exit 1
 fi
 
+CONFIG_PATH = $(find /mnt/home/$USERNAME/dotfiles/config/servers/ /mnt/home/$USERNAME/dotfiles/config/personal/ -maxdepth 1 -mindepth 1 -iname $1)/
 if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
-  echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to /mnt/home/$USERNAME/dotfiles/hosts/$1/${NC}"
-  cp /mnt/etc/nixos/hardware-configuration.nix /mnt/home/$USERNAME/dotfiles/hosts/$1/
+  echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to ${CONFIG_PATH}${NC}"
+  cp /mnt/etc/nixos/hardware-configuration.nix $CONFIG_PATH --backup=t # Make numbered backups
 fi
 
 if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then

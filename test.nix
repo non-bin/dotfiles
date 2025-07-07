@@ -1,4 +1,4 @@
-# nix eval --file dotfiles/repos/dotfiles/test.nix
+# nix eval --file dotfiles/test.nix
 
 {
   home.sessionPath = [
