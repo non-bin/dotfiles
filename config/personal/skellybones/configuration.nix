@@ -7,7 +7,7 @@
   ];
 
   networking.hostName = "skellybones";
-  networking.interfaces."lo".ip4 = [
+  networking.interfaces."lo".ipv4.addresses = [
    { address = "172.23.24.101"; prefixLength = 24; }
   ];
 
