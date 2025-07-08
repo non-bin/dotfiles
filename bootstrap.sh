@@ -110,7 +110,7 @@ fi
 
 # Actual logic
 if [ "$VM" == "YES" ]; then
-  if [ -d /sys/firmware/efi/efivars ]; then
+  if [ ! -d /sys/firmware/efi/efivars ]; then
     echo -e "${RED}Not in EFI mode, VM setup can't do that yet${NC}"
     exit 1
   fi
