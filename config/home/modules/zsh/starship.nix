@@ -58,7 +58,7 @@
         username = {
           show_always = false;
           style_user = "bg:#9A348E";
-          style_root = "bg:#9A348E";
+          style_root = "bold fg:#00FFAB bg:#9A348E";
           format = "[$user]($style)";
           disabled = false;
         };
