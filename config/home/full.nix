@@ -12,14 +12,6 @@
     ./modules/java.nix
   ];
 
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "alice";
-  home.homeDirectory = "/home/alice";
-  home.sessionPath = [
-    "$HOME/dotfiles/scripts"
-  ];
-
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     DEFAULT_BROWSER = "${lib.getExe pkgs.firefox}";
