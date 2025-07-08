@@ -110,16 +110,28 @@ fi
 
 # Actual logic
 if [ "$VM" == "YES" ]; then
+  if [ -d /sys/firmware/efi/efivars ]; then
+    echo -e "${RED}Not in EFI mode, VM setup can't do that yet${NC}"
+    exit 1
+  fi
+
   echo -e "${GREEN}Speeding through setup${NC}"
-  parted ${DISK} -- mklabel gpt
-  parted ${DISK} -- mkpart root 512MB -1GB
-  parted ${DISK} -- mkpart swap linux-swap -1GB 100%
-  parted ${DISK} -- mkpart ESP fat32 1MB 512MB
-  parted ${DISK} -- set 3 esp on
+  umount -lR /mnt || true
+  sync
+  lvremove -f vg0/btr_pool || true
+  vgremove -f vg0 || true
+  pvremove -f ${DISK}1 || true
+  swapoff ${DISK}2 || true
+
+  parted ${DISK} -s -- mklabel gpt
+  parted ${DISK} -s -- mkpart root 512MB -1GB
+  parted ${DISK} -s -- mkpart swap linux-swap -1GB 100%
+  parted ${DISK} -s -- mkpart ESP fat32 1MB 512MB
+  parted ${DISK} -s -- set 3 esp on
 
   pvcreate ${DISK}1
   vgcreate vg0 ${DISK}1
-  lvcreate -l +100%FREE -n btr_pool vg0
+  lvcreate -y -l +100%FREE -n btr_pool vg0
   mkfs.btrfs /dev/vg0/btr_pool
   mount /dev/vg0/btr_pool /mnt
   btrfs subvolume create /mnt/NixOS /mnt/nix /mnt/home
@@ -139,12 +151,18 @@ if [ "$VM" == "YES" ]; then
   nixos-generate-config --root /mnt
   mkdir /dotfiles -p
   mount -o ro -t virtiofs dotfiles /dotfiles/ || echo -e "${RED}FAILED TO MOUNT LOCAL DOTFILES${NC}"
-  echo -e "${GREEN}Finished setting up${NC}"
+  echo -e "${GREEN}Finished vm setup${NC}"
 fi
 
 if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
-  echo -e "${GREEN}Downloading to /mnt/home/$USERNAME/dotfiles${NC}"
-  git clone https://github.com/non-bin/dotfiles /mnt/home/$USERNAME/dotfiles
+  if [ -f /dotfiles/flake.nix ]; then
+    echo -e "${GREEN}Copying /dotfiles/ to /mnt/home/$USERNAME/dotfiles${NC}"
+    mkdir /mnt/home/$USERNAME/
+    cp -r /dotfiles /mnt/home/$USERNAME/dotfiles
+  else
+    echo -e "${GREEN}Downloading to /mnt/home/$USERNAME/dotfiles${NC}"
+    git clone https://github.com/non-bin/dotfiles /mnt/home/$USERNAME/dotfiles
+  fi
 fi
 
 if [ "$UPGRADE" == "YES" ]; then
@@ -157,17 +175,17 @@ if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$COPY" == "YES" ] 
   >&2 echo -e "${RED}hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?${NC}"
   exit 1
 fi
-
-CONFIG_PATH = $(find /mnt/home/$USERNAME/dotfiles/config/servers/ /mnt/home/$USERNAME/dotfiles/config/personal/ -maxdepth 1 -mindepth 1 -iname $1)/
+CONFIG_PATH=$(find /mnt/home/$USERNAME/dotfiles/config/servers/ /mnt/home/$USERNAME/dotfiles/config/personal/ -maxdepth 1 -mindepth 1 -iname $1)/
 if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to ${CONFIG_PATH}${NC}"
   cp /mnt/etc/nixos/hardware-configuration.nix $CONFIG_PATH --backup=t # Make numbered backups
+  (cd $CONFIG_PATH && git add $CONFIG_PATH/hardware-configuration.nix)
 fi
 
 if [ "$UPDATE_STATE_VERSION" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   # NEW_VERSION=$(nixos-version | sed 's/\([0-9]*\.[0-9]*\).*/\1/') # Current running version
   NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixos> {}).lib.version)") # Current value of stateVersion
-echo -e "${GREEN}Updating stateVersion to ${NEW_VERSION}${NC}"
+  echo -e "${GREEN}Updating stateVersion to ${NEW_VERSION}${NC}"
   sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}configuration.nix"
   sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}home.nix"
 fi
