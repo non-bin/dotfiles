@@ -24,6 +24,7 @@ sudo sh -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME --vm
 
 ## TODO
 
+- GhostyTerm
 - hardware.cpu.amd.updateMicrocode
 - check <https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/> works
 - check screenshots work

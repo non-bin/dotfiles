@@ -13,13 +13,17 @@
           "[](#9A348E)"
           "$os"
           "$username"
+          "$hostname"
           "$docker_context"
-          "[](bg:#DA627D fg:#9A348E)"
+          "[ ](bg:#9A348E)[](bg:#DA627D fg:#9A348E)"
+
           "$directory"
           "[](fg:#DA627D bg:#FCA17D)"
+
           "$git_branch"
           "$git_status"
           "[](fg:#FCA17D bg:#86BBD8)"
+
           "$c"
           "$elixir"
           "$elm"
@@ -33,9 +37,12 @@
           "$rust"
           "$scala"
           "[](fg:#86BBD8 bg:#06969A)"
+
           "$time"
           "$character"
         ];
+
+        continuation_prompt = "[](fg:#DA627D)[ ](bg:#DA627D)[](fg:#DA627D)";
 
         # Disable the blank line at the start of the prompt
         add_newline = false;
@@ -49,10 +56,10 @@
         # You can also replace your username with a neat symbol like   or disable this
         # and use the os module below
         username = {
-          show_always = true;
+          show_always = false;
           style_user = "bg:#9A348E";
           style_root = "bg:#9A348E";
-          format = "[$user ]($style)";
+          format = "[$user]($style)";
           disabled = false;
         };
 
@@ -60,7 +67,14 @@
         # represents the current operating system
         os = {
           style = "bg:#9A348E";
-          # disabled = false # Disabled by default
+          # disabled = false; # Disabled by default
+        };
+
+        hostname = {
+          ssh_only = true; # Defaults to true
+          style = "bg:#9A348E";
+          format = "[@$hostname( $ssh_symbol)]($style)";
+          ssh_symbol = "🌏";
         };
 
         directory = {
@@ -93,7 +107,7 @@
         docker_context = {
           symbol = " ";
           style = "bg:#06969A";
-          format = "[ $symbol $context ]($style)";
+          format = "[ $symbol $context]($style)";
         };
 
         elixir = {
