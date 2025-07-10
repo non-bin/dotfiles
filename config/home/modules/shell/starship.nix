@@ -12,6 +12,7 @@
         format = lib.concatStrings [
           "[](#9A348E)"
           "$os"
+          "$shell"
           "$username"
           "$hostname"
           "$docker_context"
@@ -53,6 +54,23 @@
           success_symbol = "[](fg:#06969A bg:#33658A)[](fg:#33658A)";
         };
 
+        shell = {
+          disabled = false;
+          format = "[$indicator]($style)";
+          style = "bg:#9A348E";
+          unknown_indicator = "ukn ";
+          zsh_indicator = "";
+          bash_indicator = "bsh ";
+          fish_indicator = "fsh ";
+          powershell_indicator = "psh ";
+          ion_indicator = "ion ";
+          elvish_indicator = "esh ";
+          tcsh_indicator = "tsh ";
+          xonsh_indicator = "xsh ";
+          cmd_indicator = "cmd ";
+          nu_indicator = "nu ";
+        };
+
         # You can also replace your username with a neat symbol like   or disable this
         # and use the os module below
         username = {
@@ -73,7 +91,7 @@
         hostname = {
           ssh_only = true; # Defaults to true
           style = "bg:#9A348E";
-          format = "[@$hostname( $ssh_symbol)]($style)";
+          format = "[@$hostname]($style)";
           ssh_symbol = "🌏";
         };
 

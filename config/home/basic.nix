@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./modules/zsh/zsh.nix
+    ./modules/shell/zsh.nix
     ./modules/fetch.nix
   ];
 

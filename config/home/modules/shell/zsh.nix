@@ -5,12 +5,19 @@
     ./starship.nix
   ];
 
+  home.shell.enableZshIntegration = true;
+
+  # Check the name of the parent process. If
+  programs.bash.initExtra = ''[ "$(basename "/"$(ps -o cmd -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/ .*$//'))" != "zsh" ] && zsh -c "hyfetch" && zsh'';
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     autocd = true; # Automatically enter into a directory if typed directly into shell
     enableVteIntegration = true; # Integration with terminals using the VTE library. This will let the terminal track the current working directory
     defaultKeymap = "emacs";
+
+    loginExtra = "hyfetch";
 
     history = {
       append = true; # Sessions will append their history list to the history file, rather than replace it. Thus, multiple parallel zsh sessions will all have the new entries from their history lists added to the history file, in the order that they exit.
