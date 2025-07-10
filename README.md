@@ -6,23 +6,23 @@ Follow [this guide in the manual](https://nixos.org/manual/nixos/stable/#sec-ins
 Once it instructs you to edit `configuration.nix`, run
 
 ```bash
-sudo bash -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME
+sudo bash -c "$(wget -qO- jacka.net.au/dotfiles)" -- HOSTNAME
 
-sudo bash -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME --help # For usage
+sudo bash -c "$(wget -qO- jacka.net.au/dotfiles)" -- HOSTNAME --help # For usage
 
 # Or if you'd like to edit the config before installing
-sudo bash -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME -d -c -v # To download, copy the hardware config, and update stateVersion
+sudo bash -c "$(wget -qO- jacka.net.au/dotfiles)" -- HOSTNAME -d -c -v # To download, copy the hardware config, and update stateVersion
 # Edit away
-sudo bash -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME -i # To finish the install
+sudo bash -c "$(wget -qO- jacka.net.au/dotfiles)" -- HOSTNAME -i # To finish the install
 
 # Or to disable copying hardware config
-sudo bash -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME -d -v -i
+sudo bash -c "$(wget -qO- jacka.net.au/dotfiles)" -- HOSTNAME -d -v -i
 
 # Or setup just the package and home managers (for non NixOS hosts)
-sudo bash -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME -h
+sudo bash -c "$(wget -qO- jacka.net.au/dotfiles)" -- HOSTNAME -h
 
 # Or to quickly setup a VM
-sudo bash -c "$(curl -fsLS jacka.net.au/dotfiles)" -- HOSTNAME --vm
+sudo bash -c "$(wget -qO- jacka.net.au/dotfiles)" -- HOSTNAME --vm
 ```
 
 ## TODO
