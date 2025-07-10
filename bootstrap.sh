@@ -226,7 +226,7 @@ if [ "$HOME_MANAGER" == "YES" ]; then
 
   echo -e "${GREEN}Installing "Nix: the package manager"${NC}"
   sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon --yes
-  source /etc/bash.bashrc # To use nix without restarting the shell
+  . /etc/bash.bashrc # To use nix without restarting the shell
 
   echo -e "${GREEN}Installing Home Manager${NC}"
   nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
