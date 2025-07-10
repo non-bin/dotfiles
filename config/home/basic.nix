@@ -27,6 +27,7 @@
     unzip
     traceroute
     jq
+    fzf
   ];
 
   programs = {

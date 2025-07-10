@@ -8,8 +8,10 @@
     # nixpkgs.url = "github:non-bin/nixpkgs/bootLoaderGenerationFormat";
     # nixpkgs.url = "/home/alice/dotfiles/repos/nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -63,6 +65,24 @@
             home-manager.useUserPackages = true;
             home-manager.users.alice = import ./config/personal/vickie/home.nix;
           }
+        ];
+      };
+    };
+
+    homeConfigurations = {
+      "basic" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = "x86_64-linux"; };
+
+        modules = [
+          ./config/personal/standalone/basic.nix
+        ];
+      };
+
+      "full" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = "x86_64-linux"; };
+
+        modules = [
+          ./config/personal/standalone/full.nix
         ];
       };
     };

@@ -3,7 +3,6 @@
 set -e # Exit on any errors
 
 cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../"
-# cd "$HOME/dotfiles"
 
 REBUILD="YES" # Default
 
@@ -40,7 +39,7 @@ while [[ $# -gt 0 ]]; do
       CLEAN="YES"
       shift # past argument
       ;;
-    -r|--reload)
+    -r|--rebuild)
       REBUILD="YES"
       shift # past argument
       ;;
@@ -48,16 +47,15 @@ while [[ $# -gt 0 ]]; do
       DRY="YES"
       shift # past argument
       ;;
-    # -s|--search)
-    # -s|--search)
-    #   SEARCHPATH="$2"
-    #   shift # past argument
-    #   shift # past value
-    #   ;;
+    -g|--generation)
+      GENERATION="YES"
+      REBUILD="NO"
+      shift
+      ;;
     -*|--*)
       echo "Unknown option $1"
 
-      echo "Usage: reload [options] [new-hostname]"
+      echo "Usage: reload [options] [new-config-name]"
       echo
       echo "Options:"
       echo "  -u, --upgrade     Pull updates from upstream and update lockfile"
@@ -82,10 +80,10 @@ done
 
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
-NEW_HOSTNAME="$1"
+NEW_CONFIG_NAME="$1"
 
 if [ "$CLEAN" == "YES" ]; then
-  sudo nix-collect-garbage --delete-older-than 30d # Delete old system generations
+  [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ] && sudo nix-collect-garbage --delete-older-than 30d # Delete old system generations
   nix-collect-garbage --delete-older-than 30d # And the same for HomeManager
   nix-store --gc # Remove unused store entries
 fi
@@ -106,6 +104,8 @@ fi
 
 if [ "$UPGRADE" == "YES" ]; then
   nix flake update
+  echo "Finished update"
+  echo
 fi
 
 if [ "$RESCUE" != "YES" ] && [ "$REBUILD" == "YES" ]; then
@@ -115,7 +115,16 @@ if [ "$RESCUE" != "YES" ] && [ "$REBUILD" == "YES" ]; then
   fi
 fi
 
+if [ "$GENERATION" == "YES" ]; then
+  bash $(home-manager generations | fzf | awk -F '-> ' '{print $2 "/activate"}')
+fi
+
 # rm /home/alice/.config/mimeapps.list # Gets overwritten by setting defaults in Thunar
 if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
-  nixos-rebuild switch --sudo $TRACE --flake ./#$NEW_HOSTNAME
+  if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
+    nixos-rebuild switch --sudo $TRACE --flake ./#$NEW_CONFIG_NAME
+  else
+    [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE
+    home-manager switch -b bak $TRACE --flake ./#$NEW_CONFIG_NAME
+  fi
 fi

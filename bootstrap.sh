@@ -6,13 +6,6 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-
-# Check running as root
-if [ "$EUID" -ne 0 ]; then
-  echo -e "${RED}Please run as root${NC}"
-  exit
-fi
-
 # Parse params
 DOWNLOAD="NO"
 COPY="NO"
@@ -22,6 +15,7 @@ VM="NO"
 EVERYTHING="YES" # We only check the others if If EVERYTHING is NO
 USERNAME="alice"
 UPGRADE="NO"
+HOME_MANAGER="NO"
 DISK="/dev/vda"
 
 POSITIONAL_ARGS=()
@@ -73,6 +67,10 @@ while [[ $# -gt 0 ]]; do
       UPGRADE="YES"
       shift # past argument
       ;;
+    -h|--homeman)
+      HOME_MANAGER="YES"
+      shift # past argument
+      ;;
     -*|--*)
       echo "Unknown option $1"
 
@@ -86,7 +84,8 @@ while [[ $# -gt 0 ]]; do
       echo "  -v, --version     Update stateVersion. Implies -n"
       echo "  -e, --everything  Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
       echo "  -n, --nothing     Require explicitly enabling any steps you want"
-      echo "  --vm              Quickly setup from within a VM. Partition vda, generate hardware config, and mount virtiofs dotfiles if available"
+      echo "  -h, --homeman     Install using just the package manager and Home Manager, on a non NixOS machine"
+      echo "  --vm              Quickly setup from within a VM. Partition vda, generate hardware config, and mount virtiofs dotfiles"
       echo "  --disk path       Use with --vm. Path to the block device to install onto, defaults to /dev/vda"
       echo "  --user username   Set the username for the user to create. YOU NEED TO UPDATE CONFIGURATION.NIX TO CREATE THE USER"
       echo
@@ -100,11 +99,23 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+# Check running as root
+if [ "$EUID" -ne 0 ]; then
+  echo -e "${RED}Please run as root${NC}"
+  exit
+fi
+
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
+HOME_PATH="/mnt/home/$USERNAME/"
+
+if ([ "$VM" == "YES" ] || [ "$INSTALL" == "YES" ] || [ "$COPY" == "YES" ] || [ "$UPDATE_STATE_VERSION" == "YES" ]) && [ "$HOME_MANAGER" == "YES" ]; then
+  echo -e "${RED}The homeman option cannot be used with vm, copy, or install${NC}"
+  exit 1
+fi
 
 # No hostname   and (we're doing everything     or     installing          or    copying )
-if (( $# != 1 )) && ([ "$EVERYTHING" == "YES" ] || [ "$INSTALL" == "YES" ] || [ "$COPY" == "YES" ]); then
-  >&2 echo "Expected 1 parameter, for hostname. Got $#"
+if (( $# != 1 )) && ([ "$EVERYTHING" == "YES" ] || [ "$INSTALL" == "YES" ] || [ "$COPY" == "YES" ] || [ "$HOME_MANAGER" == "YES" ]); then
+  echo -e "${RED}Expected 1 parameter, for hostname. Got $#${NC}"
   exit 1
 fi
 
@@ -154,45 +165,83 @@ if [ "$VM" == "YES" ]; then
   echo -e "${GREEN}Finished vm setup${NC}"
 fi
 
+if [ "$HOME_MANAGER" == "YES" ]; then
+  HOME_PATH="/home/$USERNAME/"
+  REQUIRED_PACKAGES="curl tar git"
+  if apt-get -v > /dev/null; then
+    echo -e "${GREEN}Installing required packages with apt-get${NC}"
+    sudo apt-get update
+    sudo apt-get -y install $REQUIRED_PACKAGES
+  else
+    echo -e "${RED}apt-get not present, make sure the following are installed: $REQUIRED_PACKAGES${NC}"
+  fi
+fi
+
 if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   if [ -f /dotfiles/flake.nix ]; then
-    echo -e "${GREEN}Copying /dotfiles/ to /mnt/home/$USERNAME/dotfiles${NC}"
-    mkdir /mnt/home/$USERNAME/
-    cp -r /dotfiles /mnt/home/$USERNAME/dotfiles
+    echo -e "${GREEN}Copying /dotfiles/ to ${HOME_PATH}dotfiles${NC}"
+    mkdir ${HOME_PATH}
+    cp -r /dotfiles ${HOME_PATH}dotfiles
   else
-    echo -e "${GREEN}Downloading to /mnt/home/$USERNAME/dotfiles${NC}"
-    git clone https://github.com/non-bin/dotfiles /mnt/home/$USERNAME/dotfiles
+    echo -e "${GREEN}Downloading to ${HOME_PATH}dotfiles${NC}"
+    git clone https://github.com/non-bin/dotfiles ${HOME_PATH}dotfiles
   fi
 fi
 
 if [ "$UPGRADE" == "YES" ]; then
   echo -e "${GREEN}Upgrading flake.lock${NC}"
-  nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake /mnt/home/$USERNAME/dotfiles
+  nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake ${HOME_PATH}dotfiles
 fi
 
 # Check hardwawre config exists if needed
 if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
-  >&2 echo -e "${RED}hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?${NC}"
+  echo -e "${RED}hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?${NC}"
   exit 1
 fi
-CONFIG_PATH=$(find /mnt/home/$USERNAME/dotfiles/config/servers/ /mnt/home/$USERNAME/dotfiles/config/personal/ -maxdepth 1 -mindepth 1 -iname $1)/
-if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
+CONFIG_PATH=$(find ${HOME_PATH}dotfiles/config/{servers,personal} -maxdepth 1 -mindepth 1 -iname $1)/
+if [ ! "$HOME_MANAGER" == "YES" ] && ([ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
   echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to ${CONFIG_PATH}${NC}"
   cp /mnt/etc/nixos/hardware-configuration.nix $CONFIG_PATH --backup=t # Make numbered backups
   (cd $CONFIG_PATH && git add $CONFIG_PATH/hardware-configuration.nix)
 fi
 
 if [ "$UPDATE_STATE_VERSION" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
-  # NEW_VERSION=$(nixos-version | sed 's/\([0-9]*\.[0-9]*\).*/\1/') # Current running version
-  NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixos> {}).lib.version)") # Current value of stateVersion
+  # NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixpkgs> {}).lib.version)") # Latest version from upstream `nixpkgs.url` ("25.11pre-git" or "25.11pre826760.9b008d603929")
+  # NEW_VERSION=\"$(nixos-version | sed 's/\([0-9]*\.[0-9]*\).*/\1/')\" # Current running os version (25.11.20250630.3016b4b (Xantusia))
+  NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixos> {}).lib.version)") # From active config ("24.11.711150.314e12ba369c")
+
   echo -e "${GREEN}Updating stateVersion to ${NEW_VERSION}${NC}"
+
   sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}configuration.nix"
   sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}home.nix"
 fi
 
-if [ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
+if [ "$HOME_MANAGER" == "YES" ]; then
+  mkdir -p ~/.config/nix
+  echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
+
+  echo -e "${GREEN}Installing "Nix: the package manager"${NC}"
+  sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon --yes
+  source /etc/bash.bashrc # To use nix without restarting the shell
+
+  echo -e "${GREEN}Installing Home Manager${NC}"
+  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+  nix-channel --update
+  nix-shell '<home-manager>' -A install
+
+  echo -e "${GREEN}Installing Home Manager${NC}"
+  nix build ./dotfiles/#basic."alice".activationPackage
+
+  echo -e "${GREEN}Building config${NC}"
+  home-manager switch -b bak --flake ./dotfiles/#basic
+  exec $SHELL -l
+
+  echo -e "${GREEN}Done! Please restart your shell${NC}"
+fi
+
+if [ ! "$HOME_MANAGER" == "YES" ] && ([ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
   echo -e "${GREEN}Building for hostname \"$1\"${NC}"
-  nixos-install --flake /mnt/home/$USERNAME/dotfiles#$1
+  nixos-install --flake ${HOME_PATH}dotfiles#$1
   echo "Setting password for $USERNAME"
   nixos-enter --root /mnt -c "chown -R $USERNAME:$USERNAME /home/$USERNAME/dotfiles && passwd $USERNAME"
 
