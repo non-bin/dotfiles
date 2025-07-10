@@ -170,8 +170,8 @@ if [ "$HOME_MANAGER" == "YES" ]; then
   REQUIRED_PACKAGES="curl tar git"
   if apt-get -v > /dev/null; then
     echo -e "${GREEN}Installing required packages with apt-get${NC}"
-    sudo apt-get update
-    sudo apt-get -y install $REQUIRED_PACKAGES
+    apt-get update
+    apt-get -y install $REQUIRED_PACKAGES
   else
     echo -e "${RED}apt-get not present, make sure the following are installed: $REQUIRED_PACKAGES${NC}"
   fi
@@ -184,7 +184,11 @@ if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
     cp -r /dotfiles ${HOME_PATH}dotfiles
   else
     echo -e "${GREEN}Downloading to ${HOME_PATH}dotfiles${NC}"
-    git clone https://github.com/non-bin/dotfiles ${HOME_PATH}dotfiles
+    if [ "$HOME_MANAGER" == "YES" ]; then
+      sudo -u $SUDO_USER git clone https://github.com/non-bin/dotfiles ${HOME_PATH}dotfiles
+    else
+      git clone https://github.com/non-bin/dotfiles ${HOME_PATH}dotfiles
+    fi
   fi
 fi
 
@@ -194,12 +198,12 @@ if [ "$UPGRADE" == "YES" ]; then
 fi
 
 # Check hardwawre config exists if needed
-if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
+if [ "$HOME_MANAGER" != "YES" ] && [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
   echo -e "${RED}hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?${NC}"
   exit 1
 fi
 CONFIG_PATH=$(find ${HOME_PATH}dotfiles/config/{servers,personal} -maxdepth 1 -mindepth 1 -iname $1)/
-if [ ! "$HOME_MANAGER" == "YES" ] && ([ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
+if [ "$HOME_MANAGER" != "YES" ] && ([ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
   echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to ${CONFIG_PATH}${NC}"
   cp /mnt/etc/nixos/hardware-configuration.nix $CONFIG_PATH --backup=t # Make numbered backups
   (cd $CONFIG_PATH && git add $CONFIG_PATH/hardware-configuration.nix)
@@ -239,7 +243,7 @@ if [ "$HOME_MANAGER" == "YES" ]; then
   echo -e "${GREEN}Done! Please restart your shell${NC}"
 fi
 
-if [ ! "$HOME_MANAGER" == "YES" ] && ([ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
+if [ "$HOME_MANAGER" != "YES" ] && ([ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
   echo -e "${GREEN}Building for hostname \"$1\"${NC}"
   nixos-install --flake ${HOME_PATH}dotfiles#$1
   echo "Setting password for $USERNAME"
