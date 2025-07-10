@@ -209,7 +209,7 @@ if [ "$HOME_MANAGER" != "YES" ] && ([ "$COPY" == "YES" ] || [ "$EVERYTHING" == "
   (cd $CONFIG_PATH && git add $CONFIG_PATH/hardware-configuration.nix)
 fi
 
-if [ "$UPDATE_STATE_VERSION" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
+if [ "$HOME_MANAGER" != "YES" ] && ([ "$UPDATE_STATE_VERSION" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
   # NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixpkgs> {}).lib.version)") # Latest version from upstream `nixpkgs.url` ("25.11pre-git" or "25.11pre826760.9b008d603929")
   # NEW_VERSION=\"$(nixos-version | sed 's/\([0-9]*\.[0-9]*\).*/\1/')\" # Current running os version (25.11.20250630.3016b4b (Xantusia))
   NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixos> {}).lib.version)") # From active config ("24.11.711150.314e12ba369c")
