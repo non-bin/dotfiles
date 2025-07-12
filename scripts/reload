@@ -110,9 +110,11 @@ fi
 
 if [ "$RESCUE" != "YES" ] && [ "$REBUILD" == "YES" ]; then
   UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
-  if [ -n "$UNTRACKED_FILES" ]; then
-    git add "$UNTRACKED_FILES" # Add all untracked files
-  fi
+
+  while IFS= read -r FILE || [[ -n $FILE ]]; do
+    echo "Adding untracked file $FILE"
+    git add "$FILE" # Add all untracked files
+  done < <(printf '%s' "$UNTRACKED_FILES")
 fi
 
 if [ "$GENERATION" == "YES" ]; then
