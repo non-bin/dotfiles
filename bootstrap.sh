@@ -197,50 +197,56 @@ if [ "$UPGRADE" == "YES" ]; then
   nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake ${HOME_PATH}dotfiles
 fi
 
-# Check hardwawre config exists if needed
-if [ "$HOME_MANAGER" != "YES" ] && [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
-  echo -e "${RED}hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?${NC}"
-  exit 1
-fi
-CONFIG_PATH=$(find ${HOME_PATH}dotfiles/config/{servers,personal} -maxdepth 1 -mindepth 1 -iname $1)/
-if [ "$HOME_MANAGER" != "YES" ] && ([ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
-  echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to ${CONFIG_PATH}${NC}"
-  cp /mnt/etc/nixos/hardware-configuration.nix $CONFIG_PATH --backup=t # Make numbered backups
-  (cd $CONFIG_PATH && git add $CONFIG_PATH/hardware-configuration.nix)
-fi
+if [ "$HOME_MANAGER" != "YES" ]; then
+  # Check hardwawre config exists if needed
+  if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
+    echo -e "${RED}hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?${NC}"
+    exit 1
+  fi
 
-if [ "$HOME_MANAGER" != "YES" ] && ([ "$UPDATE_STATE_VERSION" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
-  # NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixpkgs> {}).lib.version)") # Latest version from upstream `nixpkgs.url` ("25.11pre-git" or "25.11pre826760.9b008d603929")
-  # NEW_VERSION=\"$(nixos-version | sed 's/\([0-9]*\.[0-9]*\).*/\1/')\" # Current running os version (25.11.20250630.3016b4b (Xantusia))
-  NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixos> {}).lib.version)") # From active config ("24.11.711150.314e12ba369c")
+  CONFIG_PATH=$(find ${HOME_PATH}dotfiles/config/{servers,personal} -maxdepth 1 -mindepth 1 -iname $1)/
+  if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
+    echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to ${CONFIG_PATH}${NC}"
+    cp /mnt/etc/nixos/hardware-configuration.nix $CONFIG_PATH --backup=t # Make numbered backups
+    (cd $CONFIG_PATH && git add $CONFIG_PATH/hardware-configuration.nix)
+  fi
 
-  echo -e "${GREEN}Updating stateVersion to ${NEW_VERSION}${NC}"
+  if [ "$UPDATE_STATE_VERSION" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
+    # NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixpkgs> {}).lib.version)") # Latest version from upstream `nixpkgs.url` ("25.11pre-git" or "25.11pre826760.9b008d603929")
+    # NEW_VERSION=\"$(nixos-version | sed 's/\([0-9]*\.[0-9]*\).*/\1/')\" # Current running os version (25.11.20250630.3016b4b (Xantusia))
+    NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixos> {}).lib.version)") # From active config ("24.11.711150.314e12ba369c")
 
-  sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}configuration.nix"
-  sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}home.nix"
+    echo -e "${GREEN}Updating stateVersion to ${NEW_VERSION}${NC}"
+
+    sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}configuration.nix"
+    sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}home.nix"
+  fi
 fi
 
 if [ "$HOME_MANAGER" == "YES" ]; then
-  mkdir -p ~/.config/nix
-  echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
-
   echo -e "${GREEN}Installing "Nix: the package manager"${NC}"
   sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon --yes
-  . /etc/bash.bashrc # To use nix without restarting the shell
 
-  echo -e "${GREEN}Installing Home Manager${NC}"
-  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-  nix-channel --update
-  nix-shell '<home-manager>' -A install
+  # Run as unprivileged user
+  sudo -i -u $SUDO_USER bash << EOF
+    . '/etc/bash.bashrc'
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' # Should be included by previous but it doesn't so...
 
-  echo -e "${GREEN}Installing Home Manager${NC}"
-  nix build ./dotfiles/#basic."alice".activationPackage
+    echo -e "${GREEN}Installing Home Manager${NC}"
+    nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+    nix-channel --update
+    nix-shell "<home-manager>" -A install
 
-  echo -e "${GREEN}Building config${NC}"
-  home-manager switch -b bak --flake ./dotfiles/#basic
-  exec $SHELL -l
+    $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
-  echo -e "${GREEN}Done! Please restart your shell${NC}"
+    echo -e "${GREEN}Building config${NC}"
+    mkdir -p ~/.config/nix
+    echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
+    home-manager switch -b bak --flake ./dotfiles/#${1}
+
+    echo -e "${GREEN}Done! Please restart your shell${NC}"
+EOF
+
 fi
 
 if [ "$HOME_MANAGER" != "YES" ] && ([ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
