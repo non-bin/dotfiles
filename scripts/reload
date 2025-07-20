@@ -52,6 +52,11 @@ while [[ $# -gt 0 ]]; do
       REBUILD="NO"
       shift
       ;;
+    -i|--impure)
+      IMPURE="--impure"
+      shift
+      ;;
+      
     -*|--*)
       echo "Unknown option $1"
 
@@ -59,6 +64,7 @@ while [[ $# -gt 0 ]]; do
       echo
       echo "Options:"
       echo "  -u, --upgrade     Pull updates from upstream and update lockfile"
+      echo "  -i, --impure      add the --impure flag to the reload command"
       echo "  -c, --clean       Garbage collect the nix store, don't rebuild (more info at https://nixos.wiki/wiki/Cleaning_the_nix_store and https://nixos.wiki/wiki/Storage_optimization)"
       echo "  -o, --optimise    Hard link identicle files in the nix store, don't rebuild"
       echo "  -p, --pull        Pull updates from git before updating"
@@ -124,9 +130,9 @@ fi
 # rm /home/alice/.config/mimeapps.list # Gets overwritten by setting defaults in Thunar
 if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
   if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
-    nixos-rebuild switch --sudo $TRACE --flake ./#$NEW_CONFIG_NAME
+    nixos-rebuild switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
   else
     [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE
-    home-manager switch -b bak $TRACE --flake ./#$NEW_CONFIG_NAME
+    home-manager switch -b bak $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
   fi
 fi
