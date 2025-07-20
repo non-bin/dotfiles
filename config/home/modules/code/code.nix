@@ -1,15 +1,16 @@
 { config, pkgs, lib, ... }:
 
 {
+  home.file.".config/VSCodium/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/home/modules/code/settings.jsonc";
+  home.file.".config/VSCodium/User/keybindings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/home/modules/code/keybindings.jsonc";
+
   programs = {
     vscode = {
       enable = true;
       package = pkgs.vscodium;
 
       profiles.default = {
-        userSettings = import ./settings.nix;
-        keybindings = builtins.fromJSON (builtins.readFile ./keybindings.jsonc);
-
+        enableExtensionUpdateCheck = true;
         extensions = with pkgs.vscode-extensions; [
           # Themes
           pkief.material-icon-theme

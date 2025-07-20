@@ -209,12 +209,12 @@
     "key": "shift+alt+pageup"
   },
   {
-    "key": "ctrl+k ctrl+p",
     "command": "git.push",
+    "key": "ctrl+k ctrl+p",
     "when": "!operationInProgress"
   },
   {
-    "key": "ctrl+k ctrl+p",
-    "command": "-workbench.action.showAllEditors"
+    "command": "-workbench.action.showAllEditors",
+    "key": "ctrl+k ctrl+p"
   }
 ]
