@@ -28,6 +28,7 @@
     traceroute
     jq
     fzf
+    nix-search
   ];
 
   programs = {
