@@ -7,7 +7,7 @@
 
       settings = {
         # Get editor completions based on the config schema
-        "$schema" = "https://starship.rs/config-schema.json";
+        # https://starship.rs/config
 
         format = lib.concatStrings [
           "[](#9A348E)"
@@ -16,7 +16,8 @@
           "$username"
           "$hostname"
           "$docker_context"
-          "[ ](bg:#9A348E)[](bg:#DA627D fg:#9A348E)"
+          "$nix_shell"
+          "[](bg:#DA627D fg:#9A348E)"
 
           "$directory"
           "[](fg:#DA627D bg:#FCA17D)"
@@ -56,42 +57,40 @@
 
         shell = {
           disabled = false;
-          format = "[$indicator]($style)";
+          format = "[$indicator ]($style)";
           style = "bg:#9A348E";
-          unknown_indicator = "ukn ";
+          unknown_indicator = "ukn";
           zsh_indicator = "";
-          bash_indicator = "bsh ";
-          fish_indicator = "fsh ";
-          powershell_indicator = "psh ";
-          ion_indicator = "ion ";
-          elvish_indicator = "esh ";
-          tcsh_indicator = "tsh ";
-          xonsh_indicator = "xsh ";
-          cmd_indicator = "cmd ";
-          nu_indicator = "nu ";
         };
 
-        # You can also replace your username with a neat symbol like   or disable this
-        # and use the os module below
         username = {
-          show_always = false;
           style_user = "bg:#9A348E";
           style_root = "bold fg:#00FFAB bg:#9A348E";
-          format = "[$user]($style)";
+          format = "[$user ]($style)";
           disabled = false;
         };
 
-        # An alternative to the username module which displays a symbol that
-        # represents the current operating system
         os = {
           style = "bg:#9A348E";
-          # disabled = false; # Disabled by default
+          disabled = false; # Disabled by default
+          symbols = {
+            NixOS = "";
+          };
+        };
+
+        nix_shell = {
+          disabled = false;
+          format = "[via nsh ]($style)";
+          symbol = "❄️ ";
+          style = "bg:#9A348E";
+          unknown_msg = "";
+          heuristic = false;
         };
 
         hostname = {
           ssh_only = true; # Defaults to true
           style = "bg:#9A348E";
-          format = "[@$hostname]($style)";
+          format = "[@$hostname ]($style)";
           ssh_symbol = "🌏";
         };
 
