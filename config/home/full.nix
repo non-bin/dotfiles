@@ -10,6 +10,7 @@
     ./modules/waybar/waybar.nix
     ./modules/code/code.nix
     ./modules/java.nix
+    ./modules/obs.nix
   ];
 
   home.sessionVariables = {
@@ -75,6 +76,11 @@
     pavucontrol # Audio settings
 
     android-studio
+
+    mesen # NES Emulator
+
+    proxmark3
+    qflipper
   ];
 
   home.file = {
