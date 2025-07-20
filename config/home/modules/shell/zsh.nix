@@ -30,7 +30,7 @@
     shellAliases = {
       grep = "grep --color=auto";
 
-      ls = "ls -F --color=auto";
+      ls = "ls -Fh --color=auto";
       ll = "ls -l";
       la = "ls -lA";
       l = "ls -C";
@@ -41,7 +41,15 @@
       rcp = ''rsync -e /dev/null -b --backup-dir="/tmp/rsync-$USERNAME"'';
       rmv = "cp --remove-source-files";
       dfh = "df -xtmpfs -xefivarfs -xdevtmpfs -hT";
+
       code = "codium ";
+
+      nsh = "nix-shell --run zsh ";
+      get = "nsh -p ";
+      locate = "nix run \"github:nix-community/nix-index#nix-locate\" -- ";
+      search = "nix-search ";
+
+      chrome = "get ungoogled-chromium --run chromium ";
     };
 
     initContent = lib.strings.concatLines [
