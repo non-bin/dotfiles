@@ -44,12 +44,15 @@
 
       code = "codium ";
 
+      ns = "nix-shell --pure ";
       nsh = "nix-shell --run zsh ";
       get = "nsh -p ";
       locate = "nix run \"github:nix-community/nix-index#nix-locate\" -- ";
       search = "nix-search ";
 
       chrome = "get ungoogled-chromium --run chromium ";
+
+      g = "git ";
     };
 
     initContent = lib.strings.concatLines [

@@ -59,6 +59,16 @@
       };
       userEmail = "jacka.alice@gmail.com";
       userName = "Alice Jacka";
+
+      aliases = {
+        co = "checkout";
+        cl = "clone";
+        br = "branch";
+        ci = "commit";
+        st = "status";
+        pl = "pull";
+        ps = "push";
+      };
     };
   };
 
