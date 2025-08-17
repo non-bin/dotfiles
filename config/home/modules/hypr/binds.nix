@@ -106,8 +106,8 @@
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
           # Screen brightness
-          ", XF86MonBrightnessUp, exec, brightnessctl --exponent=3 s +10%"
-          ", XF86MonBrightnessDown, exec, brightnessctl --exponent=3 s 10%-"
+          ", XF86MonBrightnessUp, exec, brightnessctl --min-value=235 --exponent=3 s +10%"
+          ", XF86MonBrightnessDown, exec, brightnessctl --min-value=235 --exponent=3 s 10%-"
         ];
 
         # Mouse
