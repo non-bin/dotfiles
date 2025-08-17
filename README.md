@@ -25,6 +25,9 @@ sudo bash -c "$(wget -qO- jacka.net.au/dotfiles)" -- HOSTNAME -h
 
 # Or to quickly setup a VM
 sudo bash -c "$(curl -L jacka.net.au/dotfiles)" -- HOSTNAME --vm
+
+# List generations
+nixos-rebuild list-generations
 ```
 
 ## TODO
