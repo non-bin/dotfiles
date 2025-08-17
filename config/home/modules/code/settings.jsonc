@@ -307,7 +307,6 @@
     "tree.inactiveIndentGuidesStroke": "#21262d",
     "tree.indentGuidesStroke": "#52575d"
   },
-  "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
   "workbench.commandPalette.experimental.suggestCommands": true,
   "workbench.commandPalette.preserveInput": true,
   "workbench.editor.defaultBinaryEditor": "hexEditor.hexedit",
@@ -326,7 +325,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.preferredDarkColorTheme": "Community Material Theme Darker High Contrast",
   "workbench.preferredLightColorTheme": "Community Material Theme Lighter High Contrast",
-  "workbench.productIconTheme": "material-product-icons",
   "workbench.quickOpen.preserveInput": true,
   "workbench.settings.openDefaultKeybindings": true,
   "workbench.settings.openDefaultSettings": true,
