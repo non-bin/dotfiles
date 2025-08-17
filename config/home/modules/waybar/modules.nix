@@ -103,8 +103,8 @@
         };
         format = "{icon}   {capacity}%";
         format-charging = "  {capacity}%";
-        format-plugged = "  {capacity}%";
-        format-alt = "{icon}  {time}";
+        format-plugged = " {capacity}%";
+        format-alt = "{icon} {time}";
         format-icons = [
           " "
           " "
@@ -117,23 +117,23 @@
         scroll-step = 5;
         reverse-scrolling = true;
         max-volume = 150;
-        format = "{icon}  {volume}%";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = " {icon} {format_source}";
-        format-muted = " {format_source}";
+        format = "{icon} {volume}%";
+        format-muted = " "; # {format_source}
+        format-bluetooth = "{icon} {volume}%"; # {format_source}
+        format-bluetooth-muted = "{icon}  "; # {format_source}
         format-source = "{volume}% ";
-        format-source-muted = "";
+        format-source-muted = " ";
         format-icons = {
-          headphone = "";
-          hands-free = "";
-          headset = "";
-          phone = "";
-          portable = "";
-          car = "";
+          headphone = " ";
+          hands-free = " ";
+          headset = " ";
+          phone = " ";
+          portable = " ";
+          car = " ";
           default = [
-            ""
-            " "
-            " "
+            " "
+            " "
+            "  "
           ];
         };
         interval = 10;
