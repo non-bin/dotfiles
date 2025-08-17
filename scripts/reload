@@ -56,7 +56,7 @@ while [[ $# -gt 0 ]]; do
       IMPURE="--impure"
       shift
       ;;
-      
+
     -*|--*)
       echo "Unknown option $1"
 
@@ -89,8 +89,8 @@ set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 NEW_CONFIG_NAME="$1"
 
 if [ "$CLEAN" == "YES" ]; then
-  [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ] && sudo nix-collect-garbage --delete-older-than 30d # Delete old system generations
-  nix-collect-garbage --delete-older-than 30d # And the same for HomeManager
+  [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ] && sudo nix-collect-garbage --delete-older-than 1d # Delete old system generations
+  nix-collect-garbage --delete-older-than 1d # And the same for HomeManager
   nix-store --gc # Remove unused store entries
 fi
 
