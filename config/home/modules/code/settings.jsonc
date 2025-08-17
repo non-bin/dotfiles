@@ -109,7 +109,7 @@
   "editor.insertSpaces": true,
   "editor.lightbulb.enabled": "on",
   "editor.linkedEditing": true,
-  "editor.minimap.autohide": true,
+  "editor.minimap.autohide": "mouseover",
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "editor.multiCursorModifier": "ctrlCmd",
