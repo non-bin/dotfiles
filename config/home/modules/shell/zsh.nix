@@ -8,7 +8,7 @@
   home.shell.enableZshIntegration = true;
 
   # Check the name of the parent process. If
-  programs.bash.initExtra = ''[ "$(basename "/"$(ps -o cmd -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/ .*$//'))" != "zsh" ] && zsh -c "hyfetch" && exec zsh'';
+  programs.bash.initExtra = ''[ "$(basename "/"$(ps -o cmd -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/ .*$//'))" != "zsh" ] && echo hyfetch | zsh -t && exec zsh'';
 
   programs.zsh = {
     enable = true;
