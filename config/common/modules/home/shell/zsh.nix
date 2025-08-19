@@ -3,6 +3,7 @@
 {
   imports = [
     ./starship.nix
+    ./fetch.nix
   ];
 
   home.shell.enableZshIntegration = true;

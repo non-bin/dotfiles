@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.file.".config/VSCodium/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/home/modules/code/settings.jsonc";
-  home.file.".config/VSCodium/User/keybindings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/home/modules/code/keybindings.jsonc";
+  home.file.".config/VSCodium/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/personal/modules/home/code/settings.jsonc";
+  home.file.".config/VSCodium/User/keybindings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/personal/modules/home/code/keybindings.jsonc";
 
   programs = {
     vscode = {

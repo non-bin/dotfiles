@@ -2,8 +2,12 @@
 
 {
   imports = [
-    ../home.nix
+    ../../home.nix
   ];
+
+  home.sessionVariables = {
+    NIX_HOMEMAN_STANDALONE_TYPE="full";
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

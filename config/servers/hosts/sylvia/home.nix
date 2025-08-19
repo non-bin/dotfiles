@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../home.nix
+    ../../home.nix
   ];
 
   # This value determines the Home Manager release that your

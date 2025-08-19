@@ -28,13 +28,13 @@
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
-          ./config/personal/skellybones/configuration.nix
+          ./config/personal/hosts/skellybones/os.nix
           nixos-hardware.nixosModules.framework-16-7040-amd
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.alice = import ./config/personal/skellybones/home.nix;
+            home-manager.users.alice = import ./config/personal/hosts/skellybones/home.nix;
           }
         ];
       };
@@ -43,23 +43,24 @@
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
-          ./config/servers/sylvia/configuration.nix
+          ./config/servers/hosts/sylvia/configuration.nix
           nixos-hardware.nixosModules.intel-nuc-8i7beh
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.alice = import ./config/servers/sylvia/home.nix;
+            home-manager.users.alice = import ./config/servers/hosts/sylvia/home.nix;
           }
         ];
       };
+    };
 
     homeConfigurations = {
       "basic" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; };
 
         modules = [
-          ./config/personal/standalone/basic.nix
+          ./config/personal/hosts/standalone/basic.nix
         ];
       };
 
@@ -67,7 +68,7 @@
         pkgs = import nixpkgs { system = "x86_64-linux"; };
 
         modules = [
-          ./config/personal/standalone/full.nix
+          ./config/personal/hosts/standalone/full.nix
         ];
       };
     };

@@ -13,7 +13,7 @@
       };
 
       background = {
-        path = "${../../../../wallpapers/calder-moore-factorycomped.jpg}";
+        path = "${../../../wallpapers/calder-moore-factorycomped.jpg}";
       };
 
       auth = {

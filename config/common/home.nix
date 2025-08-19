@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./modules/shell/zsh.nix
-    ./modules/fetch.nix
+    ./modules/home/shell/zsh.nix
   ];
 
   # Home Manager needs a bit of information about you and the

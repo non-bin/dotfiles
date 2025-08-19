@@ -3,13 +3,23 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common.nix
+    ../../os.nix
   ];
 
-  networking.hostName = "sylvia";
+  networking.hostName = "skellybones";
   networking.interfaces."lo".ipv4.addresses = [
-   { address = "172.23.24.4"; prefixLength = 24; }
+   { address = "172.23.24.101"; prefixLength = 24; }
   ];
+
+  # Finger print reader
+  services = {
+    fprintd.enable = true;
+    fwupd.enable = true; # run with fwupdmgr update https://github.com/NixOS/nixos-hardware/tree/master/framework
+  };
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

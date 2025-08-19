@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./modules/docker.nix
+    ./modules/os/docker.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest; # Sets the kernel version https://nixos.wiki/wiki/Linux_kernel

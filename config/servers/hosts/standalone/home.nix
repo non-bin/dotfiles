@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./common.nix
-    ../../home/basic.nix
+    ../../home.nix
   ];
 
   home.sessionVariables = {

@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../common/configuration.nix
+    ../common/os.nix
   ];
 
   services = {
@@ -80,7 +80,7 @@
       theme.name = "Canta";
       settings = {
         background = {
-          path = "${../../wallpapers/calder-moore-factorycomped.jpg}";
+          path = "${./wallpapers/calder-moore-factorycomped.jpg}";
           fit = "Cover";
         };
         GTK = {
@@ -111,7 +111,7 @@
     tumbler.enable = true; # Image thumbnails
 
     cloudflare-warp = {
-      enable = true;
+      enable = false;
     };
 
 
