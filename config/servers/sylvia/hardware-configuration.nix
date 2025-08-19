@@ -8,37 +8,37 @@
     [ (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "virtio_pci" "xhci_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/bcff13ed-a9af-43fc-90c4-6d61054de661";
+    { device = "/dev/disk/by-uuid/c168eb09-7424-423a-8906-b7041be706dc";
       fsType = "btrfs";
       options = [ "subvol=NixOS" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/bcff13ed-a9af-43fc-90c4-6d61054de661";
+    { device = "/dev/disk/by-uuid/c168eb09-7424-423a-8906-b7041be706dc";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/bcff13ed-a9af-43fc-90c4-6d61054de661";
+    { device = "/dev/disk/by-uuid/c168eb09-7424-423a-8906-b7041be706dc";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/315E-B4DE";
+    { device = "/dev/disk/by-uuid/52D6-BB09";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/19d8280b-2ede-4251-bd1b-229f29a23426"; }
+    [ { device = "/dev/disk/by-uuid/0753304e-aad8-4389-a0e2-bd59408f43ed"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -46,7 +46,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
