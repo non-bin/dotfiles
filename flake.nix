@@ -54,21 +54,6 @@
         ];
       };
 
-      vickie = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        system = "x86_64-linux";
-        modules = [
-          ./config/personal/vickie/configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.alice = import ./config/personal/vickie/home.nix;
-          }
-        ];
-      };
-    };
-
     homeConfigurations = {
       "basic" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; };
