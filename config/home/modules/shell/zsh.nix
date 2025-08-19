@@ -28,13 +28,15 @@
     historySubstringSearch.enable = true;
 
     shellAliases = {
-      grep = "grep --color=auto";
-
       ls = "ls -Fh --color=auto";
       ll = "ls -l";
       la = "ls -lA";
       l = "ls -C";
 
+      grep = "grep --color=auto";
+      code = "codium ";
+      chrome = "get ungoogled-chromium --run chromium ";
+      g = "git ";
       mkdir = "mkdir -p";
       rm = "rm -r";
       rsync = "rsync -rlgopPEh --mkpath --info=PROGRESS2,STATS3,SKIP2";
@@ -42,20 +44,18 @@
       rmv = "cp --remove-source-files";
       dfh = "df -xtmpfs -xefivarfs -xdevtmpfs -hT";
 
-      code = "codium ";
-
       ns = "nix-shell --pure ";
       nsh = "nix-shell --run zsh ";
       get = "nsh -p ";
       locate = "nix run \"github:nix-community/nix-index#nix-locate\" -- ";
       search = "nix-search ";
-
-      chrome = "get ungoogled-chromium --run chromium ";
-
-      g = "git ";
     };
 
     initContent = lib.strings.concatLines [
+      ''sshrm() { # Remove an ssh host key''
+      ''  sed -i "/^$1/d" /home/alice/.ssh/known_hosts''
+      ''}''
+
       "setopt extendedglob nomatch"
       ''bindkey " " magic-space''
       ''bindkey "^[[1;5C" forward-word''
