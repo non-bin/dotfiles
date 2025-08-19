@@ -71,7 +71,13 @@
   "cSpell.enabled": true,
   "cSpell.language": "en,en-GB",
   "cSpell.showAutocompleteSuggestions": true,
-  "cSpell.userWords": ["GCODE", "Jacka", "Powercon", "Powercons"],
+  "cSpell.userWords": [
+    "GCODE",
+    "Jacka",
+    "Powercon",
+    "Powercons",
+    "substituters"
+  ],
   "database-client.autoSync": true,
   "debug.closeReadonlyTabsOnEnd": true,
   "debug.inlineValues": "on",

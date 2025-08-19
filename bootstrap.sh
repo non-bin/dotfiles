@@ -17,6 +17,8 @@ USERNAME="alice"
 UPGRADE="NO"
 HOME_MANAGER="NO"
 DISK="/dev/vda"
+SUBSTITUTERS=""
+SUB=""
 
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
@@ -54,12 +56,18 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       ;;
     --user)
-      USERNAME="$1"
+      USERNAME="$2"
       shift # past argument
       shift # past param
       ;;
     --disk)
-      DISK="$1"
+      DISK="$2"
+      shift # past argument
+      shift # past param
+      ;;
+    --sub)
+      SUB="$2"
+      SUBSTITUTERS="--option extra-substituters $2?trusted=true"
       shift # past argument
       shift # past param
       ;;
@@ -85,6 +93,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -e, --everything  Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
       echo "  -n, --nothing     Require explicitly enabling any steps you want"
       echo "  -h, --homeman     Install using just the package manager and Home Manager, on a non NixOS machine"
+      echo "  --sub URL         Use the specified substituter (eg '--sub http://vmhost:5000' and 'nix run github:edolstra/nix-serve' on the host)"
       echo "  --vm              Quickly setup from within a VM. Partition vda, generate hardware config, and mount virtiofs dotfiles"
       echo "  --disk path       Use with --vm. Path to the block device to install onto, defaults to /dev/vda"
       echo "  --user username   Set the username for the user to create. YOU NEED TO UPDATE CONFIGURATION.NIX TO CREATE THE USER"
@@ -103,6 +112,13 @@ done
 if [ "$EUID" -ne 0 ]; then
   echo -e "${RED}Please run as root${NC}"
   exit
+fi
+
+if [ "$SUB" != "" ]; then
+  if ! curl "$SUB/nix-cache-info" -m 3 || ! nix --extra-experimental-features nix-command store info --option connect-timeout 3 --option download-attempts 1 --store $SUB; then
+    echo -e "${RED}Failed to connect to substituter '$SUB'${NC}"
+    exit 1
+  fi
 fi
 
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
@@ -194,7 +210,7 @@ fi
 
 if [ "$UPGRADE" == "YES" ]; then
   echo -e "${GREEN}Upgrading flake.lock${NC}"
-  nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update --flake ${HOME_PATH}dotfiles
+  nix --extra-experimental-features nix-command --extra-experimental-features flakes $SUBSTITUTERS flake update --flake ${HOME_PATH}dotfiles
 fi
 
 if [ "$HOME_MANAGER" != "YES" ]; then
@@ -234,15 +250,15 @@ if [ "$HOME_MANAGER" == "YES" ]; then
 
     echo -e "${GREEN}Installing Home Manager${NC}"
     nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-    nix-channel --update
-    nix-shell "<home-manager>" -A install
+    nix-channel $SUBSTITUTERS --update
+    nix-shell $SUBSTITUTERS "<home-manager>" -A install
 
     $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
     echo -e "${GREEN}Building config${NC}"
     mkdir -p ~/.config/nix
     echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
-    home-manager switch -b bak --flake ./dotfiles/#${1}
+    home-manager $SUBSTITUTERS switch -b bak --flake ./dotfiles/#${1}
 
     echo -e "${GREEN}Done! Please restart your shell${NC}"
 EOF
@@ -251,7 +267,7 @@ fi
 
 if [ "$HOME_MANAGER" != "YES" ] && ([ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
   echo -e "${GREEN}Building for hostname \"$1\"${NC}"
-  nixos-install --flake ${HOME_PATH}dotfiles#$1
+  nixos-install $SUBSTITUTERS --flake ${HOME_PATH}dotfiles#$1
   echo "Setting password for $USERNAME"
   nixos-enter --root /mnt -c "chown -R $USERNAME:$USERNAME /home/$USERNAME/dotfiles && passwd $USERNAME"
 

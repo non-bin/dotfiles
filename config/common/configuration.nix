@@ -12,7 +12,20 @@
     gvfs.enable = true; # Lets Thunar mount things
   };
 
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        5000 # nix run github:edolstra/nix-serve
+      ];
+      allowedUDPPortRanges = [
+        # { from = 4000; to = 4007; }
+        # { from = 8000; to = 8010; }
+      ];
+    };
+  };
+
 
   boot = {
     kernel.sysctl."kernel.sysrq" = 1; # TODO
@@ -35,6 +48,10 @@
   };
 
   nix.settings = {
+    trusted-users = [ "@wheel"];
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true; # Combine duplicates
+
     # List of binary cache URLs used to obtain pre-built binaries of Nix packages
     substituters = [
       "https://nix-community.cachix.org"
@@ -44,11 +61,6 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
-  };
-
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true; # Combine duplicates
   };
 
   time.timeZone = "Australia/Melbourne";

@@ -56,6 +56,12 @@ while [[ $# -gt 0 ]]; do
       IMPURE="--impure"
       shift
       ;;
+    --sub)
+      SUB="$2"
+      SUBSTITUTERS="--option extra-substituters $2?trusted=true"
+      shift # past argument
+      shift # past param
+      ;;
 
     -*|--*)
       echo "Unknown option $1"
@@ -73,6 +79,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -d, --dry-run     Run everything but the rebuild command"
       echo "  -R, --rescue      Don't run any extra commands (like git)"
       echo "  -t, --trace       Pass --show-trace to rebuild command (for debuggin)"
+      echo "  --sub URL         Use the specified substituter (eg '--sub http://vmhost:5000' and 'nix run github:edolstra/nix-serve' on the host)"
       echo
       echo "Options must be specified with separate tacs (these: '-'). For example use '-u -c -P' not '-ucP"
       exit 1
@@ -87,6 +94,13 @@ done
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
 NEW_CONFIG_NAME="$1"
+
+if [ "$SUB" != "" ]; then
+  if ! curl "$SUB/nix-cache-info" -m 3 || ! nix --extra-experimental-features nix-command store info --option connect-timeout 3 --option download-attempts 1 --store $SUB; then
+    echo -e "Failed to connect to substituter '$SUB'"
+    exit 1
+  fi
+fi
 
 if [ "$CLEAN" == "YES" ]; then
   [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ] && sudo nix-collect-garbage --delete-older-than 1d # Delete old system generations
@@ -109,7 +123,7 @@ if [ "$PUSH" == "YES" ]; then
 fi
 
 if [ "$UPGRADE" == "YES" ]; then
-  nix flake update
+  nix $SUBSTITUTERS flake update
   echo "Finished update"
   echo
 fi
@@ -130,7 +144,7 @@ fi
 # rm /home/alice/.config/mimeapps.list # Gets overwritten by setting defaults in Thunar
 if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
   if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
-    nixos-rebuild switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
+    nixos-rebuild $SUBSTITUTERS switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
   else
     [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE
     home-manager switch -b bak $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME

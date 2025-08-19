@@ -25,6 +25,8 @@ sudo bash -c "$(wget -qO- jacka.net.au/dotfiles)" -- HOSTNAME -h
 
 # Or to quickly setup a VM
 sudo bash -c "$(curl -L jacka.net.au/dotfiles)" -- HOSTNAME --vm
+# And use a custom substituter, like `nix run github:edolstra/nix-serve` running on the host
+sudo bash -c "$(curl -L jacka.net.au/dotfiles)" -- HOSTNAME --vm --sub http://hostip:5000
 
 # List generations
 nixos-rebuild list-generations
