@@ -55,7 +55,7 @@
           # Screenshot select area, save, and copy to clipboard
           '', Print, exec, grim -t png -g "$(slurp -d)" "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png" | wl-copy''
           # Screenshot select area, and open swappy to edit
-          ''$mod, Print, exec, grim -t png -g "$(slurp -d)" "/tmp/screenshot.png" && swappy -f "/tmp/screenshot.png" -o "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png''
+          ''$mod, Print, exec, grim -t png -g "$(slurp -d)" "/tmp/screenshot.png" && swappy -f "/tmp/screenshot.png" -o "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png"''
 
           # Move focus with mod + arrow keys
           "$mod, left, movefocus, l"   # Move focus left
@@ -75,15 +75,15 @@
           "$mod ALT, up, moveworkspacetomonitor, +0 u"    # Move focus up
           "$mod ALT, down, moveworkspacetomonitor, +0 d"  # Move focus down
 
-          # Switch workspaces with mod + [0-9]
+          # Switch workspaces with mod + [/]
           "$mod, bracketright, workspace, r+1" # Switch to workspace right
           "$mod, bracketleft, workspace, r-1"  # Switch to workspace left
 
-          # Move active window to a workspace with mod + SHIFT + [0-9]
+          # Move active window to a workspace with mod + SHIFT + [/]
           "$mod SHIFT, bracketright, movetoworkspace, +1" # Move window to workspace right
           "$mod SHIFT, bracketleft, movetoworkspace, -1"  # Move window to workspace left
 
-          # Move active window to a workspace and don't move focus with mod + alt + [0-9]
+          # Move active window to a workspace and don't move focus with mod + alt + [/]
           "$mod ALT, bracketright, movetoworkspacesilent, +1" # Move window to workspace right
           "$mod ALT, bracketleft, movetoworkspacesilent, -1"  # Move window to workspace left
         ] ++ (

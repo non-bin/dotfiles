@@ -164,6 +164,7 @@
         exec-once = [
           # "hypridle"
           "waybar"
+          "hyprctl dispatch workspace 2"
         #   "hyprpaper"
         #   "dunst"
         #   "systemctl --user start hyprpolkitagent"
