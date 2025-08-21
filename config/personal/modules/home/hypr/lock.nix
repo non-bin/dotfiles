@@ -13,7 +13,7 @@
       };
 
       background = {
-        path = "${../../../wallpapers/calder-moore-factorycomped.jpg}";
+        path = "${config.home.homeDirectory}/wallpapers/lockscreen/calder-moore-scifi-elevator-fin.jpg";
       };
 
       auth = {

@@ -9,6 +9,15 @@
     ./lock.nix
   ];
 
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = true;
+      splash = true;
+      splash_offset = 2.0;
+    };
+  };
+
   home.pointerCursor = {
     hyprcursor.enable = true;
     gtk.enable = true;
@@ -129,6 +138,7 @@
           vrr = 0; # Adaptive Sync. 0 - off, 1 - on, 2 - fullscreen
           disable_hyprland_logo = false;
           disable_splash_rendering = false;
+          force_default_wallpaper = 0;
           new_window_takes_over_fullscreen = 2; # 0 - behind, 1 - takes over, 2 - unfullscreen/unmaxize
         };
 
@@ -162,10 +172,9 @@
 
         # Execute your favorite apps at launch
         exec-once = [
-          # "hypridle"
-          "waybar"
+          "waybar &"
+          "reload-hyprpaper.sh -w &"
           "hyprctl dispatch workspace 2"
-        #   "hyprpaper"
         #   "dunst"
         #   "systemctl --user start hyprpolkitagent"
         #   "wl-clip-persist --clipboard regular"

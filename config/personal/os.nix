@@ -3,6 +3,7 @@
 {
   imports = [
     ../common/os.nix
+    ./modules/os/regreet.nix
   ];
 
   services = {
@@ -67,27 +68,6 @@
     adb.enable = true;
 
     virt-manager.enable = true;
-
-    regreet = {
-      enable = true;
-      font.package = pkgs.roboto;
-      font.name = "Roboto";
-      cursorTheme.package = pkgs.canta-theme;
-      cursorTheme.name = "Canta";
-      iconTheme.package = pkgs.canta-theme;
-      iconTheme.name = "Canta";
-      theme.package = pkgs.canta-theme;
-      theme.name = "Canta";
-      settings = {
-        background = {
-          path = "${./wallpapers/calder-moore-factorycomped.jpg}";
-          fit = "Cover";
-        };
-        GTK = {
-          application_prefer_dark_theme = true;
-        };
-      };
-    };
 
     thunar = {
       enable = true;

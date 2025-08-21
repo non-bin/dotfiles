@@ -201,9 +201,9 @@ if [ "$DOWNLOAD" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
   else
     echo -e "${GREEN}Downloading to ${HOME_PATH}dotfiles${NC}"
     if [ "$HOME_MANAGER" == "YES" ]; then
-      sudo -u $SUDO_USER git clone https://github.com/non-bin/dotfiles ${HOME_PATH}dotfiles
+      sudo -u $SUDO_USER git clone --depth 1 https://github.com/non-bin/dotfiles ${HOME_PATH}dotfiles
     else
-      git clone https://github.com/non-bin/dotfiles ${HOME_PATH}dotfiles
+      git clone --depth 1 https://github.com/non-bin/dotfiles ${HOME_PATH}dotfiles
     fi
   fi
 fi
