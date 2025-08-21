@@ -116,7 +116,7 @@ fi
 
 if [ "$SUB" != "" ]; then
   if ! curl "$SUB/nix-cache-info" -m 3 || ! nix --extra-experimental-features nix-command store info --option connect-timeout 3 --option download-attempts 1 --store $SUB; then
-    echo -e "${RED}Failed to connect to substituter '$SUB'${NC}"
+    echo -e "${RED}Failed to connect to substituter '$SUB'. Do you need to run 'nix run github:edolstra/nix-serve' on the substituter server?${NC}"
     exit 1
   fi
 fi
