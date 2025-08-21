@@ -34,6 +34,7 @@
       la = "ls -lA";
       l = "ls -C";
 
+      re = "reload ";
       grep = "grep --color=auto";
       code = "codium ";
       chrome = "get ungoogled-chromium --run chromium ";
@@ -53,9 +54,11 @@
     };
 
     initContent = lib.strings.concatLines [
-      ''sshrm() { # Remove an ssh host key''
-      ''  sed -i "/^$1/d" /home/alice/.ssh/known_hosts''
-      ''}''
+      ''sshrm() {sed -i "/^$1/d" /home/alice/.ssh/known_hosts}'' # Remove an ssh host key
+      # ''export -f sshrm''
+
+      ''err()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))'' # Colour stderr red
+      # ''export -f color''
 
       "setopt extendedglob nomatch"
       ''bindkey " " magic-space''
