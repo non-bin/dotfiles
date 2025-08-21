@@ -2,8 +2,6 @@
 
 {
   programs.waybar = {
-    enable = true;
-
     settings.main-bar = {
       "hyprland/workspaces" = {
         on-click = "activate";
@@ -42,7 +40,7 @@
       "custom/exit" = {
         format = "";
         tooltip-format = "Powermenu";
-        on-click = "wlogout -b 4";
+        on-click = "wlogout";
         tooltip = false;
       };
       keyboard-state = {

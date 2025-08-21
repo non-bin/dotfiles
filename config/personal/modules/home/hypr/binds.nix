@@ -24,9 +24,9 @@
           "$mod, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
           "$mod, O, exec, obsidian"
 
-          "$mod SHIFT ALT, M, exit"                       # Exit Hyprland
-          "$mod SHIFT ALT, B, exec, reload-waybar.sh"     # Reload Waybar
-          # "$mod SHIFT ALT, W, exec, reload-hyprpaper.sh"  # Reload hyprpaper after a changing the wallpaper
+          "$mod SHIFT ALT, M, exec, wlogout"
+          "$mod SHIFT ALT, B, exec, reload-waybar.sh"
+          "$mod SHIFT ALT, W, exec, reload-hyprpaper.sh"
 
           "$mod, Q, killactive"             # Close current window
           "$mod ALT, Q, forcekillactive"    # Kill current window https://github.com/hyprwm/Hyprland/issues/9177

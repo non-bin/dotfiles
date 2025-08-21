@@ -25,6 +25,7 @@
         "hyprland/workspaces"
       ];
       modules-right = [
+        "tray"
         "mpd"
         "pulseaudio"
         "network"
@@ -34,8 +35,6 @@
         "keyboard-state"
         "battery"
         "clock"
-        "tray"
-        "custom/exit"
       ];
     };
   };

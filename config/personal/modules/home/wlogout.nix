@@ -52,10 +52,10 @@
       }
 
       button {
-          border-radius: 0;
-          border-color: black;
+        border-radius: 0;
+        border-color: black;
         text-decoration-color: #FFFFFF;
-          color: #FFFFFF;
+        color: #FFFFFF;
         background-color: #1E1E1E;
         border-style: solid;
         border-width: 1px;
@@ -64,33 +64,33 @@
         background-size: 25%;
       }
 
-      button:focus, button:active, button:hover {
+      button:hover {
         background-color: #b35700;
         outline-style: none;
       }
 
       #lock {
-          background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+          background-image: image(url("${pkgs.wlogout.outPath}/share/wlogout/icons/lock.png"));
       }
 
       #logout {
-          background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+          background-image: image(url("${pkgs.wlogout.outPath}/share/wlogout/icons/logout.png"));
       }
 
       #suspend {
-          background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+          background-image: image(url("${pkgs.wlogout.outPath}/share/wlogout/icons/suspend.png"));
       }
 
       #hibernate {
-          background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+          background-image: image(url("${pkgs.wlogout.outPath}/share/wlogout/icons/hibernate.png"));
       }
 
       #shutdown {
-          background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+          background-image: image(url("${pkgs.wlogout.outPath}/share/wlogout/icons/shutdown.png"));
       }
 
       #reboot {
-          background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+          background-image: image(url("${pkgs.wlogout.outPath}/share/wlogout/icons/reboot.png"));
       }
       '';
   };
