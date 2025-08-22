@@ -13,6 +13,16 @@
 	// 	"description": "Log output to console"
 	// }
 
+	"Module": {
+		"prefix": "mod",
+		"body": [
+			"{ config, lib, pkgs, ... }:",
+			"",
+			"{",
+			"  $0",
+			"}"
+		]
+	},
 	"Object": {
 		"prefix": "=o",
 		"body": [
@@ -49,6 +59,14 @@
 		"prefix": "=e",
 		"body": [
 			"enable = true;"
+		]
+	},
+	"Object and Enable": {
+		"prefix": "=oe",
+		"body": [
+			"= {",
+			"  enable = true;$0",
+			"};"
 		]
 	}
 }
