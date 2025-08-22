@@ -6,6 +6,7 @@
     ../../os.nix
 
     ../../modules/drive.nix
+    ../../modules/immich.nix
   ];
 
   networking.hostName = "sylvia";
