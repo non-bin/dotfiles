@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ../../../common/modules/os/wallpapers.nix
-  ];
+  imports = [];
 
   environment.etc."wallpapers/lock.jpg" = {
     source = "/home/alice/wallpapers/lockscreen/calder-moore-scifi-elevator-fin.jpg";
