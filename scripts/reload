@@ -109,7 +109,7 @@ if [ "$CLEAN" == "YES" ]; then
 fi
 
 if [ "$OPTIMISE" == "YES" ]; then
-  nix-store --optimise -vv # Can be scheduled with `nix.optimise.automatic = true;`, or run on every build with `nix.settings.auto-optimise-store = true;`, but this doesn't catch everything
+  nix-store --optimise # Can be scheduled with `nix.optimise.automatic = true;`, or run on every build with `nix.settings.auto-optimise-store = true;`, but this doesn't catch everything
 fi
 
 if [ "$PULL" == "YES" ]; then
