@@ -266,10 +266,18 @@ EOF
 fi
 
 if [ "$HOME_MANAGER" != "YES" ] && ([ "$INSTALL" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
+  if [ "$VM" == "YES" ]; then
+    NO_ROOT_PASS="--no-root-passwd"
+    USER_PASS="echo a | passwd -s $USERNAME && echo Password for $USERNAME is 'a'"
+  else
+    NO_ROOT_PASS=""
+    USER_PASS="passwd $USERNAME"
+  fi
+
   echo -e "${GREEN}Building for hostname \"$1\"${NC}"
-  nixos-install $SUBSTITUTERS --flake ${HOME_PATH}dotfiles#$1
+  nixos-install $NO_ROOT_PASS $SUBSTITUTERS --flake ${HOME_PATH}dotfiles#$1
   echo "Setting password for $USERNAME"
-  nixos-enter --root /mnt -c "chown -R $USERNAME:$USERNAME /home/$USERNAME/dotfiles && passwd $USERNAME"
+  nixos-enter --root /mnt -c "chown -R $USERNAME:$USERNAME /home/$USERNAME/dotfiles && $USER_PASS && echo Optimising store && nix-store --optimise"
 
   echo -e "${GREEN}Done! You can reboot now${NC}"
 fi
