@@ -96,20 +96,20 @@
 
 
     logind = {
-      # one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
-      hibernateKey = "hibernate";
-      hibernateKeyLongPress = "ignore";
-      lidSwitch = "suspend";
-      lidSwitchDocked = "ignore"; # When a second screen is attached
-      # lidSwitchExternalPower = ""; # Falls back to lidSwitch
-      powerKey = "ignore";
-      powerKeyLongPress = "ignore";
-      rebootKey = "reboot";
-      rebootKeyLongPress = "ignore";
-      suspendKey = "suspend";
-      suspendKeyLongPress = "ignore";
-
-      extraConfig = ""; # https://www.freedesktop.org/software/systemd/man/logind.conf.html
+      settings.Login = {
+        # one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
+        HandleHibernateKey = "hibernate";
+        HandleHibernateKeyLongPress = "ignore";
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchDocked = "ignore"; # When a second screen is attached
+        # HandleLidSwitchExternalPower = ""; # Falls back to lidSwitch
+        HandlePowerKey = "ignore";
+        HandlePowerKeyLongPress = "ignore";
+        HandleRebootKey = "reboot";
+        HandleRebootKeyLongPress = "ignore";
+        HandleSuspendKey = "suspend";
+        HandleSuspendKeyLongPress = "ignore";
+      };
     };
 
     evremap = {
