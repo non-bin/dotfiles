@@ -57,6 +57,10 @@
       systemd.variables = ["--all"];
 
       settings = {
+        # debug = {
+        #   disable_logs = false;
+        # };
+
         # See https://wiki.hyprland.org/Configuring/Monitors/
         # hyprctl monitors all
         monitor = ",2560x1600@165,auto,1.333333";
@@ -152,22 +156,20 @@
 
           # Maximised
           "bordercolor rgb(FF0000) rgb(00FF00) rgb(0000FF) 45deg,fullscreen:1"
-          "bordersize 2,fullscreen:1"
+          "prop bordersize 2,fullscreen:1"
 
           # PIP
           "tag +PIP,title:(Picture-in-Picture)"
           "float,tag:PIP"
           "size 30% 30%,tag:PIP*"
           "move 100%-w-3 100%-w-3,tag:PIP"
-          "keepaspectratio,tag:PIP*"
-          "noblur,tag:PIP"
+          "prop keepaspectratio,tag:PIP*"
+          "prop noblur,tag:PIP"
           "pin,tag:PIP,floating:1"
           "opacity 0.3 1,tag:PIP,floating:1"
 
           # Idle
-          "idleinhibit fullscreen, class:^(*)$"
-          "idleinhibit fullscreen, title:^(*)$"
-          "idleinhibit fullscreen, fullscreen:1"
+          "idleinhibit fullscreen, class:.*"
         ];
 
         # Execute your favorite apps at launch
