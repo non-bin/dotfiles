@@ -46,8 +46,8 @@
       rmv = "cp --remove-source-files";
       dfh = "df -xtmpfs -xefivarfs -xdevtmpfs -hT";
 
-      ns = "nix-shell --pure ";
-      nsh = "nix-shell --run zsh ";
+      ns = "nix-shell --log-format bar-with-logs --pure ";
+      nsh = "nix-shell --log-format bar-with-logs --run zsh ";
       get = "nsh -p ";
       locate = "nix run \"github:nix-community/nix-index#nix-locate\" -- ";
       search = "nix-search ";
