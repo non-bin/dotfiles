@@ -216,5 +216,15 @@
   {
     "command": "-workbench.action.showAllEditors",
     "key": "ctrl+k ctrl+p"
+  },
+  {
+    "key": "-",
+    "command": "editor.action.decreaseHoverVerbosityLevel",
+    "when": "editorHoverVisible"
+  },
+  {
+    "key": "=",
+    "command": "editor.action.increaseHoverVerbosityLevel",
+    "when": "editorHoverVisible"
   }
 ]

@@ -1,0 +1,43 @@
+{
+	// Place your snippets for sql here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+
+	"CREATE TABLE": {
+		"prefix": "c",
+		"body": [
+			"CREATE TABLE ${1:TableName} (",
+			"  $0",
+			");",
+		],
+	},
+
+	"NOT NULL": {
+		"prefix": "n",
+		"body": [
+			"NOT NULL"
+		],
+	},
+
+	"PRIMARY KEY": {
+		"prefix": "p",
+		"body": [
+			"PRIMARY KEY"
+		],
+	},
+
+	"INTEGER": {
+		"prefix": "i",
+		"body": [
+			"INTEGER"
+		],
+	},
+
+	"FOREIGN KEY": {
+		"prefix": "f",
+		"body": [
+			"REFERENCES ${1:Table}(${2:Column})"
+		],
+	}
+}
