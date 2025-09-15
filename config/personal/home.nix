@@ -70,6 +70,9 @@
 
     nodejs #_latest
     deno
+    gcc
+    rustc
+    cargo
 
     ffmpeg
 

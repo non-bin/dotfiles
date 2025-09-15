@@ -71,13 +71,7 @@
   "cSpell.enabled": true,
   "cSpell.language": "en,en-GB",
   "cSpell.showAutocompleteSuggestions": true,
-  "cSpell.userWords": [
-    "GCODE",
-    "Jacka",
-    "Powercon",
-    "Powercons",
-    "substituters"
-  ],
+  "cSpell.userWords": ["btrfs", "GCODE", "Jacka", "mancala", "mancalas", "Powercon", "Powercons", "substituters"],
   "database-client.autoSync": true,
   "debug.closeReadonlyTabsOnEnd": true,
   "debug.inlineValues": "on",
@@ -292,10 +286,7 @@
   "terminal.integrated.profiles.windows": {
     "Command Prompt": {
       "icon": "terminal-cmd",
-      "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe"
-      ]
+      "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"]
     },
     "Git Bash": {
       "source": "Git Bash"
@@ -339,5 +330,8 @@
   "workbench.tree.renderIndentGuides": "always",
   "workbench.view.alwaysShowHeaderActions": true,
   "zenMode.hideLineNumbers": false,
-  "zenMode.restore": false
+  "zenMode.restore": false,
+  "rust-analyzer.assist.expressionFillDefault": "default",
+  "prettier.printWidth": 120,
+  "diffEditor.ignoreTrimWhitespace": true
 }
