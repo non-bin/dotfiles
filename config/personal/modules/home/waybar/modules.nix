@@ -95,6 +95,7 @@
         on-click = "alacritty -e nmtui";
       };
       battery = {
+        interval = 3;
         states = {
           warning = 30;
           critical = 15;
