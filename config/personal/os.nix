@@ -3,25 +3,9 @@
 {
   imports = [
     ../common/os.nix
+    ./modules/os/btrbk.nix
     ./modules/os/regreet.nix
   ];
-
-  services = {
-    # TODO
-    # btrbk = {
-    #   instances."btrbk" = {
-    #     onCalendar = "*:0/10"; # every 10 minuites
-    #     settings = {
-    #       snapshot_preserve_min = "2d"; # Keep everything for at least 2d
-    #       snapshot_preserve = "20d 10w 12m"; # Keep daily backups for 20 days, weeklys for 10 weeks, and monthlies for 12 months
-    #       volume."/mnt/btr_pool" = { # /dev/vg0/btr_pool
-    #         subvolume = "home";
-    #         snapshot_dir = "/mnt/btr_pool/btrbk_snapshots";
-    #       };
-    #     };
-    #   };
-    # };
-  };
 
   programs.nix-ld.enable = true; # https://nix.dev/guides/faq#how-to-run-non-nix-executables
   programs.nix-ld.libraries = with pkgs; [ # https://github.com/cloudflare/workerd/discussions/1515#discussioncomment-10029667
