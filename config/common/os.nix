@@ -32,12 +32,12 @@
     loader = {
       grub = {
         enable = true;
-        efiSupport = true;
         configurationLimit = 50;
+        efiSupport = lib.mkDefault true;
         device = lib.mkDefault "nodev";
       };
 
-      efi.canTouchEfiVariables = true;
+      efi.canTouchEfiVariables = lib.mkDefault true;
       timeout = 1;
       # timestampFormat = "%F %H:%M hi"; # TODO https://github.com/NixOS/nixpkgs/pull/366958
     };

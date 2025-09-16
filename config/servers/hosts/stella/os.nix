@@ -11,7 +11,14 @@
    { address = "172.23.24.7"; prefixLength = 24; }
   ];
 
-  boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5000c50064f0f0c5";
+  boot.loader = {
+    grub={
+      efiSupport = false;
+      device = "/dev/disk/by-id/wwn-0x5000c50064f0f0c5";
+    };
+
+    efi.canTouchEfiVariables = false;
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
