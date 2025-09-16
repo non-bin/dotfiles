@@ -34,7 +34,7 @@
         enable = true;
         efiSupport = true;
         configurationLimit = 50;
-        device = "nodev";
+        device = lib.mkDefault "nodev";
       };
 
       efi.canTouchEfiVariables = true;
@@ -103,5 +103,6 @@
 
   services = {
     openssh.enable = true;
+    tailscale.enable = true;
   };
 }
