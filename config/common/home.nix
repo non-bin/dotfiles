@@ -33,6 +33,10 @@
   programs = {
     bash.enable = true;
 
+    zellij = {
+      enable = true;
+    };
+
     neovim = {
       enable = true;
       defaultEditor = true;
