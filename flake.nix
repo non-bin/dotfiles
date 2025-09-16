@@ -53,6 +53,21 @@
           }
         ];
       };
+
+      stella = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        system = "x86_64-linux";
+        modules = [
+          ./config/servers/hosts/stella/os.nix
+          nixos-hardware.nixosModules.intel-nuc-8i7beh
+          home-manager.nixosModules.home-manager {
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.alice = import ./config/servers/hosts/stella/home.nix;
+          }
+        ];
+      };
     };
 
     homeConfigurations = {
