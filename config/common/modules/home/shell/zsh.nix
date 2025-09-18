@@ -46,6 +46,7 @@
       rcp = ''rsync -e /dev/null -b --backup-dir="/tmp/rsync-$USERNAME"'';
       rmv = "cp --remove-source-files";
       dfh = "df -xtmpfs -xefivarfs -xdevtmpfs -hT";
+      duh = "du -h --summarize ";
       z = "zellij ";
       za = "z a ";
 
