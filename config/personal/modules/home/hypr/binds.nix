@@ -52,10 +52,11 @@
           "$mod, J, togglesplit,"
           "$mod, L, exec, hyprlock --immediate & loginctl lock-session"
 
-          # Screenshot select area, save, and copy to clipboard
-          '', Print, exec, grim -t png -g "$(slurp -d)" "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png" | wl-copy''
-          # Screenshot select area, and open swappy to edit
-          ''$mod, Print, exec, grim -t png -g "$(slurp -d)" "/tmp/screenshot.png" && swappy -f "/tmp/screenshot.png" -o "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png"''
+          # Screenshot (https://github.com/emersion/slurp/issues/16#issuecomment-3244586972)
+          ## Save and copy to clipboard
+          '', Print, exec, grim -t png -g "$(hyprctl clients -j | jq --argjson active $(hyprctl monitors -j | jq -c '[.[].activeWorkspace.id]') '.[] | select((.hidden | not) and (.workspace.id as $id | $active | contains([$id]))) | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' -r | slurp -d)" "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png" | wl-copy''
+          ## Open swappy to edit
+          ''$mod, Print, exec, grim -t png -g "$(hyprctl clients -j | jq --argjson active $(hyprctl monitors -j | jq -c '[.[].activeWorkspace.id]') '.[] | select((.hidden | not) and (.workspace.id as $id | $active | contains([$id]))) | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' -r | slurp -d)" "/tmp/screenshot.png" && swappy -f "/tmp/screenshot.png" -o "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png"''
 
           # Move focus with mod + arrow keys
           "$mod, left, movefocus, l"   # Move focus left
