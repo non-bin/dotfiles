@@ -2,6 +2,8 @@
 
 {
   programs.zellij.enable = true;
+
+  # TODO: don't hardcode urls
   home.file = {
     ".config/zellij/config.kdl".text = ''
       // show_startup_tips false
