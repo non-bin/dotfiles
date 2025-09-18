@@ -4,6 +4,7 @@
   imports = [
     ./starship.nix
     ./fetch.nix
+    ./zellij.nix
   ];
 
   home.shell.enableZshIntegration = true;
@@ -45,6 +46,8 @@
       rcp = ''rsync -e /dev/null -b --backup-dir="/tmp/rsync-$USERNAME"'';
       rmv = "cp --remove-source-files";
       dfh = "df -xtmpfs -xefivarfs -xdevtmpfs -hT";
+      z = "zellij ";
+      za = "z a ";
 
       ns = "nix-shell --log-format bar-with-logs --pure ";
       nsh = "nix-shell --log-format bar-with-logs --run zsh ";
