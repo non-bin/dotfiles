@@ -29,7 +29,7 @@
     '';
   };
 
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub.useOSProber = false;
 
   nixpkgs.config.android_sdk.accept_license = true;
 
