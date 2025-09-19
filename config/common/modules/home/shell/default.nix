@@ -35,7 +35,7 @@
       la = "ls -lA";
       l = "ls -C";
 
-      re = "reload ";
+      r = "reload ";
       grep = "grep --color=auto";
       code = "codium ";
       chrome = "get ungoogled-chromium --run chromium ";
@@ -66,7 +66,7 @@
       # ''export -f color''
 
       "WORDCHARS='*?_-.~=&;$%^'"
-      "select-word-style normal"
+      "disable r"
 
       "setopt extendedglob nomatch"
       ''bindkey " " magic-space''
