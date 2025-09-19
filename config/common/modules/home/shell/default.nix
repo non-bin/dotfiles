@@ -65,6 +65,9 @@
       ''err()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))'' # Colour stderr red
       # ''export -f color''
 
+      "WORDCHARS='*?_-.~=&;$%^'"
+      "select-word-style normal"
+
       "setopt extendedglob nomatch"
       ''bindkey " " magic-space''
       ''bindkey "^[[1;5C" forward-word''
