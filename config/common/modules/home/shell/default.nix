@@ -7,6 +7,12 @@
     ./zellij.nix
   ];
 
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = ["--cmd cd"];
+  };
+
   home.shell.enableZshIntegration = true;
   programs.zsh = {
     enable = true;
