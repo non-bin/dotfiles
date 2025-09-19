@@ -94,12 +94,21 @@
           dim_strength = 0.1;
         };
 
-        gestures = {
-          workspace_swipe = true;
-          workspace_swipe_forever = true;
-          workspace_swipe_distance = 200;
-          workspace_swipe_direction_lock = false;
-        };
+        gesture = [
+          "3, horizontal, scale: 2, workspace"
+          "3, up, dispatcher, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%+"
+          "3, down, dispatcher, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%-"
+          "4, vertical, dispatcher, exec, playerctl play-pause"
+          "4, right, dispatcher, exec, playerctl previous"
+          "4, left, dispatcher, exec, playerctl next"
+          "4, right, mod: SHIFT, dispatcher, exec, playerctl position 10-"
+          "4, left, mod: SHIFT, dispatcher, exec, playerctl position 10+"
+          # FIXME https://github.com/hyprwm/Hyprland/discussions/11759
+          # workspace_swipe = true;
+          # workspace_swipe_forever = true;
+          # workspace_swipe_distance = 200;
+          # workspace_swipe_direction_lock = false;
+        ];
 
         general = {
           gaps_in = 2;
@@ -126,7 +135,7 @@
 
           touchpad = {
             natural_scroll = true;
-            disable_while_typing = false;
+            disable_while_typing = true;
           };
           sensitivity = 0; # https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html#pointer-acceleration
         };
