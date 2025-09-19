@@ -21,13 +21,9 @@
         };
       };
       "hyprland/window" = {
-        rewrite = {
-          "(.*) - Brave" = "$1";
-          "(.*) - Chromium" = "$1";
-          "(.*) - Brave Search" = "$1";
-          "(.*) - Outlook" = "$1";
-          "(.*) Microsoft Teams" = "$1";
-        };
+        icon = true;
+        icon-size = 18;
+        format = "{title}";
         separate-outputs = true;
       };
       "custom/appmenu" = {
@@ -66,11 +62,13 @@
         tooltip = false;
       };
       cpu = {
-        format = "/ C {usage}% ";
+        interval = 1;
+        format = "C {usage}% ";
         on-click = "alacritty -e btop";
       };
       memory = {
-        format = "/ M {}% ";
+        interval = 5;
+        format = "M {}% ";
         on-click = "alacritty -e btop";
       };
       disk = {
