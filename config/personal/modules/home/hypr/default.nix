@@ -28,6 +28,7 @@
 
   gtk = {
     enable = true;
+    colorScheme = "dark";
     cursorTheme = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
