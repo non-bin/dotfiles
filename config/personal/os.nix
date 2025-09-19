@@ -97,7 +97,7 @@
     };
 
     evremap = {
-      # TODO: Must enable and set device name in host config
+      # Must enable and set device name in host config
       # enable = true;
       # settings.device_name = "Framework Laptop 16 Keyboard Module - ANSI Keyboard"; # evremap list-devices
       settings = {

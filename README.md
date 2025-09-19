@@ -37,28 +37,7 @@ nixos-rebuild list-generations
 - GhostyTerm
 - hardware.cpu.amd.updateMicrocode
 - check <https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/> works
-- check screenshots work
-
-- <https://keyboard.frame.work> <https://community.frame.work/t/responded-help-configuring-fw16-keyboard-with-via/47176/5>
 - wl-clip-persist
-- hyprpaper
-- eslint
-- btrbk
-
-- fingerprint
-  - Hyprlock
-  - Regreet
-  - sudo
-  - polkit
-- fastfetch
-- minecraft
-
-- Reload script
-  - update schedule
-  - cleanup
-  - git actions
-  - dry run
-  - better param parsing
 
 ## Resources
 

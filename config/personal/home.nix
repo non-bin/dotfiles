@@ -4,11 +4,10 @@
   imports = [
     ../common/home.nix
 
-    ./modules/home/hypr/land.nix
+    ./modules/home/hypr
     ./modules/home/alacrity.nix
     ./modules/home/wlogout.nix
-    ./modules/home/waybar/waybar.nix
-    ./modules/home/code/code.nix
+    ./modules/home/code
     ./modules/home/java.nix
     ./modules/home/obs.nix
   ];
