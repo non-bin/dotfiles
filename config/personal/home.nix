@@ -21,6 +21,7 @@
   };
 
   home.packages = with pkgs; [
+    playerctl
     brightnessctl
     wineWowPackages.waylandFull
     qemu

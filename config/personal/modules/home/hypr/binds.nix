@@ -4,6 +4,7 @@
       enable = true;
       settings = {
         # https://wiki.hyprland.org/Configuring/Binds/
+        # use `wev` to figgure out what key is what
 
         "$mod" = "META";
 
@@ -51,6 +52,14 @@
 
           "$mod, J, togglesplit,"
           "$mod, L, exec, hyprlock --immediate & loginctl lock-session"
+
+          # Media
+          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86AudioPlay, exec, playerctl play-pause"
+          ", XF86AudioPrev, exec, playerctl previous"
+          ", XF86AudioNext, exec, playerctl next"
+          "SHIFT, XF86AudioPrev, exec, playerctl position 10-"
+          "SHIFT, XF86AudioNext, exec, playerctl position 10+"
 
           # Screenshot (https://github.com/emersion/slurp/issues/16#issuecomment-3244586972)
           ## Save and copy to clipboard
@@ -104,7 +113,6 @@
           # Volume
           ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
           ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+" # Limit volume to 150%
-          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
           # Screen brightness
           ", XF86MonBrightnessUp, exec, brightnessctl --min-value=235 --exponent=3 s +10%"
@@ -116,7 +124,7 @@
         bindm = [
           "$mod, mouse:272, movewindow" # Move window
           "$mod, mouse:273, resizewindow" # Resize window
-          # Volume
+          # TODO Volume
         ];
       };
     };
