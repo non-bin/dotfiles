@@ -116,7 +116,7 @@
   },
   {
     "command": "workbench.action.createTerminalEditor",
-    "key": "ctrl+`"
+    "key": "ctrl+shift+`"
   },
   {
     "command": "editor.action.blockComment",
@@ -163,12 +163,8 @@
     "key": "ctrl+alt+f"
   },
   {
-    "command": "workbench.action.terminal.new",
-    "key": "ctrl+shift+`"
-  },
-  {
     "command": "terminal.focus",
-    "key": "ctrl+shift+`"
+    "key": "ctrl+`"
   },
   {
     "command": "workbench.action.files.saveWithoutFormatting",
@@ -226,5 +222,14 @@
     "key": "=",
     "command": "editor.action.increaseHoverVerbosityLevel",
     "when": "editorHoverVisible"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
   }
 ]
