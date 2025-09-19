@@ -69,6 +69,7 @@
       ''bindkey " " magic-space''
       ''bindkey "^[[1;5C" forward-word''
       ''bindkey "^[[1;5D" backward-word''
+      ''bindkey "^[[3~" delete-char''
       ''bindkey "\ue000" delete-word # Unicode EXXX is reserved and unused so I pass this to from the terminal emulator for delete word right''
 
       "zstyle ':completion:*' auto-description 'specify: %d'"

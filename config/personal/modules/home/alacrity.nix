@@ -101,8 +101,8 @@
 
         keyboard = {
           bindings = [
-            {key = "Backspace"; mods = "Control"; chars = "\u001b\u007f"; }
-            {key = "Delete"; mods = "Control"; chars = "\ue000"; } # Unicode EXXX is reserved and unused so I pass this to zsh for delete word right
+            {key = "Backspace"; mods = "Control"; chars = ''\u001b\u007f''; }
+            {key = "Delete"; mods = "Control"; chars = ''\ue000''; } # Unicode EXXX is reserved and unused so I pass this to zsh for delete word right
           ];
         };
       };
