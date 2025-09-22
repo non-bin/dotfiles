@@ -62,10 +62,12 @@
           "4, left, mod: SHIFT, dispatcher, exec, playerctl position 10+"
           # FIXME https://github.com/hyprwm/Hyprland/discussions/11759
           # workspace_swipe = true;
-          # workspace_swipe_forever = true;
-          # workspace_swipe_distance = 200;
-          # workspace_swipe_direction_lock = false;
         ];
+        gestures = {
+          workspace_swipe_forever = true;
+          # workspace_swipe_distance = 200;
+          workspace_swipe_direction_lock = false;
+        };
 
         general = {
           gaps_in = 2;
