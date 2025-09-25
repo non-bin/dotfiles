@@ -12,15 +12,22 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = ""; # Don't download mac deps
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, agenix, ... }: {
     nixosConfigurations = {
       skellybones = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         system = "x86_64-linux";
         modules = [
           ./config/personal/hosts/skellybones/os.nix
+          agenix.nixosModules.default
           nixos-hardware.nixosModules.framework-16-7040-amd
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
@@ -36,6 +43,7 @@
         system = "x86_64-linux";
         modules = [
           ./config/servers/hosts/sylvia/os.nix
+          agenix.nixosModules.default
           nixos-hardware.nixosModules.intel-nuc-8i7beh
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
@@ -51,6 +59,7 @@
         system = "x86_64-linux";
         modules = [
           ./config/servers/hosts/stella/os.nix
+          agenix.nixosModules.default
           nixos-hardware.nixosModules.intel-nuc-8i7beh
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };

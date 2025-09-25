@@ -4,7 +4,9 @@ set -e # Exit on any errors
 
 cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../"
 
-REBUILD="YES" # Default
+# Defaults
+REBUILD="YES"
+IMPURE="--impure"
 
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
@@ -56,6 +58,10 @@ while [[ $# -gt 0 ]]; do
       IMPURE="--impure"
       shift
       ;;
+    -I|--pure)
+      IMPURE=""
+      shift
+      ;;
     --sub)
       SUB="$2"
       SUBSTITUTERS="--option extra-substituters $2?trusted=true"
@@ -70,7 +76,8 @@ while [[ $# -gt 0 ]]; do
       echo
       echo "Options:"
       echo "  -u, --upgrade     Pull updates from upstream and update lockfile"
-      echo "  -i, --impure      add the --impure flag to the reload command"
+      echo "  -i, --impure      Add the --impure flag to the reload command (Default)"
+      echo "  -I, --pure        Remove the --impure flag from the reload command"
       echo "  -c, --clean       Garbage collect the nix store, don't rebuild (more info at https://nixos.wiki/wiki/Cleaning_the_nix_store and https://nixos.wiki/wiki/Storage_optimization)"
       echo "  -o, --optimise    Hard link identicle files in the nix store, don't rebuild"
       echo "  -p, --pull        Pull updates from git before updating"
@@ -144,7 +151,7 @@ fi
 # rm /home/alice/.config/mimeapps.list # Gets overwritten by setting defaults in Thunar
 if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
   if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
-    nixos-rebuild $SUBSTITUTERS switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
+    sudo nixos-rebuild $SUBSTITUTERS switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
   else
     [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE
     home-manager switch -b bak $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
