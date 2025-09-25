@@ -144,11 +144,14 @@
         exec-once = [
           "waybar &"
           "reload-hyprpaper.sh -w &"
-          "hyprctl dispatch workspace 2"
+          "hyprctl dispatch workspace 2 &"
         #   "dunst"
         #   "systemctl --user start hyprpolkitagent"
         #   "wl-clip-persist --clipboard regular"
         #   "wl-paste --watch cliphist store"
+
+          "[workspace 1 silent] spotify"
+          "[workspace 2 silent] firefox"
         ];
       };
     };
