@@ -23,7 +23,8 @@
           "$mod SHIFT, M, exec, gamemoderun prismlauncher -l main"  # Minecraft
           "$mod, S, exec, spotify"
           "$mod, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
-          "$mod, O, exec, obsidian"
+          "$mod, O, exec, orca-slicer"
+          "$mod, N, exec, obsidian"
 
           "$mod SHIFT ALT, M, exec, wlogout"
           "$mod SHIFT ALT, B, exec, reload-waybar.sh"
