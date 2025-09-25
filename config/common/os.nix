@@ -39,7 +39,7 @@
 
       efi.canTouchEfiVariables = lib.mkDefault true;
       timeout = 1;
-      # timestampFormat = "%F %H:%M hi"; # TODO https://github.com/NixOS/nixpkgs/pull/366958
+      timestampFormat = "%F %H:%M"; # TODO https://github.com/NixOS/nixpkgs/pull/366958
     };
   };
 
