@@ -2,11 +2,9 @@
   description = "NixOS configuration";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/master";
-    # nixpkgs.url = "github:non-bin/nixpkgs/bootLoaderGenerationFormat";
-    # nixpkgs.url = "/home/alice/dotfiles/repos/nixpkgs";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:non-bin/nixpkgs/live";
+    # nixpkgs.url = "/home/alice/repos/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
