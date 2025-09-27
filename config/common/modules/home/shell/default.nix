@@ -27,7 +27,11 @@
       extended = true; # Save timestamps
     };
 
-    historySubstringSearch.enable = true;
+    historySubstringSearch = {
+      enable = true;
+      searchUpKey = [ "^[OA" ]; # Usually "^[[A"
+      searchDownKey = [ "^[OB" ]; # Usually "^[[B"
+    };
 
     shellAliases = {
       ls = "ls -Fh --color=auto";
