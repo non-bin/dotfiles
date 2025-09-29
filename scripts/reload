@@ -32,6 +32,10 @@ while [[ $# -gt 0 ]]; do
       UPGRADE="YES"
       shift # past argument
       ;;
+    -v|--vm)
+      VM="YES"
+      shift # past argument
+      ;;
     -t|--trace)
       TRACE="--show-trace"
       shift # past argument
@@ -83,6 +87,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -p, --pull        Pull updates from git before updating"
       echo "  -P, --push        Commit and push all changes"
       echo "  -r, --rebuild     Explicitly run the rebuild command (eg if running with -c or -o)"
+      echo "  -v, --vm          Build and run a VM with 'nixos-rebuild build-vm', and expose port 22 through the host's port 2221"
       echo "  -d, --dry-run     Run everything but the rebuild command"
       echo "  -R, --rescue      Don't run any extra commands (like git)"
       echo "  -t, --trace       Pass --show-trace to rebuild command (for debuggin)"
@@ -151,7 +156,13 @@ fi
 # rm /home/alice/.config/mimeapps.list # Gets overwritten by setting defaults in Thunar
 if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
   if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
-    sudo nixos-rebuild $SUBSTITUTERS switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
+    if [ "$VM" == "YES" ]; then
+    [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME="testvm"
+      QEMU_NET_OPTS="hostfwd=tcp::2221-:22" && nixos-rebuild build-vm $TRACE --flake ./#$NEW_CONFIG_NAME && "result/bin/run-${NEW_CONFIG_NAME}-vm" -nographic
+      # rm result "${NEW_CONFIG_NAME}.qcow2"
+    else
+      sudo nixos-rebuild $SUBSTITUTERS switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
+    fi
   else
     [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE
     home-manager switch -b bak $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME

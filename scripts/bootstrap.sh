@@ -220,7 +220,7 @@ if [ "$HOME_MANAGER" != "YES" ]; then
     exit 1
   fi
 
-  CONFIG_PATH=$(find ${HOME_PATH}dotfiles/config/{servers,personal}/hosts -maxdepth 1 -mindepth 1 -iname $1)/
+  CONFIG_PATH=${HOME_PATH}dotfiles/config/hosts/$1/ # FIXME test this
   if [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
     echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to ${CONFIG_PATH}${NC}"
     cp /mnt/etc/nixos/hardware-configuration.nix $CONFIG_PATH --backup=t # Make numbered backups
