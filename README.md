@@ -27,19 +27,38 @@ sudo bash -c "$(wget -qO- jacka.net.au/dot)" -- HOSTNAME -h
 sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME --vm
 # And use a custom substituter, like `nix run github:edolstra/nix-serve` running on the host
 sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME --vm --sub http://hostip:5000
-
-# List generations
-nixos-rebuild list-generations
 ```
 
-## TODO
+## Development
 
+### Formatting
+
+To format the repo use `treefmt`, which runs the official nixfmt command on every file it finds, Or in VSCode use the nix-ide extension which also uses nixfmt
+
+### Secrets
+
+```bash
+# To create or edit a secret
+agenix edit ./path/to/secret.age
+
+# Then after adding a new host key, or creating or editing a secret
+agenix rekey
+
+# And to view all secrets
+agenix view
+```
+
+### TODO
+
+- Secret management
+- Check bootstrap
+- Factor out common flake terms
 - GhostyTerm
 - hardware.cpu.amd.updateMicrocode
 - check <https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/> works
 - wl-clip-persist
 
-## Resources
+### Resources
 
 [NixOS Package Search](https://search.nixos.org/packages?channel=unstable)
 [Nüschtos Options Search](https://search.n%C3%BCschtos.de)
@@ -58,4 +77,5 @@ nixos-rebuild list-generations
   efi.canTouchEfiVariables = false;
   };
 }
+```
 ```
