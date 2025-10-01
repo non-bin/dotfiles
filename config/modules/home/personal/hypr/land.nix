@@ -149,7 +149,7 @@
         # Execute your favorite apps at launch
         exec-once = [
           "waybar &"
-          "reload-hyprpaper.sh -w &"
+          "/home/alice/dotfiles/scripts/reload-hyprpaper.sh -w &"
           "hyprctl dispatch workspace 2 &"
           #   "dunst"
           #   "systemctl --user start hyprpolkitagent"
