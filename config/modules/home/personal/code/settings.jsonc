@@ -337,5 +337,6 @@
   "git-graph.retainContextWhenHidden": false,
   "[nix]": {
     "editor.defaultFormatter": "jnoortheen.nix-ide"
-  }
+  },
+  "git.blame.statusBarItem.enabled": true
 }

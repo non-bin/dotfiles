@@ -147,10 +147,6 @@
     "when": "inKeybindings && keybindingFocus"
   },
   {
-    "command": "git.commitAll",
-    "key": "ctrl+k ctrl+a"
-  },
-  {
     "command": "-workbench.action.quickOpen",
     "key": "ctrl+p"
   },
@@ -231,5 +227,10 @@
     "key": "ctrl+`",
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+k ctrl+a",
+    "command": "git.commitAmend",
+    "when": "!operationInProgress"
   }
 ]
