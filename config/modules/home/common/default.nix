@@ -14,6 +14,7 @@
   ];
 
   home.packages = with pkgs; [
+    bc
     wget
     btop
     zip
