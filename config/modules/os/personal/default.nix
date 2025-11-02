@@ -130,6 +130,7 @@
     };
 
     transmission = {
+      package = pkgs.transmission_4;
       enable = true;
     };
   };

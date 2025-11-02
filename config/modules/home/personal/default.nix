@@ -84,7 +84,7 @@
     mesen # NES Emulator
 
     proxmark3
-    qflipper
+    qFlipper
   ];
 
   home.file = {
