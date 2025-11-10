@@ -85,8 +85,8 @@
           shadow_size = 10;
         }
         {
-          # Date
-          text = "cmd[update:1000] englishDate.sh";
+          # Date and battery
+          text = ''cmd[update:1000] echo "$(/home/alice/dotfiles/scripts/englishDate.sh) $(cat /sys/class/power_supply/BAT1/capacity && echo %)"|tr -d "\n"'';
           color = "rgba(200, 200, 200, 1.0)";
           font_size = 20;
           font_family = "Fira Semibold";
