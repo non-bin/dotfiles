@@ -7,7 +7,15 @@
 
 {
   imports = [
-    ../../modules/os/common/base.nix
+    # Pick one
+    # ../../modules/os/common/base.nix
+    # ../../modules/os/common
+    ../../modules/os/server.nix
+
+    # ../../modules/os/server/servarr
+    ../../modules/os/server/homepage.nix
+
+    # ../../modules/os/common/secrets/default.nix # Only really needed if just using base.nix
   ];
 
   networking.hostName = "testvm";
@@ -19,19 +27,37 @@
     }
   ];
 
-  virtualisation.vmVariant = {
-    # following configuration is added only when building VM with build-vm
-    virtualisation = {
-      memorySize = 4096; # Use 2048MiB memory.
-      cores = 8;
-      graphics = false;
-    };
+  # following configuration is added only when building VM with build-vm
+  virtualisation.vmVariant.virtualisation = {
+    memorySize = 4096; # Use 2048MiB memory.
+    cores = 8;
+    graphics = false;
+    # forwardPorts = [
+    #   {
+    #     from = "host";
+    #     host.port = 8080;
+    #     guest.port = 80;
+    #   }
+    # ];
+    qemu.networkingOptions = [
+      # "-net nic,netdev=user,model=virtio"
+      # "-netdev user,id=usea,\${QEMU_NET_OPTS:+,$QEMU_NET_OPTS}"
+      # "-netdev bridge,id=hn0"
+      # "-device virtio-net-pci,netdev=hn0,id=nic1"
+      "-netdev tap,id=net0,br=br0,helper=$(type -p qemu-bridge-helper)"
+    ];
   };
 
   services.getty.autologinUser = "alice";
 
+  environment.shellAliases = {
+    s = "sudo shutdown now"; # Quick shutdown
+  };
+
+  # Workarounds
   programs.dconf.enable = true; # "https://github.com/nix-community/home-manager/blob/master/docs/manual/faq/ca-desrt-dconf.md"
   services.btrfs.autoScrub.enable = lib.mkForce false;
+  virtualisation.docker.storageDriver = lib.mkForce null;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
