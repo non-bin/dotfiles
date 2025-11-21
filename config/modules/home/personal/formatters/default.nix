@@ -15,9 +15,10 @@
   #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/modules/home/personal/formatters/.prettierrc.json";
 
   home.packages = with pkgs; [
-    treefmt
-    prettier
-    nixfmt-rfc-style
-    shfmt
+    treefmt # multiplexer
+    prettier # lots of languages
+    nixfmt-rfc-style # nix
+    shfmt # shell scripts
+    taplo # toml
   ];
 }
