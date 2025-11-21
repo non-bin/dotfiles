@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+if [ "$1" == "" ]; then
+	echo No path provided
+	echo Example argument: \".*\\/\\\\.prettierrc\\\\.json\" matches \".prettierrc.json\"
+	exit 1
+fi
+
+X="$(pwd)/a"
+while [ "$X" != "/" ] ; do
+    X=$(dirname "$X")
+    FOUND="$(find "$X" -maxdepth 1 -regextype posix-extended -regex "$1")"
+    if [ "$FOUND" != "" ]; then
+      echo "$FOUND"
+      exit 0
+    fi
+done
+
+exit 1

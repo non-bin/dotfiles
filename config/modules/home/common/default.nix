@@ -23,9 +23,6 @@
     jq
     fzf
     nix-search
-
-    nixfmt-tree
-    nixfmt-rfc-style
   ];
 
   programs = {

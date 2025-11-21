@@ -4,11 +4,11 @@
   lib,
   ...
 }:
-
 {
   imports = [
     ./hypr
     ./code
+    ./formatters
     ./alacrity.nix
     ./obs.nix
   ];
