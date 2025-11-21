@@ -2,8 +2,7 @@
 
 if [ "$1" == "-w" ]; then
   echo Waiting fot hyprpaper to start
-  until pids=$(pidof hyprpaper)
-  do
+  until pids=$(pidof hyprpaper); do
     sleep 1
   done
 

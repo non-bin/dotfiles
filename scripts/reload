@@ -2,7 +2,7 @@
 # set -x # Print commands as they are printed
 set -e # Exit on any errors
 
-cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/../"
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../"
 
 # Defaults
 REBUILD="YES"
@@ -11,58 +11,58 @@ IMPURE="--impure"
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -R|--rescue)
+    -R | --rescue)
       RESCUE="YES"
       shift # past argument
       ;;
-    -o|--optimise)
+    -o | --optimise)
       REBUILD="NO"
       OPTIMISE="YES"
       shift
       ;;
-    -p|--pull)
+    -p | --pull)
       PULL="YES"
       shift # past argument
       ;;
-    -P|--push)
+    -P | --push)
       PUSH="YES"
       shift # past argument
       ;;
-    -u|--upgrade)
+    -u | --upgrade)
       UPGRADE="YES"
       shift # past argument
       ;;
-    -v|--vm)
+    -v | --vm)
       VM="YES"
       shift # past argument
       ;;
-    -t|--trace)
+    -t | --trace)
       TRACE="--show-trace"
       shift # past argument
       ;;
-    -c|--clean)
+    -c | --clean)
       REBUILD="NO"
       CLEAN="YES"
       shift # past argument
       ;;
-    -r|--rebuild)
+    -r | --rebuild)
       REBUILD="YES"
       shift # past argument
       ;;
-    -d|--dry-run)
+    -d | --dry-run)
       DRY="YES"
       shift # past argument
       ;;
-    -g|--generation)
+    -g | --generation)
       GENERATION="YES"
       REBUILD="NO"
       shift
       ;;
-    -i|--impure)
+    -i | --impure)
       IMPURE="--impure"
       shift
       ;;
-    -I|--pure)
+    -I | --pure)
       IMPURE=""
       shift
       ;;
@@ -73,7 +73,7 @@ while [[ $# -gt 0 ]]; do
       shift # past param
       ;;
 
-    -*|--*)
+    -* | --*)
       echo "Unknown option $1"
 
       echo "Usage: reload [options] [new-config-name]"
@@ -98,7 +98,7 @@ while [[ $# -gt 0 ]]; do
       ;;
     *)
       POSITIONAL_ARGS+=("$1") # save positional arg
-      shift # past argument
+      shift                   # past argument
       ;;
   esac
 done
@@ -116,8 +116,8 @@ fi
 
 if [ "$CLEAN" == "YES" ]; then
   [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ] && sudo nix-collect-garbage --delete-older-than 1d # Delete old system generations
-  nix-collect-garbage --delete-older-than 1d # And the same for HomeManager
-  nix-store --gc # Remove unused store entries
+  nix-collect-garbage --delete-older-than 1d                                                  # And the same for HomeManager
+  nix-store --gc                                                                              # Remove unused store entries
 fi
 
 if [ "$OPTIMISE" == "YES" ]; then
@@ -157,7 +157,7 @@ fi
 if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
   if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
     if [ "$VM" == "YES" ]; then
-    [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME="testvm"
+      [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME="testvm"
       QEMU_NET_OPTS="hostfwd=tcp::2221-:22" && nixos-rebuild build-vm $TRACE --flake ./#$NEW_CONFIG_NAME && "result/bin/run-${NEW_CONFIG_NAME}-vm" -nographic
       # rm result "${NEW_CONFIG_NAME}.qcow2"
     else

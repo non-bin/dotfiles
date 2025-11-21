@@ -23,22 +23,22 @@ SUB=""
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -d|--download)
+    -d | --download)
       DOWNLOAD="YES"
       EVERYTHING="NO"
       shift # past argument
       ;;
-    -c|--copy)
+    -c | --copy)
       COPY="YES"
       EVERYTHING="NO"
       shift # past argument
       ;;
-    -v|--version)
+    -v | --version)
       UPDATE_STATE_VERSION="YES"
       EVERYTHING="NO"
       shift # past argument
       ;;
-    -i|--install)
+    -i | --install)
       INSTALL="YES"
       EVERYTHING="NO"
       shift # past argument
@@ -47,11 +47,11 @@ while [[ $# -gt 0 ]]; do
       VM="YES"
       shift # past argument
       ;;
-    -e|--everything)
+    -e | --everything)
       EVERYTHING="YES"
       shift # past argument
       ;;
-    -n|--nothing)
+    -n | --nothing)
       EVERYTHING="NO"
       shift # past argument
       ;;
@@ -71,15 +71,15 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       shift # past param
       ;;
-    -u|--upgrade)
+    -u | --upgrade)
       UPGRADE="YES"
       shift # past argument
       ;;
-    -h|--homeman)
+    -h | --homeman)
       HOME_MANAGER="YES"
       shift # past argument
       ;;
-    -*|--*)
+    -* | --*)
       echo "Unknown option $1"
 
       echo "Usage: bootstrap.sh [options] hostname"
@@ -103,7 +103,7 @@ while [[ $# -gt 0 ]]; do
       ;;
     *)
       POSITIONAL_ARGS+=("$1") # save positional arg
-      shift # past argument
+      shift                   # past argument
       ;;
   esac
 done
@@ -130,7 +130,7 @@ if ([ "$VM" == "YES" ] || [ "$INSTALL" == "YES" ] || [ "$COPY" == "YES" ] || [ "
 fi
 
 # No hostname   and (we're doing everything     or     installing          or    copying )
-if (( $# != 1 )) && ([ "$EVERYTHING" == "YES" ] || [ "$INSTALL" == "YES" ] || [ "$COPY" == "YES" ] || [ "$HOME_MANAGER" == "YES" ]); then
+if (($# != 1)) && ([ "$EVERYTHING" == "YES" ] || [ "$INSTALL" == "YES" ] || [ "$COPY" == "YES" ] || [ "$HOME_MANAGER" == "YES" ]); then
   echo -e "${RED}Expected 1 parameter, for hostname. Got $#${NC}"
   exit 1
 fi
@@ -184,7 +184,7 @@ fi
 if [ "$HOME_MANAGER" == "YES" ]; then
   HOME_PATH="/home/$USERNAME/"
   REQUIRED_PACKAGES="curl tar git"
-  if apt-get -v > /dev/null; then
+  if apt-get -v >/dev/null; then
     echo -e "${GREEN}Installing required packages with apt-get${NC}"
     apt-get update
     apt-get -y install $REQUIRED_PACKAGES
@@ -215,7 +215,7 @@ fi
 
 if [ "$HOME_MANAGER" != "YES" ]; then
   # Check hardwawre config exists if needed
-  if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ( [ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ] ); then
+  if [ ! -f /mnt/etc/nixos/hardware-configuration.nix ] && ([ "$COPY" == "YES" ] || [ "$EVERYTHING" == "YES" ]); then
     echo -e "${RED}hardware-configuration.nix not found! Did you run 'nixos-generate-config --root /mnt' yet?${NC}"
     exit 1
   fi
@@ -244,7 +244,7 @@ if [ "$HOME_MANAGER" == "YES" ]; then
   sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon --yes
 
   # Run as unprivileged user
-  sudo -i -u $SUDO_USER bash << EOF
+  sudo -i -u $SUDO_USER bash <<EOF
     . '/etc/bash.bashrc'
     . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' # Should be included by previous but it doesn't so...
 
