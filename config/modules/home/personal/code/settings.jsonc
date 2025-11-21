@@ -175,7 +175,6 @@
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
   "git.confirmSync": false,
-  "git.enableSmartCommit": true,
   "git.mergeEditor": true,
   "git.openRepositoryInParentFolders": "always",
   "git.smartCommitChanges": "tracked",
@@ -255,10 +254,7 @@
   "terminal.integrated.profiles.windows": {
     "Command Prompt": {
       "icon": "terminal-cmd",
-      "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe"
-      ]
+      "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"]
     },
     "Git Bash": {
       "source": "Git Bash"
