@@ -22,10 +22,10 @@
       enable = true;
       allowedTCPPorts = [
         5000 # nix run github:edolstra/nix-serve
-      ];
-      allowedUDPPortRanges = [
-        # { from = 4000; to = 4007; }
-        # { from = 8000; to = 8010; }
+        25565 # minecraft
+
+        80 # Testing things
+        8080 # Testing things
       ];
     };
   };
