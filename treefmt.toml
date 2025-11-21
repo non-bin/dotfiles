@@ -5,35 +5,43 @@ walk = "auto"
 [formatter.nixfmt-rfc-style]
 command = "nixfmt"
 includes = ["*.nix"]
-options   = [
-  "-s" # Enable a stricter formatting mode that isn't influenced as much by how the input is formatted
+options = [
+  "-s", # Enable a stricter formatting mode that isn't influenced as much by how the input is formatted
 ]
 
 [formatter.shfmt]
 command = "shfmt"
 options = [
-  "-i", "2", # Indent 2 spaces
-  "-w", # Write to file
-  "-s", # Simplify
-  "-ci" # Indent switch cases
+  "-i",
+  "2",   # Indent 2 spaces
+  "-w",  # Write to file
+  "-s",  # Simplify
+  "-ci", # Indent switch cases
 ]
-includes = [ "*.sh" ]
-excludes = []
-priority = 0
+includes = ["*.sh", "scripts/*"]
+excludes = ["*.js"]
+priority = 1000
 
 [formatter.prettier]
 command = "/home/alice/dotfiles/scripts/prettierWrapper"
-options = [ "--write" ]
+options = ["--write"]
 includes = [
- "*.css",
- "*.html",
- "*.js",
- "*.json",
- "*.jsonc",
- "*.jsx",
- "*.md",
- "*.mdx",
- "*.scss",
- "*.ts",
- "*.yaml",
+  "*.css",
+  "*.html",
+  "*.js",
+  "*.json",
+  "*.jsonc",
+  "*.jsx",
+  "*.md",
+  "*.mdx",
+  "*.scss",
+  "*.ts",
+  "*.yaml",
 ]
+
+
+[formatter.taplo]
+command = "taplo"
+excludes = []
+includes = ["*.toml"]
+options = ["format"]
