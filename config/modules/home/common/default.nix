@@ -48,21 +48,26 @@
       '';
     };
 
+    delta = {
+      enable = true; # Syntax hilighting
+      enableGitIntegration = true;
+    };
+
     git = {
       enable = true;
-      delta.enable = true; # Syntax hilighting
-      extraConfig = {
+
+      settings = {
         credential.helper = "store";
         init.defaultBranch = "main";
         url."https://github.com/".insteadOf = [
           "gh:"
           "github:"
         ];
+        user = {
+          email = "jacka.alice@gmail.com";
+          name = "Alice Jacka";
       };
-      userEmail = "jacka.alice@gmail.com";
-      userName = "Alice Jacka";
-
-      aliases = {
+        alias = {
         co = "checkout";
         cl = "clone";
         br = "branch";
@@ -70,6 +75,7 @@
         st = "status";
         pl = "pull";
         ps = "push";
+        };
       };
     };
 
