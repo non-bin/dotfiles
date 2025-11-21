@@ -6,8 +6,7 @@
 }:
 
 {
-  imports = [
-  ];
+  imports = [ ];
 
   virtualisation = {
     docker = {
@@ -51,7 +50,5 @@
 
   # Remember to add users to the docker group
 
-  environment.systemPackages = with pkgs; [
-    docker-compose
-  ];
+  environment.systemPackages = with pkgs; [ docker-compose ];
 }

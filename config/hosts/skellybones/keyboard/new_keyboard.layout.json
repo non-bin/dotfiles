@@ -1,24 +1,7 @@
 {
   "name": "Framework Laptop 16 Keyboard - ANSI",
   "vendorProductId": 850133010,
-  "macros": [
-    "{KC_LGUI,KC_ENT}reload{KC_ENT}",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
+  "macros": ["{KC_LGUI,KC_ENT}reload{KC_ENT}", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
   "layers": [
     [
       "KC_C",

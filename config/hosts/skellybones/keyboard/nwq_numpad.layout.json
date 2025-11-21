@@ -1,24 +1,7 @@
 {
   "name": "Framework Laptop 16 Numpad",
   "vendorProductId": 850133012,
-  "macros": [
-    "{KC_LGUI,KC_ENT}reload{KC_ENT}",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-  ],
+  "macros": ["{KC_LGUI,KC_ENT}reload{KC_ENT}", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
   "layers": [
     [
       "MO(9)",

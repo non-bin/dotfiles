@@ -6,9 +6,7 @@
 }:
 
 {
-  imports = [
-    ../common/btrbk.nix
-  ];
+  imports = [ ../common/btrbk.nix ];
 
   services = {
     btrbk = {

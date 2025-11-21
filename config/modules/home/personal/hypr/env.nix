@@ -52,9 +52,7 @@
           # WLR_DRM_NO_ATOMIC,1
         ];
 
-        exec = [
-          "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE"
-        ];
+        exec = [ "hyprctl setcursor $HYPRCURSOR_THEME $HYPRCURSOR_SIZE" ];
       };
     };
   };

@@ -12,9 +12,7 @@
   # paths it should manage.
   home.username = "alice";
   home.homeDirectory = "/home/alice";
-  home.sessionPath = [
-    "$HOME/dotfiles/scripts"
-  ];
+  home.sessionPath = [ "$HOME/dotfiles/scripts" ];
 
   home.sessionVariables = {
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";

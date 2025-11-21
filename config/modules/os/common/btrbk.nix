@@ -6,8 +6,7 @@
 }:
 
 {
-  imports = [
-  ];
+  imports = [ ];
 
   services = {
     btrbk = {

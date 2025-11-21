@@ -6,9 +6,7 @@
 }:
 
 {
-  imports = [
-    ../../modules/home/server.nix
-  ];
+  imports = [ ../../modules/home/server.nix ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

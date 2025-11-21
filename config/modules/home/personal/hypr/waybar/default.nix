@@ -6,9 +6,7 @@
 }:
 
 {
-  imports = [
-    ./modules.nix
-  ];
+  imports = [ ./modules.nix ];
 
   programs.waybar = {
     enable = true;
@@ -26,9 +24,7 @@
         # "group/quicklinks"
         "hyprland/window"
       ];
-      modules-center = [
-        "hyprland/workspaces"
-      ];
+      modules-center = [ "hyprland/workspaces" ];
       modules-right = [
         "tray"
         "mpd"

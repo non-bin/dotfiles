@@ -181,8 +181,7 @@
         on-click = "~/.config/ml4w/settings/filemanager.sh";
         tooltip-format = "Open the filemanager";
       };
-      "custom/quicklinkempty" = {
-      };
+      "custom/quicklinkempty" = { };
       "group/hardware" = {
         orientation = "inherit";
         drawer = {

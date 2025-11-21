@@ -2,10 +2,10 @@
   "C_Cpp.autocompleteAddParentheses": true,
   "[markdown]": {
     "diffEditor.ignoreTrimWhitespace": false,
-    "files.trimTrailingWhitespace": false
+    "files.trimTrailingWhitespace": false,
   },
   "accessibility.signals.onDebugBreak": {
-    "sound": "on"
+    "sound": "on",
   },
   "better-comments.tags": [
     {
@@ -15,7 +15,7 @@
       "italic": false,
       "strikethrough": false,
       "tag": "//",
-      "underline": false
+      "underline": false,
     },
     {
       "backgroundColor": "transparent",
@@ -24,7 +24,7 @@
       "italic": false,
       "strikethrough": false,
       "tag": ["?", "todo"],
-      "underline": false
+      "underline": false,
     },
     {
       "backgroundColor": "transparent",
@@ -33,7 +33,7 @@
       "italic": false,
       "strikethrough": false,
       "tag": "fixme",
-      "underline": false
+      "underline": false,
     },
     {
       "backgroundColor": "transparent",
@@ -42,7 +42,7 @@
       "italic": false,
       "strikethrough": false,
       "tag": ["!", "urgent", "broken", "xxx"],
-      "underline": false
+      "underline": false,
     },
     {
       "backgroundColor": "transparent",
@@ -51,8 +51,8 @@
       "italic": false,
       "strikethrough": false,
       "tag": "*",
-      "underline": false
-    }
+      "underline": false,
+    },
   ],
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.enabled": true,
@@ -66,7 +66,7 @@
     "Powercon",
     "Powercons",
     "substituters",
-    "unnesacary"
+    "unnesacary",
   ],
   "debug.closeReadonlyTabsOnEnd": true,
   "debug.inlineValues": "on",
@@ -82,7 +82,7 @@
   "editor.acceptSuggestionOnEnter": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.fixAll": "explicit",
   },
   "editor.copyWithSyntaxHighlighting": false,
   "editor.cursorSurroundingLines": 3,
@@ -111,7 +111,7 @@
   "editor.quickSuggestions": {
     "comments": false,
     "other": true,
-    "strings": false
+    "strings": false,
   },
   "editor.renderControlCharacters": true,
   "editor.renderLineHighlight": "all",
@@ -141,7 +141,7 @@
     "jsonc",
     "jsonl",
     "vue",
-    "markdown"
+    "markdown",
   ],
   "eslint.validate": [
     "javascript",
@@ -152,7 +152,7 @@
     "jsonc",
     "jsonl",
     "vue",
-    "markdown"
+    "markdown",
   ],
   "explorer.autoReveal": false,
   "explorer.confirmDelete": false,
@@ -164,7 +164,7 @@
     "*.gs": "javascript",
     "*.jsx": "javascriptreact",
     "*.lock": "json",
-    "*.s": "arm"
+    "*.s": "arm",
   },
   "files.eol": "\n",
   "files.hotExit": "onExitAndWindowClose",
@@ -191,7 +191,7 @@
     "rgba(128,255,64,0.07)",
     "rgba(64,255,200,0.07)",
     "rgba(64,64,255,0.07)",
-    "rgba(255,64,255,0.07)"
+    "rgba(255,64,255,0.07)",
   ],
   "indentRainbow.ignoreErrorLanguages": ["*"],
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -200,9 +200,9 @@
     "MD010": false,
     "MD013": false,
     "MD024": {
-      "siblings_only": true
+      "siblings_only": true,
     },
-    "MD033": false
+    "MD033": false,
   },
   "markdownlint.focusMode": true,
   "notebook.formatOnCellExecution": true,
@@ -214,7 +214,7 @@
   "rainbow_csv.enable_auto_csv_lint": false,
   "scm.alwaysShowRepositories": true,
   "screencastMode.keyboardOptions": {
-    "showCommandGroups": true
+    "showCommandGroups": true,
   },
   "search.quickAccess.preserveInput": true,
   "search.seedOnFocus": true,
@@ -234,31 +234,31 @@
   "terminal.integrated.profiles.linux": {
     "bash": {
       "icon": "terminal-bash",
-      "path": "bash"
+      "path": "bash",
     },
     "fish": {
-      "path": "fish"
+      "path": "fish",
     },
     "pwsh": {
       "icon": "terminal-powershell",
-      "path": "pwsh"
+      "path": "pwsh",
     },
     "tmux": {
       "icon": "terminal-tmux",
-      "path": "tmux"
+      "path": "tmux",
     },
     "zsh": {
-      "path": "zsh"
-    }
+      "path": "zsh",
+    },
   },
   "terminal.integrated.profiles.windows": {
     "Command Prompt": {
       "icon": "terminal-cmd",
-      "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"]
+      "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"],
     },
     "Git Bash": {
-      "source": "Git Bash"
-    }
+      "source": "Git Bash",
+    },
   },
   "terminal.integrated.rightClickBehavior": "default",
   "terminal.integrated.tabs.enabled": true,
@@ -269,7 +269,7 @@
   "window.titleBarStyle": "custom",
   "workbench.colorCustomizations": {
     "tree.inactiveIndentGuidesStroke": "#21262d",
-    "tree.indentGuidesStroke": "#52575d"
+    "tree.indentGuidesStroke": "#52575d",
   },
   "workbench.commandPalette.experimental.suggestCommands": true,
   "workbench.commandPalette.preserveInput": true,
@@ -284,7 +284,7 @@
     "*.bin": "hexEditor.hexedit",
     "*.bsp": "default",
     "*.jpg": "imagePreview.previewEditor",
-    "*.png": "imagePreview.previewEditor"
+    "*.png": "imagePreview.previewEditor",
   },
   "workbench.iconTheme": "material-icon-theme",
   "workbench.preferredDarkColorTheme": "Community Material Theme Darker High Contrast",
@@ -305,14 +305,14 @@
   "git.blame.statusBarItem.enabled": true,
   "shfmt.executableArgs": ["-s", "-i", "2", "-ci"],
   "files.exclude": {
-    "**/*.lock": true
+    "**/*.lock": true,
   },
   "customLocalFormatters.formatters": [
     {
       "command": "treefmt -vv --tree-root $(dirname ${file}) --stdin ${file}",
       // "command": "cat $(prettier --find-config-path ${file}) > /tmp/asd",
-      "languages": ["*"]
-    }
+      "languages": ["*"],
+    },
   ],
-  "editor.defaultFormatter": "jkillian.custom-local-formatters"
+  "editor.defaultFormatter": "jkillian.custom-local-formatters",
 }
