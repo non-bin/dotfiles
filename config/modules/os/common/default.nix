@@ -10,7 +10,6 @@
   imports = [
     ./base.nix
 
-    ./secrets
     ./btrbk.nix
     ./docker.nix
   ];
