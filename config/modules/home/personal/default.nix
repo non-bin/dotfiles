@@ -54,7 +54,6 @@
     blueman
     libreoffice-fresh
     kdePackages.kdenlive
-    prismlauncher # Minecraft
     obsidian
     qbittorrent
     gimp
