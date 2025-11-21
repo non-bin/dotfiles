@@ -8,6 +8,8 @@
 {
   imports = [
     ../../modules/home/personal.nix
+
+    ../../modules/home/personal/minecraft.nix
   ];
 
   # This value determines the Home Manager release that your
