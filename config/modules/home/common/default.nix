@@ -23,6 +23,8 @@
     jq
     fzf
     nix-search
+    file
+    patchelf
   ];
 
   programs = {
@@ -63,15 +65,15 @@
         user = {
           email = "jacka.alice@gmail.com";
           name = "Alice Jacka";
-      };
+        };
         alias = {
-        co = "checkout";
-        cl = "clone";
-        br = "branch";
-        ci = "commit";
-        st = "status";
-        pl = "pull";
-        ps = "push";
+          co = "checkout";
+          cl = "clone";
+          br = "branch";
+          ci = "commit";
+          st = "status";
+          pl = "pull";
+          ps = "push";
         };
       };
     };
