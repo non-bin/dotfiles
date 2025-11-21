@@ -12,6 +12,8 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    hyprland.url = "github:hyprwm/Hyprland/main";
   };
 
   outputs =
@@ -82,7 +84,7 @@
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.alice = import ./config/hosts/skellybones/home.nix;
+              home-manager.users.alice = import ./config/hosts/testvm/home.nix;
             }
           ];
         };
@@ -92,17 +94,13 @@
         "basic" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "x86_64-linux"; };
 
-          modules = [
-            ./config/hosts/standalone/basic.nix
-          ];
+          modules = [ ./config/hosts/standalone/basic.nix ];
         };
 
         "full" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "x86_64-linux"; };
 
-          modules = [
-            ./config/hosts/standalone/full.nix
-          ];
+          modules = [ ./config/hosts/standalone/full.nix ];
         };
       };
     };

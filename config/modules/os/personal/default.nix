@@ -41,21 +41,19 @@
 
   nixpkgs.config.android_sdk.accept_license = true;
 
-  nix.settings = {
-    # List of binary cache URLs used to obtain pre-built binaries of Nix packages
-    substituters = [
-      "https://hyprland.cachix.org"
-    ];
-    trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-    ];
-  };
-
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
   programs = {
-    hyprland.enable = true; # Enable system wide, configure in HM
+    hyprland = {
+      enable = true; # Enable system wide, configure in HM
+      # Use the flake package
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      # Make sure to also set the portal package, so that they are in sync
+      portalPackage =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
+
     gamemode.enable = true;
     adb.enable = true;
 
@@ -110,20 +108,12 @@
       settings = {
         remap = [
           {
-            input = [
-              "KEY_ESC"
-            ];
-            output = [
-              "KEY_CAPSLOCK"
-            ];
+            input = [ "KEY_ESC" ];
+            output = [ "KEY_CAPSLOCK" ];
           }
           {
-            input = [
-              "KEY_CAPSLOCK"
-            ];
-            output = [
-              "KEY_ESC"
-            ];
+            input = [ "KEY_CAPSLOCK" ];
+            output = [ "KEY_ESC" ];
           }
         ];
       };

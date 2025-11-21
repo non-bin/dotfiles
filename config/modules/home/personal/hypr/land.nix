@@ -15,6 +15,11 @@
   wayland.windowManager = {
     hyprland = {
       enable = true;
+      # Use the flake package
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      # Make sure to also set the portal package, so that they are in sync
+      portalPackage =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
       # Tell systemd to import the environment, otherwise it won't find some binaries
       systemd.variables = [ "--all" ];
@@ -84,7 +89,7 @@
           "col.inactive_border" = "rgb(595959)";
           no_border_on_floating = true;
           layout = "dwindle";
-          resize_on_border = true;
+          resize_on_border = false;
           no_focus_fallback = true;
         };
 
