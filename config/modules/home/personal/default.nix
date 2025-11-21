@@ -84,6 +84,8 @@
 
     proxmark3
     qFlipper
+
+    discord
   ];
 
   home.file = {
