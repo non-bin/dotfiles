@@ -1,14 +1,8 @@
 {
   "C_Cpp.autocompleteAddParentheses": true,
-  "[cpp]": {
-    "editor.defaultFormatter": "chiehyu.vscode-astyle"
-  },
   "[markdown]": {
     "diffEditor.ignoreTrimWhitespace": false,
     "files.trimTrailingWhitespace": false
-  },
-  "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
   },
   "accessibility.signals.onDebugBreak": {
     "sound": "on"
@@ -60,19 +54,20 @@
       "underline": false
     }
   ],
-  "betterAlign.operatorPadding": "right",
-  "betterAlign.surroundSpace": {
-    "arrow": [1, 1],
-    "assignment": [1, 1],
-    "colon": [0, 1],
-    "hash": [1, 1]
-  },
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.enabled": true,
   "cSpell.language": "en,en-GB",
-  "cSpell.showAutocompleteSuggestions": true,
-  "cSpell.userWords": ["btrfs", "GCODE", "Jacka", "mancala", "mancalas", "Powercon", "Powercons", "substituters"],
-  "database-client.autoSync": true,
+  "cSpell.userWords": [
+    "btrfs",
+    "GCODE",
+    "Jacka",
+    "mancala",
+    "mancalas",
+    "Powercon",
+    "Powercons",
+    "substituters",
+    "unnesacary"
+  ],
   "debug.closeReadonlyTabsOnEnd": true,
   "debug.inlineValues": "on",
   "debug.javascript.breakOnConditionalError": true,
@@ -93,7 +88,6 @@
   "editor.cursorSurroundingLines": 3,
   "editor.cursorSurroundingLinesStyle": "all",
   "editor.defaultColorDecorators": "auto",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.dragAndDrop": false,
   "editor.experimental.asyncTokenization": true,
   "editor.fontFamily": "\"CaskaydiaCove NF\", \"CaskaydiaCove Nerd Font\", \"CaskaydiaCove NFM\", \"CaskaydiaCove Nerd Font Mono\",  monospace",
@@ -109,7 +103,6 @@
   "editor.insertSpaces": true,
   "editor.lightbulb.enabled": "on",
   "editor.linkedEditing": true,
-  "editor.minimap.autohide": "mouseover",
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "editor.multiCursorModifier": "ctrlCmd",
@@ -136,20 +129,6 @@
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?_",
   "editor.wordWrap": "off",
   "editor.wrappingIndent": "indent",
-  "emojisense.emojiDecoratorsEnabled": true,
-  "emojisense.languages": {
-    " ": {
-      "emojiDecoratorsEnabled": true,
-      "markupCompletionsEnabled": true,
-      "unicodeCompletionsEnabled": true
-    },
-    "git-commit": true,
-    "markdown": true,
-    "scminput": true
-  },
-  "emojisense.markupCompletionsEnabled": true,
-  "emojisense.showOnColon": true,
-  "emojisense.unicodeCompletionsEnabled": true,
   "errorLens.exclude": ["TODO", "FIXME"],
   "eslint.codeActionsOnSave.mode": "all",
   "eslint.lintTask.enable": true,
@@ -201,8 +180,6 @@
   "git.openRepositoryInParentFolders": "always",
   "git.smartCommitChanges": "tracked",
   "git.useCommitInputAsStashMessage": true,
-  "gitlens.graph.layout": "editor",
-  "gitlens.graph.minimap.dataType": "lines",
   "hexeditor.columnWidth": 16,
   "hexeditor.defaultEndianness": "little",
   "hexeditor.inspectorType": "aside",
@@ -220,7 +197,6 @@
   "indentRainbow.ignoreErrorLanguages": ["*"],
   "javascript.updateImportsOnFileMove.enabled": "always",
   "keyboard.dispatch": "keyCode",
-  "liveServer.settings.donotShowInfoMsg": true,
   "markdownlint.config": {
     "MD010": false,
     "MD013": false,
@@ -235,11 +211,6 @@
   "npm.packageManager": "npm",
   "path-intellisense.autoTriggerNextSuggestion": true,
   "path-intellisense.extensionOnImport": true,
-  "prettier.bracketSameLine": true,
-  "prettier.quoteProps": "consistent",
-  "prettier.resolveGlobalModules": true,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "none",
   "problems.showCurrentInStatus": true,
   "rainbow_csv.enable_auto_csv_lint": false,
   "scm.alwaysShowRepositories": true,
@@ -253,7 +224,6 @@
   "search.smartCase": true,
   "security.promptForLocalFileProtocolHandling": false,
   "security.workspace.trust.untrustedFiles": "open",
-  "settingsSync.keybindingsPerPlatform": false,
   "svelte.enable-ts-plugin": true,
   "telemetry.telemetryLevel": "error",
   "terminal.integrated.cursorBlinking": true,
@@ -285,7 +255,10 @@
   "terminal.integrated.profiles.windows": {
     "Command Prompt": {
       "icon": "terminal-cmd",
-      "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"]
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ]
     },
     "Git Bash": {
       "source": "Git Bash"
@@ -298,7 +271,6 @@
   "window.dialogStyle": "custom",
   "window.title": "${dirty}${rootName}${separator}${activeEditorShort}",
   "window.titleBarStyle": "custom",
-  "workbench.accounts.experimental.showEntitlements": true,
   "workbench.colorCustomizations": {
     "tree.inactiveIndentGuidesStroke": "#21262d",
     "tree.indentGuidesStroke": "#52575d"
@@ -331,12 +303,20 @@
   "zenMode.hideLineNumbers": false,
   "zenMode.restore": false,
   "rust-analyzer.assist.expressionFillDefault": "default",
-  "prettier.printWidth": 120,
   "diffEditor.ignoreTrimWhitespace": true,
   "git-graph.repository.commits.initialLoad": 50,
   "git-graph.retainContextWhenHidden": false,
-  "[nix]": {
-    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  "git.blame.statusBarItem.enabled": true,
+  "shfmt.executableArgs": ["-s", "-i", "2", "-ci"],
+  "files.exclude": {
+    "**/*.lock": true
   },
-  "git.blame.statusBarItem.enabled": true
+  "customLocalFormatters.formatters": [
+    {
+      "command": "treefmt -vv --tree-root $(dirname ${file}) --stdin ${file}",
+      // "command": "cat $(prettier --find-config-path ${file}) > /tmp/asd",
+      "languages": ["*"]
+    }
+  ],
+  "editor.defaultFormatter": "jkillian.custom-local-formatters"
 }
