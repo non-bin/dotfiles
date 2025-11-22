@@ -87,7 +87,6 @@
           border_size = 0;
           "col.active_border" = "rgb(FFA348)";
           "col.inactive_border" = "rgb(595959)";
-          no_border_on_floating = true;
           layout = "dwindle";
           resize_on_border = false;
           no_focus_fallback = true;
@@ -127,28 +126,28 @@
 
         # https://wiki.hyprland.org/Configuring/Window-Rules/
         # List windows with `hyprctl clients`
-        windowrulev2 = [
+        windowrule = [
           # Float
-          "float,class:(thunar),title:(File Operation Progress)"
-          "float,title:((Add|Open).*(File|Folder))"
-          "float,title:((Select).*(open))"
+          "float true, match:class (thunar), match:title (File Operation Progress)"
+          "float true, match:title ((Add|Open).*(File|Folder))"
+          "float true, match:title ((Select).*(open))"
 
           # Maximised
-          "bordercolor rgb(FF0000) rgb(00FF00) rgb(0000FF) 45deg,fullscreen:1"
-          "prop bordersize 2,fullscreen:1"
+          "border_color rgb(FF0000) rgb(00FF00) rgb(0000FF) 45deg, match:fullscreen 1"
+          "border_size 2, match:fullscreen 1"
 
           # PIP
-          "tag +PIP,title:(Picture-in-Picture)"
-          "float,tag:PIP"
-          "size 30% 30%,tag:PIP*"
-          "move 100%-w-3 100%-w-3,tag:PIP"
-          "prop keepaspectratio,tag:PIP*"
-          "prop noblur,tag:PIP"
-          "pin,tag:PIP,floating:1"
-          "opacity 0.3 1,tag:PIP,floating:1"
+          "tag +PIP, match:title (Picture-in-Picture)"
+          "float true,match:tag PIP"
+          "size 30% 30%, match:tag PIP*"
+          "move 100%-w-3 100%-w-3, match:tag PIP"
+          "keep_aspect_ratio true, match:tag PIP*"
+          "no_blur true, match:tag PIP"
+          "pin true, match:tag PIP, match:float 1"
+          "opacity 0.3 1, match:tag PIP, match:float 1"
 
           # Idle
-          "idleinhibit fullscreen, class:.*"
+          "idle_inhibit fullscreen, match:class .*"
         ];
 
         # Execute your favorite apps at launch
