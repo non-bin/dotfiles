@@ -11,6 +11,7 @@
     ./formatters
     ./alacrity.nix
     ./obs.nix
+    ./defaultApps.nix
   ];
 
   home.sessionVariables = {
@@ -106,24 +107,6 @@
   services = {
     dunst.enable = true; # Notification daemon
     cliphist.enable = true;
-  };
-
-  xdg.configFile."mimeapps.list".force = true; # Fix overwritten file
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/plain" = "codium.desktop";
-      "default-web-browser" = "firefox.desktop";
-      "application/xhtml+xml" = "firefox.desktop";
-      "application/pdf" = "firefox.desktop";
-      "text/xml" = "firefox.desktop";
-      "text/html" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
-      "inode/directory" = "thunar.desktop";
-    };
   };
 
   home.file = {
