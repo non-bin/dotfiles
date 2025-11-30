@@ -15,6 +15,7 @@
   wayland.windowManager = {
     hyprland = {
       enable = true;
+
       # Use the flake package
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       # Make sure to also set the portal package, so that they are in sync
