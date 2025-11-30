@@ -122,7 +122,7 @@
           disable_hyprland_logo = false;
           disable_splash_rendering = false;
           force_default_wallpaper = 0;
-          new_window_takes_over_fullscreen = 2; # 0 - behind, 1 - takes over, 2 - unfullscreen/unmaxize
+          on_focus_under_fullscreen = 2; # 0 - behind, 1 - takes over, 2 - unfullscreen/unmaxize
         };
 
         # https://wiki.hyprland.org/Configuring/Window-Rules/
