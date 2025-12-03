@@ -6,7 +6,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../"
 
 # Defaults
 REBUILD="YES"
-IMPURE="--impure"
+IMPURE=""
 
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
@@ -80,7 +80,7 @@ while [[ $# -gt 0 ]]; do
       echo
       echo "Options:"
       echo "  -u, --upgrade     Pull updates from upstream and update lockfile"
-      echo "  -i, --impure      Add the --impure flag to the reload command (Default)"
+      echo "  -i, --impure      Add the --impure flag to the reload command"
       echo "  -I, --pure        Remove the --impure flag from the reload command"
       echo "  -c, --clean       Garbage collect the nix store, don't rebuild (more info at https://nixos.wiki/wiki/Cleaning_the_nix_store and https://nixos.wiki/wiki/Storage_optimization)"
       echo "  -o, --optimise    Hard link identicle files in the nix store, don't rebuild"
@@ -115,9 +115,7 @@ if [ "$SUB" != "" ]; then
 fi
 
 if [ "$CLEAN" == "YES" ]; then
-  [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ] && sudo nix-collect-garbage --delete-older-than 1d # Delete old system generations
-  nix-collect-garbage --delete-older-than 1d                                                  # And the same for HomeManager
-  nix-store --gc                                                                              # Remove unused store entries
+  [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ] && sudo nix-collect-garbage --delete-older-than 1d # Delete old system generations, and their store entries
 fi
 
 if [ "$OPTIMISE" == "YES" ]; then
@@ -161,7 +159,7 @@ if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
       QEMU_NET_OPTS="hostfwd=tcp::2221-:22" && nixos-rebuild build-vm $TRACE --flake ./#$NEW_CONFIG_NAME && "result/bin/run-${NEW_CONFIG_NAME}-vm" -nographic
       # rm result "${NEW_CONFIG_NAME}.qcow2"
     else
-      sudo nixos-rebuild $SUBSTITUTERS switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
+      nixos-rebuild $SUBSTITUTERS switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
     fi
   else
     [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE
