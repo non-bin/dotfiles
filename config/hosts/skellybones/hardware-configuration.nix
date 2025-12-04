@@ -42,7 +42,10 @@
   fileSystems."/nix" = {
     device = "/dev/vg0/btr_pool";
     fsType = "btrfs";
-    options = [ "subvol=nix" ];
+    options = [
+      "noatime"
+      "subvol=nix"
+    ];
   };
 
   fileSystems."/boot" = {
