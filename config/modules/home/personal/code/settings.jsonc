@@ -304,7 +304,7 @@
   "git-graph.retainContextWhenHidden": false,
   "git.blame.statusBarItem.enabled": true,
   "shfmt.executableArgs": ["-s", "-i", "2", "-ci"],
-  "files.exclude": {
+  "search.exclude": {
     "**/*.lock": true,
   },
   "customLocalFormatters.formatters": [
@@ -315,4 +315,7 @@
     },
   ],
   "editor.defaultFormatter": "jkillian.custom-local-formatters",
+  "workbench.colorTheme": "GitHub Dark Default",
+  "update.mode": "none",
+  "extensions.autoCheckUpdates": false,
 }

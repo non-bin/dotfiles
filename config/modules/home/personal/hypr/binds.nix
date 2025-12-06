@@ -12,7 +12,7 @@
         bind = [
           # Actions
           "$mod, RETURN, exec, alacritty"
-          "$mod, C, exec, codium"
+          "$mod, C, exec, code"
           "$mod, G, exec, gitkraken" # /usr/share/applications
           "$mod, E, exec, thunar" # Opens the filemanager
           "$mod, SPACE, exec, wofi --show drun" # Open wofi to run .desktop entries

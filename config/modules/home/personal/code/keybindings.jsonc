@@ -233,4 +233,12 @@
     "command": "git.commitAmend",
     "when": "!operationInProgress",
   },
+  {
+    "key": "ctrl+k d",
+    "command": "-workbench.files.action.compareWithSaved",
+  },
+  {
+    "key": "ctrl+k d",
+    "command": "editor.action.duplicateSelection",
+  },
 ]

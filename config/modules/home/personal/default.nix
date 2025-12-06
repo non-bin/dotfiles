@@ -100,7 +100,7 @@
   programs = {
     firefox.enable = true;
     # chromium.enable = true;
-    wofi.enable = true;
+    wofi.enable = true; # Spotlight search
     bun.enable = true;
   };
 
