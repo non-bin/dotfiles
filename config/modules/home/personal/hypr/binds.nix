@@ -25,7 +25,7 @@
           "$mod, O, exec, orca-slicer"
           "$mod, N, exec, obsidian"
 
-          "$mod SHIFT ALT, M, exec, wlogout"
+          "CTRL ALT ALT, DELETE, exec, wlogout"
           "$mod SHIFT ALT, B, exec, /home/alice/dotfiles/scripts/reload-waybar.sh"
           "$mod SHIFT ALT, W, exec, /home/alice/dotfiles/scripts/reload-hyprpaper.sh"
 
