@@ -9,9 +9,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/os/server.nix
-
-    # ../../modules/os/drive.nix
-    # ../../modules/os/immich.nix
   ];
 
   networking.hostName = "sylvia";
@@ -22,6 +19,11 @@
       prefixLength = 24;
     }
   ];
+
+  # services.beszel.agent = {
+  #   enable = true;
+  #   key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILqQ4E9KwbgyCb1pj912x2gzG1x+Eqir+/Yg5PRISjio";
+  # };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

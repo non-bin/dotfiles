@@ -20,6 +20,11 @@
     }
   ];
 
+  # services.beszel.agent = {
+  #   enable = true;
+  #   key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILqQ4E9KwbgyCb1pj912x2gzG1x+Eqir+/Yg5PRISjio";
+  # };
+
   boot.loader = {
     grub = {
       efiSupport = false;

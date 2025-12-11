@@ -9,9 +9,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/os/personal.nix
-
-    # ../../modules/os/server/qbt.nix
-    # ../../modules/os/personal/testVMHost.nix
   ];
 
   networking.hostName = "skellybones";
@@ -23,22 +20,12 @@
     }
   ];
 
-  # Finger print reader
   services = {
-    # beszel = {
-    #   agent = {
-    #     enable = true;
-    #     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILqQ4E9KwbgyCb1pj912x2gzG1x+Eqir+/Yg5PRISjio";
-    #   };
-    #   hub = {
-    #     enable = true;
-    #     httpListen = "127.0.0.1:8080";
-    #   };
-    # };
-
     fprintd.enable = true;
     fwupd.enable = true; # run with fwupdmgr update https://github.com/NixOS/nixos-hardware/tree/master/framework
   };
+
+  # Finger print reader
   systemd.services.fprintd = {
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "simple";

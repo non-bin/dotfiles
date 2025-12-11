@@ -14,7 +14,7 @@
     ./docker.nix
   ];
 
-  services.btrfs.autoScrub.enable = true;
+  services.btrfs.autoScrub.enable = mkDefault true;
 
   networking = {
     networkmanager.enable = true;
@@ -22,8 +22,9 @@
       enable = true;
       allowedTCPPorts = [
         5000 # nix run github:edolstra/nix-serve
-        25565 # minecraft
 
+        # FIXME:
+        25565 # minecraft
         80 # Testing things
         8080 # Testing things
       ];
@@ -31,7 +32,7 @@
   };
 
   boot = {
-    kernel.sysctl."kernel.sysrq" = 1; # TODO
+    kernel.sysctl."kernel.sysrq" = 1; # FIXME
     loader = {
       grub = {
         enable = true;
@@ -45,12 +46,6 @@
       # timestampFormat = "%F %H:%M"; # TODO https://github.com/NixOS/nixpkgs/pull/366958
     };
   };
-
-  # console = { # TODO
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
 
   users.users.alice.shell = pkgs.zsh;
 

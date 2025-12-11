@@ -10,11 +10,9 @@
     ./base.nix
 
     ./shell
-    ./java.nix
   ];
 
   home.packages = with pkgs; [
-    bc
     wget
     btop
     zip
@@ -28,10 +26,6 @@
   ];
 
   programs = {
-    zellij = {
-      enable = true;
-    };
-
     neovim = {
       enable = true;
       defaultEditor = true;
@@ -78,6 +72,7 @@
       };
     };
 
+    # FIXME:
     pay-respects = {
       # TheFuck replacement https://github.com/iffse/pay-respects
       enable = true;
