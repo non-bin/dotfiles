@@ -15,7 +15,7 @@
   networking.domain = "jacka.net.au";
   networking.interfaces."lo".ipv4.addresses = [
     {
-      address = "172.23.24.4";
+      address = "172.23.24.89";
       prefixLength = 24;
     }
   ];
