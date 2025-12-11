@@ -58,11 +58,13 @@
   "cSpell.enabled": true,
   "cSpell.language": "en,en-GB",
   "cSpell.userWords": [
+    "btrbk",
     "btrfs",
     "GCODE",
     "Jacka",
     "mancala",
     "mancalas",
+    "NVME",
     "Powercon",
     "Powercons",
     "substituters",
@@ -318,4 +320,5 @@
   "workbench.colorTheme": "GitHub Dark Default",
   "update.mode": "none",
   "extensions.autoCheckUpdates": false,
+  "workbench.activityBar.location": "hidden",
 }
