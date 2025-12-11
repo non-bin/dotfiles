@@ -10,6 +10,7 @@
     ../../modules/home/personal.nix
 
     ../../modules/home/personal/minecraft.nix
+    ../../modules/home/personal/ksp.nix
   ];
 
   # This value determines the Home Manager release that your
