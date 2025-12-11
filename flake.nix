@@ -29,6 +29,21 @@
     }:
     {
       nixosConfigurations = {
+        maureen = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = [
+            ./config/hosts/maureen/os.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alice = import ./config/hosts/maureen/home.nix;
+            }
+          ];
+        };
+
         skellybones = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
@@ -45,6 +60,21 @@
           ];
         };
 
+        stella = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = [
+            ./config/hosts/stella/os.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alice = import ./config/hosts/stella/home.nix;
+            }
+          ];
+        };
+
         sylvia = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
@@ -57,22 +87,6 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.alice = import ./config/hosts/sylvia/home.nix;
-            }
-          ];
-        };
-
-        stella = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./config/hosts/stella/os.nix
-            nixos-hardware.nixosModules.intel-nuc-8i7beh
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alice = import ./config/hosts/stella/home.nix;
             }
           ];
         };
