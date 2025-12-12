@@ -14,7 +14,7 @@
     ./docker.nix
   ];
 
-  services.btrfs.autoScrub.enable = mkDefault true;
+  services.btrfs.autoScrub.enable = lib.mkDefault true;
 
   networking = {
     networkmanager.enable = true;
