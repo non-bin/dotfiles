@@ -27,84 +27,32 @@
       nixos-hardware,
       ...
     }:
+    let
+      host =
+        hostname: extraModules:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          system = "x86_64-linux";
+          modules = [
+            ./config/hosts/${hostname}/os.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alice = import ./config/hosts/${hostname}/home.nix;
+            }
+          ]
+          ++ extraModules;
+        };
+    in
     {
       nixosConfigurations = {
-        maureen = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./config/hosts/maureen/os.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alice = import ./config/hosts/maureen/home.nix;
-            }
-          ];
-        };
-
-        skellybones = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./config/hosts/skellybones/os.nix
-            nixos-hardware.nixosModules.framework-16-7040-amd
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alice = import ./config/hosts/skellybones/home.nix;
-            }
-          ];
-        };
-
-        stella = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./config/hosts/stella/os.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alice = import ./config/hosts/stella/home.nix;
-            }
-          ];
-        };
-
-        sylvia = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./config/hosts/sylvia/os.nix
-            nixos-hardware.nixosModules.intel-nuc-8i7beh
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alice = import ./config/hosts/sylvia/home.nix;
-            }
-          ];
-        };
-
-        testvm = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./config/hosts/testvm/os.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alice = import ./config/hosts/testvm/home.nix;
-            }
-          ];
-        };
+        maureen = host "maureen" [ ];
+        skellybones = host "skellybones" [ nixos-hardware.nixosModules.framework-16-7040-amd ];
+        stella = host "stella" [ ];
+        sylvia = host "sylvia" [ nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+        testvm = host "testvm" [ ];
       };
 
       homeConfigurations = {
