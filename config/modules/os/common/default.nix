@@ -32,7 +32,19 @@
   };
 
   boot = {
-    kernel.sysctl."kernel.sysrq" = 1; # FIXME
+    kernel = {
+      sysctl."kernel.sysrq" = 1; # FIXME
+
+      # Compressed RAM cache for swap pages
+      sysfs.module.zswap.parameters = {
+        enabled = true;
+        compressor = "zstd";
+        max_pool_percent = 20; # maximum percentage of RAM that zswap is allowed to use
+        shrinker_enabled = true; # whether to shrink the pool proactively on high memory pressure
+        accept_threshold_percent = 90; # hysteresis to refuse taking pages into zswap pool until it has sufficient space if the limit has been hit
+      };
+    };
+
     loader = {
       grub = {
         enable = true;
