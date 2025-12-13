@@ -80,7 +80,7 @@ while [[ $# -gt 0 ]]; do
     -* | --*)
       echo "Unknown option $1"
 
-      echo "Usage: reload [options] [new-config-name]"
+      echo "Usage: $0 [options] [new-config-name]"
       echo
       echo "Options:"
       echo "  -u, --upgrade     Pull updates from upstream and update lockfile"

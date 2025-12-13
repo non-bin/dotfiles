@@ -23,7 +23,7 @@ excludes = ["*.js"]
 priority = 1000
 
 [formatter.prettier]
-command = "/home/alice/dotfiles/scripts/prettierWrapper"
+command = "/home/alice/dotfiles/scripts/prettierWrapper.sh"
 options = ["--write"]
 includes = [
   "*.css",

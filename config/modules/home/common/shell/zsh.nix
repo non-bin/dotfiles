@@ -34,7 +34,7 @@
       la = "ls -lA";
       l = "ls -C";
 
-      r = "reload ";
+      r = "reload.sh ";
       grep = "grep --color=auto";
       code = "codium ";
       chrome = "get ungoogled-chromium --run chromium ";
