@@ -17,6 +17,11 @@
       url = "github:nix-community/nix4vscode";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix.url = "github:ryantm/agenix";
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -25,6 +30,8 @@
       nixpkgs,
       home-manager,
       nixos-hardware,
+      agenix,
+      agenix-rekey,
       ...
     }:
     let
@@ -35,6 +42,8 @@
           system = "x86_64-linux";
           modules = [
             ./config/hosts/${hostname}/os.nix
+            agenix.nixosModules.default
+            agenix-rekey.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit inputs; };
@@ -47,6 +56,11 @@
         };
     in
     {
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nixosConfigurations = self.nixosConfigurations;
+      };
+
       nixosConfigurations = {
         maureen = host "maureen" [ ];
         skellybones = host "skellybones" [ nixos-hardware.nixosModules.framework-16-7040-amd ];

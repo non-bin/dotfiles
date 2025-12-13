@@ -11,6 +11,8 @@
     ../../modules/os/personal.nix
   ];
 
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFr10kZ2FZeqfcMnYXIqCW1V5HMPIwb0f4OfJa5mGov2";
+
   networking.hostName = "skellybones";
   networking.domain = "jacka.net.au";
   networking.interfaces."lo".ipv4.addresses = [

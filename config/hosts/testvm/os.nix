@@ -19,6 +19,8 @@
     # ../../modules/os/common/secrets/default.nix # Only really needed if just using base.nix
   ];
 
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKmf+ifxiYomJJfZzIcWpZUkqUC1usBUCD7BhCb8S8w0";
+
   networking.hostName = "testvm";
   networking.domain = "jacka.net.au";
   networking.interfaces."lo".ipv4.addresses = [

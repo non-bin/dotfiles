@@ -49,6 +49,10 @@ while [[ $# -gt 0 ]]; do
       REBUILD="YES"
       shift # past argument
       ;;
+    -k | --rekey)
+      REKEY="YES"
+      shift # past argument
+      ;;
     -d | --dry-run)
       DRY="YES"
       shift # past argument
@@ -87,6 +91,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -p, --pull        Pull updates from git before updating"
       echo "  -P, --push        Commit and push all changes"
       echo "  -r, --rebuild     Explicitly run the rebuild command (eg if running with -c or -o)"
+      echo "  -k, --rekey       Rekey all agenix secrets (still rebuilds)"
       echo "  -v, --vm          Build and run a VM with 'nixos-rebuild build-vm', and expose port 22 through the host's port 2221"
       echo "  -d, --dry-run     Run everything but the rebuild command"
       echo "  -R, --rescue      Don't run any extra commands (like git)"
@@ -124,6 +129,10 @@ fi
 
 if [ "$PULL" == "YES" ]; then
   git pull
+fi
+
+if [ "$REKEY" == "YES" ]; then
+  agenix rekey -a
 fi
 
 if [ "$PUSH" == "YES" ]; then

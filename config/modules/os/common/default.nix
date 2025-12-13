@@ -12,6 +12,7 @@
 
     ./btrbk.nix
     ./docker.nix
+    ./agenix.nix
   ];
 
   services.btrfs.autoScrub.enable = lib.mkDefault true;
@@ -59,7 +60,15 @@
     };
   };
 
-  users.users.alice.shell = pkgs.zsh;
+  age.secrets.userPass.rekeyFile = ./userPass.age;
+  users = {
+    mutableUsers = false;
+
+    users.alice = {
+      shell = pkgs.zsh;
+      hashedPasswordFile = config.age.secrets.userPass.path;
+    };
+  };
 
   environment.pathsToLink = [ "/share/zsh" ]; # System package zsh completions
 
