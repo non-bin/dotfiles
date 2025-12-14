@@ -11,6 +11,8 @@
     ../../modules/os/server.nix
   ];
 
+  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDz2Ia+hmbEQ0kuXxIEbFv6zxM+zXVXePq+jZxLrZiE1";
+
   networking.hostName = "maureen";
   networking.domain = "jacka.net.au";
   networking.interfaces."lo".ipv4.addresses = [
