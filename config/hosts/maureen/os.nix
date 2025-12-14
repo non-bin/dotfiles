@@ -27,7 +27,7 @@
     cloudflared = {
       enable = true;
       tunnels = {
-        "00000000-0000-0000-0000-000000000000" = {
+        "da633e58-a1d2-49a3-bf12-ca6e5caf6621" = {
           credentialsFile = config.age.secrets.cloudflared.path;
           default = "http_status:404";
         };
