@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CONFIG_FILE=$(/home/alice/dotfiles/scripts/searchUpFor.sh ".*\/(\.prettierrc(\.(json5?|(ya?|to)ml|[mc]?[jt]s))?|(prettier\.config\.[mc]?[jt]s))$")
+CONFIG_FILE=$(~/dotfiles/scripts/searchUpFor.sh ".*\/(\.prettierrc(\.(json5?|(ya?|to)ml|[mc]?[jt]s))?|(prettier\.config\.[mc]?[jt]s))$")
 NUM_RESULTS=$(echo "$CONFIG_FILE" | wc -l)
 if [ $NUM_RESULTS -gt 1 ]; then
   echo "Found $NUM_RESULTS config files! I don't know which to use!"

@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  user,
   ...
 }:
 
@@ -57,8 +58,8 @@
           "github:"
         ];
         user = {
-          email = "jacka.alice@gmail.com";
-          name = "Alice Jacka";
+          email = user.email;
+          name = user.fullName;
         };
         alias = {
           co = "checkout";

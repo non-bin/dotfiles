@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  user,
   ...
 }:
 
@@ -10,8 +11,8 @@
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "alice";
-  home.homeDirectory = "/home/alice";
+  home.username = user.name;
+  home.homeDirectory = "/home/${user.name}";
   home.sessionPath = [ "$HOME/dotfiles/scripts" ];
 
   home.sessionVariables = {

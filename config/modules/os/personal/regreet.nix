@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  user,
   ...
 }:
 
@@ -9,7 +10,7 @@
   imports = [ ];
 
   environment.etc."wallpapers/lock.jpg" = {
-    source = "/home/alice/wallpapers/lockscreen/calder-moore-scifi-elevator-fin.jpg";
+    source = "/home/${user.name}/wallpapers/lockscreen/calder-moore-scifi-elevator-fin.jpg";
     mode = "0644";
   };
 

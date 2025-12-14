@@ -71,7 +71,7 @@
 
     initContent = lib.strings.concatLines [
       ''hyfetch''
-      ''sshrm() {sed -i "/^$1/d" /home/alice/.ssh/known_hosts}'' # Remove an ssh host key
+      ''sshrm() {sed -i "/^$1/d" ~/.ssh/known_hosts}'' # Remove an ssh host key
       # ''export -f sshrm''
 
       ''err()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))'' # Colour stderr red

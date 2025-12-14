@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  user,
   ...
 }:
 
@@ -64,7 +65,7 @@
   users = {
     mutableUsers = false;
 
-    users.alice = {
+    users.${user.name} = {
       shell = pkgs.zsh;
       hashedPasswordFile = config.age.secrets.userPass.path;
     };

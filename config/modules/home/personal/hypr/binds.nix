@@ -26,8 +26,8 @@
           "$mod, N, exec, obsidian"
 
           "CTRL ALT ALT, DELETE, exec, wlogout"
-          "$mod SHIFT ALT, B, exec, /home/alice/dotfiles/scripts/reload-waybar.sh"
-          "$mod SHIFT ALT, W, exec, /home/alice/dotfiles/scripts/reload-hyprpaper.sh"
+          "$mod SHIFT ALT, B, exec, ~/dotfiles/scripts/reload-waybar.sh"
+          "$mod SHIFT ALT, W, exec, ~/dotfiles/scripts/reload-hyprpaper.sh"
 
           "$mod, Q, killactive" # Close current window
           "$mod ALT, Q, forcekillactive" # Kill current window https://github.com/hyprwm/Hyprland/issues/9177

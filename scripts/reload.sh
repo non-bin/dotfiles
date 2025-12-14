@@ -160,7 +160,6 @@ if [ "$GENERATION" == "YES" ]; then
   bash $(home-manager generations | fzf | awk -F '-> ' '{print $2 "/activate"}')
 fi
 
-# rm /home/alice/.config/mimeapps.list # Gets overwritten by setting defaults in Thunar
 if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
   if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
     if [ "$VM" == "YES" ]; then

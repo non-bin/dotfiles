@@ -36,7 +36,7 @@
     '';
 
     # https://github.com/wiraki/dotfiles/blob/c6a120207916d7eefa330188968f1dd8c4400f4d/private_dot_config/zellij/layouts/default.kdl#L4
-    "/home/alice/.config/zellij/layouts/default.kdl".text = ''
+    ".config/zellij/layouts/default.kdl".text = ''
       layout {
         swap_tiled_layout name="vertical" {
           tab max_panes=5 {

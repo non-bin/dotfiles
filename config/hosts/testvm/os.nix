@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  user,
   ...
 }:
 
@@ -51,7 +52,7 @@
   #   ];
   # };
 
-  # services.getty.autologinUser = "alice";
+  # services.getty.autologinUser = user.name;
 
   # environment.shellAliases = {
   #   s = "sudo shutdown now"; # Quick shutdown
