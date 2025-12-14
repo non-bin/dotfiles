@@ -323,4 +323,19 @@
   "workbench.activityBar.location": "hidden",
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "nixpkgs": {
+        "expr": "import (builtins.getFlake \"${workspaceFolder}\").inputs.nixpkgs { }",
+      },
+      "options": {
+        "nixos": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.skellybones.options",
+        },
+        "home-manager": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.skellybones.options.home-manager.users.type.getSubOptions []",
+        },
+      },
+    },
+  },
 }
