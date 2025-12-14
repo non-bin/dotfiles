@@ -325,6 +325,9 @@
   "nix.serverPath": "nixd",
   "nix.serverSettings": {
     "nixd": {
+      "diagnostic": {
+        "suppress": ["sema-unused-def-lambda-noarg-formal"],
+      },
       "nixpkgs": {
         "expr": "import (builtins.getFlake \"${workspaceFolder}\").inputs.nixpkgs { }",
       },

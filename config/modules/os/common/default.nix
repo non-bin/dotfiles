@@ -86,7 +86,7 @@
       mkRule = as: lib.concatStringsSep ", " as;
       mkRules = rs: lib.concatStringsSep "\n" rs;
     in
-    mkRules ([
+    mkRules [
       (mkRule [
         ''ACTION=="add|change"''
         ''SUBSYSTEM=="block"''
@@ -95,6 +95,6 @@
         #                        Aggressiveness    Standby time (*5seconds = 10minutes)
         ''RUN+="${pkgs.hdparm}/bin/hdparm -B 90 -S 120 /dev/%k"''
       ])
-    ]);
+    ];
 
 }
