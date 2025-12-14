@@ -24,6 +24,7 @@
     nix-search
     file
     patchelf
+    hwatch # better watch command
   ];
 
   programs = {
