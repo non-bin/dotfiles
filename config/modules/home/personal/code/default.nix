@@ -7,6 +7,8 @@
 }:
 
 {
+  home.packages = [ pkgs.nixd ];
+
   home.file.".config/Code/User/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/modules/home/personal/code/settings.jsonc";
   home.file.".config/Code/User/keybindings.json".source =

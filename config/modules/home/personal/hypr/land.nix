@@ -137,7 +137,7 @@
           "border_color rgb(FF0000) rgb(00FF00) rgb(0000FF) 45deg, match:fullscreen 1"
           "border_size 2, match:fullscreen 1"
 
-          # PIP
+          # PIP FIXME
           "tag +PIP, match:title (Picture-in-Picture)"
           "float true,match:tag PIP"
           "size 30% 30%, match:tag PIP*"

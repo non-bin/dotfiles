@@ -321,4 +321,6 @@
   "update.mode": "none",
   "extensions.autoCheckUpdates": false,
   "workbench.activityBar.location": "hidden",
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
 }
