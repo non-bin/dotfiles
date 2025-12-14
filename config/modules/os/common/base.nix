@@ -11,6 +11,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest; # Sets the kernel version https://nixos.wiki/wiki/Linux_kernel
 
   systemd.oomd.enableUserSlices = true; # I don't remember why
+  services.openssh.settings.Macs = [ "hmac-sha2-256" ]; # for cloudflared ssh https://github.com/cloudflare/cloudflared/issues/1198
 
   nixpkgs.config = {
     allowUnfree = true;

@@ -25,5 +25,4 @@
     # from your flake's root directory and not by a direct path literal like ./secrets
     localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
   };
-
 }

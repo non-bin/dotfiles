@@ -22,16 +22,29 @@
     }
   ];
 
-  # services.beszel = {
-  #   agent = {
-  #     enable = true;
-  #     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILqQ4E9KwbgyCb1pj912x2gzG1x+Eqir+/Yg5PRISjio";
-  #   };
-  #   hub = {
-  #     enable = true;
-  #     httpListen = "127.0.0.1:8080";
-  #   };
-  # };
+  age.secrets.cloudflared.rekeyFile = ./cloudflared.age;
+  services = {
+    cloudflared = {
+      enable = true;
+      tunnels = {
+        "00000000-0000-0000-0000-000000000000" = {
+          credentialsFile = config.age.secrets.cloudflared.path;
+          default = "http_status:404";
+        };
+      };
+
+      # beszel = {
+      #   agent = {
+      #     enable = true;
+      #     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILqQ4E9KwbgyCb1pj912x2gzG1x+Eqir+/Yg5PRISjio";
+      #   };
+      #   hub = {
+      #     enable = true;
+      #     httpListen = "127.0.0.1:8080";
+      #   };
+      # };
+    };
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
