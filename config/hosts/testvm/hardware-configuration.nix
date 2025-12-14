@@ -36,6 +36,11 @@
     options = [ "subvol=home" ];
   };
 
+  fileSystems."/home/alice/dotfiles" = {
+    device = "dotfiles";
+    fsType = "virtiofs";
+  };
+
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/1105c185-b5e7-481d-a002-847460a300a9";
     fsType = "btrfs";
