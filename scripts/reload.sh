@@ -51,6 +51,7 @@ while [[ $# -gt 0 ]]; do
       ;;
     -k | --rekey)
       REKEY="YES"
+      REBUILD="NO"
       shift # past argument
       ;;
     -d | --dry-run)
