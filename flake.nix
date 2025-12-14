@@ -34,40 +34,43 @@
       agenix-rekey,
       ...
     }:
-    let
-      host =
-        hostname: extraModules:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./config/hosts/${hostname}/os.nix
-            agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alice = import ./config/hosts/${hostname}/home.nix;
-            }
-          ]
-          ++ extraModules;
-        };
-    in
     {
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
         nixosConfigurations = self.nixosConfigurations;
       };
 
-      nixosConfigurations = {
-        maureen = host "maureen" [ ];
-        skellybones = host "skellybones" [ nixos-hardware.nixosModules.framework-16-7040-amd ];
-        stella = host "stella" [ ];
-        sylvia = host "sylvia" [ nixos-hardware.nixosModules.intel-nuc-8i7beh ];
-        testvm = host "testvm" [ ];
-      };
+      nixosConfigurations =
+        (
+          config:
+          nixpkgs.lib.genAttrs (builtins.attrNames config) (
+            hostname:
+            nixpkgs.lib.nixosSystem {
+              specialArgs = { inherit inputs; };
+              system = "x86_64-linux";
+              modules = [
+                ./config/hosts/${hostname}/os.nix
+                agenix.nixosModules.default
+                agenix-rekey.nixosModules.default
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager.extraSpecialArgs = { inherit inputs; };
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users.alice = import ./config/hosts/${hostname}/home.nix;
+                }
+              ]
+              ++ config.${hostname};
+            }
+          )
+        )
+          {
+            maureen = [ ];
+            skellybones = [ "nixos-hardware.nixosModules.framework-16-7040-amd" ];
+            stella = [ ];
+            sylvia = [ "nixos-hardware.nixosModules.intel-nuc-8i7beh" ];
+            testvm = [ ];
+          };
 
       homeConfigurations = {
         "basic" = home-manager.lib.homeManagerConfiguration {
@@ -82,5 +85,7 @@
           modules = [ ./config/hosts/standalone/full.nix ];
         };
       };
+
+      inherit inputs; # Useful for nix repl
     };
 }
