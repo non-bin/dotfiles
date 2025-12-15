@@ -15,7 +15,7 @@
 
   "Module": {
     "prefix": "mod",
-    "body": ["{ config, lib, pkgs, ... }:", "", "{", "  $0", "}"]
+    "body": ["{ config, lib, pkgs, ... }:", "", "{", "  imports = [ ];", "  $0", "}"]
   },
   "Object": {
     "prefix": "=o",
