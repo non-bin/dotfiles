@@ -9,6 +9,8 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/os/server.nix
+
+    ../../modules/os/server/immich.nix
   ];
 
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDz2Ia+hmbEQ0kuXxIEbFv6zxM+zXVXePq+jZxLrZiE1";
