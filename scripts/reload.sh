@@ -92,7 +92,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -p, --pull        Pull updates from git before updating"
       echo "  -P, --push        Commit and push all changes"
       echo "  -r, --rebuild     Explicitly run the rebuild command (eg if running with -c or -o)"
-      echo "  -k, --rekey       Rekey all agenix secrets (still rebuilds)"
+      echo "  -k, --rekey       Generate and rekey agenix secrets"
       echo "  -v, --vm          Build and run a VM with 'nixos-rebuild build-vm', and expose port 22 through the host's port 2221"
       echo "  -d, --dry-run     Run everything but the rebuild command"
       echo "  -R, --rescue      Don't run any extra commands (like git)"
@@ -132,10 +132,6 @@ if [ "$PULL" == "YES" ]; then
   git pull
 fi
 
-if [ "$REKEY" == "YES" ]; then
-  agenix rekey -a
-fi
-
 if [ "$PUSH" == "YES" ]; then
   git add *
   git commit
@@ -148,13 +144,18 @@ if [ "$UPGRADE" == "YES" ]; then
   echo
 fi
 
-if [ "$RESCUE" != "YES" ] && [ "$REBUILD" == "YES" ]; then
+if [ "$RESCUE" != "YES" ] && ([ "$REBUILD" == "YES" ] || [ "$REKEY" == "YES" ]); then
   UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
 
   while IFS= read -r FILE || [[ -n $FILE ]]; do
     echo "Adding untracked file $FILE"
     git add "$FILE" # Add all untracked files
   done < <(printf '%s' "$UNTRACKED_FILES")
+fi
+
+if [ "$REKEY" == "YES" ]; then
+  agenix generate -a
+  agenix rekey -a
 fi
 
 if [ "$GENERATION" == "YES" ]; then
