@@ -10,7 +10,11 @@
     ./hardware-configuration.nix
     ../../modules/os/server.nix
 
+    ../../modules/os/server/homepage.nix
     ../../modules/os/server/immich.nix
+    ../../modules/os/server/jellyfin.nix
+    ../../modules/os/server/servarr/sonarr.nix
+    ../../modules/os/server/servarr/radarr.nix
   ];
 
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDz2Ia+hmbEQ0kuXxIEbFv6zxM+zXVXePq+jZxLrZiE1";
@@ -34,18 +38,39 @@
           default = "http_status:404";
         };
       };
-
-      # beszel = {
-      #   agent = {
-      #     enable = true;
-      #     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILqQ4E9KwbgyCb1pj912x2gzG1x+Eqir+/Yg5PRISjio";
-      #   };
-      #   hub = {
-      #     enable = true;
-      #     httpListen = "127.0.0.1:8080";
-      #   };
-      # };
     };
+
+    homepage-dashboard.widgets = [
+      {
+        resources = {
+          label = "/boot";
+          disk = [ "/boot" ];
+        };
+      }
+      {
+        resources = {
+          label = "Fast";
+          disk = [ "/" ];
+        };
+      }
+      {
+        resources = {
+          label = "Slow";
+          disk = [ "/mnt/backups" ];
+        };
+      }
+    ];
+
+    # beszel = {
+    #   agent = {
+    #     enable = true;
+    #     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILqQ4E9KwbgyCb1pj912x2gzG1x+Eqir+/Yg5PRISjio";
+    #   };
+    #   hub = {
+    #     enable = true;
+    #     httpListen = "127.0.0.1:8080";
+    #   };
+    # };
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
