@@ -40,6 +40,37 @@
       };
     };
 
+    samba.settings = {
+      "root" = {
+        "path" = "/";
+        "browseable" = "yes";
+        "valid users" = "alice";
+        "force user" = "alice";
+        "force group" = "alice";
+        "guest ok" = "no";
+        "read only" = "no";
+      };
+      "data" = {
+        "path" = "/mnt/data";
+        "browseable" = "yes";
+        "valid users" = "alice";
+        "force user" = "alice";
+        "force group" = "alice";
+        "guest ok" = "no";
+        "read only" = "no";
+      };
+      "media" = {
+        "path" = "/mnt/media";
+        "browseable" = "yes";
+        "read only" = "yes";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "alice";
+        "force group" = "alice";
+      };
+    };
+
     homepage-dashboard.widgets = [
       {
         resources = {
