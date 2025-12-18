@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ../../modules/os/server.nix
 
+    ../../modules/os/server/samba.nix
     ../../modules/os/server/homepage.nix
     ../../modules/os/server/immich.nix
     ../../modules/os/server/jellyfin.nix
