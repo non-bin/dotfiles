@@ -8,10 +8,10 @@
 {
   programs.zellij.enable = true;
 
-  # TODO: don't hardcode urls
+  # TODO: don't hardcode urls, and use module settings
   home.file = {
     ".config/zellij/config.kdl".text = ''
-      // show_startup_tips false
+      show_startup_tips false
 
       plugins {
         zjstatus location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm"
