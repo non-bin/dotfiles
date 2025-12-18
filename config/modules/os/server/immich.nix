@@ -9,6 +9,8 @@
 {
   imports = [ ];
 
+  systemd.tmpfiles.rules = [ "f /etc/.immich.env 0700 root root" ];
+
   services = {
     immich = {
       enable = true;
@@ -20,7 +22,7 @@
     };
     homepage-dashboard = {
       # Find your API key under Account Settings > API Keys. The key should have the server.statistics permission
-      environmentFiles = [ "/home/${user.name}/.immich.env" ]; # Must be manually created, containing `HOMEPAGE_VAR_IMMICH_APIKEY=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`. Sad I know
+      environmentFiles = [ "/etc/.immich.env" ]; # Must be manually created, containing `HOMEPAGE_VAR_IMMICH_APIKEY=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`. Sad I know
       services."Media Library"."Immich" = {
         icon = "immich";
         href = "https://immich.jacka.net.au/";

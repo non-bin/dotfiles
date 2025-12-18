@@ -9,6 +9,8 @@
 {
   imports = [ ];
 
+  systemd.tmpfiles.rules = [ "f /etc/.jellyfin.env 0700 root root" ];
+
   services = {
     jellyfin = {
       enable = true;
@@ -17,7 +19,7 @@
     };
 
     homepage-dashboard = {
-      environmentFiles = [ "/home/${user.name}/.jellyfin.env" ]; # Must be manually created, containing `HOMEPAGE_VAR_JELLYFIN_APIKEY=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`. Sad I know
+      environmentFiles = [ "/etc/.jellyfin.env" ]; # Must be manually created, containing `HOMEPAGE_VAR_JELLYFIN_APIKEY=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`. Sad I know
       services."Media Library"."Jellyfin" = {
         icon = "jellyfin";
         href = "https://jellyfin.jacka.net.au/";
