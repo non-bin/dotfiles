@@ -15,9 +15,11 @@
     # ../../modules/os/common
     ../../modules/os/server.nix
 
-    # ../../modules/os/server/servarr
-
-    # ../../modules/os/common/secrets/default.nix # Only really needed if just using base.nix
+    # ../../modules/os/server/homepage.nix
+    # ../../modules/os/server/immich.nix
+    # ../../modules/os/server/servarr/sonarr.nix
+    # ../../modules/os/server/servarr/radarr.nix
+    # ../../modules/os/server/jellyfin.nix
   ];
 
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKmf+ifxiYomJJfZzIcWpZUkqUC1usBUCD7BhCb8S8w0";
@@ -31,32 +33,47 @@
     }
   ];
 
+  services.homepage-dashboard.widgets = [
+    {
+      resources = {
+        label = "/boot";
+        disk = [ "/boot" ];
+      };
+    }
+    {
+      resources = {
+        label = "/";
+        disk = [ "/" ];
+      };
+    }
+  ];
+
   # following configuration is added only when building VM with build-vm
-  # virtualisation.vmVariant.virtualisation = {
-  #   memorySize = 4096; # Use 2048MiB memory.
-  #   cores = 8;
-  #   graphics = false;
-  #   # forwardPorts = [
-  #   #   {
-  #   #     from = "host";
-  #   #     host.port = 8080;
-  #   #     guest.port = 80;
-  #   #   }
-  #   # ];
-  #   qemu.networkingOptions = [
-  #     # "-net nic,netdev=user,model=virtio"
-  #     # "-netdev user,id=usea,\${QEMU_NET_OPTS:+,$QEMU_NET_OPTS}"
-  #     # "-netdev bridge,id=hn0"
-  #     # "-device virtio-net-pci,netdev=hn0,id=nic1"
-  #     "-netdev tap,id=net0,br=br0,helper=$(type -p qemu-bridge-helper)"
-  #   ];
-  # };
+  virtualisation.vmVariant.virtualisation = {
+    memorySize = 4096; # Use 2048MiB memory.
+    cores = 8;
+    graphics = false;
+    # forwardPorts = [
+    #   {
+    #     from = "host";
+    #     host.port = 8080;
+    #     guest.port = 80;
+    #   }
+    # ];
+    qemu.networkingOptions = [
+      # "-net nic,netdev=user,model=virtio"
+      # "-netdev user,id=usea,\${QEMU_NET_OPTS:+,$QEMU_NET_OPTS}"
+      # "-netdev bridge,id=hn0"
+      # "-device virtio-net-pci,netdev=hn0,id=nic1"
+      "-netdev tap,id=net0,br=br0,helper=$(type -p qemu-bridge-helper)"
+    ];
+  };
 
-  # services.getty.autologinUser = user.name;
+  services.getty.autologinUser = user.name;
 
-  # environment.shellAliases = {
-  #   s = "sudo shutdown now"; # Quick shutdown
-  # };
+  environment.shellAliases = {
+    s = "sudo shutdown now"; # Quick shutdown
+  };
 
   # Workarounds
   # programs.dconf.enable = true; # "https://github.com/nix-community/home-manager/blob/master/docs/manual/faq/ca-desrt-dconf.md"
