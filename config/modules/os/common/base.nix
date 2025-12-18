@@ -61,6 +61,7 @@
         "kvm"
         "tty"
         "dialout"
+        "samba"
       ];
       isNormalUser = true;
       openssh.authorizedKeys.keys = [ user.sshPubKey ];
