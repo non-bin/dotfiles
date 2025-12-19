@@ -70,6 +70,8 @@
           st = "status";
           pl = "pull";
           ps = "push";
+          rs = "reset";
+          rh = "reset --hard HEAD";
         };
       };
     };
