@@ -29,6 +29,9 @@
     }
   ];
 
+  hardware.nvidia.open = true;
+  services.xserver.videoDrivers = [ "nvidia" ]; # Even on wayland
+
   age.secrets.cloudflared.rekeyFile = ./cloudflared.age;
   services = {
     cloudflared = {

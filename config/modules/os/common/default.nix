@@ -18,9 +18,6 @@
 
   services.btrfs.autoScrub.enable = lib.mkDefault true;
 
-  hardware.nvidia.open = true;
-  services.xserver.videoDrivers = [ "nvidia" ]; # Even on wayland
-
   networking = {
     networkmanager.enable = true;
     firewall = {
