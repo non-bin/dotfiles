@@ -66,8 +66,8 @@
         Preferences = {
           Connection.PortRangeMin = 6881;
           Connection.UPnP = false;
-          Downloads.SavePath = "/downloads/";
-          Downloads.TempPath = "/downloads/incomplete/";
+          Downloads.SavePath = "/mnt/media/downloads/";
+          Downloads.TempPath = "/mnt/media/downloads/incomplete/";
           General.Locale = "en";
           MailNotification.req_auth = true;
           Scheduler.end_time = "@Variant(\0\0\0\xf\0\0\0\0)";

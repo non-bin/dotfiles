@@ -93,3 +93,4 @@ agenix view
   - https://pieterbakker.com/using-ssmtp-to-send-emails-from-a-linux-system/
   - https://nix.dev/tutorials/nixos/binary-cache-setup#setup-http-binary-cache
   - https://wiki.nixos.org/wiki/Binary_Cache
+  - services.recyclarr.enable
