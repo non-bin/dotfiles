@@ -25,7 +25,7 @@
       environmentFiles = [ "/mnt/appdata/immich/.env" ]; # Must be manually created, containing `HOMEPAGE_VAR_IMMICH_APIKEY=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`. Sad I know
       services."Media Library"."Immich" = {
         icon = "immich";
-        href = "https://immich.jacka.net.au/";
+        href = "https://immich.jacka.net.au/#:2283";
         description = "Photo Library";
         server = "local";
         siteMonitor = "http://localhost:2283";

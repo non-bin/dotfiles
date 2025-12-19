@@ -22,7 +22,7 @@
       environmentFiles = [ "/mnt/appdata/jellyfin/.env" ]; # Must be manually created, containing `HOMEPAGE_VAR_JELLYFIN_APIKEY=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`. Sad I know
       services."Media Library"."Jellyfin" = {
         icon = "jellyfin";
-        href = "https://jellyfin.jacka.net.au/";
+        href = "https://jellyfin.jacka.net.au/#:8096";
         description = "Media Player";
         server = "local";
         siteMonitor = "http://localhost:8096";

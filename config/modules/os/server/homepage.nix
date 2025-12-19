@@ -35,6 +35,61 @@
         };
       }
     ];
+    /*
+      Tested on:
+      https://jellyfin.jacka.net.au/#:8096 -> http://maureen.i.jacka.net.au:8096
+      https://immich.jacka.net.au/#:2283/dhjj -> http://maureen.i.jacka.net.au:2283/dhjj
+      https://immich.jacka.net.au/#:2283dhjj -> https://immich.jacka.net.au/#:2283dhjj
+      https://aaa.jacka.net.au/#/asd -> http://maureen.i.jacka.net.au/asd
+      https://aaa.jacka.net.au/#asd -> https://aaa.jacka.net.au/#asd
+      https://immich.jacka.net.au/#http://aeffv.rth -> http://aeffv.rth
+      https://immich.jacka.net.au/#http://aeffv.rth/thyj -> http://aeffv.rth/thyj
+      https://immich.jacka.net.au/#http://aeffv.rth:123 -> http://aeffv.rth:123
+      https://immich.jacka.net.au/#http://aeffv.rth:123/hjyu -> http://aeffv.rth:123/hjyu
+      https://immich.jacka.net.au/#https://aeffv.rth -> https://aeffv.rth
+      https://immich.jacka.net.au/#https://aeffv.rth/thyj -> https://aeffv.rth/thyj
+      https://immich.jacka.net.au/#https://aeffv.rth:123 -> https://aeffv.rth:123
+      https://immich.jacka.net.au/#https://aeffv.rth:123/hjyu -> https://aeffv.rth:123/hjyu
+      https://something.jacka.net.au -> https://something.jacka.net.au
+      /sonarr -> /sonarr
+    */
+    customJS = ''
+      if (window.location.hostname.includes('i.jacka.net.au')) {
+        const serviceWidgetsLinks = document.getElementsByClassName('service-title-text');
+
+        for (let i = 0; i < serviceWidgetsLinks.length; i++) {
+          serviceWidgetsLinks[i].href = decodeHref(serviceWidgetsLinks[i].href);
+        }
+      }
+
+      /**
+      * @param {string} href Original link href
+      * @returns {string} New link url
+      */
+      function decodeHref(href) {
+        const regex = /^(?<external>.*)#((?<full>https?.*)|((?<port>:\d+)?(?<path>\/.*)?))$/.exec(href)?.groups;
+
+        if (regex) {
+          if (regex.full) {
+            return regex.full;
+          } else {
+            let suffix = "";
+            if (regex.port) {
+              suffix += regex.port;
+            }
+            if (regex.path) {
+              suffix += regex.path;
+            }
+
+            if (suffix) {
+              return window.location.origin + suffix;
+            }
+          }
+        }
+
+        return href;
+      }
+    '';
   };
 
   services.nginx.virtualHosts."${config.networking.fqdnOrHostName}".locations."/".proxyPass =
@@ -90,43 +145,4 @@
   #         description: Container Manager
   #         server: local
   #         container: dockge";
-
-  #     customJS = "const updateHrefs = () => {
-  #   const serviceWidgetsLinks =
-  #     document.getElementsByClassName('service-title-text');
-
-  #   const local = window.location.hostname.includes('wheresthe');
-
-  #   for (let i = 0; i < serviceWidgetsLinks.length; i++) {
-  #     const href = serviceWidgetsLinks[i].href;
-  #     const regex = /(?<external>.*)#(?<internal>http.*)/.exec(href)?.groups;
-
-  #     if (regex) {
-  #       if (local) {
-  #         if (Object.hasOwn(regex, 'internal')) {
-  #           serviceWidgetsLinks[i].href = regex.internal;
-  #         } else
-  #           console.log(
-  #             `\${JSON.stringify (regex)} has no internal, leaving unmodified`
-  #           );
-  #       } else {
-  #         if (Object.hasOwn(regex, 'external')) {
-  #           serviceWidgetsLinks[i].href = regex.external;
-  #         } else
-  #           console.log(
-  #             `\${JSON.stringify (regex)} has no external, leaving unmodified`
-  #           );
-  #       }
-  #     } else
-  #       console.error(
-  #         `Regex failed for \${href}`,
-  #         JSON.stringify(regex),
-  #         serviceWidgetsLinks[i]
-  #       );
-
-  #     console.log(serviceWidgetsLinks[i].href);
-  #   }
-  # };
-
-  # updateHrefs();";
 }
