@@ -69,6 +69,7 @@
         "browseable" = "yes";
         "read only" = "yes";
         "guest ok" = "yes";
+        "write list" = user.name;
         "create mask" = "0644";
         "directory mask" = "0755";
         "force user" = user.name;
