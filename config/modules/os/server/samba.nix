@@ -34,8 +34,8 @@
         #   "path" = "/data/private";
         #   "browseable" = "yes";
         #   "valid users" = "alice family kieran";
-        #   "force user" = "alice";
-        #   "force group" = "alice";
+        #   "force user" = user.name;
+        #   "force group" = user.name;
         #   "guest ok" = "no";
         #   "read only" = "no";
         # };
@@ -45,10 +45,11 @@
         #   "browseable" = "yes";
         #   "read only" = "yes";
         #   "guest ok" = "yes";
+        #   "write list" = user.name;
         #   "create mask" = "0644";
         #   "directory mask" = "0755";
-        #   "force user" = "alice";
-        #   "force group" = "alice";
+        #   "force user" = user.name;
+        #   "force group" = user.name;
         # };
 
         # "public" = {
@@ -58,8 +59,8 @@
         #   "guest ok" = "yes";
         #   "create mask" = "0644";
         #   "directory mask" = "0755";
-        #   "force user" = "alice";
-        #   "force group" = "alice";
+        #   "force user" = user.name;
+        #   "force group" = user.name;
         # };
 
         # Apple Time Machine
@@ -68,7 +69,7 @@
         #     "valid users" = "family";
         #     "guest ok" = "no";
         #     "read only" = "yes";
-        #     "force user" = "alice";
+        #     "force user" = user.name;
         #     "fruit:aapl" = "yes";
         #     "fruit:time machine" = "yes";
         #     "vfs objects" = "catia fruit streams_xattr";

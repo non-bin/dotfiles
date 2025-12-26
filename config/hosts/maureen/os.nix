@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  user,
   ...
 }:
 
@@ -48,18 +49,18 @@
       "root" = {
         "path" = "/";
         "browseable" = "yes";
-        "valid users" = "alice";
-        "force user" = "alice";
-        "force group" = "alice";
+        "valid users" = user.name;
+        "force user" = user.name;
+        "force group" = user.name;
         "guest ok" = "no";
         "read only" = "no";
       };
       "data" = {
         "path" = "/mnt/data";
         "browseable" = "yes";
-        "valid users" = "alice";
-        "force user" = "alice";
-        "force group" = "alice";
+        "valid users" = user.name;
+        "force user" = user.name;
+        "force group" = user.name;
         "guest ok" = "no";
         "read only" = "no";
       };
@@ -70,8 +71,8 @@
         "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
-        "force user" = "alice";
-        "force group" = "alice";
+        "force user" = user.name;
+        "force group" = user.name;
       };
     };
 

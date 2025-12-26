@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  user,
   ...
 }:
 
@@ -76,7 +77,7 @@
           WebUI.AuthSubnetWhitelist = "192.168.0.0/24";
           WebUI.AuthSubnetWhitelistEnabled = true;
           WebUI.LocalHostAuth = false;
-          WebUI.Username = "alice";
+          WebUI.Username = user.name;
           WebUI.Password_PBKDF2 = "@ByteArray(QVBiYr3jJsL8JrM1FgvwIg==:1v5zDtA3+zBIYlv2QrWprjUZUoQN6c+A/InOsAwOMz6PARnryyTVOJmdMiSvDt1+N9Ihs3GuK8B4vFLwl3JtnQ==)";
           WebUI.Port = 8081;
           WebUI.ServerDomains = "*";
@@ -98,7 +99,7 @@
         widget = {
           type = "qbittorrent";
           url = "http://localhost:8081";
-          username = "alice";
+          username = user.name;
           password = "{{HOMEPAGE_VAR_QBT_PASSWORD}}";
           enableLeechProgress = false; # Download list
         };
