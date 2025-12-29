@@ -5,114 +5,139 @@
   ...
 }:
 let
+  assign =
+    application: mimeTypes:
+    builtins.listToAttrs (
+      map (mimeType: {
+        name = mimeType;
+        value = application;
+      }) mimeTypes
+    );
+
   browser = "firefox.desktop";
-  imagePreviewer = "swappy";
+  imagePreviewer = "swappy.desktop";
   fileExplorer = "thunar.desktop";
+
+  images = [
+    "image/aces"
+    "image/apng"
+    "image/avci"
+    "image/avcs"
+    "image/avif"
+    "image/bmp"
+    "image/cgm"
+    "image/dicom-rle"
+    "image/dpx"
+    "image/emf"
+    "image/example"
+    "image/fits"
+    "image/g3fax"
+    "image/gif"
+    "image/heic"
+    "image/heic-sequence"
+    "image/heif"
+    "image/heif-sequence"
+    "image/hej2k"
+    "image/hsj2"
+    "image/ief"
+    "image/j2c"
+    "image/jaii"
+    "image/jais"
+    "image/jls"
+    "image/jp2"
+    "image/jpeg"
+    "image/jph"
+    "image/jphc"
+    "image/jpm"
+    "image/jpx"
+    "image/jxl"
+    "image/jxr"
+    "image/jxrA"
+    "image/jxrS"
+    "image/jxs"
+    "image/jxsc"
+    "image/jxsi"
+    "image/jxss"
+    "image/ktx"
+    "image/ktx2"
+    "image/naplps"
+    "image/png"
+    "image/prs.btif"
+    "image/prs.pti"
+    "image/pwg-raster"
+    "image/svg+xml"
+    "image/t38"
+    "image/tiff"
+    "image/tiff-fx"
+    "image/vnd.adobe.photoshop"
+    "image/vnd.airzip.accelerator.azv"
+    "image/vnd.blockfact.facti"
+    "image/vnd.clip"
+    "image/vnd.cns.inf2"
+    "image/vnd.dece.graphic"
+    "image/vnd.djvu"
+    "image/vnd.dwg"
+    "image/vnd.dxf"
+    "image/vnd.dvb.subtitle"
+    "image/vnd.fastbidsheet"
+    "image/vnd.fpx"
+    "image/vnd.fst"
+    "image/vnd.fujixerox.edmics-mmr"
+    "image/vnd.fujixerox.edmics-rlc"
+    "image/vnd.globalgraphics.pgb"
+    "image/vnd.microsoft.icon"
+    "image/vnd.mix"
+    "image/vnd.ms-modi"
+    "image/vnd.mozilla.apng"
+    "image/vnd.net-fpx"
+    "image/vnd.pco.b16"
+    "image/vnd.radiance"
+    "image/vnd.sealed.png"
+    "image/vnd.sealedmedia.softseal.gif"
+    "image/vnd.sealedmedia.softseal.jpg"
+    "image/vnd.svf"
+    "image/vnd.tencent.tap"
+    "image/vnd.valve.source.texture"
+    "image/vnd.wap.wbmp"
+    "image/vnd.xiff"
+    "image/vnd.zbrush.pcx"
+    "image/webp"
+  ];
 in
 {
-  xdg.configFile."mimeapps.list".force = true; # Fix overwritten file
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      # Full list https://www.iana.org/assignments/media-types/media-types.xhtml
+  xdg = {
+    configFile."mimeapps.list".force = true; # Fix overwritten file
 
-      "inode/directory" = fileExplorer;
+    desktopEntries = {
+      swappy = {
+        name = "Swappy";
+        genericName = "Image Previewer";
+        exec = "swappy -f %U";
+        terminal = false;
+        mimeType = images;
+      };
+    };
 
-      "text/plain" = "codium.desktop";
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        # Full list https://www.iana.org/assignments/media-types/media-types.xhtml
 
-      "default-web-browser" = browser;
-      "application/xhtml+xml" = browser;
-      "application/pdf" = browser;
-      "text/xml" = browser;
-      "text/html" = browser;
-      "x-scheme-handler/http" = browser;
-      "x-scheme-handler/https" = browser;
-      "x-scheme-handler/about" = browser;
-      "x-scheme-handler/unknown" = browser;
+        "inode/directory" = fileExplorer;
 
-      "image/aces" = imagePreviewer;
-      "image/apng" = imagePreviewer;
-      "image/avci" = imagePreviewer;
-      "image/avcs" = imagePreviewer;
-      "image/avif" = imagePreviewer;
-      "image/bmp" = imagePreviewer;
-      "image/cgm" = imagePreviewer;
-      "image/dicom-rle" = imagePreviewer;
-      "image/dpx" = imagePreviewer;
-      "image/emf" = imagePreviewer;
-      "image/example" = imagePreviewer;
-      "image/fits" = imagePreviewer;
-      "image/g3fax" = imagePreviewer;
-      "image/gif" = imagePreviewer;
-      "image/heic" = imagePreviewer;
-      "image/heic-sequence" = imagePreviewer;
-      "image/heif" = imagePreviewer;
-      "image/heif-sequence" = imagePreviewer;
-      "image/hej2k" = imagePreviewer;
-      "image/hsj2" = imagePreviewer;
-      "image/ief" = imagePreviewer;
-      "image/j2c" = imagePreviewer;
-      "image/jaii" = imagePreviewer;
-      "image/jais" = imagePreviewer;
-      "image/jls" = imagePreviewer;
-      "image/jp2" = imagePreviewer;
-      "image/jpeg" = imagePreviewer;
-      "image/jph" = imagePreviewer;
-      "image/jphc" = imagePreviewer;
-      "image/jpm" = imagePreviewer;
-      "image/jpx" = imagePreviewer;
-      "image/jxl" = imagePreviewer;
-      "image/jxr" = imagePreviewer;
-      "image/jxrA" = imagePreviewer;
-      "image/jxrS" = imagePreviewer;
-      "image/jxs" = imagePreviewer;
-      "image/jxsc" = imagePreviewer;
-      "image/jxsi" = imagePreviewer;
-      "image/jxss" = imagePreviewer;
-      "image/ktx" = imagePreviewer;
-      "image/ktx2" = imagePreviewer;
-      "image/naplps" = imagePreviewer;
-      "image/png" = imagePreviewer;
-      "image/prs.btif" = imagePreviewer;
-      "image/prs.pti" = imagePreviewer;
-      "image/pwg-raster" = imagePreviewer;
-      "image/svg+xml" = imagePreviewer;
-      "image/t38" = imagePreviewer;
-      "image/tiff" = imagePreviewer;
-      "image/tiff-fx" = imagePreviewer;
-      "image/vnd.adobe.photoshop" = imagePreviewer;
-      "image/vnd.airzip.accelerator.azv" = imagePreviewer;
-      "image/vnd.blockfact.facti" = imagePreviewer;
-      "image/vnd.clip" = imagePreviewer;
-      "image/vnd.cns.inf2" = imagePreviewer;
-      "image/vnd.dece.graphic" = imagePreviewer;
-      "image/vnd.djvu" = imagePreviewer;
-      "image/vnd.dwg" = imagePreviewer;
-      "image/vnd.dxf" = imagePreviewer;
-      "image/vnd.dvb.subtitle" = imagePreviewer;
-      "image/vnd.fastbidsheet" = imagePreviewer;
-      "image/vnd.fpx" = imagePreviewer;
-      "image/vnd.fst" = imagePreviewer;
-      "image/vnd.fujixerox.edmics-mmr" = imagePreviewer;
-      "image/vnd.fujixerox.edmics-rlc" = imagePreviewer;
-      "image/vnd.globalgraphics.pgb" = imagePreviewer;
-      "image/vnd.microsoft.icon" = imagePreviewer;
-      "image/vnd.mix" = imagePreviewer;
-      "image/vnd.ms-modi" = imagePreviewer;
-      "image/vnd.mozilla.apng" = imagePreviewer;
-      "image/vnd.net-fpx" = imagePreviewer;
-      "image/vnd.pco.b16" = imagePreviewer;
-      "image/vnd.radiance" = imagePreviewer;
-      "image/vnd.sealed.png" = imagePreviewer;
-      "image/vnd.sealedmedia.softseal.gif" = imagePreviewer;
-      "image/vnd.sealedmedia.softseal.jpg" = imagePreviewer;
-      "image/vnd.svf" = imagePreviewer;
-      "image/vnd.tencent.tap" = imagePreviewer;
-      "image/vnd.valve.source.texture" = imagePreviewer;
-      "image/vnd.wap.wbmp" = imagePreviewer;
-      "image/vnd.xiff" = imagePreviewer;
-      "image/vnd.zbrush.pcx" = imagePreviewer;
-      "image/webp" = imagePreviewer;
+        "text/plain" = "codium.desktop";
+
+        "default-web-browser" = browser;
+        "application/xhtml+xml" = browser;
+        "application/pdf" = browser;
+        "text/xml" = browser;
+        "text/html" = browser;
+        "x-scheme-handler/http" = browser;
+        "x-scheme-handler/https" = browser;
+        "x-scheme-handler/about" = browser;
+        "x-scheme-handler/unknown" = browser;
+      }
+      // assign imagePreviewer images;
     };
   };
 }
