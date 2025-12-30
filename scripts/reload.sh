@@ -20,6 +20,10 @@ while [[ $# -gt 0 ]]; do
       OPTIMISE="YES"
       shift
       ;;
+    -O | --offline)
+      OFFLINE="--offline"
+      shift
+      ;;
     -p | --pull)
       PULL="YES"
       shift # past argument
@@ -89,6 +93,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -I, --pure        Remove the --impure flag from the reload command"
       echo "  -c, --clean       Garbage collect the nix store, don't rebuild (more info at https://nixos.wiki/wiki/Cleaning_the_nix_store and https://nixos.wiki/wiki/Storage_optimization)"
       echo "  -o, --optimise    Hard link identicle files in the nix store, don't rebuild"
+      echo "  -O, --offline     Disable binary caches and consider all downloads up to date"
       echo "  -p, --pull        Pull updates from git before updating"
       echo "  -P, --push        Commit and push all changes"
       echo "  -r, --rebuild     Explicitly run the rebuild command (eg if running with -c or -o)"
@@ -188,7 +193,7 @@ if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
       QEMU_NET_OPTS="hostfwd=tcp::2221-:22" && nixos-rebuild build-vm $TRACE --flake ./#$NEW_CONFIG_NAME && "result/bin/run-${NEW_CONFIG_NAME}-vm" -nographic
       # rm result "${NEW_CONFIG_NAME}.qcow2"
     else
-      nixos-rebuild $SUBSTITUTERS switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
+      nixos-rebuild $SUBSTITUTERS $OFFLINE switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
     fi
   else
     [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE
