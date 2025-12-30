@@ -41,39 +41,6 @@
     "when": "replaceActive && searchViewletVisible && !findWidgetVisible",
   },
   {
-    "command": "editor.action.reindentlines",
-    "key": "ctrl+shift+i",
-  },
-  {
-    "command": "editor.action.indentationToSpaces",
-    "key": "ctrl+k space",
-  },
-  {
-    "command": "editor.action.indentationToTabs",
-    "key": "ctrl+k tab",
-  },
-  {
-    "command": "-workbench.files.action.compareWithClipboard",
-    "key": "ctrl+k c",
-  },
-  {
-    "command": "workbench.action.toggleCenteredLayout",
-    "key": "ctrl+k c",
-  },
-  {
-    "command": "-sqlite.runDocumentQuery",
-    "key": "ctrl+shift+q",
-    "when": "editorLangId =~ /(sql|sqlite)/",
-  },
-  {
-    "command": "sqlite.runSelectedQuery",
-    "key": "ctrl+shift+q",
-  },
-  {
-    "command": "wwm.aligncode",
-    "key": "ctrl+k a",
-  },
-  {
     "command": "-workbench.action.closeUnmodifiedEditors",
     "key": "ctrl+k u",
   },
@@ -98,18 +65,6 @@
     "key": "ctrl+alt+n",
   },
   {
-    "command": "workbench.action.toggleSidebarVisibility",
-    "key": "ctrl+b",
-  },
-  {
-    "command": "-workbench.action.toggleSidebarVisibility",
-    "key": "ctrl+b",
-  },
-  {
-    "command": "yarn-script.build",
-    "key": "ctrl+k b",
-  },
-  {
     "command": "-workbench.action.terminal.new",
     "key": "ctrl+shift+`",
     "when": "terminalProcessSupported || terminalWebExtensionContributedProfile",
@@ -127,32 +82,6 @@
     "command": "-editor.action.blockComment",
     "key": "shift+alt+a",
     "when": "editorTextFocus && !editorReadonly",
-  },
-  {
-    "command": "-dendron.togglePreview",
-    "key": "ctrl+k v",
-    "when": "dendron:pluginActive",
-  },
-  {
-    "command": "-saveAll",
-    "key": "ctrl+k s",
-  },
-  {
-    "command": "git.sync",
-    "key": "ctrl+k s",
-  },
-  {
-    "command": "-keybindings.editor.addKeybinding",
-    "key": "ctrl+k ctrl+a",
-    "when": "inKeybindings && keybindingFocus",
-  },
-  {
-    "command": "-workbench.action.quickOpen",
-    "key": "ctrl+p",
-  },
-  {
-    "command": "toggle.window.commandCenter",
-    "key": "ctrl+p",
   },
   {
     "command": "workbench.action.quickTextSearch",
