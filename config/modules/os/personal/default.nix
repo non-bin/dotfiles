@@ -12,8 +12,6 @@
     ./btrbk.nix
   ];
 
-  services.gvfs.enable = true; # Lets Thunar mount things
-
   programs.nix-ld.enable = true; # https://nix.dev/guides/faq#how-to-run-non-nix-executables
   programs.nix-ld.libraries = with pkgs; [
     # https://github.com/cloudflare/workerd/discussions/1515#discussioncomment-10029667
@@ -79,6 +77,22 @@
   services = {
     gnome.gnome-keyring.enable = true;
     tumbler.enable = true; # Image thumbnails
+    gvfs.enable = true; # Lets Thunar mount things
+
+    locate = {
+      enable = true;
+      prunePaths = [
+        "/snapshots"
+        "/tmp"
+        "/var/tmp"
+        "/var/cache"
+        "/var/lock"
+        "/var/run"
+        "/var/spool"
+        "/nix/store"
+        "/nix/var/log/nix"
+      ];
+    };
 
     cloudflare-warp = {
       enable = false;
