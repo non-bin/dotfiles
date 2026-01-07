@@ -14,7 +14,7 @@ let
       }) mimeTypes
     );
 
-  # .desktop files are mostly found in /run/current-system/sw/share/applications, but also /etc/profiles/per-user/USERNAME/share/applications and falling back to ~.local/share/applications (really any $XDG_DATA_DIRS/applications)
+  # .desktop files are mostly found in /run/current-system/sw/share/applications, but also /etc/profiles/per-user/USERNAME/share/applications and falling back to ~/.local/share/applications and ~/Desktop (really any $XDG_DATA_DIRS/applications)
   browser = "firefox.desktop";
   imagePreviewer = "swappy.desktop";
   fileExplorer = "thunar.desktop";
