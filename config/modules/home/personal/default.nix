@@ -80,6 +80,7 @@
     pavucontrol # Audio settings
 
     # android-studio
+    android-tools # adb etc
 
     mesen # NES Emulator
 

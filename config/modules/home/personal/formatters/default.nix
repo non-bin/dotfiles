@@ -17,7 +17,7 @@
   home.packages = with pkgs; [
     treefmt # multiplexer
     prettier # lots of languages
-    nixfmt-rfc-style # nix
+    nixfmt # nix
     shfmt # shell scripts
     taplo # toml
   ];

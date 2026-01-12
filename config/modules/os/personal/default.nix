@@ -53,7 +53,6 @@
     };
 
     gamemode.enable = true;
-    adb.enable = true;
 
     virt-manager.enable = true;
 
