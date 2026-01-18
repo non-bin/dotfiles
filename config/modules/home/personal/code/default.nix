@@ -17,6 +17,8 @@
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/modules/home/personal/code/snippets";
 
   programs = {
+    # zsh.shellAliases.code = "codium ";
+
     vscode = {
       enable = true;
       # package = pkgs.vscodium;

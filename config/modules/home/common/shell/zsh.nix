@@ -36,7 +36,6 @@
 
       r = "reload.sh ";
       grep = "grep --color=auto";
-      # code = "codium ";
       chrome = "get ungoogled-chromium --run chromium ";
       g = "git ";
       mkdir = "mkdir -p";
