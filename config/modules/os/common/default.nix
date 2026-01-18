@@ -93,7 +93,7 @@
         ''KERNEL=="sd[a-z]"''
         ''ATTR{queue/rotational}=="1"''
         #                        Aggressiveness    Standby time (*5seconds = 10minutes)
-        ''RUN+="${pkgs.hdparm}/bin/hdparm -B 90 -S 120 /dev/%k"''
+        ''RUN+="${pkgs.hdparm}/bin/hdparm -B 90 -S 600 /dev/%k"''
       ])
     ];
 
