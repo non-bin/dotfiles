@@ -36,7 +36,7 @@
 
       r = "reload.sh ";
       grep = "grep --color=auto";
-      code = "codium ";
+      # code = "codium ";
       chrome = "get ungoogled-chromium --run chromium ";
       g = "git ";
       mkdir = "mkdir -p";
@@ -69,7 +69,7 @@
     };
 
     initContent = lib.strings.concatLines [
-      ''hyfetch''
+      "hyfetch"
       ''sshrm() {sed -i "/^$1/d" ~/.ssh/known_hosts}'' # Remove an ssh host key
       # ''export -f sshrm''
 
