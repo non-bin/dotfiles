@@ -32,7 +32,8 @@
           Session.AlternativeGlobalDLSpeedLimit = 2000;
           Session.AlternativeGlobalUPSpeedLimit = 200;
           Session.BandwidthSchedulerEnabled = true;
-          Session.DefaultSavePath = "/downloads/";
+          Session.DefaultSavePath = "/mnt/media/downloads/";
+          Session.TempPath = "/mnt/media/downloads/incomplete/";
           Session.ExcludedFileNames = "";
           Session.GlobalMaxRatio = 2;
           Session.IgnoreSlowTorrentsForQueueing = true;
@@ -45,7 +46,6 @@
           Session.QueueingSystemEnabled = true;
           Session.SSL.Port = 59533;
           Session.ShareLimitAction = "Stop";
-          Session.TempPath = "/downloads/incomplete/";
           Session.UseAlternativeGlobalSpeedLimit = true;
         };
         Core = {
