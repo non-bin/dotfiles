@@ -6,7 +6,7 @@ walk = "auto"
 command = "nixfmt"
 includes = ["*.nix"]
 options = [
-  "-s", # Enable a stricter formatting mode that isn't influenced as much by how the input is formatted
+  # "-s", # Enable a stricter formatting mode that isn't influenced as much by how the input is formatted
 ]
 
 [formatter.shfmt]
