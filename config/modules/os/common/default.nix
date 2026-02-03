@@ -19,6 +19,19 @@
 
   services.btrfs.autoScrub.enable = lib.mkDefault true;
 
+  # Better getty
+  services.kmscon = {
+    enable = true;
+    fonts = [
+      {
+        name = "CaskaydiaCove Nerd Font";
+        package = pkgs.nerd-fonts.caskaydia-cove;
+      }
+    ];
+    extraConfig = "font-size=14";
+    hwRender = true;
+  };
+
   networking = {
     networkmanager.enable = true;
     firewall = {
