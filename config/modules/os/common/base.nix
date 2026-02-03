@@ -10,9 +10,7 @@
 {
   boot.kernelPackages = pkgs.linuxPackages_latest; # Sets the kernel version https://nixos.wiki/wiki/Linux_kernel
 
-  systemd.oomd.enableUserSlices = true; # I don't remember why
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For nixd
-
   nixpkgs.config = {
     allowUnfree = true;
   };

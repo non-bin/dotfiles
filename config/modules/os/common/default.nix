@@ -14,6 +14,7 @@
     ./btrbk.nix
     ./docker.nix
     ./agenix.nix
+    ./oom.nix
   ];
 
   services.btrfs.autoScrub.enable = lib.mkDefault true;
