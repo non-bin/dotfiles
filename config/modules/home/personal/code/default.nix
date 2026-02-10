@@ -44,6 +44,8 @@
             ++ forVscode [ "ms-vscode.cpptools" ]
             ++ forVscode [ "mikestead.dotenv" ]
             ++ forVscode [ "tamasfe.even-better-toml" ]
+            ++ forVscode [ "ms-vscode.cmake-tools" ]
+            ++ forVscode [ "llvm-vs-code-extensions.vscode-clangd" ]
 
             ++ forVscode [ "demijollamaxime.bulma" ] # 51k downloads
             # ++ forVscode [ "fiazluthfi.bulma-snippets" ] # 26k downloads
