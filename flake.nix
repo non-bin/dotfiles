@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:non-bin/nixpkgs/live";
-    # nixpkgs.url = "/home/alice/repos/nixpkgs";
+    nixpkgsAlt.url = "/home/alice/repos/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -28,6 +28,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixpkgsAlt,
       home-manager,
       nixos-hardware,
       agenix,
@@ -53,22 +54,27 @@
           config:
           nixpkgs.lib.genAttrs (builtins.attrNames config) (
             hostname:
-            nixpkgs.lib.nixosSystem {
+            let
+              system = "x86_64-linux";
               specialArgs = {
                 inherit inputs;
                 inherit user;
+                pkgsAlt = import nixpkgsAlt {
+                  inherit system;
+                  config.allowUnfree = true;
+                };
               };
-              system = "x86_64-linux";
+            in
+            nixpkgs.lib.nixosSystem {
+              inherit specialArgs;
+              inherit system;
               modules = [
                 ./config/hosts/${hostname}/os.nix
                 agenix.nixosModules.default
                 agenix-rekey.nixosModules.default
                 home-manager.nixosModules.home-manager
                 {
-                  home-manager.extraSpecialArgs = {
-                    inherit inputs;
-                    inherit user;
-                  };
+                  home-manager.extraSpecialArgs = specialArgs;
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.users.${user.name} = import ./config/hosts/${hostname}/home.nix;
