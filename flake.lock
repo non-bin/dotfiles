@@ -632,10 +632,10 @@
         "type": "github"
       }
     },
-    "nixpkgsLocal": {
+    "nixpkgsAlt": {
       "locked": {
-        "lastModified": 1771065442,
-        "narHash": "sha256-bZ7vFy+TZZd6sciQxyn7vl6913iPMLlTKBXrqsAyjyE=",
+        "lastModified": 1771067612,
+        "narHash": "sha256-yl7GpvIRq6JUztZyvyfMRyLEt3Adq7JmRcekN5zfdBM=",
         "path": "/home/alice/repos/nixpkgs",
         "type": "path"
       },
@@ -731,7 +731,7 @@
         "nix4vscode": "nix4vscode",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgsLocal": "nixpkgsLocal"
+        "nixpkgsAlt": "nixpkgsAlt"
       }
     },
     "systems": {
