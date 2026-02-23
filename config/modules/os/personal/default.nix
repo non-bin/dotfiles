@@ -77,6 +77,7 @@
     gnome.gnome-keyring.enable = true;
     tumbler.enable = true; # Image thumbnails
     gvfs.enable = true; # Lets Thunar mount things
+    ratbagd.enable = true; # For configuring gaming mice with Piper
 
     locate = {
       enable = true;

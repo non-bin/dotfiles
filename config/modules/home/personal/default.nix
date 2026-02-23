@@ -24,7 +24,7 @@
   home.packages = with pkgs; [
     playerctl
     brightnessctl
-    wineWowPackages.waylandFull
+    # wineWowPackages.waylandFull
     qemu
 
     # Thumbnail providers
@@ -54,7 +54,7 @@
     filezilla
     blueman
     libreoffice-fresh
-    kdePackages.kdenlive
+    #kdePackages.kdenlive
     obsidian
     qbittorrent
     gimp
@@ -88,6 +88,8 @@
     qFlipper
 
     discord
+
+    piper
   ];
 
   home.file = {
