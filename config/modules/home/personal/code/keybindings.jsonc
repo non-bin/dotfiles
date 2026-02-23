@@ -170,4 +170,14 @@
     "key": "ctrl+k d",
     "command": "editor.action.duplicateSelection",
   },
+  {
+    "key": "ctrl+b",
+    "command": "-markdown.extension.editing.toggleBold",
+    "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^markdown$|^rmd$|^quarto$/",
+  },
+  {
+    "key": "ctrl+shift+k",
+    "command": "-mermaidChart.showCompletions",
+    "when": "editorLangId =~ /^mermaid/",
+  },
 ]

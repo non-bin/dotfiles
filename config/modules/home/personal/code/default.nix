@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  pkgsAlt,
   lib,
   ...
 }:
@@ -22,6 +23,7 @@
     vscode = {
       enable = true;
       # package = pkgs.vscodium;
+      package = pkgsAlt.vscode;
 
       mutableExtensionsDir = false;
       profiles.default = {
@@ -46,6 +48,7 @@
             ++ forVscode [ "tamasfe.even-better-toml" ]
             ++ forVscode [ "ms-vscode.cmake-tools" ]
             ++ forVscode [ "llvm-vs-code-extensions.vscode-clangd" ]
+            ++ forVscode [ "mermaidchart.vscode-mermaid-chart" ]
 
             ++ forVscode [ "demijollamaxime.bulma" ] # 51k downloads
             # ++ forVscode [ "fiazluthfi.bulma-snippets" ] # 26k downloads
@@ -62,6 +65,9 @@
             ++ forVscode [ "VisualStudioExptTeam.intellicode-api-usage-examples" ]
             ++ forVscode [ "VisualStudioExptTeam.vscodeintellicode-completions" ]
             ++ forVscode [ "christian-kohler.path-intellisense" ]
+
+            ++ forVscode [ "github.copilot-chat" ]
+            ++ forVscode [ "johnny-zhao.oai-compatible-copilot" ]
           );
       };
     };

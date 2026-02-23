@@ -320,7 +320,6 @@
   "workbench.colorTheme": "GitHub Dark Default",
   "update.mode": "none",
   "extensions.autoCheckUpdates": false,
-  "workbench.activityBar.location": "hidden",
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nixd",
   "nix.serverSettings": {
@@ -341,4 +340,20 @@
       },
     },
   },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.editor.editorActionsLocation": "titleBar",
+  "workbench.activityBar.location": "hidden",
+  "oaicopilot.baseUrl": "http://m.i.jacka.net.au:8080",
+  "oaicopilot.delay": 0,
+  "oaicopilot.readFileLines": 0,
+  "oaicopilot.retry": {
+    "enabled": true,
+    "max_attempts": 3,
+    "interval_ms": 1000,
+    "status_codes": [],
+  },
+  "oaicopilot.commitLanguage": "English",
+  "oaicopilot.models": [],
+  "inlineChat.defaultModel": "qwen2.5-coder-3b-instruct-q5_k_m via OAI Compatible (oaicopilot)",
 }
