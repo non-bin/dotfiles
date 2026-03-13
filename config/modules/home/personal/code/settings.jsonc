@@ -356,4 +356,5 @@
   "oaicopilot.commitLanguage": "English",
   "oaicopilot.models": [],
   "inlineChat.defaultModel": "qwen2.5-coder-3b-instruct-q5_k_m via OAI Compatible (oaicopilot)",
+  "editor.inlineSuggest.edits.showCollapsed": true,
 }
