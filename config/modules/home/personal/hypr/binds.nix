@@ -50,7 +50,7 @@
           "$mod CTRL ALT, P, setprop, keepaspectratio unset"
           "$mod CTRL ALT, P, setprop, noblur unset"
 
-          "$mod, J, togglesplit,"
+          "$mod, J, layoutmsg, togglesplit"
           "$mod, L, exec, hyprlock --immediate & loginctl lock-session"
 
           # Media
