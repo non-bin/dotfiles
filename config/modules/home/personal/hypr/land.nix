@@ -35,7 +35,8 @@
         monitor = [
           # "name, resolution@hz, position, scale"
           "eDP-1,2560x1600@165,auto,1.333333"
-          ",preferred,auto,1,mirror,eDP-1"
+          ",preferred,auto,1" # Extend
+          # ",preferred,auto,1,mirror,eDP-1" # Mirror (hyprctl keyword monitor ",preferred,auto,1,mirror,eDP-1")
         ];
 
         # https://wiki.hyprland.org/Configuring/Animations/ for more
