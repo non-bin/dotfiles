@@ -2,7 +2,7 @@
   inputs,
   config,
   pkgs,
-  pkgsAlt,
+  # pkgsAlt,
   lib,
   ...
 }:
@@ -23,7 +23,7 @@
     vscode = {
       enable = true;
       # package = pkgs.vscodium;
-      package = pkgsAlt.vscode;
+      # package = pkgsAlt.vscode;
 
       mutableExtensionsDir = false;
       profiles.default = {
@@ -36,6 +36,7 @@
             ++ forVscode [ "PKief.material-icon-theme" ]
             ++ forVscode [ "github.github-vscode-theme" ]
             ++ forVscode [ "oderwat.indent-rainbow" ]
+            ++ forVscode [ "ms-vscode-remote.remote-containers" ]
 
             # Languages
             ++ forVscode [ "yzhang.markdown-all-in-one" ]
@@ -49,6 +50,18 @@
             ++ forVscode [ "ms-vscode.cmake-tools" ]
             ++ forVscode [ "llvm-vs-code-extensions.vscode-clangd" ]
             ++ forVscode [ "mermaidchart.vscode-mermaid-chart" ]
+
+            # ++ forVscode [ "raspberry-pi.raspberry-pi-pico" ]
+            # ++ forVscode [ "marus25.cortex-debug" ]
+            # ++ forVscode [ "mcu-debug.debug-tracker-vscode" ]
+            # ++ forVscode [ "mcu-debug.memory-view" ]
+            # ++ forVscode [ "mcu-debug.rtos-views" ]
+            # ++ forVscode [ "mcu-debug.peripheral-viewer" ]
+            # ++ forVscode [ "paulober.pico-w-go" ]
+            # ++ forVscode [ "ms-python.python" ]
+            # ++ forVscode [ "ms-python.vscode-pylance" ]
+            # ++ forVscode [ "ms-python.debugpy" ]
+            # ++ forVscode [ "ms-python.vscode-python-envs" ]
 
             ++ forVscode [ "demijollamaxime.bulma" ] # 51k downloads
             # ++ forVscode [ "fiazluthfi.bulma-snippets" ] # 26k downloads

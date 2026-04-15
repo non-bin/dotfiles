@@ -41,6 +41,9 @@
           colorscheme blue
         endif
       '';
+
+      withRuby = false;
+      withPython3 = false;
     };
 
     delta = {
@@ -50,6 +53,8 @@
 
     git = {
       enable = true;
+      lfs.enable = true;
+      signing.format = null; # "openpgp";
 
       settings = {
         credential.helper = "store";
