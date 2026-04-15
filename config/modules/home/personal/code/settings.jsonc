@@ -95,9 +95,9 @@
   "editor.fontFamily": "\"CaskaydiaCove NF\", \"CaskaydiaCove Nerd Font\", \"CaskaydiaCove NFM\", \"CaskaydiaCove Nerd Font Mono\",  monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
-  "editor.formatOnPaste": true,
+  "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
-  "editor.formatOnType": true,
+  "editor.formatOnType": false,
   "editor.gotoLocation.alternativeDeclarationCommand": "editor.action.referenceSearch.trigger",
   "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.referenceSearch.trigger",
   "editor.guides.bracketPairs": "active",
@@ -357,4 +357,15 @@
   "oaicopilot.models": [],
   "inlineChat.defaultModel": "qwen2.5-coder-3b-instruct-q5_k_m via OAI Compatible (oaicopilot)",
   "editor.inlineSuggest.edits.showCollapsed": true,
+  "makefile.configureOnOpen": true,
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+  },
+  "github.copilot.enable": {
+    "*": true,
+  },
+  "chat.editing.confirmEditRequestRemoval": false,
+  "terminal.integrated.gpuAcceleration": "off",
+  "chat.editing.confirmEditRequestRetry": false,
+  "chat.viewSessions.orientation": "stacked",
 }

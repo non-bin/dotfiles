@@ -180,4 +180,22 @@
     "command": "-mermaidChart.showCompletions",
     "when": "editorLangId =~ /^mermaid/",
   },
+  {
+    "key": "f7",
+    "command": "-cmake.build",
+    "when": "cmake:enableFullFeatureSet && !cmake:hideBuildCommand",
+  },
+  {
+    "key": "shift+f7",
+    "command": "-cmake.buildWithTarget",
+    "when": "cmake:enableFullFeatureSet && !cmake:hideBuildCommand",
+  },
+  {
+    "key": "shift+f6",
+    "command": "workbench.action.tasks.runTask",
+  },
+  {
+    "key": "f6",
+    "command": "workbench.action.tasks.test",
+  },
 ]
