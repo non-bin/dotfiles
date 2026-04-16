@@ -54,7 +54,10 @@ ARRAY /dev/md/slow metadata=1.2 UUID=f64f2408:f37fe95a:1b93178f:a0b07c60";
   fileSystems."/nix" = {
     device = "/dev/mapper/fast-cache";
     fsType = "btrfs";
-    options = [ "subvol=nix" ];
+    options = [
+      "noatime"
+      "subvol=nix"
+    ];
   };
 
   fileSystems."/mnt/backups" = {

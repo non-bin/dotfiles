@@ -19,6 +19,7 @@
     ../../modules/os/server/servarr/radarr.nix
   ];
 
+  # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDz2Ia+hmbEQ0kuXxIEbFv6zxM+zXVXePq+jZxLrZiE1";
 
   networking.hostName = "maureen";
@@ -33,6 +34,7 @@
   hardware.nvidia.open = true;
   services.xserver.videoDrivers = [ "nvidia" ]; # Even on wayland
 
+  # cloudflared tunnel create <tunnel-name>
   age.secrets.cloudflared.rekeyFile = ./cloudflared.age;
   services = {
     cloudflared = {

@@ -11,6 +11,7 @@
     ../../modules/os/personal.nix
   ];
 
+  # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
   age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFr10kZ2FZeqfcMnYXIqCW1V5HMPIwb0f4OfJa5mGov2";
 
   networking.hostName = "skellybones";
