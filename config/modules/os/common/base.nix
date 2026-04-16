@@ -69,7 +69,7 @@
   services = {
     openssh = {
       enable = true;
-      PasswordAuthentication = false;
+      passwordAuthentication = false;
       settings.Macs = [ "hmac-sha2-256" ]; # For cloudflared ssh https://github.com/cloudflare/cloudflared/issues/1198
     };
   };
