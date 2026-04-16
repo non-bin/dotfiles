@@ -19,6 +19,16 @@
 
   services.btrfs.autoScrub.enable = lib.mkDefault true;
 
+  security.polkit = {
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if (subject.isInGroup("wheel"))
+          return polkit.Result.YES;
+      });
+    '';
+  };
+
   # Better getty
   services.kmscon = {
     enable = true;

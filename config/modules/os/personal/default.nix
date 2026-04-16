@@ -25,16 +25,6 @@
     expat
   ];
 
-  security.polkit = {
-    enable = true;
-    extraConfig = ''
-      polkit.addRule(function(action, subject) {
-        if (subject.isInGroup("wheel"))
-          return polkit.Result.YES;
-      });
-    '';
-  };
-
   boot.loader.grub.useOSProber = false;
 
   nixpkgs.config.android_sdk.accept_license = true;
