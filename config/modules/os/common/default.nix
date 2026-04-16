@@ -116,8 +116,10 @@
         ''SUBSYSTEM=="block"''
         ''KERNEL=="sd[a-z]"''
         ''ATTR{queue/rotational}=="1"''
-        #                        Aggressiveness    Standby time (*5seconds = 10minutes)
-        ''RUN+="${pkgs.hdparm}/bin/hdparm -B 90 -S 600 /dev/%k"''
+
+        # -B: Aggressiveness (lower is more agressive, 1-127 permit spindown)
+        # -S: Standby time (Incriments of 5 seconds for values 1-240. eg 120*5seconds = 10minutes)
+        ''RUN+="${pkgs.hdparm}/bin/hdparm -B 90 -S 120 /dev/%k"''
       ])
     ];
 
