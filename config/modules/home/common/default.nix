@@ -28,6 +28,22 @@
   ];
 
   programs = {
+    ssh = {
+      enable = true;
+
+      # https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-cloudflared-authentication/
+      matchBlocks = {
+        "m" = {
+          hostname = "m.jacka.net.au";
+          proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
+        };
+        "s" = {
+          hostname = "s.jacka.net.au";
+          proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
+        };
+      };
+    };
+
     neovim = {
       enable = true;
       defaultEditor = true;
