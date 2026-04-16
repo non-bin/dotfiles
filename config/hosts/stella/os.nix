@@ -10,6 +10,8 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/os/server.nix
+
+    ../../modules/os/server/samba.nix
   ];
 
   # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
@@ -64,7 +66,10 @@
       "data" = {
         "path" = "/mnt/data";
         "browseable" = "yes";
-        "valid users" = user.name;
+        "valid users" = [
+          "family"
+          user.name
+        ];
         "force user" = user.name;
         "force group" = user.name;
         "guest ok" = "no";
