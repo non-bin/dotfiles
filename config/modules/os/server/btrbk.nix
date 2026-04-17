@@ -11,8 +11,8 @@
 
   # https://www.man7.org/linux/man-pages/man5/tmpfiles.d.5.html
   systemd.tmpfiles.rules = [
-    "d /mnt/backups/${config.networking.hostName} 0755 root root"
-    "f /mnt/backups/${config.networking.hostName}/btrbk.log 0755 btrbk btrbk"
+    "d /mnt/backups/btrbk/${config.networking.hostName} 0755 root root"
+    "f /mnt/backups/btrbk/${config.networking.hostName}/btrbk.log 0755 btrbk btrbk"
   ];
 
   services.btrbk = {
