@@ -21,13 +21,14 @@
         # onCalendar = "hourly"; # `man systemd.time 7`
         settings = {
           # transaction_log = "/snapshots/btrbk.log"; # localtime type status target_url source_url parent_url message
+          lockfile = "/run/lock/btrbk.lock";
           timestamp_format = "long";
           snapshot_preserve_min = "2d"; # Keep everything for at least 2d
           target_preserve = "168h 30d 26w 12m"; # Keep hourly backups for 1 week, dailies for a month, weeklies for 6 months, and monthlies for 12 months
           snapshot_create = "onchange"; # Don't create snapshots if nothing's changed
 
           volume."/" = {
-            target = "ssh://m.i.jacka.net.au/mnt/backups/btrbk/${config.networking.hostName}/";
+            target = "ssh://m/${config.networking.hostName}/"; # MUST EXIST ON TARGET
             ssh_user = "btrbk";
             subvolume = "/home";
             snapshot_dir = "/snapshots";
