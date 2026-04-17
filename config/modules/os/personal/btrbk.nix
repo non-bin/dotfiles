@@ -27,7 +27,7 @@
           snapshot_create = "onchange"; # Don't create snapshots if nothing's changed
 
           volume."/" = {
-            target = "ssh://m.i.jacka.net.au/mnt/backup/btrbk/${config.networking.hostName}/";
+            target = "ssh://m.i.jacka.net.au/mnt/backups/btrbk/${config.networking.hostName}/";
             ssh_user = "btrbk";
             subvolume = "/home";
             snapshot_dir = "/snapshots";
