@@ -6,5 +6,5 @@
 }:
 
 {
-  imports = [ ];
+  imports = [ ./btrbk.nix ];
 }

@@ -11,7 +11,6 @@
   imports = [
     ./base.nix
 
-    ./btrbk.nix
     ./docker.nix
     ./agenix.nix
     ./oom.nix
