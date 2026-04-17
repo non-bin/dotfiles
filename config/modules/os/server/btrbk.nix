@@ -18,7 +18,7 @@
   services.btrbk = {
     sshAccess = [
       {
-        key = user.sshPubKey;
+        key = user.sshPubKey; # FIXME use unique host keys
         roles = [
           "info" # `btrfs subvolume find-new` and `btrfs filesystem usage`
           # "source" # `btrfs subvolume snapshot` and `btrfs send`
