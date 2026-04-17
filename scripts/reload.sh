@@ -131,7 +131,8 @@ if [ "$CLEAN" == "YES" ]; then
 fi
 
 if [ "$OPTIMISE" == "YES" ]; then
-  nix-store --optimise # Can be scheduled with `nix.optimise.automatic = true;`, or run on every build with `nix.settings.auto-optimise-store = true;`, but this doesn't catch everything
+  echo "Optimising nix store (this can take a while, and won't output anything)..."
+  nix-store --optimise # Add "-v" for progress, slows down a lot though. Run on every build with `nix.settings.auto-optimise-store = true;` so this is only needed on initial install
 fi
 
 if [ "$PULL" == "YES" ]; then
