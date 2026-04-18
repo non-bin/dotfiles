@@ -34,6 +34,11 @@
   hardware.nvidia.open = true;
   services.xserver.videoDrivers = [ "nvidia" ]; # Even on wayland
 
+  custom.btrbkSSHKeys = with user.sshKeys; [
+    skellybones
+    stella
+  ];
+
   # cloudflared tunnel create <tunnel-name>
   age.secrets.cloudflared.rekeyFile = ./cloudflared.age;
   services = {
