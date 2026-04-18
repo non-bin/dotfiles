@@ -27,7 +27,7 @@
 
   config.services.btrbk = {
     sshAccess = lib.mkIf (config.custom.btrbkSSHKeys != [ ]) [
-      (lib.genAttrs config.custom.btrbkSSHKeys (key: {
+      (lib.map (key: {
         key = key;
         roles = [
           "info" # `btrfs subvolume find-new` and `btrfs filesystem usage`
@@ -38,7 +38,7 @@
           # "send" # `btrfs send`
           "receive" # `btrfs receive`
         ];
-      }))
+      }) config.custom.btrbkSSHKeys)
     ];
   };
 }
