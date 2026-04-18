@@ -60,7 +60,7 @@
         "samba"
       ];
       isNormalUser = true;
-      openssh.authorizedKeys.keys = [ user.sshPubKey ];
+      openssh.authorizedKeys.keys = [ user.sshKeys.personal ];
     };
   };
 

@@ -16,7 +16,7 @@
     masterIdentities = [
       {
         identity = "/home/${user.name}/.ssh/id_rsa";
-        pubkey = user.sshPubKey; # Specify the public key explicitly
+        pubkey = user.sshKeys.personal; # Specify the public key explicitly
       }
     ];
     storageMode = "local";

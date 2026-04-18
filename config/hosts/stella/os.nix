@@ -15,7 +15,7 @@
   ];
 
   # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
-  age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDn8uDmv1Bo4GZw2hdwoKvCvWD1k7Rag8W89c85OjZpw";
+  age.rekey.hostPubkey = user.sshKeys.stella;
 
   networking.hostName = "stella";
   networking.domain = "jacka.net.au";
