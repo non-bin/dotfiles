@@ -17,6 +17,8 @@
     ../../modules/os/server/jellyfin.nix
     ../../modules/os/server/servarr/sonarr.nix
     ../../modules/os/server/servarr/radarr.nix
+
+    ../../modules/os/server/minecraft.nix
   ];
 
   # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
