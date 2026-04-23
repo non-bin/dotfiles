@@ -11,8 +11,8 @@
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = user.name;
-  home.homeDirectory = "/home/${user.name}";
+  home.username = lib.mkDefault user.name;
+  home.homeDirectory = lib.mkDefault "/home/${user.name}";
   home.sessionPath = [ "$HOME/dotfiles/scripts" ];
 
   home.sessionVariables = {
