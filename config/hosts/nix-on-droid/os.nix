@@ -35,10 +35,10 @@
   nix.extraOptions = "experimental-features = nix-command flakes";
 
   # https://github.com/nix-community/nix-on-droid/issues/519
-  build.activation.zz_unfuck_proot = ''
-    echo "overwriting proot-static.new with old (and working) proot executable"
-    cp -v /data/data/com.termux.nix/files/usr/bin/proot-static /data/data/com.termux.nix/files/usr/bin/.proot-static.new
-  '';
+  # build.activation.zz_unfuck_proot = ''
+  #   echo "overwriting proot-static.new with old (and working) proot executable"
+  #   cp -v /data/data/com.termux.nix/files/usr/bin/proot-static /data/data/com.termux.nix/files/usr/bin/.proot-static.new
+  # '';
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -57,5 +57,5 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
 }
