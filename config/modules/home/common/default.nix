@@ -35,10 +35,12 @@
       # https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-cloudflared-authentication/
       matchBlocks = {
         "m" = {
+          user = user.name;
           hostname = "ssh-m.jacka.net.au";
           proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
         };
         "s" = {
+          user = user.name;
           hostname = "ssh-s.jacka.net.au";
           proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
         };
