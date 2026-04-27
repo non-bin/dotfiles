@@ -11,6 +11,8 @@
   home.shell.enableZshIntegration = true;
   programs.zsh = {
     enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
+
     autosuggestion.enable = true;
     autocd = true; # Automatically enter into a directory if typed directly into shell
     enableVteIntegration = true; # Integration with terminals using the VTE library. This will let the terminal track the current working directory

@@ -101,7 +101,10 @@
   };
 
   programs = {
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
+    };
     # chromium.enable = true;
     wofi.enable = true; # Spotlight search
     bun.enable = true;
