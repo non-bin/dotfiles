@@ -9,6 +9,18 @@
 {
   imports = [ ./shell/zsh.nix ];
 
+  home.packages = with pkgs; [
+    wget
+    zip
+    unzip
+    traceroute
+    jq
+    fzf
+    gawk
+    file
+    patchelf
+  ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = lib.mkDefault user.name;

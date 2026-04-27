@@ -14,16 +14,8 @@
   ];
 
   home.packages = with pkgs; [
-    wget
     btop
-    zip
-    unzip
-    traceroute
-    jq
-    fzf
     nix-search
-    file
-    patchelf
     hwatch # better watch command
   ];
 
