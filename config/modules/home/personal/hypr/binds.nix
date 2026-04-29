@@ -96,6 +96,8 @@
           # Move active window to a workspace and don't move focus with mod + alt + [/]
           "$mod ALT, bracketright, movetoworkspacesilent, +1" # Move window to workspace right
           "$mod ALT, bracketleft, movetoworkspacesilent, -1" # Move window to workspace left
+
+          "$mod, 0, togglespecialworkspace"
         ]
         ++ (builtins.concatLists (
           builtins.genList (

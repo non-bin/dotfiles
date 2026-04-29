@@ -15,6 +15,7 @@
         show-special = true;
         format = "{id}";
         format-window-separator = "";
+        ignore-workspaces = [ "special:special" ];
         window-rewrite-default = "";
         window-rewrite = {
           "title<.*youtube.*>" = "";
