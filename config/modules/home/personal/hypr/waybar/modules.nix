@@ -70,18 +70,18 @@
       cpu = {
         interval = 1;
         format = "C {usage}% ";
-        on-click = "alacritty -e btop";
+        on-click = "ghostty -e btop";
       };
       memory = {
         interval = 5;
         format = "M {}% ";
-        on-click = "alacritty -e btop";
+        on-click = "ghostty -e btop";
       };
       disk = {
         interval = 30;
         format = "D {percentage_used}% ";
         path = "/";
-        on-click = "alacritty -e btop";
+        on-click = "ghostty -e btop";
       };
       "hyprland/language" = {
         format = "/ K {short}";
@@ -96,7 +96,7 @@
         tooltip-format-ethernet = "  {ifname} ({ipaddr}/{cidr})";
         tooltip-format-disconnected = "Disconnected";
         max-length = 50;
-        on-click = "alacritty -e nmtui";
+        on-click = "ghostty -e nmtui";
       };
       battery = {
         interval = 3;

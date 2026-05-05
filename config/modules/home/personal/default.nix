@@ -10,6 +10,7 @@
     ./code
     ./formatters
     ./alacrity.nix
+    ./ghostty.nix
     ./obs.nix
     ./defaultApps.nix
   ];

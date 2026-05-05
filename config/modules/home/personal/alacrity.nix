@@ -19,6 +19,7 @@
             x = 15;
             y = 15;
           };
+          dynamic_padding = true;
           decorations = "Full";
           opacity = 0.8;
           blur = false;

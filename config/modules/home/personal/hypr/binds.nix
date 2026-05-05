@@ -11,7 +11,7 @@
         # Non-repeating
         bind = [
           # Actions
-          "$mod, RETURN, exec, alacritty"
+          "$mod, RETURN, exec, ghostty +new-window"
           "$mod, C, exec, code"
           "$mod, G, exec, gitkraken" # /usr/share/applications
           "$mod, E, exec, thunar" # Opens the filemanager
