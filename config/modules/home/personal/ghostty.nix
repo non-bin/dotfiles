@@ -29,6 +29,8 @@
       copy-on-select = false;
       undo-timeout = "1m";
       confirm-close-surface = false;
+      scrollbar = "never";
+      shell-integration-features = "no-cursor,sudo,title,ssh-env,ssh-terminfo";
     };
 
     themes.custom = {
