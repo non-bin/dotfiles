@@ -33,10 +33,18 @@
           hostname = "ssh-m.jacka.net.au";
           proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
         };
+        "mi" = {
+          user = user.name;
+          hostname = "m.i.jacka.net.au";
+        };
         "s" = {
           user = user.name;
           hostname = "ssh-s.jacka.net.au";
           proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
+        };
+        "si" = {
+          user = user.name;
+          hostname = "s.i.jacka.net.au";
         };
       };
     };
