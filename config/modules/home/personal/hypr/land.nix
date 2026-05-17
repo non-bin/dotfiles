@@ -122,7 +122,7 @@
         };
 
         misc = {
-          vrr = 0; # Adaptive Sync. 0 - off, 1 - on, 2 - fullscreen
+          vrr = 3; # Adaptive Sync. 0 - off, 1 - on, 2 - fullscreen only, 3 - fullscreen with video or game content type
           disable_hyprland_logo = false;
           disable_splash_rendering = false;
           force_default_wallpaper = 0;
