@@ -9,7 +9,6 @@
     ./hypr
     ./code
     ./formatters
-    ./alacrity.nix
     ./ghostty.nix
     ./obs.nix
     ./defaultApps.nix
@@ -19,7 +18,7 @@
     NIXOS_OZONE_WL = "1";
     DEFAULT_BROWSER = "${lib.getExe pkgs.firefox}";
     BROWSER = "firefox";
-    TERMINAL = "alacritty";
+    TERMINAL = "ghostty";
   };
 
   home.packages = with pkgs; [

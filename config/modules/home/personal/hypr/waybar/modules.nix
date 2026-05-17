@@ -21,7 +21,7 @@
           "title<.*youtube.*>" = "";
           "class<firefox>" = "";
           "class<firefox> title<.*github.*>" = "";
-          "class<Alacritty>" = "";
+          "class<com.mitchellh.ghostty>" = "";
           "class<codium>" = "󰨞";
           "class<GitKraken>" = "";
         };

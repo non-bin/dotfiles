@@ -10,6 +10,12 @@
     starship = {
       enable = true;
 
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
+      enableTransience = true;
+
       settings = {
         # Get editor completions based on the config schema
         # https://starship.rs/config
