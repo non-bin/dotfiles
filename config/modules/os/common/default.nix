@@ -16,8 +16,6 @@
     ./oom.nix
   ];
 
-  services.btrfs.autoScrub.enable = lib.mkDefault true;
-
   security.polkit = {
     enable = true;
     extraConfig = ''
@@ -26,19 +24,6 @@
           return polkit.Result.YES;
       });
     '';
-  };
-
-  # Better getty
-  services.kmscon = {
-    enable = true;
-    fonts = [
-      {
-        name = "CaskaydiaCove Nerd Font";
-        package = pkgs.nerd-fonts.caskaydia-cove;
-      }
-    ];
-    extraConfig = "font-size=14";
-    hwRender = true;
   };
 
   networking = {
@@ -104,7 +89,23 @@
     };
   };
 
-  services.udev.extraRules =
+  services = {
+    btrfs.autoScrub.enable = lib.mkDefault true;
+
+    # Better getty
+    kmscon = {
+      enable = true;
+      fonts = [
+        {
+          name = "CaskaydiaCove Nerd Font";
+          package = pkgs.nerd-fonts.caskaydia-cove;
+        }
+      ];
+      extraConfig = "font-size=14";
+      hwRender = true;
+    };
+
+    udev.extraRules =
     let
       mkRule = as: lib.concatStringsSep ", " as;
       mkRules = rs: lib.concatStringsSep "\n" rs;
@@ -121,5 +122,6 @@
         ''RUN+="${pkgs.hdparm}/bin/hdparm -B 90 -S 120 /dev/%k"''
       ])
     ];
+  };
 
 }
