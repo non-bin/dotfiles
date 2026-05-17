@@ -16,6 +16,12 @@
 
   programs.regreet = {
     enable = true;
+    cageArgs = [
+      "-s"
+      "-d"
+      "-m"
+      "last"
+    ];
     font.package = pkgs.roboto;
     font.name = "Roboto";
     cursorTheme.package = pkgs.canta-theme;
