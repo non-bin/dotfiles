@@ -11,7 +11,7 @@ sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME
 sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME --help # For usage
 
 # Or if you'd like to edit the config before installing
-sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME -d -c -v # To download, copy the hardware config, and update stateVersion
+sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME -d -c # To download, and copy the hardware config
 # Edit away
 sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME -i # To finish the install
 

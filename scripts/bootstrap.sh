@@ -9,7 +9,6 @@ NC='\033[0m' # No Color
 # Parse params
 DOWNLOAD="NO"
 COPY="NO"
-UPDATE_STATE_VERSION="NO"
 INSTALL="NO"
 VM="NO"
 EVERYTHING="YES" # We only check the others if If EVERYTHING is NO
@@ -30,11 +29,6 @@ while [[ $# -gt 0 ]]; do
       ;;
     -c | --copy)
       COPY="YES"
-      EVERYTHING="NO"
-      shift # past argument
-      ;;
-    -v | --version)
-      UPDATE_STATE_VERSION="YES"
       EVERYTHING="NO"
       shift # past argument
       ;;
@@ -89,7 +83,6 @@ while [[ $# -gt 0 ]]; do
       echo "  -u, --upgrade     Update flake.lock to the latest versions before installing"
       echo "  -c, --copy        Copy hardware config. Implies -n"
       echo "  -i, --install     Install with the flake as input. Implies -n"
-      echo "  -v, --version     Update stateVersion. Implies -n"
       echo "  -e, --everything  Implied unless other switches are passed. Download, copy and install. Equivilent to '-d -c -i'"
       echo "  -n, --nothing     Require explicitly enabling any steps you want"
       echo "  -h, --homeman     Install using just the package manager and Home Manager, on a non NixOS machine"
@@ -124,7 +117,7 @@ fi
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 HOME_PATH="/mnt/home/$USERNAME/"
 
-if ([ "$VM" == "YES" ] || [ "$INSTALL" == "YES" ] || [ "$COPY" == "YES" ] || [ "$UPDATE_STATE_VERSION" == "YES" ]) && [ "$HOME_MANAGER" == "YES" ]; then
+if ([ "$VM" == "YES" ] || [ "$INSTALL" == "YES" ] || [ "$COPY" == "YES" ]) && [ "$HOME_MANAGER" == "YES" ]; then
   echo -e "${RED}The homeman option cannot be used with vm, copy, or install${NC}"
   exit 1
 fi
@@ -225,17 +218,6 @@ if [ "$HOME_MANAGER" != "YES" ]; then
     echo -e "${GREEN}Copying /mnt/etc/nixos/hardware-configuration.nix to ${CONFIG_PATH}${NC}"
     cp /mnt/etc/nixos/hardware-configuration.nix $CONFIG_PATH --backup=t # Make numbered backups
     (cd $CONFIG_PATH && git add $CONFIG_PATH/hardware-configuration.nix)
-  fi
-
-  if [ "$UPDATE_STATE_VERSION" == "YES" ] || [ "$EVERYTHING" == "YES" ]; then
-    # NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixpkgs> {}).lib.version)") # Latest version from upstream `nixpkgs.url` ("25.11pre-git" or "25.11pre826760.9b008d603929")
-    # NEW_VERSION=\"$(nixos-version | sed 's/\([0-9]*\.[0-9]*\).*/\1/')\" # Current running os version (25.11.20250630.3016b4b (Xantusia))
-    NEW_VERSION=$(nix-instantiate --eval --expr "builtins.substring 0 5 ((import <nixos> {}).lib.version)") # From active config ("24.11.711150.314e12ba369c")
-
-    echo -e "${GREEN}Updating stateVersion to ${NEW_VERSION}${NC}"
-
-    sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}os.nix"
-    sed -i "s/\\(stateVersion\\W*=\\W*\\)\"[0-9]*.[0-9]*\"/\\1$NEW_VERSION/g" "${CONFIG_PATH}home.nix"
   fi
 fi
 
