@@ -29,8 +29,10 @@
 
   nixpkgs.config.android_sdk.accept_license = true;
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   programs = {
     hyprland = {
