@@ -301,7 +301,7 @@
   "zenMode.hideLineNumbers": false,
   "zenMode.restore": false,
   "rust-analyzer.assist.expressionFillDefault": "default",
-  "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.ignoreTrimWhitespace": false,
   "git-graph.repository.commits.initialLoad": 50,
   "git-graph.retainContextWhenHidden": false,
   "git.blame.statusBarItem.enabled": true,
@@ -371,4 +371,14 @@
   "terminal.integrated.gpuAcceleration": "off",
   "chat.editing.confirmEditRequestRetry": false,
   "chat.viewSessions.orientation": "stacked",
+  "json.schemaDownload.trustedDomains": {
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://www.schemastore.org/": true,
+  },
 }
