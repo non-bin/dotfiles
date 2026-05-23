@@ -52,14 +52,13 @@ agenix view
 
 ### TODO
 
-- Secret management
-- Check bootstrap
-- Factor out common flake terms
-- GhostyTerm
 - hardware.cpu.amd.updateMicrocode
-- check <https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/> works
 - wl-clip-persist
 - hyprlock fprintd feedback
+- gc should delete old init files, or reload should delete before writing
+- white flash on regreet
+- hyprland lua
+- vscode extensions slow down eval
 
 ### Resources
 

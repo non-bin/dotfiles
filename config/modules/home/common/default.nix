@@ -27,7 +27,7 @@
       enableDefaultConfig = false;
 
       # https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-cloudflared-authentication/
-      matchBlocks = {
+      settings = {
         "m" = {
           user = user.name;
           hostname = "ssh-m.jacka.net.au";

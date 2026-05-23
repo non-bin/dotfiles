@@ -84,9 +84,6 @@
 
     mesen # NES Emulator
 
-    proxmark3
-    qFlipper
-
     discord
 
     piper
