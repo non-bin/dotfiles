@@ -27,19 +27,19 @@
 
   config.services.btrbk = {
     # FIXME
-    sshAccess = lib.mkIf (config.custom.btrbkSSHKeys != [ ]) [
-      (lib.map (key: {
-        key = key;
-        roles = [
-          "info" # `btrfs subvolume find-new` and `btrfs filesystem usage`
-          # "source" # `btrfs subvolume snapshot` and `btrfs send`
-          "target" # `btrfs receive` and `mkdir`
-          "delete" # `btrfs subvolume delete` FIXME: This is a bit dangerous
-          # "snapshot" # `btrfs subvolume snapshot`
-          # "send" # `btrfs send`
-          "receive" # `btrfs receive`
-        ];
-      }) config.custom.btrbkSSHKeys)
-    ];
+    # sshAccess = lib.mkIf (config.custom.btrbkSSHKeys != [ ]) [
+    #   (lib.map (key: {
+    #     key = key;
+    #     roles = [
+    #       "info" # `btrfs subvolume find-new` and `btrfs filesystem usage`
+    #       # "source" # `btrfs subvolume snapshot` and `btrfs send`
+    #       "target" # `btrfs receive` and `mkdir`
+    #       "delete" # `btrfs subvolume delete` FIXME: This is a bit dangerous
+    #       # "snapshot" # `btrfs subvolume snapshot`
+    #       # "send" # `btrfs send`
+    #       "receive" # `btrfs receive`
+    #     ];
+    #   }) config.custom.btrbkSSHKeys)
+    # ];
   };
 }
