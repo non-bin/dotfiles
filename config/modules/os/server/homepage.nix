@@ -35,6 +35,7 @@
         };
       }
     ];
+
     /*
       Tested on:
       https://jellyfin.jacka.net.au/#:8096 -> http://maureen.i.jacka.net.au:8096
