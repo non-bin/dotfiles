@@ -50,16 +50,6 @@ agenix rekey
 agenix view
 ```
 
-### TODO
-
-- hardware.cpu.amd.updateMicrocode
-- wl-clip-persist
-- hyprlock fprintd feedback
-- gc should delete old init files, or reload should delete before writing
-- white flash on regreet
-- hyprland lua
-- vscode extensions slow down eval
-
 ### Resources
 
 [NixOS Package Search](https://search.nixos.org/packages?channel=unstable)
@@ -83,8 +73,16 @@ agenix view
 
 ## TODO
 
+- hardware.cpu.amd.updateMicrocode
+- wl-clip-persist
+- hyprlock fprintd feedback
+- gc should delete old init files, or reload should delete before writing
+- white flash on regreet
+- hyprland lua
+- vscode extensions slow down eval
+- Prowlarr permissions
 - Backups
-- Skell
+- Skellybones
   - Homerow mods
 - Maureen
   - https://kilo.bytesize.xyz/gpu-passthrough-on-nixos
