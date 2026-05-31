@@ -60,8 +60,8 @@
       clock = {
         tooltip-format = "<big>{:%a %e %b %Y}</big>\n<tt><small>{calendar}</small></tt>";
         interval = 1;
-        format = "{:%I:%M %Y-%m-%d}";
-        format-alt = "{:%I:%M:%S}";
+        format = "{:%H:%M %Y-%m-%d}";
+        format-alt = "{:%I:%M:%S %a %d %b}";
       };
       "custom/system" = {
         format = "";
