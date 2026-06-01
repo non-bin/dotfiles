@@ -18,14 +18,10 @@
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/modules/home/personal/code/snippets";
 
   programs = {
-    # zsh.shellAliases.code = "codium ";
-
     vscode = {
       enable = true;
-      # package = pkgs.vscodium;
-      # package = pkgsAlt.vscode;
 
-      mutableExtensionsDir = false;
+      mutableExtensionsDir = true;
       profiles.default = {
         # https://github.com/nix-community/nix4vscode
         extensions =
@@ -50,18 +46,6 @@
             ++ forVscode [ "ms-vscode.cmake-tools" ]
             ++ forVscode [ "llvm-vs-code-extensions.vscode-clangd" ]
             ++ forVscode [ "mermaidchart.vscode-mermaid-chart" ]
-
-            # ++ forVscode [ "raspberry-pi.raspberry-pi-pico" ]
-            # ++ forVscode [ "marus25.cortex-debug" ]
-            # ++ forVscode [ "mcu-debug.debug-tracker-vscode" ]
-            # ++ forVscode [ "mcu-debug.memory-view" ]
-            # ++ forVscode [ "mcu-debug.rtos-views" ]
-            # ++ forVscode [ "mcu-debug.peripheral-viewer" ]
-            # ++ forVscode [ "paulober.pico-w-go" ]
-            # ++ forVscode [ "ms-python.python" ]
-            # ++ forVscode [ "ms-python.vscode-pylance" ]
-            # ++ forVscode [ "ms-python.debugpy" ]
-            # ++ forVscode [ "ms-python.vscode-python-envs" ]
 
             ++ forVscode [ "demijollamaxime.bulma" ] # 51k downloads
             # ++ forVscode [ "fiazluthfi.bulma-snippets" ] # 26k downloads
