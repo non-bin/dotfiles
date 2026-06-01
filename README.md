@@ -29,6 +29,13 @@ sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME --vm
 sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME --vm --sub http://hostip:5000
 ```
 
+## Other Useful Commands
+
+```bash
+# Clean up docker residual
+docker system prune --volumes --all
+```
+
 ## Development
 
 ### Formatting
