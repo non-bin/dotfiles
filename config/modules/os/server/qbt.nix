@@ -9,6 +9,11 @@
 {
   imports = [ ./nginx.nix ];
 
+  # https://www.man7.org/linux/man-pages/man5/tmpfiles.d.5.html
+  config.systemd.tmpfiles.rules = [
+    "d /mnt/appdata/qBittorrent/logs 0755 qbittorrent qbittorrent"
+  ];
+
   age.secrets.qbt.rekeyFile = ./qbt.age;
 
   services = {
@@ -19,13 +24,13 @@
       openFirewall = true;
       serverConfig = {
         Application = {
-          FileLogger.Age = 1;
+          FileLogger.Age = 6;
           FileLogger.AgeType = 1;
           FileLogger.Backup = true;
           FileLogger.DeleteOld = true;
           FileLogger.Enabled = true;
           FileLogger.MaxSizeBytes = 66560;
-          FileLogger.Path = "/config/qBittorrent/logs";
+          FileLogger.Path = "/mnt/appdata/qBittorrent/logs";
         };
         BitTorrent = {
           Session.AddTorrentStopped = false;
@@ -74,9 +79,8 @@
           Scheduler.end_time = "@Variant(\0\0\0\xf\0\0\0\0)";
           Scheduler.start_time = "@Variant(\0\0\0\xf\x1I\x97\0)";
           WebUI.Address = "*";
-          WebUI.AuthSubnetWhitelist = "192.168.0.0/24";
-          WebUI.AuthSubnetWhitelistEnabled = true;
-          WebUI.LocalHostAuth = false;
+          WebUI.AuthSubnetWhitelistEnabled = false;
+          WebUI.LocalHostAuth = true;
           WebUI.Username = user.name;
           WebUI.Password_PBKDF2 = "@ByteArray(QVBiYr3jJsL8JrM1FgvwIg==:1v5zDtA3+zBIYlv2QrWprjUZUoQN6c+A/InOsAwOMz6PARnryyTVOJmdMiSvDt1+N9Ihs3GuK8B4vFLwl3JtnQ==)";
           WebUI.Port = 8081;
@@ -100,7 +104,7 @@
           type = "qbittorrent";
           url = "http://localhost:8081";
           username = user.name;
-          password = "{{HOMEPAGE_VAR_QBT_PASSWORD}}";
+          password = "{{HOMEPAGE_VAR_QBTPASSWORD}}";
           enableLeechProgress = false; # Download list
         };
       };

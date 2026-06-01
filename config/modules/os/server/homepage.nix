@@ -18,11 +18,6 @@
     openFirewall = true;
     listenPort = 3000;
     allowedHosts = "*";
-    docker = {
-      local = {
-        socket = "/var/run/docker.sock";
-      };
-    };
     settings = {
       title = "${config.networking.hostName} - Homepage";
     };
