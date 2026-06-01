@@ -10,7 +10,7 @@
   imports = [ ./nginx.nix ];
 
   # https://www.man7.org/linux/man-pages/man5/tmpfiles.d.5.html
-  config.systemd.tmpfiles.rules = [
+  systemd.tmpfiles.rules = [
     "d /mnt/appdata/qBittorrent/logs 0755 qbittorrent qbittorrent"
   ];
 
