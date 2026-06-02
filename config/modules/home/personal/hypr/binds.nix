@@ -51,7 +51,7 @@
           "$mod CTRL ALT, P, setprop, noblur unset"
 
           "$mod, J, layoutmsg, togglesplit"
-          "$mod, L, exec, hyprlock --immediate & loginctl lock-session"
+          # "$mod, L, exec, hyprlock --immediate & loginctl lock-session"
 
           # Media
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -86,16 +86,16 @@
           "$mod ALT, down, moveworkspacetomonitor, +0 d" # Move focus down
 
           # Switch workspaces with mod + [/]
-          "$mod, bracketright, workspace, r+1" # Switch to workspace right
-          "$mod, bracketleft, workspace, r-1" # Switch to workspace left
+          "$mod, L, workspace, r+1" # Switch to workspace right
+          "$mod, H, workspace, r-1" # Switch to workspace left
 
           # Move active window to a workspace with mod + SHIFT + [/]
-          "$mod SHIFT, bracketright, movetoworkspace, +1" # Move window to workspace right
-          "$mod SHIFT, bracketleft, movetoworkspace, -1" # Move window to workspace left
+          "$mod SHIFT, L, movetoworkspace, +1" # Move window to workspace right
+          "$mod SHIFT, H, movetoworkspace, -1" # Move window to workspace left
 
           # Move active window to a workspace and don't move focus with mod + alt + [/]
-          "$mod ALT, bracketright, movetoworkspacesilent, +1" # Move window to workspace right
-          "$mod ALT, bracketleft, movetoworkspacesilent, -1" # Move window to workspace left
+          "$mod ALT, L, movetoworkspacesilent, +1" # Move window to workspace right
+          "$mod ALT, H, movetoworkspacesilent, -1" # Move window to workspace left
 
           "$mod, 0, togglespecialworkspace"
         ]
