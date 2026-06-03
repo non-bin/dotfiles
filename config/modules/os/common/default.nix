@@ -89,20 +89,19 @@
     };
   };
 
+  fonts.packages = [ pkgs.nerd-fonts.caskaydia-cove ];
+
   services = {
     btrfs.autoScrub.enable = lib.mkDefault true;
 
     # Better getty
     kmscon = {
       enable = true;
-      fonts = [
-        {
-          name = "CaskaydiaCove Nerd Font";
-          package = pkgs.nerd-fonts.caskaydia-cove;
-        }
-      ];
-      extraConfig = "font-size=14";
-      hwRender = true;
+      config = {
+        font-size = 14;
+        font-name = "CaskaydiaCove Nerd Font";
+        hwRender = true;
+      };
     };
 
     udev.extraRules =
