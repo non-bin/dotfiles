@@ -39,7 +39,7 @@
       foreground = "#cecece";
       cursor-color = "#cecece";
       cursor-text = "#000000";
-      selection-background = "#141b1e";
+      selection-background = "#4c4c4c";
       selection-foreground = "#dadada";
       palette = [
         "0=#000000"
