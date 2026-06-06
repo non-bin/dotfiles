@@ -1,138 +1,207 @@
 {
-  wayland.windowManager = {
-    hyprland = {
-      enable = true;
-      settings = {
-        # https://wiki.hyprland.org/Configuring/Binds/
-        # use `wev` to figgure out what key is what
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
-        "$mod" = "META";
+{
+  wayland.windowManager.hyprland.settings = {
+    gesture =
+      let
+        mkLuaInlineFunction = x: lib.generators.mkLuaInline ("function () " + x + " end");
+      in
+      [
+        {
+          fingers = 3;
+          direction = "horizontal";
+          scale = 2;
+          action = "workspace";
+        }
+        {
+          fingers = 3;
+          direction = "up";
+          action = mkLuaInlineFunction "hl.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+')";
+        }
+        {
+          fingers = 3;
+          direction = "down";
+          action = mkLuaInlineFunction "hl.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-')";
+        }
+        {
+          fingers = 4;
+          direction = "down";
+          action = mkLuaInlineFunction "hl.exec_cmd('playerctl play-pause')";
+        }
+        {
+          fingers = 4;
+          direction = "right";
+          action = mkLuaInlineFunction "hl.exec_cmd('playerctl previous')";
+        }
+        {
+          fingers = 4;
+          direction = "left";
+          action = mkLuaInlineFunction "hl.exec_cmd('playerctl next')";
+        }
+        {
+          fingers = 4;
+          direction = "right";
+          mods = "SHIFT";
+          action = mkLuaInlineFunction "hl.exec_cmd('playerctl position 10-')";
+        }
+        {
+          fingers = 4;
+          direction = "left";
+          mods = "SHIFT";
+          action = mkLuaInlineFunction "hl.exec_cmd('playerctl position 10+')";
+        }
+      ];
 
-        # Non-repeating
-        bind = [
-          # Actions
-          "$mod, RETURN, exec, ghostty +new-window"
-          "$mod, C, exec, code"
-          "$mod, G, exec, gitkraken" # /usr/share/applications
-          "$mod, E, exec, thunar" # Opens the filemanager
-          "$mod, SPACE, exec, wofi --insensitive --show drun" # Open wofi to run .desktop entries
-          "$mod ALT, SPACE, exec, wofi --insensitive --show run" # Open to run from path
-          "$mod, B, exec, firefox" # Opens the browser
-          "$mod ALT, M, exec, prismlauncher" # Minecraft Launcher
-          "$mod SHIFT, M, exec, prismlauncher -l main" # Minecraft
-          "$mod, S, exec, spotify"
-          "$mod, V, exec, cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
-          "$mod, O, exec, orca-slicer"
-          "$mod, N, exec, obsidian"
+    # https://wiki.hypr.land/Configuring/Basics/Binds/
+    # https://wiki.hypr.land/Configuring/Basics/Dispatchers/
+    # use `wev` to figgure out what key is what
+    bind =
+      let
+        genBindAttrs = keys: dispatcher: {
+          _args = [
+            keys
+            (lib.generators.mkLuaInline dispatcher)
+          ];
+        };
+        genMouseBindAttrs = keys: dispatcher: {
+          _args = [
+            keys
+            (lib.generators.mkLuaInline dispatcher)
+            { mouse = true; }
+          ];
+        };
+        genRepeatingBindAttrs = keys: dispatcher: {
+          _args = [
+            keys
+            (lib.generators.mkLuaInline dispatcher)
+            { repeating = true; }
+          ];
+        };
+      in
+      [
+        # Mouse movement
+        (genMouseBindAttrs "META + mouse:272" "hl.dsp.window.drag()") # META + LMB: Move a window
+        (genMouseBindAttrs "META + mouse:273" "hl.dsp.window.resize()") # META + RMB: Resize a window
 
-          "CTRL ALT ALT, DELETE, exec, wlogout"
-          "$mod SHIFT ALT, B, exec, ~/dotfiles/scripts/reload-waybar.sh"
-          "$mod SHIFT ALT, W, exec, ~/dotfiles/scripts/reload-hyprpaper.sh"
+        # Actions
+        (genBindAttrs "META + RETURN" "hl.dsp.exec_cmd('ghostty +new-window')")
+        (genBindAttrs "META + C" "hl.dsp.exec_cmd('code')")
+        (genBindAttrs "META + E" "hl.dsp.exec_cmd('thunar')")
+        (genBindAttrs "META + SPACE" "hl.dsp.exec_cmd('wofi --insensitive --show drun')") # Open wofi to run .desktop entries
+        (genBindAttrs "META + ALT + SPACE" "hl.dsp.exec_cmd('wofi --insensitive --show run')") # Open to run from path
+        (genBindAttrs "META + B" "hl.dsp.exec_cmd('firefox')")
+        (genBindAttrs "META + S" "hl.dsp.exec_cmd('spotify')")
+        (genBindAttrs "META + V" "hl.dsp.exec_cmd('cliphist list | wofi -S dmenu | cliphist decode | wl-copy')")
+        (genBindAttrs "META + O" "hl.dsp.exec_cmd('orca-slicer')")
+        (genBindAttrs "META + N" "hl.dsp.exec_cmd('obsidian')")
 
-          "$mod, Q, killactive" # Close current window
-          "$mod ALT, Q, forcekillactive" # Kill current window https://github.com/hyprwm/Hyprland/issues/9177
-          "$mod, T, togglefloating" # Toggle between tiling and floating window
-          "$mod, P, pseudo,"
-          "$mod, F, fullscreen, 0" # Open the window in fullscreen
-          "$mod, M, fullscreen, 1" # Open the window maximised
-          "ALT, Print, exec, hyprpicker -a" # Pick colour
+        # Session
+        (genBindAttrs "CTRL + ALT + DELETE" "hl.dsp.exec_cmd('wlogout')")
+        (genBindAttrs "META + SHIFT + ALT + B" "hl.dsp.exec_cmd('~/dotfiles/scripts/reload-waybar.sh')")
+        (genBindAttrs "META + SHIFT + ALT + W" "hl.dsp.exec_cmd('~/dotfiles/scripts/reload-hyprpaper.sh')")
 
-          "$mod ALT, P, tagwindow, +PIP*"
-          "$mod ALT, P, setfloating"
-          "$mod ALT, P, movewindow, r"
-          "$mod ALT, P, movewindow, d"
-          "$mod ALT, P, resizeactive, exact 30% 30%"
-          "$mod ALT, P, setprop, noblur 1"
-          "$mod ALT, P, pin"
+        (genBindAttrs "META + Q" "hl.dsp.window.close()")
+        (genBindAttrs "META + ALT + Q" "hl.dsp.window.kill()")
+        (genBindAttrs "META + ALT + T" "hl.dsp.window.float()")
+        (genBindAttrs "META + P" "hl.dsp.window.pseudo()")
+        (genBindAttrs "META + M" "hl.dsp.window.fullscreen_state({internal = 1, client = 1, action = 'toggle'})") # Toggle maximised
+        (genBindAttrs "META + F" "hl.dsp.window.fullscreen_state({internal = 2, client = 2, action = 'toggle'})") # Toggle fullscreen
+        (genBindAttrs "META + ALT + M" "hl.dsp.window.fullscreen_state({internal = 1, client = -1})") # Make window maximised, without notifying the application
+        (genBindAttrs "META + ALT + F" "hl.dsp.window.fullscreen_state({internal = 2, client = -1})") # Make window fullscreen, without notifying the application
+        (genBindAttrs "META + ALT + N" "hl.dsp.window.fullscreen_state({internal = 0, client = -1})") # Make window tiled, without notifying the application
+        (genBindAttrs "META + ALT + S" "hl.dsp.window.toggle_swallow()") # Make swallowed windows visible
 
-          "$mod CTRL ALT, P, tagwindow, -PIP*"
-          "$mod CTRL ALT, P, settiled"
-          "$mod CTRL ALT, P, setprop, keepaspectratio unset"
-          "$mod CTRL ALT, P, setprop, noblur unset"
+        (genBindAttrs "META + ALT + P" ''
+          function()
+            local w = hl.get_active_window()
+            for index, value in ipairs(w.tags) do
+              if value == 'PIP*' then
+                hl.dispatch(hl.dsp.window.pin({ action = 'off', window = w }))
+                hl.dispatch(hl.dsp.window.float({ action = 'off', window = w }))
+                hl.dispatch(hl.dsp.window.tag({ tag = '-PIP*', window = w }))
+                return
+              end
+            end
 
-          "$mod, J, layoutmsg, togglesplit"
-          # "$mod, L, exec, hyprlock --immediate & loginctl lock-session"
+            hl.dispatch(hl.dsp.window.tag({ tag = '+PIP*', window = w }))
+            hl.dispatch(hl.dsp.window.float({ action = 'on', window = w }))
+            hl.dispatch(hl.dsp.window.pin({ action = 'on', window = w }))
+            hl.dispatch(hl.dsp.window.move({ x = w.monitor.size.width - w.size.x - 640, y = w.monitor.size.height - w.size.y - 400, window = w }))
+          end
+        '')
 
-          # Media
-          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ", XF86AudioPlay, exec, playerctl play-pause"
-          ", XF86AudioPrev, exec, playerctl previous"
-          ", XF86AudioNext, exec, playerctl next"
-          "SHIFT, XF86AudioPrev, exec, playerctl position 10-"
-          "SHIFT, XF86AudioNext, exec, playerctl position 10+"
+        (genBindAttrs "META + J" "hl.dsp.layout('rotatesplit', 90)")
+        (genBindAttrs "META + ALT + J" "hl.dsp.layout('movetoroot')")
 
-          # Screenshot (https://github.com/emersion/slurp/issues/16#issuecomment-3244586972)
-          ## Save and copy to clipboard
-          '', Print, exec, grim -t png -g "$(hyprctl clients -j | jq --argjson active $(hyprctl monitors -j | jq -c '[.[].activeWorkspace.id]') '.[] | select((.hidden | not) and (.workspace.id as $id | $active | contains([$id]))) | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' -r | slurp -d)" "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png" | wl-copy''
-          ## Open swappy to edit
-          ''$mod, Print, exec, grim -t png -g "$(hyprctl clients -j | jq --argjson active $(hyprctl monitors -j | jq -c '[.[].activeWorkspace.id]') '.[] | select((.hidden | not) and (.workspace.id as $id | $active | contains([$id]))) | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' -r | slurp -d)" "/tmp/screenshot.png" && swappy -f "/tmp/screenshot.png" -o "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H.%M.%S).png"''
+        # Media
+        (genBindAttrs "XF86AudioMute" "hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle')")
+        (genBindAttrs "XF86AudioPlay" "hl.dsp.exec_cmd('playerctl play-pause')")
+        (genBindAttrs "XF86AudioPrev" "hl.dsp.exec_cmd('playerctl previous')")
+        (genBindAttrs "XF86AudioNext" "hl.dsp.exec_cmd('playerctl next')")
+        (genBindAttrs "ALT+ XF86AudioPrev" "hl.dsp.exec_cmd('playerctl position 10-')")
+        (genBindAttrs "ALT+ XF86AudioNext" "hl.dsp.exec_cmd('playerctl position 10+')")
 
-          # Move focus with mod + arrow keys
-          "$mod, left, movefocus, l" # Move focus left
-          "$mod, right, movefocus, r" # Move focus right
-          "$mod, up, movefocus, u" # Move focus up
-          "$mod, down, movefocus, d" # Move focus down
+        # Volume
+        (genRepeatingBindAttrs "XF86AudioLowerVolume" "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-')")
+        (genRepeatingBindAttrs "XF86AudioRaiseVolume" "hl.dsp.exec_cmd('wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+')") # Limit volume to 150%
 
-          # Move window
-          "$mod SHIFT, left, movewindow, l" # Move focus left
-          "$mod SHIFT, right, movewindow, r" # Move focus right
-          "$mod SHIFT, up, movewindow, u" # Move focus up
-          "$mod SHIFT, down, movewindow, d" # Move focus down
+        # Screen brightness
+        (genRepeatingBindAttrs "XF86MonBrightnessUp" "hl.dsp.exec_cmd('brightnessctl --min-value=4000 --exponent=3 s +10%')")
+        (genRepeatingBindAttrs "XF86MonBrightnessDown" "hl.dsp.exec_cmd('brightnessctl --min-value=4000 --exponent=3 s 10%-')")
 
-          # Move workspace to monitor
-          "$mod ALT, left, moveworkspacetomonitor, +0 l" # Move focus left
-          "$mod ALT, right, moveworkspacetomonitor, +0 r" # Move focus right
-          "$mod ALT, up, moveworkspacetomonitor, +0 u" # Move focus up
-          "$mod ALT, down, moveworkspacetomonitor, +0 d" # Move focus down
+        # Screenshot
+        (genBindAttrs "Print" "hl.dsp.exec_cmd('${config.home.homeDirectory}/dotfiles/scripts/screenshot.sh')")
+        (genBindAttrs "META + Print" "hl.dsp.exec_cmd('${config.home.homeDirectory}/dotfiles/scripts/screenshot.sh -e')") # Edit
+        (genBindAttrs "CTRL + Print" "hl.dsp.exec_cmd('hyprpicker -a')")
 
-          # Switch workspaces with mod + [/]
-          "$mod, L, workspace, r+1" # Switch to workspace right
-          "$mod, H, workspace, r-1" # Switch to workspace left
+        # Move focus with META + arrow keys
+        (genBindAttrs "META + left" "hl.dsp.focus({direction = 'l'})")
+        (genBindAttrs "META + right" "hl.dsp.focus({direction = 'r'})")
+        (genBindAttrs "META + up" "hl.dsp.focus({direction = 'u'})")
+        (genBindAttrs "META + down" "hl.dsp.focus({direction = 'd'})")
 
-          # Move active window to a workspace with mod + SHIFT + [/]
-          "$mod SHIFT, L, movetoworkspace, +1" # Move window to workspace right
-          "$mod SHIFT, H, movetoworkspace, -1" # Move window to workspace left
+        # Move window
+        (genBindAttrs "META + SHIFT + H" "hl.dsp.window.move({direction = 'l'})")
+        (genBindAttrs "META + SHIFT + L" "hl.dsp.window.move({direction = 'r'})")
+        (genBindAttrs "META + SHIFT + K" "hl.dsp.window.move({direction = 'u'})")
+        (genBindAttrs "META + SHIFT + J" "hl.dsp.window.move({direction = 'd'})")
 
-          # Move active window to a workspace and don't move focus with mod + alt + [/]
-          "$mod ALT, L, movetoworkspacesilent, +1" # Move window to workspace right
-          "$mod ALT, H, movetoworkspacesilent, -1" # Move window to workspace left
+        # Switch workspaces
+        (genBindAttrs "META + Y" "hl.dsp.focus({workspace = 'r-1'})")
+        (genBindAttrs "META + O" "hl.dsp.focus({workspace = 'r+1'})")
 
-          "$mod, 0, togglespecialworkspace"
-        ]
-        ++ (builtins.concatLists (
-          builtins.genList (
-            i:
-            let
-              ws = i + 1;
-            in
-            [
-              "$mod, code:1${toString i}, workspace, ${toString ws}" # Switch workspaces with mod + [0-9]
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}" # Move active window to a workspace with mod + SHIFT + [0-9]
-              "$mod ALT, code:1${toString i}, movetoworkspacesilent, ${toString ws}" # Move active window to a workspace with mod + alt + [0-9] DONT MOVE FOCUS
-              # "$mod CTRL ALT, code:1${toString i}, throwunfocused, ${toString ws}"    # Move active window to a workspace with mod + alt + [0-9] DONT MOVE FOCUS
-            ]
-          ) 9
-        ));
+        # Move active window to a workspace
+        (genBindAttrs "META + SHIFT + Y" "hl.dsp.window.move({workspace = '-1'})")
+        (genBindAttrs "META + SHIFT + O" "hl.dsp.window.move({workspace = '+1'})")
 
-        # Repeating
-        binde = [
-          # Volume
-          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+" # Limit volume to 150%
+        # Move active window to a workspace and don't move focus
+        (genBindAttrs "META + ALT + H" "hl.dsp.window.move({workspace = '-1', follow = false})")
+        (genBindAttrs "META + ALT + L" "hl.dsp.window.move({workspace = '+1', follow = false})")
 
-          # Screen brightness
-          ", XF86MonBrightnessUp, exec, brightnessctl --min-value=235 --exponent=3 s +10%"
-          ", XF86MonBrightnessDown, exec, brightnessctl --min-value=235 --exponent=3 s 10%-"
-        ];
+        (genBindAttrs "META + 0" "hl.dsp.workspace.toggle_special('special')")
+      ]
+      ++ (builtins.concatLists (
+        builtins.genList (
+          i:
+          let
+            ws = i + 1;
+          in
+          [
+            (genBindAttrs "META + code:1${toString i}" "hl.dsp.focus({workspace = '${toString ws}'})") # Switch workspaces with META + [0-9]
+            (genBindAttrs "META + SHIFT + code:1${toString i}" "hl.dsp.window.move({workspace = '${toString ws}'})"
 
-        # Mouse
-        # Move/resize windows with mod + LMB/RMB and dragging
-        bindm = [
-          "$mod, mouse:272, movewindow" # Move window
-          "$mod, mouse:273, resizewindow" # Resize window
-          # TODO Volume
-        ];
-      };
-    };
+            ) # Move active window to a workspace with META + SHIFT + [0-9]
+            (genBindAttrs "META + SHIFT + code:1${toString i}" "hl.dsp.window.move({workspace = '${toString ws}', follow = false})"
+
+            ) # Move active window to a workspace with META + alt + [0-9] DONT MOVE FOCUS
+          ]
+        ) 9
+      ));
   };
 }
