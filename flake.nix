@@ -24,10 +24,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hyprland.url = "github:hyprwm/Hyprland/main";
-    nix4vscode = {
-      url = "github:nix-community/nix4vscode";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     agenix.url = "github:ryantm/agenix";
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
@@ -39,7 +36,6 @@
     inputs@{
       self,
       nixpkgs,
-      # nixpkgsAlt,
       home-manager,
       nix-on-droid,
       nixos-hardware,
