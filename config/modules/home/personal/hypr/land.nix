@@ -275,10 +275,6 @@
                 hl.dispatch(hl.dsp.focus({ workspace = 2 }))
                 hl.exec_cmd("waybar")
                 hl.exec_cmd("~/dotfiles/scripts/reload-hyprpaper.sh -w")
-
-                -- hl.exec_cmd("wl-clip-persist --clipboard regular")
-                -- hl.exec_cmd("wl-paste --watch cliphist store")
-
                 hl.exec_cmd("spotify", {workspace = "1 silent"})
                 hl.exec_cmd("firefox", {workspace = "2 silent"})
               end

@@ -110,6 +110,7 @@
   services = {
     dunst.enable = true; # Notification daemon
     cliphist.enable = true;
+    wl-clip-persist.enable = true;
   };
 
   home.file = {

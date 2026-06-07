@@ -80,8 +80,6 @@ agenix view
 
 ## TODO
 
-- hardware.cpu.amd.updateMicrocode
-- wl-clip-persist
 - hyprlock fprintd feedback
 - gc should delete old init files, or reload should delete before writing
 - Prowlarr permissions
