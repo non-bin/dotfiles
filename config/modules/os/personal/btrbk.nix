@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  user,
-  ...
-}:
+{ ... }:
 
 {
   imports = [ ../common/btrbk.nix ];

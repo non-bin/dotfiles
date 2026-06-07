@@ -647,7 +647,7 @@
       },
       "original": {
         "owner": "non-bin",
-        "ref": "main",
+        "ref": "unstable",
         "repo": "nix-on-droid",
         "type": "github"
       }

@@ -6,9 +6,9 @@
 }:
 let
   # TODO: I hate this:
-  toYMLList = cfg: (builtins.map (catagory: { ${catagory} = cfg.${catagory}; }) (lib.attrNames cfg));
+  toYMLList = cfg: (map (catagory: { ${catagory} = cfg.${catagory}; }) (lib.attrNames cfg));
   to2LayerYMLList =
-    cfg: (builtins.map (catagory: { ${catagory} = (toYMLList cfg.${catagory}); }) (lib.attrNames cfg));
+    cfg: (map (catagory: { ${catagory} = (toYMLList cfg.${catagory}); }) (lib.attrNames cfg));
 
   cfg = config.services.homepage-dashboard;
   # Define the settings format used for this program

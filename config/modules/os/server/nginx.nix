@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
@@ -21,8 +20,8 @@
       default = true;
       extraConfig = lib.strings.concatLines [
         # Proxy websockets
-        ''proxy_set_header Upgrade $http_upgrade;''
-        ''proxy_set_header Connection $connection_upgrade;''
+        "proxy_set_header Upgrade $http_upgrade;"
+        "proxy_set_header Connection $connection_upgrade;"
       ];
     };
   };
