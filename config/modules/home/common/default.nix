@@ -17,17 +17,6 @@
     btop
     nix-search
     hwatch # better watch command
-
-    pkgs.makeDesktopItem
-    {
-      name = "Update";
-      desktopName = "Update NixOS";
-      exec = "/home/${user.name}/dotfiles/scripts/reload.sh -c -p || read";
-      categories = [
-        "Utility"
-        "System"
-      ];
-    }
   ];
 
   programs = {
