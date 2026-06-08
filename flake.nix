@@ -49,6 +49,7 @@
           maureen = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDz2Ia+hmbEQ0kuXxIEbFv6zxM+zXVXePq+jZxLrZiE1";
           skellybones = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFr10kZ2FZeqfcMnYXIqCW1V5HMPIwb0f4OfJa5mGov2";
           stella = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDn8uDmv1Bo4GZw2hdwoKvCvWD1k7Rag8W89c85OjZpw";
+          pandora = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMDRtk3JliTktdSozZu9Om+vmRlpAHU9uE1AidyQEPHi";
         };
       };
     in
@@ -103,6 +104,12 @@
             stella = { };
             sylvia = {
               extraModules = [ nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+            };
+            pandora = {
+              user = {
+                fullName = "Kieran Jacka";
+                name = "kieran";
+              };
             };
             testvm = { };
           };
