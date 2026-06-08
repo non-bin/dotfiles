@@ -134,9 +134,6 @@
           end
         '')
 
-        (genBindAttrs "META + J" "hl.dsp.layout('rotatesplit', 90)")
-        (genBindAttrs "META + ALT + J" "hl.dsp.layout('movetoroot')")
-
         # Media
         (genBindAttrs "XF86AudioMute" "hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle')")
         (genBindAttrs "XF86AudioPlay" "hl.dsp.exec_cmd('playerctl play-pause')")
@@ -159,10 +156,10 @@
         (genBindAttrs "CTRL + Print" "hl.dsp.exec_cmd('hyprpicker -a')")
 
         # Move focus with META + arrow keys
-        (genBindAttrs "META + left" "hl.dsp.focus({direction = 'l'})")
-        (genBindAttrs "META + right" "hl.dsp.focus({direction = 'r'})")
-        (genBindAttrs "META + up" "hl.dsp.focus({direction = 'u'})")
-        (genBindAttrs "META + down" "hl.dsp.focus({direction = 'd'})")
+        (genBindAttrs "META + H" "hl.dsp.focus({direction = 'l'})")
+        (genBindAttrs "META + L" "hl.dsp.focus({direction = 'r'})")
+        (genBindAttrs "META + K" "hl.dsp.focus({direction = 'u'})")
+        (genBindAttrs "META + J" "hl.dsp.focus({direction = 'd'})")
 
         # Move window
         (genBindAttrs "META + SHIFT + H" "hl.dsp.window.move({direction = 'l'})")
@@ -179,10 +176,12 @@
         (genBindAttrs "META + SHIFT + O" "hl.dsp.window.move({workspace = '+1'})")
 
         # Move active window to a workspace and don't move focus
-        (genBindAttrs "META + ALT + H" "hl.dsp.window.move({workspace = '-1', follow = false})")
-        (genBindAttrs "META + ALT + L" "hl.dsp.window.move({workspace = '+1', follow = false})")
+        (genBindAttrs "META + ALT + Y" "hl.dsp.window.move({workspace = '-1', follow = false})")
+        (genBindAttrs "META + ALT + O" "hl.dsp.window.move({workspace = '+1', follow = false})")
 
         (genBindAttrs "META + 0" "hl.dsp.workspace.toggle_special('special')")
+        (genBindAttrs "META + SHIFT + SEMICOLON" "hl.dsp.layout('rotatesplit', 90)")
+        (genBindAttrs "META + ALT + SEMICOLON" "hl.dsp.layout('movetoroot')")
       ]
       ++ (builtins.concatLists (
         builtins.genList (
