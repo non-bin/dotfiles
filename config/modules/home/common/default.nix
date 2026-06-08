@@ -33,7 +33,7 @@
         };
         "mi" = {
           user = user.name;
-          hostname = "m.i.jacka.net.au";
+          hostname = "mi.jacka.net.au";
         };
         "s" = {
           user = user.name;
@@ -42,7 +42,7 @@
         };
         "si" = {
           user = user.name;
-          hostname = "s.i.jacka.net.au";
+          hostname = "si.jacka.net.au";
         };
       };
     };
