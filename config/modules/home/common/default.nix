@@ -15,7 +15,7 @@
     enable = true;
     desktopEntries."update" = {
       name = "Update";
-      exec = "/home/${user.name}/dotfiles/scripts/update.sh";
+      exec = ''ghostty +new-window -e "/home/${user.name}/dotfiles/scripts/update.sh"'';
       icon = "utilities-terminal";
       terminal = true;
       categories = [
