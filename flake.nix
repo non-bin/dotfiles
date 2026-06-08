@@ -65,12 +65,11 @@
           nixpkgs.lib.genAttrs (builtins.attrNames config) (
             hostname:
             let
-              hostConfig = {
+              hostConfig = nixpkgs.lib.recursiveUpdate {
                 extraModules = [ ];
                 system = "x86_64-linux";
                 inherit user;
-              }
-              // config.${hostname};
+              } config.${hostname};
 
               specialArgs = {
                 inherit inputs;
