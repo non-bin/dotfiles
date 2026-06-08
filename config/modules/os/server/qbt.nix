@@ -81,6 +81,7 @@
           WebUI.LocalHostAuth = true;
           WebUI.Username = user.name;
           WebUI.Password_PBKDF2 = "@ByteArray(QVBiYr3jJsL8JrM1FgvwIg==:1v5zDtA3+zBIYlv2QrWprjUZUoQN6c+A/InOsAwOMz6PARnryyTVOJmdMiSvDt1+N9Ihs3GuK8B4vFLwl3JtnQ==)";
+          WebUI.MaxAuthenticationFailCount = 0; # Disabled
           WebUI.Port = 8081;
           WebUI.ServerDomains = "*";
         };
