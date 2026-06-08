@@ -17,6 +17,7 @@
       name = "Update";
       exec = "/home/${user.name}/dotfiles/scripts/update.sh";
       icon = "utilities-terminal";
+      terminal = true;
       categories = [
         "Utility"
       ];
