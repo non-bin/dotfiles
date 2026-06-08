@@ -64,15 +64,21 @@
           nixpkgs.lib.genAttrs (builtins.attrNames config) (
             hostname:
             let
-              system = "x86_64-linux";
+              hostConfig = {
+                extraModules = [ ];
+                system = "x86_64-linux";
+                inherit user;
+              }
+              // config.${hostname};
+
               specialArgs = {
                 inherit inputs;
-                inherit user;
+                user = hostConfig.user;
               };
             in
             nixpkgs.lib.nixosSystem {
               inherit specialArgs;
-              inherit system;
+              system = hostConfig.system;
               modules = [
                 ./config/hosts/${hostname}/os.nix
                 agenix.nixosModules.default
@@ -82,19 +88,23 @@
                   home-manager.extraSpecialArgs = specialArgs;
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
-                  home-manager.users.${user.name} = import ./config/hosts/${hostname}/home.nix;
+                  home-manager.users.${hostConfig.user.name} = import ./config/hosts/${hostname}/home.nix;
                 }
               ]
-              ++ config.${hostname};
+              ++ hostConfig.extraModules;
             }
           )
         )
           {
-            maureen = [ ];
-            skellybones = [ nixos-hardware.nixosModules.framework-16-7040-amd ];
-            stella = [ ];
-            sylvia = [ nixos-hardware.nixosModules.intel-nuc-8i7beh ];
-            testvm = [ ];
+            maureen = { };
+            skellybones = {
+              extraModules = [ nixos-hardware.nixosModules.framework-16-7040-amd ];
+            };
+            stella = { };
+            sylvia = {
+              extraModules = [ nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+            };
+            testvm = { };
           };
 
       homeConfigurations = {
