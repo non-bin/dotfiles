@@ -7,6 +7,7 @@
 {
   imports = [
     ./base.nix
+    ./regreet.nix
   ];
   nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
 

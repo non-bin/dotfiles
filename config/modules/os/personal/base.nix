@@ -5,7 +5,6 @@
 
 {
   imports = [
-    ./regreet.nix
     ./btrbk.nix
   ];
 

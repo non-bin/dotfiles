@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ../../modules/os/personal/base.nix
     ../../modules/os/common
+    ../../modules/os/personal/gnome.nix
   ];
 
   # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
