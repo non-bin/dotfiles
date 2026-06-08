@@ -14,7 +14,7 @@
   age.rekey = {
     masterIdentities = [
       {
-        identity = "/home/${user.name}/.ssh/id_rsa";
+        identity = "/home/alice/.ssh/id_rsa";
         pubkey = user.sshKeys.personal; # Specify the public key explicitly
       }
     ];
