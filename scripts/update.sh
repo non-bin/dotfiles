@@ -5,4 +5,4 @@ parent_path=$(
 )
 
 cd "$parent_path"
-./reload -c -p || read
+./reload.sh -c -p || read
