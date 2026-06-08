@@ -13,15 +13,6 @@
 
   xdg = {
     enable = true;
-    desktopEntries."update" = {
-      name = "Update";
-      exec = ''ghostty +new-window -e "/home/${user.name}/dotfiles/scripts/update.sh"'';
-      icon = "utilities-terminal";
-      terminal = true;
-      categories = [
-        "Utility"
-      ];
-    };
   };
 
   home.packages = with pkgs; [
