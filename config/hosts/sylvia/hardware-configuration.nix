@@ -41,6 +41,7 @@
     device = "/dev/vg0/btr";
     fsType = "btrfs";
     options = [
+      "noatime"
       "subvol=nix"
       "compress=zstd"
     ];
