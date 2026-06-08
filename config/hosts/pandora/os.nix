@@ -1,5 +1,6 @@
 {
   user,
+  lib,
   ...
 }:
 
@@ -13,6 +14,7 @@
 
   # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
   age.rekey.hostPubkey = user.sshKeys.pandora;
+  age.secrets.userPass.rekeyFile = lib.mkForce null;
 
   networking.hostName = "pandora";
   networking.domain = "jacka.net.au";
