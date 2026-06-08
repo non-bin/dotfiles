@@ -11,21 +11,22 @@
     ./shell
   ];
 
-  xdg.enable = true;
+  xdg = {
+    enable = true;
+    desktopEntries."update" = {
+      name = "Update";
+      exec = "/home/${user.name}/dotfiles/scripts/update.sh";
+      icon = "utilities-terminal";
+      categories = [
+        "Utility"
+      ];
+    };
+  };
 
   home.packages = with pkgs; [
     btop
     nix-search
     hwatch # better watch command
-
-    (pkgs.makeDesktopItem {
-      name = "Update";
-      desktopName = "Update NixOS";
-      exec = "/home/${user.name}/dotfiles/scripts/update.sh";
-      categories = [
-        "Utility"
-      ];
-    })
   ];
 
   programs = {
