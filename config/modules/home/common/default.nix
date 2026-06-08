@@ -21,10 +21,9 @@
     (pkgs.makeDesktopItem {
       name = "Update";
       desktopName = "Update NixOS";
-      exec = "/home/${user.name}/dotfiles/scripts/reload.sh -c -p || read";
+      exec = "/home/${user.name}/dotfiles/scripts/update.sh";
       categories = [
         "Utility"
-        "System"
       ];
     })
   ];
