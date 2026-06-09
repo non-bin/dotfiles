@@ -42,8 +42,6 @@ docker system prune --volumes --all
 
 To format the repo use `treefmt`, which runs the official nixfmt command on every file it finds, Or in VSCode use the nix-ide extension which also uses nixfmt
 
-To format shell scripts use `shfmt -w -i 2 -ci -s ./`. TODO add to treefmt
-
 ### Secrets
 
 ```bash
@@ -52,6 +50,8 @@ agenix edit ./path/to/secret.age
 
 # Then after adding a new host key, or creating or editing a secret
 agenix rekey
+# Or use the reload script
+r -k
 
 # And to view all secrets
 agenix view

@@ -131,7 +131,7 @@
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?_",
   "editor.wordWrap": "off",
   "editor.wrappingIndent": "indent",
-  "errorLens.exclude": ["TODO", "FIXME"],
+  "errorLens.exclude": [],
   "eslint.codeActionsOnSave.mode": "all",
   "eslint.lintTask.enable": true,
   "eslint.probe": [

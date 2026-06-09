@@ -18,8 +18,7 @@ options = [
   "-s",  # Simplify
   "-ci", # Indent switch cases
 ]
-includes = ["*.sh", "scripts/*"]
-excludes = ["*.js"]
+includes = ["*.sh"]
 priority = 1000
 
 [formatter.prettier]

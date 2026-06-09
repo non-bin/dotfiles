@@ -31,11 +31,6 @@
       enable = true;
       allowedTCPPorts = [
         5000 # nix run github:edolstra/nix-serve
-
-        # FIXME:
-        25565 # minecraft
-        80 # Testing things
-        8080 # Testing things
       ];
     };
   };

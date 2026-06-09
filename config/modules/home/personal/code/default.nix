@@ -32,16 +32,14 @@
           vscode-marketplace.bierner.markdown-preview-github-styles
           vscode-marketplace.oven.bun-vscode
           vscode-marketplace.mechatroner.rainbow-csv
-          vscode-marketplace.jnoortheen.nix-ide # TODO https://github.com/nix-community/vscode-nix-ide?tab=readme-ov-file#lsp-plugin-support also is jeff-hykin.better-nix-syntax better?
+          vscode-marketplace.jnoortheen.nix-ide
           vscode-marketplace.ms-vscode.cpptools
           vscode-marketplace.mikestead.dotenv
           vscode-marketplace.tamasfe.even-better-toml
           vscode-marketplace.ms-vscode.cmake-tools
           vscode-marketplace.llvm-vs-code-extensions.vscode-clangd
 
-          vscode-marketplace.demijollamaxime.bulma # 51k downloads
-          # vscode-marketplace.fiazluthfi.bulma-snippets # 26k downloads
-          # vscode-marketplace.reliutg.bulma-css-class-completion # 15k downloads
+          vscode-marketplace.demijollamaxime.bulma
 
           # Utility
           vscode-marketplace.jkillian.custom-local-formatters
