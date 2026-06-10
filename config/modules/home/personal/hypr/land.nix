@@ -260,7 +260,7 @@
           # Idle
           {
             match = {
-              class = "."; # Everything
+              class = ".*";
             };
             idle_inhibit = "fullscreen";
           }
