@@ -14,6 +14,7 @@
 
   age.secrets.qbt.rekeyFile = ./qbt.age;
 
+  # The config file is copied from the store to /var/lib/qBittorrent/qBittorrent/config/qBittorrent.conf so you can use the UI to test changes
   services = {
     qbittorrent = {
       enable = true;
@@ -74,8 +75,8 @@
           Downloads.TempPath = "/mnt/media/downloads/incomplete/";
           General.Locale = "en";
           MailNotification.req_auth = true;
-          Scheduler.end_time = "@Variant(\0\0\0\xf\0\0\0\0)";
-          Scheduler.start_time = "@Variant(\0\0\0\xf\x1I\x97\0)";
+          Scheduler.end_time = "@Variant(\\0\\0\\0\\xf\\x4\\xb8\\x7f\\0)";
+          Scheduler.start_time = "@Variant(\\0\\0\\0\\xf\\x1\\xb7t\\0)";
           WebUI.Address = "*";
           WebUI.AuthSubnetWhitelistEnabled = false;
           WebUI.LocalHostAuth = true;
@@ -93,7 +94,7 @@
     };
 
     homepage-dashboard = {
-      environmentFiles = [ config.age.secrets.sonarr.path ];
+      environmentFiles = [ config.age.secrets.qbt.path ];
       services."Media Backend"."qBittorrent" = {
         icon = "qbittorrent";
         href = "/qbt";
