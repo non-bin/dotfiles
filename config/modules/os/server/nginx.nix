@@ -7,6 +7,8 @@
 {
   imports = [ ];
 
+  networking.firewall.allowedTCPPorts = [ 80 ];
+
   services.nginx = {
     enable = true;
     enableReload = true; # Reload nginx when configuration file changes (instead of restart)
