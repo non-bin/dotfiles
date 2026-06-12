@@ -81,6 +81,12 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       shift # past param
       ;;
+    -a | --auto)
+      PULL="YES"
+      CLEAN="YES"
+      REBUILD="YES"
+      shift
+      ;;
 
     -* | --*)
       echo "Unknown option $1"
@@ -104,6 +110,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -R, --rescue      Don't run any extra commands (like git)"
       echo "  -t, --trace       Pass --show-trace to rebuild command (for debuggin)"
       echo "  --sub URL         Use the specified substituter (eg '--sub http://vmhost:5000' and 'nix run github:edolstra/nix-serve' on the host)"
+      echo "  -a, --auto        Equivalent to '-c -p -r'"
       echo
       echo "Options must be specified with separate tacs (these: '-'). For example use '-u -c -P' not '-ucP"
       exit 1
