@@ -7,6 +7,7 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../"
 # Defaults
 REBUILD="YES"
 IMPURE=""
+ACTION="switch"
 
 POSITIONAL_ARGS=()
 while [[ $# -gt 0 ]]; do
@@ -87,6 +88,10 @@ while [[ $# -gt 0 ]]; do
       REBUILD="YES"
       shift
       ;;
+    -b | --boot)
+      ACTION="boot"
+      shift
+      ;;
 
     -* | --*)
       echo "Unknown option $1"
@@ -109,6 +114,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -d, --dry-run     Run everything but the rebuild command"
       echo "  -R, --rescue      Don't run any extra commands (like git)"
       echo "  -t, --trace       Pass --show-trace to rebuild command (for debuggin)"
+      echo "  -b, --boot        Run 'nixos-rebuild boot' instead of 'switch', for breaking changes"
       echo "  --sub URL         Use the specified substituter (eg '--sub http://vmhost:5000' and 'nix run github:edolstra/nix-serve' on the host)"
       echo "  -a, --auto        Equivalent to '-c -p -r'"
       echo
@@ -201,7 +207,7 @@ if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
       QEMU_NET_OPTS="hostfwd=tcp::2221-:22" && nixos-rebuild build-vm $TRACE --flake ./#$NEW_CONFIG_NAME && "result/bin/run-${NEW_CONFIG_NAME}-vm" -nographic
       # rm result "${NEW_CONFIG_NAME}.qcow2"
     else
-      nixos-rebuild $SUBSTITUTERS $OFFLINE switch --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
+      nixos-rebuild $SUBSTITUTERS $OFFLINE $ACTION --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
     fi
   else
     [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE
