@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -6,6 +7,9 @@
   ...
 }:
 
+let
+  gitRevision = inputs.self.shortRev or inputs.self.dirtyShortRev or "UNKNOWN";
+in
 {
   imports = [
     ./base.nix
@@ -33,6 +37,11 @@
         5000 # nix run github:edolstra/nix-serve
       ];
     };
+  };
+
+  system = {
+    configurationRevision = gitRevision;
+    nixos.tags = [ gitRevision ];
   };
 
   boot = {
