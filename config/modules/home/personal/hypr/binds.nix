@@ -98,6 +98,7 @@
         (genBindAttrs "META + V" "hl.dsp.exec_cmd('cliphist list | wofi -S dmenu | cliphist decode | wl-copy')")
         (genBindAttrs "META + O" "hl.dsp.exec_cmd('orca-slicer')")
         (genBindAttrs "META + N" "hl.dsp.exec_cmd('obsidian')")
+        (genBindAttrs "META + ALT + B" "hl.dsp.exec_cmd('pkill -USR1 waybar || ~/dotfiles/scripts/reload-waybar.sh')") # Toggle waybar
 
         # Session
         (genBindAttrs "CTRL + ALT + DELETE" "hl.dsp.exec_cmd('wlogout')")
@@ -110,9 +111,9 @@
         (genBindAttrs "META + P" "hl.dsp.window.pseudo()")
         (genBindAttrs "META + M" "hl.dsp.window.fullscreen_state({internal = 1, client = 1, action = 'toggle'})") # Toggle maximised
         (genBindAttrs "META + F" "hl.dsp.window.fullscreen_state({internal = 2, client = 2, action = 'toggle'})") # Toggle fullscreen
-        (genBindAttrs "META + ALT + M" "hl.dsp.window.fullscreen_state({internal = 1, client = -1})") # Make window maximised, without notifying the application
-        (genBindAttrs "META + ALT + F" "hl.dsp.window.fullscreen_state({internal = 2, client = -1})") # Make window fullscreen, without notifying the application
-        (genBindAttrs "META + ALT + N" "hl.dsp.window.fullscreen_state({internal = 0, client = -1})") # Make window tiled, without notifying the application
+        (genBindAttrs "META + ALT + F" "hl.dsp.window.fullscreen_state({internal = 2, client = 0})") # Make window fullscreen, but make the app think it's tiled
+        (genBindAttrs "META + ALT + M" "hl.dsp.window.fullscreen_state({internal = 1, client = 2})") # Make window maximised, but make the app think it's fullscreen
+        (genBindAttrs "META + ALT + N" "hl.dsp.window.fullscreen_state({internal = 0, client = 2})") # Make window tiled, but make the app think it's fullscreen
         (genBindAttrs "META + ALT + S" "hl.dsp.window.toggle_swallow()") # Make swallowed windows visible
 
         (genBindAttrs "META + ALT + P" ''
