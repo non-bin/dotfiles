@@ -34,6 +34,9 @@ sudo bash -c "$(curl -L jacka.net.au/dot)" -- HOSTNAME --vm --sub http://hostip:
 ```bash
 # Clean up docker residual
 docker system prune --volumes --all
+
+# Update firmwares
+fwupdmgr refresh --force && fwupdmgr get-updates && fwupdmgr update
 ```
 
 ## Development
