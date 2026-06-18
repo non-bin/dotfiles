@@ -15,9 +15,7 @@
         mode = "horizontal";
       };
       backend = "fastfetch";
-      args = null;
-      distro = null;
-      pride_month_shown = [ ];
+      args = "-s 'Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:Display:DE:WM:LM:Terminal:TerminalFont:CPU:GPU:Memory:Swap:Disk:Media:LocalIp:PublicIp:Battery'";
       pride_month_disable = false;
     };
   };
