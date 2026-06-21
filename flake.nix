@@ -51,6 +51,8 @@
           stella = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDn8uDmv1Bo4GZw2hdwoKvCvWD1k7Rag8W89c85OjZpw";
           pandora = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMDRtk3JliTktdSozZu9Om+vmRlpAHU9uE1AidyQEPHi";
         };
+
+        system.stateVersion = "24.11"; # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration, and migrated your data accordingly. https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
       };
     in
     {

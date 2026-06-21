@@ -1,5 +1,4 @@
 {
-  osConfig,
   pkgs,
   lib,
   user,
@@ -36,5 +35,5 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.stateVersion = osConfig.system.stateVersion;
+  home.stateVersion = user.stateVersion;
 }
