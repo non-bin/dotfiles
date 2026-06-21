@@ -140,7 +140,15 @@ if [ "$SUB" != "" ]; then
 fi
 
 if [ "$CLEAN" == "YES" ]; then
-  [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ] && sudo nix-collect-garbage --delete-older-than 1d # Delete old system generations, and their store entries
+  if [ "$NIX_HOMEMAN_STANDALONE_TYPE" != "" ]; then
+    echo "Standalone clean is not implemented"
+    exit 1
+  elif [ "$TERMUX_VERSION" != "" ]; then
+    echo "NOD clean is not implemented"
+    exit 1
+  else
+    sudo nix-collect-garbage --delete-older-than 1d # Delete old system generations, and their store entries
+  fi
 fi
 
 if [ "$OPTIMISE" == "YES" ]; then
@@ -179,7 +187,18 @@ if [ "$REKEY" == "YES" ]; then
 fi
 
 if [ "$GENERATION" == "YES" ]; then
-  if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
+  if [ "$NIX_HOMEMAN_STANDALONE_TYPE" != "" ]; then
+    bash $(home-manager generations | fzf | awk -F '-> ' '{print $2 "/activate"}')
+  elif [ "$TERMUX_VERSION" != "" ]; then
+    generation=$(nix-on-droid generations | fzf | awk '{print $1}')
+
+    if [ -z "$generation" ]; then
+      echo "No generation selected"
+      exit 1
+    fi
+
+    nix-on-droid switch-generation "$generation"
+  else
     generation=$(nixos-rebuild list-generations | awk 'NR==1 { header=$0; next } 1' | fzf --header "$(nixos-rebuild list-generations | head -n1)" | awk '{print $1}')
 
     if [ -z "$generation" ]; then
@@ -195,8 +214,6 @@ if [ "$GENERATION" == "YES" ]; then
 
     sudo nix-env --switch-generation "$generation" -p /nix/var/nix/profiles/system
     sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
-  else
-    bash $(home-manager generations | fzf | awk -F '-> ' '{print $2 "/activate"}')
   fi
 fi
 
@@ -206,8 +223,12 @@ if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
       [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME="testvm"
       QEMU_NET_OPTS="hostfwd=tcp::2221-:22" && nixos-rebuild build-vm $TRACE --flake ./#$NEW_CONFIG_NAME && "result/bin/run-${NEW_CONFIG_NAME}-vm" -nographic
       # rm result "${NEW_CONFIG_NAME}.qcow2"
+    elif [ "$TERMUX_VERSION" != "" ]; then
+      [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME="default"
+      nix-on-droid switch $TRACE --flake ./#$NEW_CONFIG_NAME
     else
       nixos-rebuild $SUBSTITUTERS $OFFLINE $ACTION --sudo $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
+      # nixos-rebuild switch --sudo --flake ~/dotfiles
     fi
   else
     [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE

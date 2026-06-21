@@ -37,7 +37,18 @@ docker system prune --volumes --all
 
 # Update firmwares
 fwupdmgr refresh --force && fwupdmgr get-updates && fwupdmgr update
+
+# Remote control android (no need for an app)
+scrcpy --new-display=2560x1600 --stay-awake --keep-active --no-vd-destroy-content --keyboard=uhid
 ```
+
+## Nix On Droid
+
+- Use the default bootstrap
+- Install with flakes
+- Add git to the flake and `nix-on-droid switch --flake .config/nix-on-droid`
+- Clone dotfiles
+- `reload.sh`
 
 ## Development
 

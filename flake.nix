@@ -10,7 +10,12 @@
     };
 
     nix-on-droid = {
-      url = "github:non-bin/nix-on-droid/unstable";
+      url = "github:non-bin/nix-on-droid/testing";
+      # url = "github:non-bin/nix-on-droid/unstable";
+      # url = "github:nix-community/nix-on-droid/testing";
+      # url = "github:nix-community/nix-on-droid/prerelease-25.11";
+      # url = "github:nix-community/nix-on-droid/master";
+
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

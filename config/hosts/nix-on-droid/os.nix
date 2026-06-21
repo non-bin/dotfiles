@@ -13,6 +13,7 @@
   environment.packages = with pkgs; [
     git
     openssh
+    vim
   ];
 
   user.shell = pkgs.zsh;
@@ -29,6 +30,5 @@
     };
   };
 
-  environment.etcBackupExtension = ".bak";
   nix.extraOptions = "experimental-features = nix-command flakes";
 }
