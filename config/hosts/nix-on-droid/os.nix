@@ -16,7 +16,7 @@
     vim
   ];
 
-  user.shell = pkgs.zsh;
+  user.shell = "${pkgs.zsh}/bin/zsh";
 
   time.timeZone = "Australia/Melbourne";
 
