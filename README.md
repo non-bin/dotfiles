@@ -39,7 +39,7 @@ docker system prune --volumes --all
 fwupdmgr refresh --force && fwupdmgr get-updates && fwupdmgr update
 
 # Remote control android (no need for an app)
-scrcpy --new-display=2560x1600 --stay-awake --keep-active --no-vd-destroy-content --keyboard=uhid
+scrcpy --new-display=2560x1600/240 --stay-awake --keep-active --no-vd-destroy-content --keyboard=uhid --start-app=com.termux.nix
 ```
 
 ## Nix On Droid
