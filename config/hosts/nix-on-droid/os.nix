@@ -31,4 +31,5 @@
   };
 
   nix.extraOptions = "experimental-features = nix-command flakes";
+  system.stateVersion = user.stateVersion;
 }
