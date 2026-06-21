@@ -638,11 +638,11 @@
         "nmd": "nmd"
       },
       "locked": {
-        "lastModified": 1782003010,
-        "narHash": "sha256-623TcMoZBk1Dt1if2xmCX1nzxtwfpp2HZkmq7yKd3zc=",
+        "lastModified": 1782014569,
+        "narHash": "sha256-aB6AAvGcXW5KRdOuHxyboAlxwmZD39BzDWsfzq25t1U=",
         "owner": "non-bin",
         "repo": "nix-on-droid",
-        "rev": "5460d9c477e882eb4a36a9cd1e1d26c69a7f428a",
+        "rev": "dad7a5888ce24148679a06c8d490c2d660132b97",
         "type": "github"
       },
       "original": {
@@ -657,11 +657,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1781928658,
-        "narHash": "sha256-E+NGWu/3TtblwLL0uYKHB7VQOcuu6nUYSHDsscTnG2s=",
+        "lastModified": 1782017505,
+        "narHash": "sha256-6A1wbeFbopCVchDX5rjAxEyNCGgQcKye4ylhjfZdCdY=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "ff4a4123af3924ee8741902d0d0af6debdae36a9",
+        "rev": "714f957519be5fc35127e3eee99ffbb17ef6d98c",
         "type": "github"
       },
       "original": {
