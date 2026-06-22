@@ -24,6 +24,4 @@
       prefixLength = 24;
     }
   ];
-
-  services.fprintd.enable = true;
 }
