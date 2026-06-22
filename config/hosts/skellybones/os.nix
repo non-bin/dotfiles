@@ -25,10 +25,7 @@
     }
   ];
 
-  services = {
-    fprintd.enable = true;
-    fwupd.enable = true; # run with fwupdmgr update https://github.com/NixOS/nixos-hardware/tree/master/framework
-  };
+  services.fprintd.enable = true;
 
   # Finger print reader
   systemd.services.fprintd = {

@@ -96,6 +96,7 @@ in
 
   services = {
     btrfs.autoScrub.enable = lib.mkDefault true;
+    fwupd.enable = true;
 
     # Better getty
     kmscon = {
