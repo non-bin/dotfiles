@@ -195,7 +195,7 @@
             (genBindAttrs "META + SHIFT + code:1${toString i}" "hl.dsp.window.move({workspace = '${toString ws}'})"
 
             ) # Move active window to a workspace with META + SHIFT + [0-9]
-            (genBindAttrs "META + SHIFT + code:1${toString i}" "hl.dsp.window.move({workspace = '${toString ws}', follow = false})"
+            (genBindAttrs "META + ALT + code:1${toString i}" "hl.dsp.window.move({workspace = '${toString ws}', follow = false})"
 
             ) # Move active window to a workspace with META + alt + [0-9] DONT MOVE FOCUS
           ]
