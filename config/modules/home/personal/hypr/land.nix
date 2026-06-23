@@ -199,13 +199,7 @@
           {
             match = {
               class = "thunar";
-              title = "File Operation Progress";
-            };
-            float = true;
-          }
-          {
-            match = {
-              title = "(Add|Open).*(File|Folder)";
+              title = "(File Operation Progress)|(Rename.*)";
             };
             float = true;
           }
