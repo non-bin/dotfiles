@@ -69,12 +69,8 @@
     };
 
     initContent = lib.strings.concatLines [
-      "hyfetch"
       ''sshrm() {sed -i "/^$1/d" ~/.ssh/known_hosts}'' # Remove an ssh host key
-      # ''export -f sshrm''
-
       ''err()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))'' # Colour stderr red
-      # ''export -f color''
 
       "WORDCHARS='*?_-.~=&;$%^'"
       "disable r"
@@ -105,6 +101,15 @@
       "zstyle ':completion:*' prompt '%e errors. Maybe you meant...'"
       "zstyle ':completion:*' select-prompt %SScrolling active: current selection at %l%s"
       "zstyle ':completion:*' special-dirs true"
+
+      # Autostart zellij on ssh
+      ''
+        if [[ -n "$SSH_CONNECTION" || -n "$SSH_CLIENT" ]] && [[ -z "$ZELLIJ" ]] && [[ "$TERM" != "dumb" ]]; then
+          eval "$(zellij setup --generate-auto-start zsh)"
+        else
+          hyfetch
+        fi
+      ''
     ];
   };
 }
