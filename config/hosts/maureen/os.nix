@@ -83,6 +83,16 @@
         "force user" = user.name;
         "force group" = user.name;
       };
+      "public" = {
+        "path" = "/mnt/data/public";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = user.name;
+        "force group" = user.name;
+      };
     };
 
     homepage-dashboard.widgets = [
