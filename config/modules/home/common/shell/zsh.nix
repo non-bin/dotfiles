@@ -84,7 +84,7 @@
       ''bindkey "^[[1;5C" forward-word''
       ''bindkey "^[[1;5D" backward-word''
       ''bindkey "^[[3~" delete-char''
-      ''bindkey "\ue000" delete-word # Unicode EXXX is reserved and unused so I pass this to from the terminal emulator for delete word right''
+      ''bindkey "\ue000" delete-word # Unicode EXXX is reserved and unused so I pass this to from the terminal emulator for delete word right'' # FIXME
 
       "zstyle ':completion:*' auto-description 'specify: %d'"
       "zstyle ':completion:*' completer _expand _complete _ignored _match _correct _approximate _prefix"
