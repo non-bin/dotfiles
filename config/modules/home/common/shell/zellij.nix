@@ -17,6 +17,7 @@
 
     settings = {
       show_startup_tips = false;
+      copy_on_select = false;
     };
 
     layouts = {
