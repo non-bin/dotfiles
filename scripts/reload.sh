@@ -102,8 +102,8 @@ while [[ $# -gt 0 ]]; do
       echo "  -u, --upgrade     Pull updates from upstream and update lockfile"
       echo "  -i, --impure      Add the --impure flag to the reload command"
       echo "  -I, --pure        Remove the --impure flag from the reload command"
-      echo "  -c, --clean       Garbage collect the nix store, don't rebuild (more info at https://nixos.wiki/wiki/Cleaning_the_nix_store and https://nixos.wiki/wiki/Storage_optimization)"
-      echo "  -o, --optimise    Hard link identicle files in the nix store, don't rebuild"
+      echo "  -c, --clean       Garbage collect the nix store, don't rebuild (https://nixos.wiki/wiki/Cleaning_the_nix_store)"
+      echo "  -o, --optimise    Hard link identicle files in the nix store, don't rebuild (https://nixos.wiki/wiki/Storage_optimization)"
       echo "  -O, --offline     Disable binary caches and consider all downloads up to date"
       echo "  -p, --pull        Pull updates from git before updating"
       echo "  -P, --push        Commit and push all changes"
@@ -147,13 +147,12 @@ if [ "$CLEAN" == "YES" ]; then
     echo "NOD clean is not implemented"
     exit 1
   else
-    sudo nix-collect-garbage --delete-older-than 1d # Delete old system generations, and their store entries
+    nix store gc
   fi
 fi
 
 if [ "$OPTIMISE" == "YES" ]; then
-  echo "Optimising nix store (this can take a while, and won't output anything)..."
-  nix-store --optimise # Add "-v" for progress, slows down a lot though. Run on every build with `nix.settings.auto-optimise-store = true;` so this is only needed on initial install
+  nix store optimise
 fi
 
 if [ "$PULL" == "YES" ]; then
