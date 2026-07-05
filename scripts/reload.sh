@@ -133,10 +133,13 @@ set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 NEW_CONFIG_NAME="$1"
 
 if [ "$SUB" != "" ]; then
+  echo Checking substituters...
   if ! curl "$SUB/nix-cache-info" -m 3 || ! nix --extra-experimental-features nix-command store info --option connect-timeout 3 --option download-attempts 1 --store $SUB; then
     echo -e "Failed to connect to substituter '$SUB'"
     exit 1
   fi
+  echo Done
+  echo
 fi
 
 if [ "$CLEAN" == "YES" ]; then
@@ -147,27 +150,31 @@ if [ "$CLEAN" == "YES" ]; then
     echo "NOD clean is not implemented"
     exit 1
   else
+    echo Removing unused store entries...
     nix store gc
+    echo Done
+    echo
   fi
 fi
 
 if [ "$OPTIMISE" == "YES" ]; then
+  echo Merging duplicate store entries...
   nix store optimise
+  echo Done
+  echo
 fi
 
 if [ "$PULL" == "YES" ]; then
+  echo Updating git repo...
   git pull
-fi
-
-if [ "$PUSH" == "YES" ]; then
-  git add *
-  git commit
-  git push
+  echo Done
+  echo
 fi
 
 if [ "$UPGRADE" == "YES" ]; then
+  echo Updating flake...
   nix $SUBSTITUTERS flake update
-  echo "Finished update"
+  echo Done
   echo
 fi
 
@@ -181,8 +188,11 @@ if [ "$RESCUE" != "YES" ] && ([ "$REBUILD" == "YES" ] || [ "$REKEY" == "YES" ]);
 fi
 
 if [ "$REKEY" == "YES" ]; then
+  echo Generating agenix key files...
   agenix generate -a
   agenix rekey -a
+  echo Done
+  echo
 fi
 
 if [ "$GENERATION" == "YES" ]; then
@@ -217,6 +227,7 @@ if [ "$GENERATION" == "YES" ]; then
 fi
 
 if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
+  echo Rebuilding...
   if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
     if [ "$VM" == "YES" ]; then
       [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME="testvm"
