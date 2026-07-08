@@ -8,7 +8,7 @@
 
   systemd.tmpfiles.rules = [ "f /mnt/appdata/jellyfin/.env 0700 root root" ];
 
-  environment.systemPackages = with pkgs; [
+  systemd.services.jellyfin.path = with pkgs; [
     ffmpeg
   ];
 
