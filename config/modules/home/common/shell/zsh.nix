@@ -104,7 +104,7 @@
 
       # Autostart zellij on ssh
       ''
-        if [ command -v zellij >/dev/null 2>&1 ] && [[ -n "$SSH_CONNECTION" || -n "$SSH_CLIENT" ]] && [[ -z "$ZELLIJ" ]] && [[ "$TERM" != "dumb" ]]; then
+        if command -v zellij >/dev/null 2>&1 && [[ -n "$SSH_CONNECTION" || -n "$SSH_CLIENT" ]] && [[ -z "$ZELLIJ" ]] && [[ "$TERM" != "dumb" ]]; then
           if [[ -z "$ZELLIJ" ]]; then
             if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
               zellij attach -c
