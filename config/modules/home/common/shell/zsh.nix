@@ -112,7 +112,7 @@
               zellij
             fi
 
-            if [[ "$ZELLIJ_AUTO_EXIT" == "true" && $SECONDS > 5 ]]; then
+            if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]] && (( $SECONDS > 5 )); then
               exit
             fi
           fi
