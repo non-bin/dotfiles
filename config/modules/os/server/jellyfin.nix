@@ -1,9 +1,16 @@
-{ ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   imports = [ ];
 
   systemd.tmpfiles.rules = [ "f /mnt/appdata/jellyfin/.env 0700 root root" ];
+
+  environment.packages = with pkgs; [
+    ffmpeg
+  ];
 
   services = {
     jellyfin = {
