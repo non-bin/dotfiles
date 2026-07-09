@@ -151,7 +151,7 @@ if [ "$CLEAN" == "YES" ]; then
     exit 1
   else
     echo Removing unused store entries...
-    nh clean all -K1d
+    nh clean all
     echo Done
     echo
   fi
