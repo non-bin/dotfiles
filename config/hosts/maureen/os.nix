@@ -18,7 +18,6 @@
     ../../modules/os/server/servarr/lidarr.nix
 
     # ../../modules/os/server/minecraft.nix
-    ../../modules/os/server/home-assistant.nix
   ];
 
   # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
