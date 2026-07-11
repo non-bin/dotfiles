@@ -22,6 +22,7 @@
   };
 
   home.pointerCursor = {
+    enable = true;
     hyprcursor.enable = true;
     gtk.enable = true;
     x11.enable = true;

@@ -28,7 +28,7 @@
     libgsf # .odf files
     nufraw-thumbnailer # .raw files
     evince # .pdf files
-    f3d # 3D files, including glTF, stl, step, ply, obj, fbx.
+    # f3d # 3D files, includ1ing glTF, stl, step, ply, obj, fbx. # FIXME https://github.com/NixOS/nixpkgs/issues/540609
 
     slurp # Region selector
     grim # Screenshot taker
