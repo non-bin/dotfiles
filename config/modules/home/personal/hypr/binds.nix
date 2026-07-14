@@ -6,26 +6,27 @@
 
 {
   wayland.windowManager.hyprland.settings = {
+    # https://wiki.hypr.land/Configuring/Advanced-and-Cool/Gestures/
+    volume_gesture._var = lib.generators.mkLuaInline ''function (change) hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ " .. math.abs(change) .. "%" .. (change<0 and "-" or "+")) end'';
     gesture =
       let
-        mkLuaInlineFunction = x: lib.generators.mkLuaInline ("function () " + x + " end");
+        mkLuaInlineFunction = x: lib.generators.mkLuaInline ("function (e) " + x + " end");
       in
       [
+        {
+          fingers = 3;
+          direction = "vertical";
+          action = {
+            start = mkLuaInlineFunction "volume_gesture(-0.25 * e.delta.y)";
+            update = mkLuaInlineFunction "volume_gesture(-0.25 * e.delta.y)";
+          };
+        }
+
         {
           fingers = 3;
           direction = "horizontal";
           scale = 2;
           action = "workspace";
-        }
-        {
-          fingers = 3;
-          direction = "up";
-          action = mkLuaInlineFunction "hl.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+')";
-        }
-        {
-          fingers = 3;
-          direction = "down";
-          action = mkLuaInlineFunction "hl.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-')";
         }
         {
           fingers = 4;
