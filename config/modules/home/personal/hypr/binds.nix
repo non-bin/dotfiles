@@ -96,7 +96,6 @@
         (genBindAttrs "META + B" "hl.dsp.exec_cmd('firefox')")
         (genBindAttrs "META + S" "hl.dsp.exec_cmd('spotify')")
         (genBindAttrs "META + V" "hl.dsp.exec_cmd('cliphist list | wofi -S dmenu | cliphist decode | wl-copy')")
-        (genBindAttrs "META + O" "hl.dsp.exec_cmd('orca-slicer')")
         (genBindAttrs "META + N" "hl.dsp.exec_cmd('obsidian')")
         (genBindAttrs "META + ALT + B" "hl.dsp.exec_cmd('pkill -USR1 waybar || ~/dotfiles/scripts/reload-waybar.sh')") # Toggle waybar
 
