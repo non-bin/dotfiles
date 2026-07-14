@@ -111,7 +111,7 @@
             on_focus_under_fullscreen = 2; # 0 - behind, 1 - takes over, 2 - unfullscreen/unmaxize
             enable_swallow = true;
             swallow_regex = "com.mitchellh.ghostty";
-            initial_workspace_tracking = 1; # windows will open on the workspace they were invoked
+            initial_workspace_tracking = 0; # if enabled, windows will open on the workspace they were invoked on. 0 - disabled, 1 - single-shot, 2 - persistent (all children too)
             middle_click_paste = false;
           };
 
