@@ -7,32 +7,56 @@
 {
   wayland.windowManager.hyprland.settings = {
     # https://wiki.hypr.land/Configuring/Advanced-and-Cool/Gestures/
-    volume_gesture._var = lib.generators.mkLuaInline ''function (change) hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ " .. math.abs(change) .. "%" .. (change<0 and "-" or "+")) end'';
+    change_volume._var = lib.generators.mkLuaInline ''function (change) hl.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ " .. math.abs(change) .. "%" .. (change<0 and "-" or "+")) end''; # Limit volume to 150%
+    volume_gesture._var = lib.generators.mkLuaInline "function (change) change_volume(-0.25 * change) end";
+
+    brightness_accumulator._var = 0; # Keep track of fractions of a percent
+    change_brightness._var = lib.mkBefore (
+      lib.generators.mkLuaInline ''function (change) hl.exec_cmd("brightnessctl --min-value=4000 --exponent=3 s " .. (change<0 and (math.abs(change) .. "%-") or ("+" .. math.abs(change) .. "%"))) end''
+    );
+    xbrightness_gesture._var = lib.mkAfter (
+      lib.generators.mkLuaInline "function (change) brightness_accumulator = brightness_accumulator + (-0.25 * change); local int_part = math.floor(brightness_accumulator); brightness_accumulator = brightness_accumulator - int_part; change_brightness(int_part) end"
+    );
+
     gesture =
       let
         mkLuaInlineFunction = x: lib.generators.mkLuaInline ("function (e) " + x + " end");
       in
       [
+        # 3 Up Down: Volume
         {
           fingers = 3;
           direction = "vertical";
           action = {
-            start = mkLuaInlineFunction "volume_gesture(-0.25 * e.delta.y)";
-            update = mkLuaInlineFunction "volume_gesture(-0.25 * e.delta.y)";
+            start = mkLuaInlineFunction "volume_gesture(e.delta.y)";
+            update = mkLuaInlineFunction "volume_gesture(e.delta.y)";
           };
         }
-
+        # SHIFT 3 Up Down: Volume
+        {
+          fingers = 3;
+          direction = "vertical";
+          mods = "SHIFT";
+          action = {
+            start = mkLuaInlineFunction "brightness_accumulator = 0; xbrightness_gesture(e.delta.y)";
+            update = mkLuaInlineFunction "xbrightness_gesture(e.delta.y)";
+          };
+        }
+        # 3 Left Right: Workspace
         {
           fingers = 3;
           direction = "horizontal";
           scale = 2;
           action = "workspace";
         }
+
+        # 4 Down: Play pause
         {
           fingers = 4;
           direction = "down";
           action = mkLuaInlineFunction "hl.exec_cmd('playerctl play-pause')";
         }
+        # 4 Right Left: Next previous track
         {
           fingers = 4;
           direction = "right";
@@ -43,6 +67,7 @@
           direction = "left";
           action = mkLuaInlineFunction "hl.exec_cmd('playerctl next')";
         }
+        # SHIFT 4 Right Left: Seek in track
         {
           fingers = 4;
           direction = "right";
@@ -144,12 +169,12 @@
         (genBindAttrs "ALT+ XF86AudioNext" "hl.dsp.exec_cmd('playerctl position 10+')")
 
         # Volume
-        (genRepeatingBindAttrs "XF86AudioLowerVolume" "hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-')")
-        (genRepeatingBindAttrs "XF86AudioRaiseVolume" "hl.dsp.exec_cmd('wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+')") # Limit volume to 150%
+        (genRepeatingBindAttrs "XF86AudioRaiseVolume" "function() change_volume(5) end")
+        (genRepeatingBindAttrs "XF86AudioLowerVolume" "function() change_volume(-5) end")
 
         # Screen brightness
-        (genRepeatingBindAttrs "XF86MonBrightnessUp" "hl.dsp.exec_cmd('brightnessctl --min-value=4000 --exponent=3 s +10%')")
-        (genRepeatingBindAttrs "XF86MonBrightnessDown" "hl.dsp.exec_cmd('brightnessctl --min-value=4000 --exponent=3 s 10%-')")
+        (genRepeatingBindAttrs "XF86MonBrightnessUp" "function() change_brightness(10) end")
+        (genRepeatingBindAttrs "XF86MonBrightnessDown" "function() change_brightness(-10) end")
 
         # Screenshot
         (genBindAttrs "Print" "hl.dsp.exec_cmd('${config.home.homeDirectory}/dotfiles/scripts/screenshot.sh')")
