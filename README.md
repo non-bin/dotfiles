@@ -40,6 +40,11 @@ fwupdmgr refresh --force && fwupdmgr get-updates && fwupdmgr update
 
 # Remote control android (no need for an app)
 scrcpy --new-display=2560x1600/240 --stay-awake --keep-active --no-vd-destroy-content --keyboard=uhid --start-app=com.termux.nix
+
+# If you run out of space in `/boot`
+r -c # Remove old generations
+sudo rm -rf /boot/kernels # Clear space
+r # Regenerate deleted kernels that are still needed
 ```
 
 ## Nix On Droid
