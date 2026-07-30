@@ -258,6 +258,14 @@
             };
             idle_inhibit = "fullscreen";
           }
+
+          # Program specific
+          {
+            match = {
+              class = "^(libreoffice.*)$";
+            };
+            suppress_event = "maximize";
+          }
         ];
 
         on = {
