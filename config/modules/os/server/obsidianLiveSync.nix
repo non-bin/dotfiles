@@ -9,9 +9,13 @@
 
   services.couchdb = {
     enable = true;
-    adminPass = builtins.readFile config.age.secrets.obsidian.path;
+    bindAddress = "0.0.0.0";
+    port = 5984;
+    adminPass = builtins.readFile config.age.secrets.obsidianLiveSync.path;
     databaseDir = "/mnt/appdata/obsidianLiveSync";
   };
+
+  networking.firewall.allowedTCPPorts = [ 5984 ];
 
   # Setup:
   # export hostname=http://localhost:5984
