@@ -22,7 +22,7 @@
   networking.firewall.allowedTCPPorts = [ 5984 ];
 
   # Setup:
-  # export hostname=http://localhost:5984
+  # export hostname=http://obsidian.jacka.net.au
   # export username=admin
   # export database=obsidiannotes
   # export password='<DATABASE>'
