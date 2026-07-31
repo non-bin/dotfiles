@@ -4,7 +4,11 @@
 }:
 
 {
-  age.secrets.obsidianLiveSync.rekeyFile = ./obsidianLiveSync.age;
+  age.secrets.obsidianLiveSync = {
+    rekeyFile = ./obsidianLiveSync.age;
+    owner = "couchdb";
+    group = "couchdb";
+  };
   systemd.tmpfiles.rules = [ "d /mnt/appdata/obsidianLiveSync 0755 couchdb couchdb" ];
 
   services.couchdb = {
@@ -21,8 +25,8 @@
   # export hostname=http://localhost:5984
   # export username=admin
   # export database=obsidiannotes
-  # export password=<DBPASSWORD>
-  # export passphrase=<VAULTPASSPHRASE>
+  # export password='<DATABASE>'
+  # export passphrase='<VAULT>'
   # curl -s https://raw.githubusercontent.com/vrtmrz/obsidian-livesync/main/utils/couchdb/couchdb-init.sh | bash
   # deno run --minimum-dependency-age=0 --allow-env https://raw.githubusercontent.com/vrtmrz/obsidian-livesync/main/utils/setup/generate_setup_uri.ts
 
