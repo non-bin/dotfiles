@@ -11,8 +11,8 @@
     enable = true;
     bindAddress = "0.0.0.0";
     port = 5984;
-    adminPass = builtins.readFile config.age.secrets.obsidianLiveSync.path;
     databaseDir = "/mnt/appdata/obsidianLiveSync";
+    extraConfigFiles = config.age.secrets.obsidianLiveSync.path;
   };
 
   networking.firewall.allowedTCPPorts = [ 5984 ];
