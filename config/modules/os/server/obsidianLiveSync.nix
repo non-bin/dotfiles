@@ -12,7 +12,7 @@
     bindAddress = "0.0.0.0";
     port = 5984;
     databaseDir = "/mnt/appdata/obsidianLiveSync";
-    extraConfigFiles = config.age.secrets.obsidianLiveSync.path;
+    extraConfigFiles = [ config.age.secrets.obsidianLiveSync.path ];
   };
 
   networking.firewall.allowedTCPPorts = [ 5984 ];
