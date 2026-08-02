@@ -12,7 +12,7 @@
     mode = "0644";
   };
 
-  programs.regreet = {
+  services.displayManager.regreet = {
     enable = true;
     cageArgs = [
       "-s"
@@ -22,12 +22,12 @@
     ];
     font.package = pkgs.roboto;
     font.name = "Roboto";
-    cursorTheme.package = pkgs.canta-theme;
-    cursorTheme.name = "Canta";
-    iconTheme.package = pkgs.canta-theme;
-    iconTheme.name = "Canta";
-    theme.package = pkgs.canta-theme;
-    theme.name = "Canta";
+    # cursorTheme.package = pkgs.canta-theme; # FIXME
+    # cursorTheme.name = "Canta";
+    # iconTheme.package = pkgs.canta-theme;
+    # iconTheme.name = "Canta";
+    # theme.package = pkgs.canta-theme;
+    # theme.name = "Canta";
     settings = {
       background = {
         path = "/etc/wallpapers/lock.jpg";
