@@ -1,4 +1,7 @@
-{ ... }:
+{
+  user,
+  ...
+}:
 
 {
   imports = [
@@ -14,6 +17,8 @@
       prefixLength = 24;
     }
   ];
+
+  age.rekey.hostPubkey = user.sshKeys.skellybones; # TODO
 
   # services.beszel.agent = {
   #   enable = true;
