@@ -37,6 +37,11 @@ while [[ $# -gt 0 ]]; do
       UPGRADE="YES"
       shift # past argument
       ;;
+    -C | --check)
+      CHECK="YES"
+      REBUILD="NO"
+      shift # past argument
+      ;;
     -v | --vm)
       VM="YES"
       shift # past argument
@@ -105,6 +110,7 @@ while [[ $# -gt 0 ]]; do
       echo "  -c, --clean       Garbage collect the nix store, don't rebuild (https://nixos.wiki/wiki/Cleaning_the_nix_store)"
       echo "  -o, --optimise    Hard link identicle files in the nix store, don't rebuild (https://nixos.wiki/wiki/Storage_optimization)"
       echo "  -O, --offline     Disable binary caches and consider all downloads up to date"
+      echo "  -C, --check       Run 'nix flake check' to validate the config"
       echo "  -p, --pull        Pull updates from git before updating"
       echo "  -P, --push        Commit and push all changes"
       echo "  -r, --rebuild     Explicitly run the rebuild command (eg if running with -c or -o)"
@@ -174,6 +180,23 @@ fi
 if [ "$UPGRADE" == "YES" ]; then
   echo Updating flake...
   nix $SUBSTITUTERS flake update
+  echo Done
+  echo
+fi
+
+if [ "$CHECK" == "YES" ]; then
+  echo Checking all configs...
+
+  for host in $(nix eval --no-warn-dirty ".#nixosConfigurations" --raw --apply 'hosts: builtins.concatStringsSep " " (builtins.attrNames hosts)'); do
+    echo "Checking $host..."
+    nix eval --no-warn-dirty ".#nixosConfigurations.$host.config.system.build.toplevel.drvPath" >/dev/null || FAIL="YES"
+  done
+
+  if [ "$FAIL" == "YES" ]; then
+    echo Checks failed
+    exit 1
+  fi
+
   echo Done
   echo
 fi
