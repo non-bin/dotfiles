@@ -138,6 +138,16 @@ set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
 NEW_CONFIG_NAME="$1"
 
+if [ "$RESCUE" != "YES" ]; then
+  systemd-inhibit --what=sleep --who="Reload script" --why="Updating" sleep infinity &
+  INHIBIT_PID=$!
+
+  # Ensure lock is released even if script crashes or receives SIGINT/SIGTERM
+  trap 'kill "$INHIBIT_PID" 2>/dev/null' EXIT
+
+  echo "Wake lock acquired"
+fi
+
 if [ "$SUB" != "" ]; then
   echo Checking substituters...
   if ! curl "$SUB/nix-cache-info" -m 3 || ! nix --extra-experimental-features nix-command store info --option connect-timeout 3 --option download-attempts 1 --store $SUB; then
@@ -267,4 +277,11 @@ if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
     [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME=$NIX_HOMEMAN_STANDALONE_TYPE
     home-manager switch -b bak $IMPURE $TRACE --flake ./#$NEW_CONFIG_NAME
   fi
+fi
+
+if [ "$RESCUE" != "YES" ]; then
+  kill "$INHIBIT_PID" 2>/dev/null
+  trap - EXIT
+
+  echo "Released wake lock"
 fi
