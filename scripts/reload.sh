@@ -2,6 +2,11 @@
 # set -x # Print commands as they are printed
 set -e # Exit on any errors
 
+# Colour codes. Use with `echo -e "${GREEN}I ${RED}love${NC} Stack Overflow"``
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../"
 
 # Defaults
@@ -145,87 +150,80 @@ if [ "$RESCUE" != "YES" ]; then
   # Ensure lock is released even if script crashes or receives SIGINT/SIGTERM
   trap 'kill "$INHIBIT_PID" 2>/dev/null' EXIT
 
-  echo "Wake lock acquired"
+  echo -e "${GREEN}[r] Wake lock acquired${NC}"
 fi
 
 if [ "$SUB" != "" ]; then
-  echo Checking substituters...
+  echo -e "${GREEN}[r] Checking substituters...${NC}"
   if ! curl "$SUB/nix-cache-info" -m 3 || ! nix --extra-experimental-features nix-command store info --option connect-timeout 3 --option download-attempts 1 --store $SUB; then
-    echo -e "Failed to connect to substituter '$SUB'"
+    echo -e "${RED}[r] Failed to connect to substituter '$SUB'${NC}"
     exit 1
   fi
-  echo Done
-  echo
+  echo -e "${GREEN}[r] Done${NC}"
 fi
 
 if [ "$CLEAN" == "YES" ]; then
   if [ "$NIX_HOMEMAN_STANDALONE_TYPE" != "" ]; then
-    echo "Standalone clean is not implemented"
+    echo -e "${RED}[r] Standalone clean is not implemented${NC}"
     exit 1
   elif [ "$TERMUX_VERSION" != "" ]; then
-    echo "NOD clean is not implemented"
+    echo -e "${RED}[r] NOD clean is not implemented${NC}"
     exit 1
   else
-    echo Removing unused store entries...
+    printf "${GREEN}[r] Removing unused store entries...${NC}" # nh prints a new line
     nh clean all
-    echo Done
-    echo
+    echo -e "${GREEN}[r] Done${NC}"
   fi
 fi
 
 if [ "$OPTIMISE" == "YES" ]; then
-  echo Merging duplicate store entries...
+  echo -e "${GREEN}[r] Merging duplicate store entries...${NC}"
   nix store optimise
-  echo Done
-  echo
+  echo -e "${GREEN}[r] Done${NC}"
 fi
 
 if [ "$PULL" == "YES" ]; then
-  echo Updating git repo...
+  echo -e "${GREEN}[r] Updating git repo...${NC}"
   git pull
-  echo Done
-  echo
+  echo -e "${GREEN}[r] Done${NC}"
 fi
 
 if [ "$UPGRADE" == "YES" ]; then
-  echo Updating flake...
+  echo -e "${GREEN}[r] Updating flake...${NC}"
   nix $SUBSTITUTERS flake update
-  echo Done
-  echo
+  echo -e "${GREEN}[r] Done${NC}"
 fi
 
 if [ "$CHECK" == "YES" ]; then
-  echo Checking all configs...
+  echo -e "${GREEN}[r] Checking all configs...${NC}"
 
   for host in $(nix eval --no-warn-dirty ".#nixosConfigurations" --raw --apply 'hosts: builtins.concatStringsSep " " (builtins.attrNames hosts)'); do
-    echo "Checking $host..."
+    echo -e "${GREEN}[r] Checking $host...${NC}"
     nix eval --no-warn-dirty ".#nixosConfigurations.$host.config.system.build.toplevel.drvPath" >/dev/null || FAIL="YES"
   done
 
   if [ "$FAIL" == "YES" ]; then
-    echo Checks failed
+    echo -e "${RED}[r] Checks failed${NC}"
     exit 1
   fi
 
-  echo Done
-  echo
+  echo -e "${GREEN}[r] Done${NC}"
 fi
 
 if [ "$RESCUE" != "YES" ] && ([ "$REBUILD" == "YES" ] || [ "$REKEY" == "YES" ]); then
   UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
 
   while IFS= read -r FILE || [[ -n $FILE ]]; do
-    echo "Adding untracked file $FILE"
+    echo -e "${GREEN}[r] Adding untracked file $FILE${NC}"
     git add "$FILE" # Add all untracked files
   done < <(printf '%s' "$UNTRACKED_FILES")
 fi
 
 if [ "$REKEY" == "YES" ]; then
-  echo Generating agenix key files...
+  echo -e "${GREEN}[r] Generating agenix key files...${NC}"
   agenix generate -a
   agenix rekey -a
-  echo Done
-  echo
+  echo -e "${GREEN}[r] Done${NC}"
 fi
 
 if [ "$GENERATION" == "YES" ]; then
@@ -235,7 +233,7 @@ if [ "$GENERATION" == "YES" ]; then
     generation=$(nix-on-droid generations | fzf | awk '{print $1}')
 
     if [ -z "$generation" ]; then
-      echo "No generation selected"
+      echo -e "${RED}[r] No generation selected${NC}"
       exit 1
     fi
 
@@ -244,13 +242,13 @@ if [ "$GENERATION" == "YES" ]; then
     generation=$(nixos-rebuild list-generations | awk 'NR==1 { header=$0; next } 1' | fzf --header "$(nixos-rebuild list-generations | head -n1)" | awk '{print $1}')
 
     if [ -z "$generation" ]; then
-      echo "No generation selected"
+      echo -e "${RED}[r] No generation selected${NC}"
       exit 1
     fi
 
     # if current generation is selected, do nothing
     if [ "$(readlink /nix/var/nix/profiles/system)" = "system-$generation-link" ]; then
-      echo "Selected generation is already active"
+      echo -e "${RED}[r] Selected generation is already active${NC}"
       exit 0
     fi
 
@@ -260,7 +258,7 @@ if [ "$GENERATION" == "YES" ]; then
 fi
 
 if [ "$DRY" != "YES" ] && [ "$REBUILD" == "YES" ]; then
-  echo Rebuilding...
+  echo -e "${GREEN}[r] Rebuilding...${NC}"
   if [ "$NIX_HOMEMAN_STANDALONE_TYPE" == "" ]; then
     if [ "$VM" == "YES" ]; then
       [ "$NEW_CONFIG_NAME" == "" ] && NEW_CONFIG_NAME="testvm"
@@ -283,5 +281,5 @@ if [ "$RESCUE" != "YES" ]; then
   kill "$INHIBIT_PID" 2>/dev/null
   trap - EXIT
 
-  echo "Released wake lock"
+  echo -e "${GREEN}[r] Released wake lock${NC}"
 fi
