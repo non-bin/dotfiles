@@ -18,6 +18,15 @@
     settings = {
       show_startup_tips = false;
       copy_on_select = false;
+
+      keybinds.normal._children = [
+        {
+          bind = {
+            _args = [ "Ctrl Shift c" ];
+            Copy = { };
+          };
+        }
+      ];
     };
 
     layouts = {
