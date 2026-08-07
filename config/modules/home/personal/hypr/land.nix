@@ -84,7 +84,8 @@
 
           # https://wiki.hypr.land/Configuring/Basics/Variables/#input
           input = {
-            kb_layout = "us";
+            kb_layout = "us,gr";
+            kb_options = "grp:alt_space_toggle";
             numlock_by_default = true;
             follow_mouse = 1; # Cursor movement will always change focus to the window under the cursor
             special_fallthrough = true;
