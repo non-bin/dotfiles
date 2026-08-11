@@ -8,7 +8,9 @@
   imports = [
     ./base.nix
     ./regreet.nix
+    ./thunar.nix
   ];
+
   nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
 
   programs = {
