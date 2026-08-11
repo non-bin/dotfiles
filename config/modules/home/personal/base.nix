@@ -26,7 +26,6 @@
     poppler_gi # Adobe .pdf files
     freetype # Font files
     libgsf # .odf files
-    nufraw-thumbnailer # .raw files
     evince # .pdf files
     # f3d # 3D files, includ1ing glTF, stl, step, ply, obj, fbx. # FIXME https://github.com/NixOS/nixpkgs/issues/540609
 
