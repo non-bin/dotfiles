@@ -9,6 +9,7 @@
     ./base.nix
     ./regreet.nix
     ./thunar.nix
+    ./audio.nix
   ];
 
   nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
