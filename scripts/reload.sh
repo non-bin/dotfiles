@@ -153,6 +153,15 @@ if [ "$RESCUE" != "YES" ]; then
   echo -e "${GREEN}[r] Wake lock acquired${NC}"
 fi
 
+if [ "$RESCUE" != "YES" ]; then
+  UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
+
+  while IFS= read -r FILE || [[ -n $FILE ]]; do
+    echo -e "${GREEN}[r] Adding untracked file $FILE${NC}"
+    git add "$FILE" # Add all untracked files
+  done < <(printf '%s' "$UNTRACKED_FILES")
+fi
+
 if [ "$SUB" != "" ]; then
   echo -e "${GREEN}[r] Checking substituters...${NC}"
   if ! curl "$SUB/nix-cache-info" -m 3 || ! nix --extra-experimental-features nix-command store info --option connect-timeout 3 --option download-attempts 1 --store $SUB; then
@@ -208,15 +217,6 @@ if [ "$CHECK" == "YES" ]; then
   fi
 
   echo -e "${GREEN}[r] Done${NC}"
-fi
-
-if [ "$RESCUE" != "YES" ] && ([ "$REBUILD" == "YES" ] || [ "$REKEY" == "YES" ]); then
-  UNTRACKED_FILES=$(git ls-files -o --exclude-standard)
-
-  while IFS= read -r FILE || [[ -n $FILE ]]; do
-    echo -e "${GREEN}[r] Adding untracked file $FILE${NC}"
-    git add "$FILE" # Add all untracked files
-  done < <(printf '%s' "$UNTRACKED_FILES")
 fi
 
 if [ "$REKEY" == "YES" ]; then
