@@ -1,5 +1,54 @@
-{ ... }:
+{
+  pkgs,
+  ...
+}:
 
+let
+  fastfetchConfig = pkgs.writeText "fastfetch.json" ''
+    {
+      "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+      "display": {
+        "disableLinewrap": true
+      },
+      "modules": [
+        "title",
+        "separator",
+        "os",
+        "host",
+        "kernel",
+        "uptime",
+        "packages",
+        "shell",
+        "display",
+        "de",
+        "wm",
+        "lm",
+        "terminal",
+        "terminalfont",
+        {
+          "type": "cpu",
+          "temp": true
+        },
+        {
+          "type": "gpu",
+          "detectionMethod": "auto",
+          "temp": true
+        },
+        "memory",
+        "swap",
+        "disk",
+        "media",
+        "localip",
+        "publicip",
+        {
+          "type": "battery",
+          "temp": true
+        }
+      ]
+    }
+  '';
+
+in
 {
   programs.fastfetch = {
     enable = true;
@@ -15,7 +64,7 @@
         mode = "horizontal";
       };
       backend = "fastfetch";
-      args = "-s 'Title:Separator:OS:Host:Kernel:Uptime:Packages:Shell:Display:DE:WM:LM:Terminal:TerminalFont:CPU:GPU:Memory:Swap:Disk:Media:LocalIp:PublicIp:Battery'";
+      args = "--config ${fastfetchConfig}";
       pride_month_disable = false;
     };
   };
