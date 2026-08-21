@@ -18,6 +18,7 @@
     settings = {
       show_startup_tips = false;
       copy_on_select = false;
+      focus_follows_mouse = true;
 
       keybinds.normal._children = [
         {
