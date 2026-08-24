@@ -110,7 +110,7 @@
             disable_splash_rendering = false;
             force_default_wallpaper = 2;
             on_focus_under_fullscreen = 2; # 0 - behind, 1 - takes over, 2 - unfullscreen/unmaxize
-            enable_swallow = true;
+            enable_swallow = false;
             swallow_regex = "com.mitchellh.ghostty";
             initial_workspace_tracking = 0; # if enabled, windows will open on the workspace they were invoked on. 0 - disabled, 1 - single-shot, 2 - persistent (all children too)
             middle_click_paste = false;
@@ -263,7 +263,7 @@
           # Program specific
           {
             match = {
-              class = "^(libreoffice.*)$";
+              class = ".*";
             };
             suppress_event = "maximize";
           }
