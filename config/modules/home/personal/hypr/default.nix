@@ -13,6 +13,7 @@
   ];
 
   services.hyprpaper = {
+    # FIXME
     enable = true;
     settings = {
       ipc = true;

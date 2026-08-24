@@ -114,7 +114,7 @@
         (genMouseBindAttrs "META + mouse:273" "hl.dsp.window.resize()") # META + RMB: Resize a window
 
         # Actions
-        (genBindAttrs "META + RETURN" "hl.dsp.exec_cmd('ghostty +new-window')")
+        (genBindAttrs "META + RETURN" "hl.dsp.exec_cmd('ghostty')")
         (genBindAttrs "META + C" "hl.dsp.exec_cmd('code')")
         (genBindAttrs "META + E" "hl.dsp.exec_cmd('thunar')")
         (genBindAttrs "META + SPACE" "hl.dsp.exec_cmd('wofi --insensitive --show drun')") # Open wofi to run .desktop entries
