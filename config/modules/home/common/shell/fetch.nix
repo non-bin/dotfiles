@@ -38,8 +38,6 @@ let
         "swap",
         "disk",
         "media",
-        "localip",
-        "publicip",
         {
           "type": "battery",
           "temp": true
