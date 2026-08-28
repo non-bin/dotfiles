@@ -9,6 +9,8 @@
     ../qbt.nix
   ];
 
+  systemd.tmpfiles.rules = [ "d /mnt/appdata/prowlarr 0755 root root" ];
+
   age.secrets.prowlarr = {
     rekeyFile = ./prowlarr.age;
     generator.script =
