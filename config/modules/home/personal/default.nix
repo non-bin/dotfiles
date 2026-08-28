@@ -26,7 +26,7 @@
     vlc
     inkscape-with-extensions
     filezilla
-    libreoffice-fresh
+    libreoffice-stable
     #kdePackages.kdenlive
     obsidian
     qbittorrent
