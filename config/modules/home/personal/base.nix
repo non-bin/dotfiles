@@ -84,9 +84,7 @@
         <name>Open Terminal Here</name>
         <submenu></submenu>
         <unique-id>1735180505505982-1</unique-id>
-        <command>/usr/bin/env alacritty --working-directory %f</command>
-        <description>Example for a custom action</description>
-        <range></range>
+        <command>${pkgs.ghostty}/bin/ghostty --working-directory="%f"</command>
         <patterns>*</patterns>
         <startup-notify/>
         <directories/>
