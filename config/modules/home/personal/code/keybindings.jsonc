@@ -218,4 +218,33 @@
     "command": "git.stashApply",
     "when": "!operationInProgress",
   },
+  {
+    "key": "ctrl+k ctrl+c",
+    "command": "-editor.action.addCommentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+k ctrl+c",
+    "command": "-notebook.cell.collapseCellInput",
+    "when": "notebookCellListFocused && !inputFocus && !notebookCellInputIsCollapsed"
+  },
+  {
+    "key": "ctrl+k ctrl+c",
+    "command": "-notebook.cell.expandCellInput",
+    "when": "notebookCellInputIsCollapsed && notebookCellListFocused"
+  },
+  {
+    "key": "ctrl+k c",
+    "command": "-workbench.files.action.compareWithClipboard",
+    "when": "!isSessionsWindow"
+  },
+  {
+    "key": "ctrl+k ctrl+c",
+    "command": "workbench.files.action.compareFileWith",
+    "when": "activeEditor && !isSessionsWindow"
+  },
+  {
+    "key": "ctrl+k c",
+    "command": "workbench.files.action.compareWithSaved"
+  },
 ]

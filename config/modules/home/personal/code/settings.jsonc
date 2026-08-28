@@ -95,9 +95,6 @@
   "editor.fontFamily": "\"CaskaydiaCove NF\", \"CaskaydiaCove Nerd Font\", \"CaskaydiaCove NFM\", \"CaskaydiaCove Nerd Font Mono\",  monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": false,
   "editor.gotoLocation.alternativeDeclarationCommand": "editor.action.referenceSearch.trigger",
   "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.referenceSearch.trigger",
   "editor.guides.bracketPairs": "active",
@@ -267,8 +264,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "window.customTitleBarVisibility": "auto",
   "window.dialogStyle": "custom",
-  "window.title": "${dirty}${rootName}${separator}${activeEditorShort}",
-  "window.titleBarStyle": "custom",
+  "window.title": "${dirty}${rootName}${separator}VSCode",
   "workbench.colorCustomizations": {
     "tree.inactiveIndentGuidesStroke": "#21262d",
     "tree.indentGuidesStroke": "#52575d",
@@ -371,4 +367,13 @@
   "json.schemaDownload.trustedDomains": {
     "*": true,
   },
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "search.usePCRE2": true,
+  "[nix]": {
+    "editor.defaultFormatter": "jkillian.custom-local-formatters",
+  },
+  "window.commandCenter": false,
+  "window.controlsStyle": "hidden",
+  "window.enableMenuBarMnemonics": false,
+  "window.menuBarVisibility": "hidden",
 }
