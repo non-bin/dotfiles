@@ -64,6 +64,11 @@
 
       ns = "nix-shell --log-format bar-with-logs --pure ";
       nsh = "nix-shell --log-format bar-with-logs --run zsh ";
+
+      nd = "nix develop ";
+      nr = "nix repl ";
+      nf = "nix fmt ";
+
       get = "nsh -p ";
       search = "nix-search ";
     };
