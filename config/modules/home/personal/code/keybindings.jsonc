@@ -1,222 +1,222 @@
 [
   {
     "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
-    "key": "ctrl+tab",
+    "key": "ctrl+tab"
   },
   {
     "command": "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup",
-    "key": "ctrl+shift+tab",
+    "key": "ctrl+shift+tab"
   },
   {
     "command": "workbench.action.nextEditor",
-    "key": "ctrl+tab",
+    "key": "ctrl+tab"
   },
   {
     "command": "workbench.action.previousEditor",
-    "key": "ctrl+shift+tab",
+    "key": "ctrl+shift+tab"
   },
   {
     "command": "-editor.action.formatDocument",
     "key": "shift+alt+f",
-    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
   },
   {
     "command": "editor.action.replaceAll",
     "key": "ctrl+enter",
-    "when": "editorFocus && findWidgetVisible",
+    "when": "editorFocus && findWidgetVisible"
   },
   {
     "command": "-editor.action.replaceAll",
     "key": "ctrl+alt+enter",
-    "when": "editorFocus && findWidgetVisible",
+    "when": "editorFocus && findWidgetVisible"
   },
   {
     "command": "search.action.replaceAll",
     "key": "ctrl+enter",
-    "when": "replaceActive && searchViewletVisible && !findWidgetVisible",
+    "when": "replaceActive && searchViewletVisible && !findWidgetVisible"
   },
   {
     "command": "-search.action.replaceAll",
     "key": "ctrl+alt+enter",
-    "when": "replaceActive && searchViewletVisible && !findWidgetVisible",
+    "when": "replaceActive && searchViewletVisible && !findWidgetVisible"
   },
   {
     "command": "-workbench.action.closeUnmodifiedEditors",
-    "key": "ctrl+k u",
+    "key": "ctrl+k u"
   },
   {
     "command": "editor.action.transformToUppercase",
-    "key": "ctrl+k u",
+    "key": "ctrl+k u"
   },
   {
     "command": "editor.action.transformToLowercase",
-    "key": "ctrl+k l",
+    "key": "ctrl+k l"
   },
   {
     "command": "-workbench.action.files.newUntitledFile",
-    "key": "ctrl+n",
+    "key": "ctrl+n"
   },
   {
     "command": "explorer.newFile",
-    "key": "ctrl+n",
+    "key": "ctrl+n"
   },
   {
     "command": "workbench.action.files.newUntitledFile",
-    "key": "ctrl+alt+n",
+    "key": "ctrl+alt+n"
   },
   {
     "command": "-workbench.action.terminal.new",
     "key": "ctrl+shift+`",
-    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   },
   {
     "command": "workbench.action.createTerminalEditor",
-    "key": "ctrl+`",
+    "key": "ctrl+`"
   },
   {
     "command": "editor.action.blockComment",
     "key": "ctrl+shift+/",
-    "when": "editorTextFocus && !editorReadonly",
+    "when": "editorTextFocus && !editorReadonly"
   },
   {
     "command": "-editor.action.blockComment",
     "key": "shift+alt+a",
-    "when": "editorTextFocus && !editorReadonly",
+    "when": "editorTextFocus && !editorReadonly"
   },
   {
     "command": "workbench.action.quickTextSearch",
-    "key": "ctrl+alt+f",
+    "key": "ctrl+alt+f"
   },
   {
     "command": "terminal.focus",
-    "key": "ctrl+shift+`",
+    "key": "ctrl+shift+`"
   },
   {
     "command": "workbench.action.files.saveWithoutFormatting",
-    "key": "ctrl+alt+s",
+    "key": "ctrl+alt+s"
   },
   {
     "command": "-workbench.action.files.saveWithoutFormatting",
-    "key": "ctrl+k s",
+    "key": "ctrl+k s"
   },
   {
     "command": "git-graph.view",
-    "key": "ctrl+k g",
+    "key": "ctrl+k g"
   },
   {
     "command": "cursorUndo",
     "key": "alt+left",
-    "when": "textInputFocus",
+    "when": "textInputFocus"
   },
   {
     "command": "-cursorUndo",
     "key": "ctrl+u",
-    "when": "textInputFocus",
+    "when": "textInputFocus"
   },
   {
     "command": "cursorRedo",
-    "key": "alt+right",
+    "key": "alt+right"
   },
   {
     "command": "editor.debug.action.runToCursor",
-    "key": "ctrl+shift+alt+f5",
+    "key": "ctrl+shift+alt+f5"
   },
   {
     "command": "editor.action.focusNextCursor",
-    "key": "shift+alt+pagedown",
+    "key": "shift+alt+pagedown"
   },
   {
     "command": "editor.action.focusPreviousCursor",
-    "key": "shift+alt+pageup",
+    "key": "shift+alt+pageup"
   },
   {
     "command": "git.push",
     "key": "ctrl+k ctrl+p",
-    "when": "!operationInProgress",
+    "when": "!operationInProgress"
   },
   {
     "command": "-workbench.action.showAllEditors",
-    "key": "ctrl+k ctrl+p",
+    "key": "ctrl+k ctrl+p"
   },
   {
     "key": "-",
     "command": "editor.action.decreaseHoverVerbosityLevel",
-    "when": "editorHoverVisible",
+    "when": "editorHoverVisible"
   },
   {
     "key": "=",
     "command": "editor.action.increaseHoverVerbosityLevel",
-    "when": "editorHoverVisible",
+    "when": "editorHoverVisible"
   },
   {
     "key": "ctrl+shift+`",
-    "command": "workbench.action.terminal.toggleTerminal",
+    "command": "workbench.action.terminal.toggleTerminal"
   },
   {
     "key": "ctrl+`",
     "command": "-workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active",
+    "when": "terminal.active"
   },
   {
     "key": "ctrl+k ctrl+a",
     "command": "git.commitAmend",
-    "when": "!operationInProgress",
+    "when": "!operationInProgress"
   },
   {
     "key": "ctrl+k d",
-    "command": "-workbench.files.action.compareWithSaved",
+    "command": "-workbench.files.action.compareWithSaved"
   },
   {
     "key": "ctrl+b",
     "command": "-markdown.extension.editing.toggleBold",
-    "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^markdown$|^rmd$|^quarto$/",
+    "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
   },
   {
     "key": "ctrl+shift+k",
     "command": "-mermaidChart.showCompletions",
-    "when": "editorLangId =~ /^mermaid/",
+    "when": "editorLangId =~ /^mermaid/"
   },
   {
     "key": "f7",
     "command": "-cmake.build",
-    "when": "cmake:enableFullFeatureSet && !cmake:hideBuildCommand",
+    "when": "cmake:enableFullFeatureSet && !cmake:hideBuildCommand"
   },
   {
     "key": "shift+f7",
     "command": "-cmake.buildWithTarget",
-    "when": "cmake:enableFullFeatureSet && !cmake:hideBuildCommand",
+    "when": "cmake:enableFullFeatureSet && !cmake:hideBuildCommand"
   },
   {
     "key": "shift+f6",
-    "command": "workbench.action.tasks.runTask",
+    "command": "workbench.action.tasks.runTask"
   },
   {
     "key": "f6",
-    "command": "workbench.action.tasks.test",
+    "command": "workbench.action.tasks.test"
   },
   {
     "key": "ctrl+k ctrl+a",
     "command": "-keybindings.editor.addKeybinding",
-    "when": "inKeybindings && keybindingFocus",
+    "when": "inKeybindings && keybindingFocus"
   },
   {
     "key": "ctrl+k p",
-    "command": "-workbench.action.files.copyPathOfActiveFile",
+    "command": "-workbench.action.files.copyPathOfActiveFile"
   },
   {
     "key": "ctrl+k p",
     "command": "git.stashPop",
-    "when": "!operationInProgress",
+    "when": "!operationInProgress"
   },
   {
     "key": "ctrl+k s",
     "command": "git.stashStaged",
-    "when": "gitVersion2.35 && !operationInProgress",
+    "when": "gitVersion2.35 && !operationInProgress"
   },
   {
     "key": "ctrl+k a",
     "command": "git.stashApply",
-    "when": "!operationInProgress",
+    "when": "!operationInProgress"
   },
   {
     "key": "ctrl+k ctrl+c",
@@ -247,4 +247,12 @@
     "key": "ctrl+k c",
     "command": "workbench.files.action.compareWithSaved"
   },
+  {
+    "key": "ctrl+shift+c",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus",
+    "args": {
+      "name": "Cloze"
+    }
+  }
 ]

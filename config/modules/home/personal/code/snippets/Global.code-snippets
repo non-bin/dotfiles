@@ -1,0 +1,8 @@
+{
+	"Cloze": {
+		"prefix": "c",
+		"body": [
+			"{{c${1:1}::${TM_SELECTED_TEXT}}}"
+		],
+	}
+}

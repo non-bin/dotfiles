@@ -376,4 +376,7 @@
   "window.controlsStyle": "hidden",
   "window.enableMenuBarMnemonics": false,
   "window.menuBarVisibility": "hidden",
+  "[tsv]": {
+    "editor.insertSpaces": false
+  },
 }
