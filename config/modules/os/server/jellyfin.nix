@@ -31,6 +31,7 @@
           type = "jellyfin";
           url = "http://localhost:8096";
           key = "{{HOMEPAGE_VAR_JELLYFIN_APIKEY}}";
+          version = 2;
           enableBlocks = true;
           enableNowPlaying = true;
           enableUser = true;
