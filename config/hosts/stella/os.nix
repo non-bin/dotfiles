@@ -41,6 +41,7 @@
 
   # cloudflared tunnel create <tunnel-name>
   age.secrets.cloudflared.rekeyFile = ./cloudflared.age;
+  systemd.services."cloudflared-tunnel-b5fdc338-3d9f-42dc-9ba6-244a1ea89409".serviceConfig.RestartSec = "5";
   services = {
     cloudflared = {
       enable = true;
