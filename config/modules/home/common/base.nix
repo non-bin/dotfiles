@@ -19,6 +19,7 @@
     file
     patchelf
     nh
+    tree
   ];
 
   # Home Manager needs a bit of information about you and the
