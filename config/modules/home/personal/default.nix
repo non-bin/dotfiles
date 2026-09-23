@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 {
@@ -48,6 +46,8 @@
     discord
 
     piper
+
+    beeper
   ];
 
   programs = {

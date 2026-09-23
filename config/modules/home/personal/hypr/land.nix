@@ -279,6 +279,7 @@
                 hl.exec_cmd("~/dotfiles/scripts/reload-hyprpaper.sh -w")
                 hl.exec_cmd("spotify", {workspace = "1 silent"})
                 hl.exec_cmd("firefox", {workspace = "2 silent"})
+                hl.exec_cmd("beeper &")
               end
             '')
           ];
