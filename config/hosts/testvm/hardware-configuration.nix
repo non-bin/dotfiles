@@ -22,13 +22,19 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/1105c185-b5e7-481d-a002-847460a300a9";
     fsType = "btrfs";
-    options = [ "subvol=NixOS" ];
+    options = [
+      "subvol=NixOS"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/1105c185-b5e7-481d-a002-847460a300a9";
     fsType = "btrfs";
-    options = [ "subvol=home" ];
+    options = [
+      "subvol=home"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/home/alice/dotfiles" = {
@@ -42,6 +48,7 @@
     options = [
       "noatime"
       "subvol=nix"
+      "compress=zstd"
     ];
   };
 

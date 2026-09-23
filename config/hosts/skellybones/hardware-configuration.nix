@@ -26,13 +26,19 @@
   fileSystems."/" = {
     device = "/dev/vg0/btr_pool";
     fsType = "btrfs";
-    options = [ "subvol=NixOS" ];
+    options = [
+      "subvol=NixOS"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/home" = {
     device = "/dev/vg0/btr_pool";
     fsType = "btrfs";
-    options = [ "subvol=home" ];
+    options = [
+      "subvol=home"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/nix" = {
@@ -41,6 +47,7 @@
     options = [
       "noatime"
       "subvol=nix"
+      "compress=zstd"
     ];
   };
 

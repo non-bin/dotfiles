@@ -40,13 +40,19 @@
   fileSystems."/" = {
     device = "/dev/mapper/fast-cache";
     fsType = "btrfs";
-    options = [ "subvol=root" ];
+    options = [
+      "subvol=root"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/home" = {
     device = "/dev/mapper/fast-cache";
     fsType = "btrfs";
-    options = [ "subvol=home" ];
+    options = [
+      "subvol=home"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/nix" = {
@@ -55,31 +61,44 @@
     options = [
       "noatime"
       "subvol=nix"
+      "compress=zstd"
     ];
   };
 
   fileSystems."/mnt/backups" = {
     device = "/dev/mapper/slow-vault";
     fsType = "btrfs";
-    options = [ "subvol=backups" ];
+    options = [
+      "subvol=backups"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/mnt/media" = {
     device = "/dev/mapper/slow-vault";
     fsType = "btrfs";
-    options = [ "subvol=media" ];
+    options = [
+      "subvol=media"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/mnt/photos" = {
     device = "/dev/mapper/slow-vault";
     fsType = "btrfs";
-    options = [ "subvol=photos" ];
+    options = [
+      "subvol=photos"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/mnt/data" = {
     device = "/dev/mapper/slow-vault";
     fsType = "btrfs";
-    options = [ "subvol=data" ];
+    options = [
+      "subvol=data"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/boot" = {
