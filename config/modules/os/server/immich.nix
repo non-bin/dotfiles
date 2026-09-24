@@ -5,13 +5,17 @@
 
   systemd.tmpfiles.rules = [ "f /mnt/appdata/immich/.env 0700 root root" ];
 
+  # Backups
+  # /mnt/photos/upload subvolume
+  # /mnt/photos/backups database dumps
+
   services = {
     immich = {
       enable = true;
       host = "0.0.0.0";
       port = 2283;
       openFirewall = true;
-      mediaLocation = "/mnt/photos/library";
+      mediaLocation = "/mnt/photos";
       settings.server.externalDomain = "https://immich.jacka.net.au";
     };
     homepage-dashboard = {

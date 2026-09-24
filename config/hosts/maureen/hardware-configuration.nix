@@ -83,7 +83,7 @@
     ];
   };
 
-  fileSystems."/mnt/photos" = {
+  fileSystems."/mnt/photos/upload" = { # For immich
     device = "/dev/mapper/slow-vault";
     fsType = "btrfs";
     options = [
