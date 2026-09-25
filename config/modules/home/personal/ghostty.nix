@@ -6,6 +6,7 @@
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;
+    enableBashIntegration = true;
     systemd.enable = true;
 
     settings = {

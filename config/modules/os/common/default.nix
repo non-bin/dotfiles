@@ -85,6 +85,7 @@ in
   environment.pathsToLink = [ "/share/zsh" ]; # System package zsh completions
 
   programs = {
+    bash.enable = true;
     zsh.enable = true;
     appimage = {
       enable = true;

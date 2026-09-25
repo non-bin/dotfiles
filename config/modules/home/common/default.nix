@@ -107,6 +107,7 @@
       # TheFuck replacement https://github.com/iffse/pay-respects
       enable = true;
       enableZshIntegration = true;
+      enableBashIntegration = true;
     };
   };
 }
