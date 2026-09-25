@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./btrbk.nix ];
+  imports = [ ];
 }

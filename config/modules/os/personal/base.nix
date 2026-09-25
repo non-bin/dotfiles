@@ -4,10 +4,6 @@
 }:
 
 {
-  imports = [
-    ./btrbk.nix
-  ];
-
   programs.nix-ld.enable = true; # https://nix.dev/guides/faq#how-to-run-non-nix-executables
   programs.nix-ld.libraries = with pkgs; [
     # https://github.com/cloudflare/workerd/discussions/1515#discussioncomment-10029667
