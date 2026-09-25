@@ -224,7 +224,7 @@
   "svelte.enable-ts-plugin": true,
   "telemetry.telemetryLevel": "error",
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.enableVisualBell": true,
