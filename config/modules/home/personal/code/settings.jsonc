@@ -378,4 +378,5 @@
   "[tsv]": {
     "editor.insertSpaces": false
   },
+  "security.workspace.trust.enabled": false,
 }
