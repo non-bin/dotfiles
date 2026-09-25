@@ -10,12 +10,9 @@
     };
 
     nix-on-droid = {
-      url = "github:non-bin/nix-on-droid/testing";
-      # url = "github:non-bin/nix-on-droid/unstable";
-      # url = "github:nix-community/nix-on-droid/testing";
-      # url = "github:nix-community/nix-on-droid/prerelease-25.11";
-      # url = "github:nix-community/nix-on-droid/master";
+      url = "github:nix-community/nix-on-droid/master";
 
+      inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
