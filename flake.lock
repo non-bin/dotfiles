@@ -570,11 +570,11 @@
         "nmt": "nmt"
       },
       "locked": {
-        "lastModified": 1705252799,
-        "narHash": "sha256-HgSTREh7VoXjGgNDwKQUYcYo13rPkltW7IitHrTPA5c=",
+        "lastModified": 1783080654,
+        "narHash": "sha256-D1fYuLjg+JY+XCv2+F5zrceYjdGYViAqpxPmw2M6Sag=",
         "owner": "Gerschtli",
         "repo": "nix-formatter-pack",
-        "rev": "2de39dedd79aab14c01b9e2934842051a160ffa5",
+        "rev": "9ed243d4590bfeea0e734f58056bc4d2c8e35023",
         "type": "github"
       },
       "original": {
@@ -597,16 +597,15 @@
         "nmd": "nmd"
       },
       "locked": {
-        "lastModified": 1787352026,
-        "narHash": "sha256-2MKUKRNV+5qs3nbQDmz7L6KRHSEHDy/lZjfIAYMZSOE=",
-        "owner": "nix-community",
+        "lastModified": 1790325919,
+        "narHash": "sha256-ylNE15jonbXNVDWK8RFYLqYW0thxHnDCyxMgXu7q5S4=",
+        "owner": "non-bin",
         "repo": "nix-on-droid",
-        "rev": "df611d5358360092b1d2e7e756f94b23843bd9d6",
+        "rev": "fe1cb3e935607ea4926a34db95fa51de09ffa1f1",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
-        "ref": "master",
+        "owner": "non-bin",
         "repo": "nix-on-droid",
         "type": "github"
       }
@@ -766,11 +765,11 @@
         "scss-reset": "scss-reset"
       },
       "locked": {
-        "lastModified": 1705050560,
-        "narHash": "sha256-x3zzcdvhJpodsmdjqB4t5mkVW22V3wqHLOun0KRBzUI=",
+        "lastModified": 1757277932,
+        "narHash": "sha256-eW2AzE4HeJXHKxSGDcp35/VQyxeESBt4p9i8QIFrSE8=",
         "owner": "~rycee",
         "repo": "nmd",
-        "rev": "66d9334933119c36f91a78d565c152a4fdc8d3d3",
+        "rev": "055e814ac35379dece164a8413d336b57c5d2e0c",
         "type": "sourcehut"
       },
       "original": {
