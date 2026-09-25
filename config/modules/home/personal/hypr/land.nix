@@ -39,11 +39,11 @@
             output = ""; # Fallback
             mode = "preferred";
             position = "auto";
-            scale = 1;
-            # mirror = "eDP-1";
+            scale = "auto";
           }
-          # hyprctl eval 'hl.monitor({output = "", mode = "preferred", position = "auto", scale = 1, mirror = "eDP-1"})'
-          # hyprctl eval 'hl.monitor({output = "", mode = "preferred", position = "auto", scale = 1})'
+          # hyprctl eval 'hl.monitor({output = "", mode = "preferred", position = "auto", scale = "auto", mirror = "eDP-1"})'
+          # hyprctl eval 'hl.monitor({output = "", mode = "preferred", position = "auto", scale = "auto"})'
+          # hyprctl eval 'hl.monitor({output = "eDP-1", disabled = true})'
         ];
 
         config = {
@@ -263,6 +263,7 @@
           # Program specific
           {
             match = {
+              # class = "^(libreoffice.*)$";
               class = ".*";
             };
             suppress_event = "maximize";
