@@ -6,7 +6,10 @@
 }:
 
 {
-  boot.kernelPackages = pkgs.linuxPackages_latest; # Sets the kernel version https://nixos.wiki/wiki/Linux_kernel
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest; # Sets the kernel version https://nixos.wiki/wiki/Linux_kernel
+    tmp.cleanOnBoot = true;
+  };
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For nixd
   nixpkgs.config = {
@@ -32,6 +35,9 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
     ];
+
+    connect-timeout = 5;
+    builders-use-substitutes = true;
   };
 
   time.timeZone = "Australia/Melbourne";
