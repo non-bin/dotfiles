@@ -17,12 +17,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    hyprland.url = "github:hyprwm/Hyprland/main";
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    hyprland = {
+      url = "github:hyprwm/Hyprland/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    agenix.url = "github:ryantm/agenix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
       inputs.nixpkgs.follows = "nixpkgs";
