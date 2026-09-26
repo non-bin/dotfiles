@@ -42,13 +42,11 @@
     };
   };
 
-  nix = {
-    extraOptions = [
-      "experimental-features = nix-command flakes"
-      "connect-timeout = 5"
-      "builders-use-substitutes = true"
-    ];
-  };
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+    connect-timeout = 5
+    builders-use-substitutes = true
+  '';
 
   system.stateVersion = user.stateVersion;
 }
