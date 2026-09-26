@@ -149,7 +149,7 @@
 
       nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
         extraSpecialArgs = { inherit user; };
-        pkgs = import nixpkgs { };
+        pkgs = import nixpkgs { config.allowUnfree = true; };
         modules = [
           ./config/hosts/nix-on-droid/os.nix
           {
