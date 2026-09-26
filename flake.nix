@@ -103,10 +103,12 @@
                 agenix-rekey.nixosModules.default
                 home-manager.nixosModules.home-manager
                 {
-                  home-manager.extraSpecialArgs = specialArgs;
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.users.${hostConfig.user.name} = import ./config/hosts/${hostname}/home.nix;
+                  home-manager = {
+                    extraSpecialArgs = specialArgs;
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    users.${hostConfig.user.name} = import ./config/hosts/${hostname}/home.nix;
+                  };
                 }
               ]
               ++ hostConfig.extraModules;
@@ -147,11 +149,20 @@
 
       nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
         extraSpecialArgs = { inherit user; };
-        pkgs = import nixpkgs {
-          # stdenv.hostPlatform.system = "aarch64-linux";
-          # currentSystem = "aarch64-linux";
-        };
-        modules = [ ./config/hosts/nix-on-droid/os.nix ];
+        pkgs = import nixpkgs { };
+        modules = [
+          ./config/hosts/nix-on-droid/os.nix
+          {
+            home-manager = {
+              extraSpecialArgs = {
+                inherit inputs user;
+              };
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              config = import ./config/hosts/nix-on-droid/home.nix;
+            };
+          }
+        ];
       };
 
       inherit inputs; # Useful for nix repl
