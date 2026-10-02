@@ -5,7 +5,7 @@
 
   systemd.tmpfiles.rules = [ "f /mnt/appdata/immich/.env 0700 root root" ];
 
-  # Backups
+  # TODO: Backups
   # /mnt/photos/upload subvolume
   # /mnt/photos/backups database dumps
 

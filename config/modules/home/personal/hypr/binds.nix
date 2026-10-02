@@ -206,7 +206,7 @@
         (genBindAttrs "META + ALT + O" "hl.dsp.window.move({workspace = '+1', follow = false})")
 
         (genBindAttrs "META + 0" "hl.dsp.workspace.toggle_special('special')")
-        (genBindAttrs "META + SHIFT + SEMICOLON" "hl.dsp.layout('rotatesplit', 90)")
+        (genBindAttrs "META + SHIFT + SEMICOLON" "hl.dsp.layout('rotatesplit 90')")
         (genBindAttrs "META + ALT + SEMICOLON" "hl.dsp.layout('movetoroot')")
       ]
       ++ (builtins.concatLists (

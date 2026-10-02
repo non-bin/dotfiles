@@ -27,7 +27,7 @@
     freetype # Font files
     libgsf # .odf files
     evince # .pdf files
-    # f3d # 3D files, includ1ing glTF, stl, step, ply, obj, fbx. # FIXME https://github.com/NixOS/nixpkgs/issues/540609
+    f3d # 3D files, includ1ing glTF, stl, step, ply, obj, fbx
 
     slurp # Region selector
     grim # Screenshot taker
@@ -47,8 +47,8 @@
 
     aspell
     aspellDicts.en
-    aspellDicts.en-computers
-    aspellDicts.en-science
+    # aspellDicts.en-computers # FIXME
+    # aspellDicts.en-science
 
     pavucontrol # Audio settings
   ];

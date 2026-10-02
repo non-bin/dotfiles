@@ -6,6 +6,8 @@
 {
   imports = [ ];
 
+  # TODO: Backups
+
   systemd.tmpfiles.rules = [ "f /mnt/appdata/jellyfin/.env 0700 root root" ];
 
   systemd.services.jellyfin.path = with pkgs; [

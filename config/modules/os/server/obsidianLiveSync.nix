@@ -4,6 +4,8 @@
 }:
 
 {
+  # TODO: Backups
+
   age.secrets.obsidianLiveSync = {
     rekeyFile = ./obsidianLiveSync.age;
     owner = "couchdb";

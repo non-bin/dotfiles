@@ -11,12 +11,12 @@
     tmp.cleanOnBoot = true;
   };
 
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For nixd
   nixpkgs.config = {
     allowUnfree = true;
   };
 
   nix.settings = {
+    nix-path = [ "nixpkgs=${inputs.nixpkgs}" ]; # For nixd
     trusted-users = [ "@wheel" ];
     experimental-features = [
       "nix-command"
