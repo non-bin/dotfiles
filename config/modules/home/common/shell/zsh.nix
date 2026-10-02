@@ -68,6 +68,7 @@
       nd = "nix develop ";
       nr = "nix repl ";
       nf = "nix fmt ";
+      nu = "nix flake update ";
 
       get = "nsh -p ";
       search = "nix-search ";
