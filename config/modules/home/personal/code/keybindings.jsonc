@@ -71,7 +71,7 @@
   },
   {
     "command": "workbench.action.createTerminalEditor",
-    "key": "ctrl+`",
+    "key": "ctrl+shift+`",
   },
   {
     "command": "editor.action.blockComment",
@@ -89,7 +89,7 @@
   },
   {
     "command": "terminal.focus",
-    "key": "ctrl+shift+`",
+    "key": "ctrl+`",
   },
   {
     "command": "workbench.action.files.saveWithoutFormatting",
@@ -149,7 +149,7 @@
     "when": "editorHoverVisible",
   },
   {
-    "key": "ctrl+shift+`",
+    "key": "ctrl+`",
     "command": "workbench.action.terminal.toggleTerminal",
   },
   {

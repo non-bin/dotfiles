@@ -335,7 +335,6 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.editor.editorActionsLocation": "titleBar",
-  "workbench.activityBar.location": "hidden",
   "oaicopilot.baseUrl": "http://m.i.jacka.net.au:8080",
   "oaicopilot.delay": 0,
   "oaicopilot.readFileLines": 0,
@@ -357,7 +356,7 @@
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false,
+    "scminput": false
   },
   "chat.editing.confirmEditRequestRemoval": false,
   "terminal.integrated.gpuAcceleration": "off",
@@ -374,9 +373,20 @@
   "window.commandCenter": false,
   "window.controlsStyle": "hidden",
   "window.enableMenuBarMnemonics": false,
-  "window.menuBarVisibility": "hidden",
   "[tsv]": {
     "editor.insertSpaces": false
   },
   "security.workspace.trust.enabled": false,
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "errorLens.excludePatterns": [
+    "**/*.rs"
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "workbench.editor.useModal": "off",
+  "workbench.activityBar.location": "hidden",
+  "window.density.layout": "compact"
 }
