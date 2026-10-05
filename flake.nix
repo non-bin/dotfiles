@@ -84,7 +84,6 @@
             let
               hostConfig = nixpkgs.lib.recursiveUpdate {
                 extraModules = [ ];
-                system = "x86_64-linux";
                 inherit user;
               } config.${hostname};
 
@@ -95,7 +94,6 @@
             in
             nixpkgs.lib.nixosSystem {
               inherit specialArgs;
-              system = hostConfig.system;
               modules = [
                 ./config/hosts/${hostname}/os.nix
                 agenix.nixosModules.default
