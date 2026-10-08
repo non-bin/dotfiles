@@ -17,7 +17,7 @@
     ../../modules/os/server/servarr/radarr.nix
     ../../modules/os/server/servarr/lidarr.nix
     ../../modules/os/server/obsidianLiveSync.nix
-    ../../modules/os/server/remoteBuilder.nix
+    ../../modules/os/server/buildCache.nix
 
     # ../../modules/os/server/minecraft.nix
   ];

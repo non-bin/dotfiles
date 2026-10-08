@@ -1,5 +1,4 @@
 {
-  config,
   user,
   ...
 }:
@@ -26,12 +25,6 @@
       max-jobs = "auto";
       cores = 0;
     };
-  };
-
-  systemd.services.nix-daemon.serviceConfig = {
-    MemoryAccounting = true;
-    MemoryMax = "90%";
-    OOMScoreAdjust = 500;
   };
 
   services = {

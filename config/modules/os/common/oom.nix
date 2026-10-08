@@ -19,6 +19,8 @@
       # If a kernel-level OOM event does occur anyway,
       # strongly prefer killing nix-daemon child processes
       OOMScoreAdjust = 1000;
+      MemoryAccounting = true;
+      MemoryMax = "90%";
     };
   };
 
