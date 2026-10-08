@@ -39,6 +39,7 @@
     ];
 
     connect-timeout = 5;
+    download-attempts = 1;
     builders-use-substitutes = true;
   };
 

@@ -1,4 +1,5 @@
 {
+  pkgs,
   user,
   ...
 }:
@@ -30,9 +31,12 @@
   services = {
     nix-serve = {
       enable = true;
+      package = pkgs.nix-serve-ng;
       port = 5000;
       openFirewall = true;
       secretKeyFile = "/var/secrets/cache-private-key.pem";
+      extraParams = "--priority 10"; # More preferred
+
     };
   };
 }

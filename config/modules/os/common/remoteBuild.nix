@@ -6,7 +6,6 @@
 {
   nix = {
     distributedBuilds = true;
-    settings.builders-use-substitutes = true;
 
     buildMachines = [
       {
