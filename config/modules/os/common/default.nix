@@ -91,6 +91,11 @@ in
       enable = true;
       binfmt = true; # Run appimages directly
     };
+
+    ssh.knownHosts = lib.mapAttrs (name: hostNames: {
+      inherit hostNames;
+      publicKey = user.sshKeys.${name};
+    }) user.hosts;
   };
 
   fonts.packages = [ pkgs.nerd-fonts.caskaydia-cove ];
