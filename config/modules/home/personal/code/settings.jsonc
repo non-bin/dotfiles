@@ -23,7 +23,10 @@
       "color": "#3498DB",
       "italic": false,
       "strikethrough": false,
-      "tag": ["?", "todo"],
+      "tag": [
+        "?",
+        "todo"
+      ],
       "underline": false,
     },
     {
@@ -41,7 +44,12 @@
       "color": "#FF2D00",
       "italic": false,
       "strikethrough": false,
-      "tag": ["!", "urgent", "broken", "xxx"],
+      "tag": [
+        "!",
+        "urgent",
+        "broken",
+        "xxx"
+      ],
       "underline": false,
     },
     {
@@ -191,7 +199,9 @@
     "rgba(64,64,255,0.07)",
     "rgba(255,64,255,0.07)",
   ],
-  "indentRainbow.ignoreErrorLanguages": ["*"],
+  "indentRainbow.ignoreErrorLanguages": [
+    "*"
+  ],
   "javascript.updateImportsOnFileMove.enabled": "always",
   "keyboard.dispatch": "keyCode",
   "markdownlint.config": {
@@ -252,7 +262,10 @@
   "terminal.integrated.profiles.windows": {
     "Command Prompt": {
       "icon": "terminal-cmd",
-      "path": ["${env:windir}\\Sysnative\\cmd.exe", "${env:windir}\\System32\\cmd.exe"],
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
     },
     "Git Bash": {
       "source": "Git Bash",
@@ -300,7 +313,12 @@
   "git-graph.repository.commits.initialLoad": 50,
   "git-graph.retainContextWhenHidden": false,
   "git.blame.statusBarItem.enabled": true,
-  "shfmt.executableArgs": ["-s", "-i", "2", "-ci"],
+  "shfmt.executableArgs": [
+    "-s",
+    "-i",
+    "2",
+    "-ci"
+  ],
   "search.exclude": {
     "**/*.lock": true,
   },
@@ -308,7 +326,9 @@
     {
       "command": "treefmt -vv --tree-root $(dirname ${file}) --stdin ${file}",
       // "command": "cat $(prettier --find-config-path ${file}) > /tmp/asd",
-      "languages": ["*"],
+      "languages": [
+        "*"
+      ],
     },
   ],
   "editor.defaultFormatter": "jkillian.custom-local-formatters",
@@ -388,5 +408,38 @@
   },
   "workbench.editor.useModal": "off",
   "workbench.activityBar.location": "hidden",
-  "window.density.layout": "compact"
+  "window.density.layout": "compact",
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "evenBetterToml.formatter.allowedBlankLines": 1,
+  "evenBetterToml.formatter.columnWidth": 120,
+  "evenBetterToml.schema.links": true,
+  "errorLens.enabled": true,
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "info"
+  ],
+  "betterAlign.surroundSpace": {
+    "colon": [
+      0,
+      1
+    ],
+    "assignment": [
+      1,
+      1
+    ],
+    "arrow": [
+      1,
+      1
+    ],
+    "comment": 1,
+    "from": [
+      1,
+      1
+    ]
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }
