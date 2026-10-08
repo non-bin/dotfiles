@@ -35,10 +35,10 @@
       la = "ls -lA";
       l = "ls -C";
 
-      r = "reload.sh ";
+      r = "reload.sh";
       grep = "grep --color=auto";
-      chrome = "get ungoogled-chromium --run chromium ";
-      g = "git ";
+      chrome = "get ungoogled-chromium --run chromium";
+      g = "git";
       mkdir = "mkdir -p";
       rm = "rm -r";
 
@@ -58,20 +58,20 @@
       rcp = ''rsync -e /dev/null -b --backup-dir="/tmp/rsync-$USERNAME"'';
       rmv = "cp --remove-source-files";
       dfh = "df -xtmpfs -xefivarfs -xdevtmpfs -hT";
-      duh = "du -h --summarize ";
-      z = "zellij ";
-      za = "z a ";
+      duh = "du -h --summarize";
+      z = "zellij";
+      za = "z a";
 
-      ns = "nix-shell --log-format bar-with-logs --pure ";
-      nsh = "nix-shell --log-format bar-with-logs --run zsh ";
+      ns = "nix-shell --log-format bar-with-logs --pure";
+      nsh = "nix-shell --log-format bar-with-logs --run zsh";
 
-      nd = "nix develop ";
-      nr = "nix repl ";
-      nf = "nix fmt ";
-      nu = "nix flake update ";
+      nd = "nix develop";
+      nr = "nix repl";
+      nf = "nix fmt";
+      nu = "nix flake update";
 
-      get = "nsh -p ";
-      search = "nix-search ";
+      get = "nsh -p";
+      search = "nix-search";
     };
 
     initContent = lib.strings.concatLines [

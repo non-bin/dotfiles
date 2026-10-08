@@ -98,6 +98,8 @@
           ps = "push";
           rs = "reset";
           rh = "reset --hard HEAD";
+          b = "bisect bad";
+          g = "bisect good";
         };
       };
     };
