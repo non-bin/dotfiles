@@ -47,6 +47,7 @@
     connect-timeout = 5
     builders-use-substitutes = true
   '';
+    # builders = ssh://mi.jacka.net.au x86_64-linux - 2 1 kvm,big-parallel # TODO
 
   system.stateVersion = user.stateVersion;
 }
