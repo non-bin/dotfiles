@@ -9,5 +9,5 @@
     ../../modules/home/common
   ];
 
-  home.packages = with pkgs; [ libreoffice-fresh ];
+  home.packages = with pkgs; [ libreoffice-stable ];
 }
