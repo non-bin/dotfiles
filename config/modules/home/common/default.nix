@@ -17,10 +17,6 @@
   };
 
   home.packages = with pkgs; [
-    (btop.override {
-      cudaSupport = osConfig.hardware.nvidia.enable;
-      rocmSupport = osConfig.hardware.amdgpu.enable;
-    })
     nix-search
     hwatch # better watch command
   ];
@@ -105,6 +101,21 @@
           b = "bisect bad";
           g = "bisect good";
         };
+      };
+    };
+
+    btop = {
+      enable = true;
+      package = (
+        pkgs.btop.override {
+          cudaSupport = osConfig.hardware.nvidia.enable;
+          rocmSupport = osConfig.hardware.amdgpu.enable;
+        }
+      );
+      settings = {
+        theme_background = false;
+        presets = "";
+        clock_format = "/host %X";
       };
     };
 
