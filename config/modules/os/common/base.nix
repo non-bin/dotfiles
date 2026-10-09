@@ -6,10 +6,14 @@
 }:
 
 {
+  imports = [ ./customOptions.nix ];
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest; # Sets the kernel version https://nixos.wiki/wiki/Linux_kernel
     tmp.cleanOnBoot = true;
   };
+
+  hardware.enableAllFirmware = true;
 
   nixpkgs.config = {
     allowUnfree = true;

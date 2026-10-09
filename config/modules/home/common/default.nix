@@ -1,6 +1,7 @@
 {
   pkgs,
   user,
+  osConfig,
   ...
 }:
 
@@ -16,7 +17,10 @@
   };
 
   home.packages = with pkgs; [
-    btop
+    (btop.override {
+      cudaSupport = osConfig.hardware.nvidia.enable;
+      rocmSupport = osConfig.hardware.amdgpu.enable;
+    })
     nix-search
     hwatch # better watch command
   ];

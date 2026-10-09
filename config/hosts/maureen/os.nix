@@ -1,11 +1,17 @@
 {
   config,
+  inputs,
   user,
   ...
 }:
 
 {
   imports = [
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+    "${inputs.nixos-hardware}/common/gpu/nvidia/turing"
+
     ./hardware-configuration.nix
     ../../modules/os/server.nix
 
@@ -22,6 +28,8 @@
     # ../../modules/os/server/minecraft.nix
   ];
 
+  hardware.nvidia.enable = true;
+
   # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
   age.rekey.hostPubkey = user.sshKeys.maureen;
 
@@ -33,9 +41,6 @@
       prefixLength = 24;
     }
   ];
-
-  hardware.nvidia.open = true;
-  services.xserver.videoDrivers = [ "nvidia" ]; # Even on wayland
 
   # cloudflared tunnel create <tunnel-name>
   age.secrets.cloudflared.rekeyFile = ./cloudflared.age;

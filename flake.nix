@@ -126,20 +126,16 @@
         )
           {
             maureen = { };
-            skellybones = {
-              extraModules = [ nixos-hardware.nixosModules.framework-16-7040-amd ];
-            };
+            skellybones = { };
             stella = { };
-            sylvia = {
-              extraModules = [ nixos-hardware.nixosModules.intel-nuc-8i7beh ];
-            };
             pandora = {
               user = {
                 fullName = "Kieran Jacka";
                 name = "kieran";
               };
             };
-            testvm = { };
+            # sylvia = { };
+            # testvm = { };
           };
 
       homeConfigurations = {

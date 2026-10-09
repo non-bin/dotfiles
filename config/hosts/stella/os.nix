@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   user,
   ...
@@ -7,11 +8,14 @@
 
 {
   imports = [
+    "${inputs.nixos-hardware}/common/cpu/intel/haswell"
     ./hardware-configuration.nix
     ../../modules/os/server.nix
 
     ../../modules/os/server/samba.nix
   ];
+
+  hardware.intelgpu.enable = true;
 
   # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
   age.rekey.hostPubkey = user.sshKeys.stella;

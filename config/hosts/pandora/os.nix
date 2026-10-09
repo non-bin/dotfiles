@@ -6,6 +6,8 @@
 
 {
   imports = [
+    # "${inputs.nixos-hardware}/common/cpu/intel/haswell" # TODO
+
     ./hardware-configuration.nix
     ../../modules/os/personal/base.nix
     ../../modules/os/common

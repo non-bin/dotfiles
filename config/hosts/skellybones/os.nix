@@ -1,11 +1,12 @@
 {
-  pkgs,
+  inputs,
   user,
   ...
 }:
 
 {
   imports = [
+    inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     ./hardware-configuration.nix
     ../../modules/os/personal.nix
   ];
@@ -21,12 +22,4 @@
       prefixLength = 24;
     }
   ];
-
-  services.fprintd.enable = true;
-
-  # Finger print reader
-  systemd.services.fprintd = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.Type = "simple";
-  };
 }
