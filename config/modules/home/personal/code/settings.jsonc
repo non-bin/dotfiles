@@ -67,7 +67,9 @@
   "cSpell.language": "en,en-GB",
   "cSpell.userWords": [
     "btrfs",
+    "Endstops",
     "GCODE",
+    "hotend",
     "Jacka",
     "mancala",
     "mancalas",
@@ -75,7 +77,7 @@
     "Powercon",
     "Powercons",
     "substituters",
-    "unnesacary",
+    "unnesacary"
   ],
   "debug.closeReadonlyTabsOnEnd": true,
   "debug.inlineValues": "on",
@@ -404,7 +406,7 @@
     "**/*.rs"
   ],
   "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "jkillian.custom-local-formatters"
   },
   "workbench.editor.useModal": "off",
   "workbench.activityBar.location": "hidden",
@@ -441,5 +443,14 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  },
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "jkillian.custom-local-formatters"
+  },
+  "Lua.workspace.library": [
+    "/nix/store/19304sb6wd20d1lcd3kcv1fk7dqm129b-hyprland-0.56.0+date=2026-10-08_5e04ae1/share/hypr/stubs/"
+  ]
 }
