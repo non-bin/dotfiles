@@ -6,7 +6,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/os/server.nix
+    ../../modules/os/server
   ];
 
   networking.hostName = "sylvia";

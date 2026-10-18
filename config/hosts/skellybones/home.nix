@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../modules/home/personal.nix
+    ../../modules/home/personal
 
     ../../modules/home/personal/minecraft.nix
     ../../modules/home/personal/ksp.nix

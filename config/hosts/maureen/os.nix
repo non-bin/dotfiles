@@ -13,7 +13,7 @@
     "${inputs.nixos-hardware}/common/gpu/nvidia/turing"
 
     ./hardware-configuration.nix
-    ../../modules/os/server.nix
+    ../../modules/os/server
 
     ../../modules/os/server/samba.nix
     ../../modules/os/server/homepage.nix

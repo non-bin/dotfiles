@@ -10,7 +10,7 @@
   imports = [
     "${inputs.nixos-hardware}/common/cpu/intel/haswell"
     ./hardware-configuration.nix
-    ../../modules/os/server.nix
+    ../../modules/os/server
 
     ../../modules/os/server/samba.nix
   ];

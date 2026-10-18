@@ -10,7 +10,7 @@
     # Pick one
     # ../../modules/os/common/base.nix
     # ../../modules/os/common
-    ../../modules/os/server.nix
+    ../../modules/os/server
 
     # ../../modules/os/server/samba.nix
     # ../../modules/os/server/homepage.nix

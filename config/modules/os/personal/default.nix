@@ -6,6 +6,7 @@
 
 {
   imports = [
+    ../common
     ./base.nix
     ./regreet.nix
     ./thunar.nix

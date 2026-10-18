@@ -8,7 +8,7 @@
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     ./hardware-configuration.nix
-    ../../modules/os/personal.nix
+    ../../modules/os/personal
   ];
 
   # Obtain this using `ssh-keyscan` or by looking it up in your ~/.ssh/known_hosts
