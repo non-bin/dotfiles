@@ -240,8 +240,8 @@
             };
 
             # Dynamic https://wiki.hypr.land/Configuring/Basics/Window-Rules/#dynamic-effects
-            keep_aspect_ratio = true;
-            opacity = "0.3 1";
+            # keep_aspect_ratio = true;
+            opacity = "0.2 1";
 
             # Static https://wiki.hypr.land/Configuring/Basics/Window-Rules/#static-effects
             float = true;

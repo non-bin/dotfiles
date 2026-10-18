@@ -112,6 +112,7 @@
         # Mouse movement
         (genMouseBindAttrs "META + mouse:272" "hl.dsp.window.drag()") # META + LMB: Move a window
         (genMouseBindAttrs "META + mouse:273" "hl.dsp.window.resize()") # META + RMB: Resize a window
+        (genMouseBindAttrs "META + ALT + mouse:273" "hl.dsp.window.resize({ keep_aspect_ratio = true })") # META + RMB: Resize a window
 
         # Actions
         (genBindAttrs "META + RETURN" "hl.dsp.exec_cmd('ghostty')")
