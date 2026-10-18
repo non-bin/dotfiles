@@ -80,6 +80,7 @@ agenix view
 
 [NixOS Package Search](https://search.nixos.org/packages?channel=unstable)
 [Nüschtos Options Search](https://search.n%C3%BCschtos.de)
+[Noogle Nix Function Search](https://noogle.dev/)
 [JSON to Nix](https://json-to-nix.pages.dev/)
 
 ### BIOS

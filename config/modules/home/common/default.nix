@@ -68,7 +68,7 @@
     };
 
     delta = {
-      enable = true; # Syntax hilighting
+      enable = true; # Git diff syntax hilighting
       enableGitIntegration = true;
     };
 
