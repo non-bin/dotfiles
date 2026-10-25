@@ -208,13 +208,8 @@ if [ "$CHECK" == "YES" ]; then
 
   for host in $(nix eval --no-warn-dirty ".#nixosConfigurations" --raw --apply 'hosts: builtins.concatStringsSep " " (builtins.attrNames hosts)'); do
     echo -e "${GREEN}[r] Checking $host...${NC}"
-    nix eval --no-warn-dirty ".#nixosConfigurations.$host.config.system.build.toplevel.drvPath" >/dev/null || FAIL="YES"
+    nix eval --no-warn-dirty ".#nixosConfigurations.$host.config.system.build.toplevel.drvPath" >/dev/null || echo -e "${RED}[r] Checks failed${NC}" && exit 1
   done
-
-  if [ "$FAIL" == "YES" ]; then
-    echo -e "${RED}[r] Checks failed${NC}"
-    exit 1
-  fi
 
   echo -e "${GREEN}[r] Done${NC}"
 fi
