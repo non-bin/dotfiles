@@ -36,6 +36,8 @@ in
       allowedTCPPorts = [
         5000 # nix run github:edolstra/nix-serve
       ];
+      allowedUDPPorts = [
+      ];
     };
   };
 

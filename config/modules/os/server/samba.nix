@@ -85,9 +85,15 @@
     avahi = {
       enable = true;
 
-      publish.enable = true;
-      publish.userServices = true;
       nssmdns4 = true;
+      settings = {
+        publish = {
+          disable-publishing = false;
+          disable-user-service-publishing = false;
+          publish-addresses = true;
+          publish-domain = true;
+        };
+      };
     };
   };
 }
