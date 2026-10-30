@@ -64,6 +64,10 @@ in
       grub = {
         enable = true;
         configurationLimit = 50;
+        memtest86 = {
+          enable = lib.mkDefault true;
+          params = [ "dark" ];
+        };
         efiSupport = lib.mkDefault true;
         device = lib.mkDefault "nodev";
       };
